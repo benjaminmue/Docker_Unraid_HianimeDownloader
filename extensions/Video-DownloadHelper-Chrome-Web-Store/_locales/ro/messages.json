@@ -1,0 +1,671 @@
+{
+  "Bytes": {
+    "message": "$1 Octeți"
+  },
+  "KB": {
+    "message": "$1 KO"
+  },
+  "MB": {
+    "message": "$1 MO"
+  },
+  "about": {
+    "message": "Despre"
+  },
+  "about_qr": {
+    "message": "Fișier generat"
+  },
+  "about_vdh": {
+    "message": "Despre Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "Renunță la acțiunea în desfășurare"
+  },
+  "action_abort_title": {
+    "message": "Renunță"
+  },
+  "action_as_default": {
+    "message": "Folosește această acțiune ca implicită"
+  },
+  "action_blacklist_description": {
+    "message": "Fișierele video originale din sau servite de domeniile selectate vor fi ignorate"
+  },
+  "action_blacklist_title": {
+    "message": "Adaugă la lista neagră"
+  },
+  "action_copyurl_description": {
+    "message": "Copiază URL-ul media în clipboard"
+  },
+  "action_copyurl_title": {
+    "message": "Copiază URL-ul"
+  },
+  "action_deletehit_description": {
+    "message": "Șterge sursele găsite din lista curentă"
+  },
+  "action_deletehit_title": {
+    "message": "Șterge"
+  },
+  "action_details_description": {
+    "message": "Afișează detalii despre sursele găsite"
+  },
+  "action_details_title": {
+    "message": "Detalii"
+  },
+  "action_download_description": {
+    "message": "Descărcați fișierul pe discul dvs."
+  },
+  "action_download_title": {
+    "message": "Descarcă"
+  },
+  "action_downloadconvert_description": {
+    "message": "Descarcă media și convertește la alt format"
+  },
+  "action_downloadconvert_title": {
+    "message": "Descarcă și convertește"
+  },
+  "action_openlocalfile_description": {
+    "message": "Deschide fișierul media local"
+  },
+  "action_openlocalfile_title": {
+    "message": "Deschide media"
+  },
+  "action_pin_title": {
+    "message": "Fixează"
+  },
+  "action_quickdownload_description": {
+    "message": "Descarcă fără să întrebe despre destinație"
+  },
+  "action_quickdownload_title": {
+    "message": "Descărcare rapidă"
+  },
+  "adaptative": {
+    "message": "Adaptiv $1"
+  },
+  "add_to_blacklist": {
+    "message": "Adaugă la lista neagră"
+  },
+  "add_to_blacklist_help": {
+    "message": "Fișierele video originale din sau servite de domeniile selectate vor fi ignorate"
+  },
+  "advanced": {
+    "message": "Avansat"
+  },
+  "aggregating": {
+    "message": "Se agreghează..."
+  },
+  "analyze_page": {
+    "message": "Analizează pagina"
+  },
+  "appDesc": {
+    "message": "Download Videos from the Web"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Aspect"
+  },
+  "audio_only": {
+    "message": "Doar audio"
+  },
+  "behavior": {
+    "message": "Comportament"
+  },
+  "blacklist": {
+    "message": "Lista neagră"
+  },
+  "cancel": {
+    "message": "Anulare"
+  },
+  "clear_hits": {
+    "message": "Curăță hit-urile"
+  },
+  "congratulations": {
+    "message": "Felicitări!"
+  },
+  "continue": {
+    "message": "Continuă"
+  },
+  "convconf_2passes": {
+    "message": "2 treceri"
+  },
+  "convconf_ac": {
+    "message": "Canale audio"
+  },
+  "convconf_acnone": {
+    "message": "Nimic"
+  },
+  "convconf_acodec": {
+    "message": "Codec audio"
+  },
+  "convconf_aspect": {
+    "message": "Raport de aspect"
+  },
+  "convconf_audiobitrate": {
+    "message": "Bitrate audio"
+  },
+  "convconf_audiofreq": {
+    "message": "Frecvența audio"
+  },
+  "convconf_audioonly": {
+    "message": "Doar audio"
+  },
+  "convconf_bitrate": {
+    "message": "Bitrate"
+  },
+  "convconf_container": {
+    "message": "Format"
+  },
+  "convconf_duplicate": {
+    "message": "Duplicat"
+  },
+  "convconf_ext": {
+    "message": "Extensia fișierului de ieșire"
+  },
+  "convconf_extra": {
+    "message": "Parametrii suplimentari"
+  },
+  "convconf_level": {
+    "message": "Nivel"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Nou"
+  },
+  "convconf_preset": {
+    "message": "Presetat"
+  },
+  "convconf_profilev": {
+    "message": "Profil video"
+  },
+  "convconf_rate": {
+    "message": "Rata cadrelor"
+  },
+  "convconf_readonly": {
+    "message": "Această configurație implicită poate fi doar citită. Duplicați-o ca să faceți modificări."
+  },
+  "convconf_remove": {
+    "message": "Elimină"
+  },
+  "convconf_reset": {
+    "message": "Resetează tot"
+  },
+  "convconf_reset_confirm": {
+    "message": "Aceasta va elimina toate configurările personalizate"
+  },
+  "convconf_save": {
+    "message": "Salvează"
+  },
+  "convconf_size": {
+    "message": "Mărimea cadrului"
+  },
+  "convconf_stereo": {
+    "message": "Stereo"
+  },
+  "convconf_target": {
+    "message": "Țintă"
+  },
+  "convconf_tune": {
+    "message": "Reglează"
+  },
+  "convconf_vcodec": {
+    "message": "Codec video"
+  },
+  "convconf_videobitrate": {
+    "message": "Bitrate video"
+  },
+  "conversion_outputs": {
+    "message": "Ieșirea conversiei"
+  },
+  "convert": {
+    "message": "Convertește"
+  },
+  "convert_local_files": {
+    "message": "Convertește fișierele locale"
+  },
+  "converter_needed_aggregate": {
+    "message": "Această operațiune are nevoie de un convertor instalat pe sistemul dvs., pentru a agrega stream-urile video și audio."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "De ce am nevoie de convertor?"
+  },
+  "converter_needs_reg": {
+    "message": "Este necesară înregistrarea"
+  },
+  "converter_reg_audio": {
+    "message": "Ați solicitat, explicit sau printr-o regulă de conversie automată, generarea unui fișier media numai cu audio. Aceasta necesită un convertor înregistrat."
+  },
+  "converting": {
+    "message": "Se convertește..."
+  },
+  "convrule_convert": {
+    "message": "Convertește"
+  },
+  "convrule_domain": {
+    "message": "Domeniu"
+  },
+  "convrule_extension": {
+    "message": "Extensie"
+  },
+  "copy_of": {
+    "message": "Copie a $1"
+  },
+  "custom_output": {
+    "message": "Format de ieșire personalizat"
+  },
+  "details_parenthesis": {
+    "message": "(Detalii)"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Descarcă și convertește"
+  },
+  "dlconv_output_details": {
+    "message": "Configurează detaliile ieșirii"
+  },
+  "donate": {
+    "message": "Donează"
+  },
+  "donate_vdh": {
+    "message": "Help Video DownloadHelper"
+  },
+  "downloading": {
+    "message": "Se descarcă..."
+  },
+  "errors": {
+    "message": "Erori"
+  },
+  "explain_qr1": {
+    "message": "Veți observa că video-ul rezultat conține un filigran în colț."
+  },
+  "explain_qr2": {
+    "message": "Aceasta se întâmplă pentru că ați ales o variantă ADP și facilitatea de conversie nu a fost înregistrată."
+  },
+  "failed_aggregating": {
+    "message": "A eșuat agregarea \"$1\""
+  },
+  "failed_converting": {
+    "message": "A eșuat conversia \"$1\""
+  },
+  "failed_getting_info": {
+    "message": "A eșuat obținerea informațiilor de la \"$1\""
+  },
+  "file_dialog_name": {
+    "message": "Nume"
+  },
+  "file_generated": {
+    "message": "Fișierul \"$1\" a fost generat."
+  },
+  "file_ready": {
+    "message": "\"$1\" este gata"
+  },
+  "finalizing": {
+    "message": "Se finalizează..."
+  },
+  "from_domain": {
+    "message": "De la $1"
+  },
+  "gallery": {
+    "message": "Galerie"
+  },
+  "gallery_files_types": {
+    "message": "$1 fișiere"
+  },
+  "gallery_from_domain": {
+    "message": "Galerie de la  $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Legături de la $1"
+  },
+  "general": {
+    "message": "General"
+  },
+  "get_conversion_license": {
+    "message": "Obține o licență pentru conversie"
+  },
+  "hit_details": {
+    "message": "Detalii despre sursa identificată"
+  },
+  "in_current_tab": {
+    "message": "In fila curentă"
+  },
+  "in_other_tab": {
+    "message": "In alte file"
+  },
+  "license_key": {
+    "message": "Cheia licenței"
+  },
+  "logs": {
+    "message": "Jurnale"
+  },
+  "media": {
+    "message": "Media"
+  },
+  "more": {
+    "message": "Mai multe ..."
+  },
+  "no_media_current_tab": {
+    "message": "Nu există media de procesat în fila curentă"
+  },
+  "no_media_to_process": {
+    "message": "Nu există media de procesat"
+  },
+  "no_media_to_process_descr": {
+    "message": "Apasă redare pe video pentru a ajuta detectarea fișierelor ..."
+  },
+  "not_again_3months": {
+    "message": "Nu mă mai deranjați cu asta în urmatoarele 3 luni"
+  },
+  "not_see_again": {
+    "message": "Nu mai vedeți din nou acest mesaj"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "orphan": {
+    "message": "Orfan"
+  },
+  "pinned": {
+    "message": "Fixat"
+  },
+  "quality_medium": {
+    "message": "Mediu"
+  },
+  "quality_small": {
+    "message": "Scăzut"
+  },
+  "queued": {
+    "message": "În așteptare..."
+  },
+  "register_converter": {
+    "message": "Înregistrează convertorul"
+  },
+  "register_existing_license": {
+    "message": "Înregistrează o licență existentă"
+  },
+  "registered_email": {
+    "message": "Email"
+  },
+  "registered_key": {
+    "message": "Cheie"
+  },
+  "req_donate": {
+    "message": "Ați lua în considerare să sprijiniți dezvoltarea și să donați cât de puțin?"
+  },
+  "req_review": {
+    "message": "Ca alternativă, ați vrea să scrieți o recenzie drăguță pe site-ul addon-urilor Mozilla?"
+  },
+  "req_review_link": {
+    "message": "Scrieți o recenzie despre Video DownloadHelper"
+  },
+  "running": {
+    "message": "Rulează"
+  },
+  "save": {
+    "message": "Salvează"
+  },
+  "select_files_to_convert": {
+    "message": "Convertește fișierele locale"
+  },
+  "settings": {
+    "message": "Setări"
+  },
+  "smartnamer_delay": {
+    "message": "Întârzie numirea captării (ms)"
+  },
+  "smartnamer_domain": {
+    "message": "Domeniu"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Obține nume din antetul/URL-ul documentului"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Obține numele din conținutul paginii"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Obține nume din titlul paginii"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Folosește nume disimulat"
+  },
+  "smartnamer_regexp": {
+    "message": "Expresie regulată"
+  },
+  "smartnamer_selected_text": {
+    "message": "Textul selectat"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "Expresia XPath"
+  },
+  "supported_sites": {
+    "message": "Site-uri suportate"
+  },
+  "tell_me_more": {
+    "message": "Spune mai multe despre asta."
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "validate_license": {
+    "message": "Înregistrează licența"
+  },
+  "variants_list_adp": {
+    "message": "Variante adaptive"
+  },
+  "variants_list_full": {
+    "message": "Variante"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Versiune $1"
+  },
+  "video_only": {
+    "message": "Doar video"
+  },
+  "video_qualities": {
+    "message": "Calitate video"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Nu arăta variante ADP în lista de descărcare"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Forțează reglarea H264 la agregare"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Numărul reîncercărilor de descărcare"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Întârziere între reîncercările de descărcare (ms)"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Fără notificări pentru hit-urile private"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Notifică când s-a procesat"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Surse identificate în orice filă"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Surse identificate în fila curentă"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Media din fila activă"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Media din orice filă"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Mixat"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Nici unul"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Detectări fixate"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Activități care rulează"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Firele conversiei"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Ignoră variantele protejate"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Detectează extensii"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Mărimea minimă a imaginii"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Detectează imaginile încorporate"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Detectează legături către media"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Examinare rețea"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Înlocuiește cu cratime"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Păstrează"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Elimină"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Înlocuiește cu linie de subliniere"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Tocmai ați descărcat cu succes al $1th fișier cu Video DownloadHelper."
+  },
+  "v9_no_media_current_tab": {
+    "message": "Nu există media de procesat în fila curentă"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Apasă redare pe video pentru a ajuta detectarea fișierelor ..."
+  },
+  "v9_converter_needs_reg": {
+    "message": "Este necesară înregistrarea"
+  },
+  "v9_get_conversion_license": {
+    "message": "Obține o licență pentru conversie"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Ați solicitat, explicit sau printr-o regulă de conversie automată, generarea unui fișier media numai cu audio. Aceasta necesită un convertor înregistrat."
+  },
+  "v9_about_qr": {
+    "message": "Fișier generat"
+  },
+  "v9_explain_qr1": {
+    "message": "Veți observa că video-ul rezultat conține un filigran în colț."
+  },
+  "v9_not_see_again": {
+    "message": "Nu mai vedeți din nou acest mesaj"
+  },
+  "v9_tell_me_more": {
+    "message": "Spune mai multe despre asta."
+  },
+  "v9_settings": {
+    "message": "Setări"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" este gata"
+  },
+  "v9_yes": {
+    "message": "Da"
+  },
+  "v9_no": {
+    "message": "Nu"
+  },
+  "v9_error": {
+    "message": "Eroare"
+  },
+  "v9_coapp_required": {
+    "message": "Este necesară o aplicație complementară"
+  },
+  "v9_coapp_help": {
+    "message": "Apasă aici pentru a diagnostica problema"
+  },
+  "v9_coapp_installed": {
+    "message": "Aplicație complementară instalată"
+  },
+  "v9_coapp_recheck": {
+    "message": "Verifică din nou"
+  },
+  "v9_coapp_outdated": {
+    "message": "Aplicația complementară este veche - te rog actualizează"
+  },
+  "v9_dialog_audio_impossible_title": {
+    "message": "Nu pot să descarc audio"
+  },
+  "v9_chrome_premium_required": {
+    "message": "Este necesară opțiunea Premium"
+  },
+  "v9_copy_settings_info_to_clipboard": {
+    "message": "Copiază informația în Clipboard"
+  },
+  "v9_coapp_unchecked": {
+    "message": "Verific aplicația complementară ..."
+  },
+  "v9_coapp_update": {
+    "message": "Actualizez aplicația complementară"
+  },
+  "v9_coapp_not_installed": {
+    "message": "Aplicația complementară nu este instalaltă"
+  },
+  "v9_coapp_install": {
+    "message": "Instalez aplicația complementară"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "Aplicația complementară trebuie instalată pentru a valida licența"
+  },
+  "v9_lic_status_verifying": {
+    "message": "Verific licența ..."
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Descărcări simunltane maxime"
+  },
+  "v9_mup_max_variants": {
+    "message": "Număr variantele"
+  },
+  "v9_lic_status_unset": {
+    "message": "Licența nu este setată"
+  },
+  "v9_lic_status_blocked": {
+    "message": "Licența este blocată"
+  },
+  "v9_lic_status_locked2": {
+    "message": "Licența este blocată (verifică emailul)"
+  },
+  "v9_lic_status_accepted": {
+    "message": "Licența a fost verificată"
+  },
+  "v9_no_license_registered": {
+    "message": "Nu a fost înregistrată nicio Licență"
+  },
+  "v9_panel_view_show_all_tabs": {
+    "message": "Arată toate Tab-rile"
+  },
+  "v9_panel_view_show_low_quality": {
+    "message": "Arată filmările cu calitate mică"
+  },
+  "v9_panel_view_sort_status": {
+    "message": "Sortare după status"
+  },
+  "v9_panel_view_sort_reverse": {
+    "message": "Sortare inversă"
+  },
+  "__MSG_appDesc_": {
+    "message": "Video DownloadHelper"
+  }
+}

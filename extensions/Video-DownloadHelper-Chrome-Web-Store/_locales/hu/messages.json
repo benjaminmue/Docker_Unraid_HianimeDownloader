@@ -1,0 +1,1622 @@
+{
+  "Bytes": {
+    "message": "bájt"
+  },
+  "GB": {
+    "message": "GB"
+  },
+  "KB": {
+    "message": "kB"
+  },
+  "MB": {
+    "message": "MB"
+  },
+  "about": {
+    "message": "Rólunk"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "A Firefox belső technikai változásai miatt a bővítményt teljesen újra kellett írni. Szükségünk lesz pár hétre, hogy az előző verziók összes funkcióját újra működésbe helyezzük."
+  },
+  "about_alpha_intro": {
+    "message": "Ez egy alfa verzió."
+  },
+  "about_beta_intro": {
+    "message": "Ez egy béta verzió"
+  },
+  "about_chrome_licenses": {
+    "message": "A Chrome licenszekről"
+  },
+  "about_qr": {
+    "message": "Fájl létrehozva"
+  },
+  "about_vdh": {
+    "message": "A Video DownloadHelper-ről"
+  },
+  "action_abort_description": {
+    "message": "A folyamatban lévő művelet megszakítása"
+  },
+  "action_abort_title": {
+    "message": "Megszakítás"
+  },
+  "action_as_default": {
+    "message": "Beállítás alapértelmezettként"
+  },
+  "action_avplay_description": {
+    "message": "A videó lejátszása a konvertáló lejátszójával"
+  },
+  "action_avplay_title": {
+    "message": "Lejátszás"
+  },
+  "action_blacklist_description": {
+    "message": "Erről a domainről származó videók figyelmen kívül lesznek hagyva"
+  },
+  "action_blacklist_title": {
+    "message": "Hozzáadás a feketelistához"
+  },
+  "action_bulkdownload_description": {
+    "message": "A választott videók letöltése"
+  },
+  "action_bulkdownload_title": {
+    "message": "Több letöltése"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "A választott videók letöltése és konvertálása"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Több letöltése és konvertálása"
+  },
+  "action_copyurl_description": {
+    "message": "A kiválasztott média URL-jének vágólapra másolása"
+  },
+  "action_copyurl_title": {
+    "message": "URL másolása"
+  },
+  "action_deletehit_description": {
+    "message": "Találat eltávolítása a jelenlegi listáról"
+  },
+  "action_deletehit_title": {
+    "message": "Eltávolítás"
+  },
+  "action_details_description": {
+    "message": "Részletek megjelenítése"
+  },
+  "action_details_title": {
+    "message": "Részletek"
+  },
+  "action_download_description": {
+    "message": "A fájl letöltése"
+  },
+  "action_download_title": {
+    "message": "Letöltés"
+  },
+  "action_downloadconvert_description": {
+    "message": "Média letöltése és más formátumba konvertálása"
+  },
+  "action_downloadconvert_title": {
+    "message": "Letöltés és konvertálás"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "A letöltött fájl helyének megnyitása"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Megnyitás mappában"
+  },
+  "action_openlocalfile_description": {
+    "message": "A letöltött fájl megnyitása"
+  },
+  "action_openlocalfile_title": {
+    "message": "Megnyitás"
+  },
+  "action_pin_description": {
+    "message": "Találat állandósítása"
+  },
+  "action_pin_title": {
+    "message": "Rögzítés"
+  },
+  "action_quickdownload_description": {
+    "message": "Letöltés a cél kiválasztása nélkül"
+  },
+  "action_quickdownload_title": {
+    "message": "Gyors letöltés"
+  },
+  "action_stop_description": {
+    "message": "Felvétel leállítása"
+  },
+  "action_stop_title": {
+    "message": "Leállítás"
+  },
+  "adaptative": {
+    "message": "Adaptív $1"
+  },
+  "add_to_blacklist": {
+    "message": "Hozzáadás a feketelistához"
+  },
+  "add_to_blacklist_help": {
+    "message": "Erről a domainről származó videók figyelmen kívül lesznek hagyva"
+  },
+  "advanced": {
+    "message": "Haladó"
+  },
+  "aggregating": {
+    "message": "Összefűzés"
+  },
+  "analyze_page": {
+    "message": "Oldal elemzése"
+  },
+  "appDesc": {
+    "message": "Videó letöltése az Internetről"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Megjelenés"
+  },
+  "audio_only": {
+    "message": "Csak hang"
+  },
+  "behavior": {
+    "message": "Viselkedés"
+  },
+  "blacklist": {
+    "message": "Feketelista"
+  },
+  "blacklist_add_domain": {
+    "message": "Domain felvétele a feketelistára"
+  },
+  "blacklist_add_placeholder": {
+    "message": "Domain neve"
+  },
+  "blacklist_edit_descr": {
+    "message": "A feketelista segítségével bizonyos domainekről származó média figyelmen kívül hagyható"
+  },
+  "blacklist_empty": {
+    "message": "A feketelista üres"
+  },
+  "browser_info": {
+    "message": "Böngésző: $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "Böngésző nyelve: $1"
+  },
+  "build_options": {
+    "message": "Build opciók: $1"
+  },
+  "built_on": {
+    "message": "Build időpontja: $1"
+  },
+  "bulk_in_progress": {
+    "message": "Video DownloadHelper csoportos művelet folyamatban. Ne zárd be ezt a lapot, ez automatikusan megtörténik"
+  },
+  "bulk_n_videos": {
+    "message": "$1 videó"
+  },
+  "cancel": {
+    "message": "Mégse"
+  },
+  "change": {
+    "message": "Megváltoztatás"
+  },
+  "chrome_basic_mode": {
+    "message": "Chrome Alapcsomag"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Prémium csomag időhatár nélkül"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Prémium csomag havi előfizetéssel"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Prémium csomag évi előfizetéssel"
+  },
+  "chrome_inapp_no_subs": {
+    "message": "Megjegyzés: a Chrome fizetési szolgáltatások megszűnése miatt előfizetés nem lehetséges."
+  },
+  "chrome_inapp_not_avail": {
+    "message": "Nem elérhető"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Prémium egyszeri vásárlással"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Prémium havi előfizetéssel"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Prémium évi előfizetéssel"
+  },
+  "chrome_install_firefox": {
+    "message": "Firefox letöltése"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper Firefox-hoz"
+  },
+  "chrome_license_webstore_accepted": {
+    "message": "Aktív licensz a Chrome Webáruházból"
+  },
+  "chrome_licensing": {
+    "message": "Chrome licenszelés"
+  },
+  "chrome_noyt_text": {
+    "message": "Sajnos, a Chrome Webáruház nem engedélyez YouTube-videó letöltő bővítményeket, ezért ezt a funkciót el kellett távolítanunk a bővítmény Chrome-os verziójából."
+  },
+  "chrome_noyt_text2": {
+    "message": "A Video DownloadHelper Firefox-os verziója le tud tölteni videókat a YouTube-ról is."
+  },
+  "chrome_noyt_text3": {
+    "message": "Sajnos, a Chrome Webáruház nem engedélyez YouTube-videó letöltő bővítményeket, ezért ezt a funkciót el kellett távolítanunk a bővítmény Chrome-os verziójából."
+  },
+  "chrome_premium_audio": {
+    "message": "Hangfájlok generálása csak Prémium módban elérhető"
+  },
+  "chrome_premium_check_error": {
+    "message": "A Prémium-állapot ellenőrzése során hiba lépett fel"
+  },
+  "chrome_premium_hls": {
+    "message": "Prémium mód nélkül HLS-letöltés csak $1 perccel az előző után kezdeményezhető"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome Prémium"
+  },
+  "chrome_premium_need_sign": {
+    "message": "Jelentkezz be a Chrome-ba a Prémium szolgáltatásokért"
+  },
+  "chrome_premium_not_signed": {
+    "message": "Nem vagy bejelentkezve a Chrome-ba"
+  },
+  "chrome_premium_recheck": {
+    "message": "Prémium-állapot újraellenőrzése"
+  },
+  "chrome_premium_required": {
+    "message": "Prémium mód szükséges"
+  },
+  "chrome_premium_source": {
+    "message": "Prémium felhasználó vagy ($1 által)"
+  },
+  "chrome_product_intro": {
+    "message": "Prémiumra fejleszthetsz bármelyik alábbi lehetőséggel:"
+  },
+  "chrome_req_review": {
+    "message": "Vagy esetleg írnál egy jó értékelést a Chrome Webáruházban?"
+  },
+  "chrome_signing_in": {
+    "message": "Bejelentkezés a Chrome-ba"
+  },
+  "chrome_verif_premium": {
+    "message": "Prémium-állapot ellenőrzése..."
+  },
+  "chrome_verif_premium_error": {
+    "message": "Az alkalmazáson belüli fizetés nem elérhető"
+  },
+  "chrome_warning_yt": {
+    "message": "Figyelmeztetés a Chrome felhasználóknak a YouTube miatt"
+  },
+  "clear": {
+    "message": "Ürítés"
+  },
+  "clear_hits": {
+    "message": "Találatok elvetése"
+  },
+  "clear_logs": {
+    "message": "Naplóbejegyzések törlése"
+  },
+  "coapp": {
+    "message": "Társalkalmazás"
+  },
+  "coapp_error": {
+    "message": "A társalkalmazás ellenőrzése közben hiba lépett fel:"
+  },
+  "coapp_found": {
+    "message": "A társalkalmazást megtaláltuk:"
+  },
+  "coapp_install": {
+    "message": "A társalkalmazás telepítése"
+  },
+  "coapp_installed": {
+    "message": "A társalkalmazás telepítve"
+  },
+  "coapp_latest_version": {
+    "message": "A legújabb elérhető verzió: $1"
+  },
+  "coapp_not_installed": {
+    "message": "A társalkalmazás nincs telepítve"
+  },
+  "coapp_outdated": {
+    "message": "A társalkalmazás elavult, kérjük frissítsd!"
+  },
+  "coapp_outofdate": {
+    "message": "Társalkalmazás-frissítés szükséges"
+  },
+  "coapp_outofdate_text": {
+    "message": "A társalkalmazás $1 verzióját használod, de ehhez a művelethez a(z) $2 verzióra van szükség"
+  },
+  "coapp_path": {
+    "message": "A társalkalmazás elérési útja:"
+  },
+  "coapp_recheck": {
+    "message": "Újraellenőrzés"
+  },
+  "coapp_required": {
+    "message": "Társalkalmazásra van szükség"
+  },
+  "coapp_required_text": {
+    "message": "Ehhez a művelethez egy külső alkalmazásra van szükség."
+  },
+  "coapp_shell": {
+    "message": "Társalkalmazás Shell"
+  },
+  "coapp_unchecked": {
+    "message": "A társalkalmazás ellenőrzése..."
+  },
+  "coapp_update": {
+    "message": "A társalkalmazás frissítése"
+  },
+  "collecting": {
+    "message": "Összegyűjtés..."
+  },
+  "confirmation_required": {
+    "message": "Megerősítés szükséges"
+  },
+  "congratulations": {
+    "message": "Gratulálunk!"
+  },
+  "continue": {
+    "message": "Folytatás"
+  },
+  "convconf_2passes": {
+    "message": "Konvertálás 2 menetben"
+  },
+  "convconf_ac": {
+    "message": "Hangcsatornák"
+  },
+  "convconf_acnone": {
+    "message": "Nincs"
+  },
+  "convconf_acodec": {
+    "message": "Hangkodek"
+  },
+  "convconf_aspect": {
+    "message": "Képernyőarány"
+  },
+  "convconf_audiobitrate": {
+    "message": "Hang bitráta"
+  },
+  "convconf_audiofreq": {
+    "message": "Hangfrekvencia"
+  },
+  "convconf_audioonly": {
+    "message": "Csak hang"
+  },
+  "convconf_bitrate": {
+    "message": "Bitráta"
+  },
+  "convconf_container": {
+    "message": "Formátum"
+  },
+  "convconf_duplicate": {
+    "message": "Másolat létrehozása"
+  },
+  "convconf_ext": {
+    "message": "Kimenet fájlkiterjesztés"
+  },
+  "convconf_extra": {
+    "message": "Extra paraméterek"
+  },
+  "convconf_level": {
+    "message": "Szint"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Új"
+  },
+  "convconf_preset": {
+    "message": "Sablon"
+  },
+  "convconf_profilev": {
+    "message": "Videóprofil"
+  },
+  "convconf_rate": {
+    "message": "Képkockasebesség"
+  },
+  "convconf_readonly": {
+    "message": "Ez az gyári beállítás nem módosítható. Készíts másolatot hogy módosíthasd!"
+  },
+  "convconf_remove": {
+    "message": "Törlés"
+  },
+  "convconf_reset": {
+    "message": "Összes visszaállítása"
+  },
+  "convconf_reset_confirm": {
+    "message": "Ez el fogja távolítani az összes egyéni beállítást"
+  },
+  "convconf_save": {
+    "message": "Mentés"
+  },
+  "convconf_size": {
+    "message": "Képkockaméret"
+  },
+  "convconf_stereo": {
+    "message": "Sztereó"
+  },
+  "convconf_target": {
+    "message": "Cél"
+  },
+  "convconf_tune": {
+    "message": "Hangolás"
+  },
+  "convconf_vcodec": {
+    "message": "Videókodek"
+  },
+  "convconf_videobitrate": {
+    "message": "Videó bitráta"
+  },
+  "conversion_create_rule": {
+    "message": "Szabály létrehozása"
+  },
+  "conversion_outputs": {
+    "message": "Konverzió kimenet"
+  },
+  "conversion_rules": {
+    "message": "Konverziós szabályok"
+  },
+  "conversion_update_rule": {
+    "message": "Szabály módosítása"
+  },
+  "convert": {
+    "message": "Konvertálás"
+  },
+  "convert_local_files": {
+    "message": "Helyi fájlok konverálása"
+  },
+  "converter_needed_aggregate": {
+    "message": "Ehhez a művelethez szükség van egy konvertáló programra a hang és a videó összefésüléséhez."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Miért?"
+  },
+  "converter_needs_reg": {
+    "message": "Regisztráció szükséges"
+  },
+  "converter_queued": {
+    "message": "Várólistára helyezve..."
+  },
+  "converter_reg_audio": {
+    "message": "A beállítások alapján egy csak hangot tartalmazó fájl létrehozását kérted. Ehhez regisztáció szükséges"
+  },
+  "converting": {
+    "message": "Konvertálás..."
+  },
+  "convrule_convert": {
+    "message": "Konvertálás"
+  },
+  "convrule_domain": {
+    "message": "Domain"
+  },
+  "convrule_extension": {
+    "message": "Kiterjesztés"
+  },
+  "convrule_format": {
+    "message": "$1 formátumba"
+  },
+  "convrule_from_domain": {
+    "message": "$1 domainről"
+  },
+  "convrule_no_convert": {
+    "message": "Nincs kovertálás"
+  },
+  "convrule_output_format": {
+    "message": "Kimeneti formátum"
+  },
+  "convrule_refresh_formats": {
+    "message": "Formátumok újratöltése"
+  },
+  "convrule_with_ext": {
+    "message": "\"$1\" kterjesztéssel"
+  },
+  "convrules_add_rule": {
+    "message": "Szabály hozzáadása"
+  },
+  "convrules_edit_descr": {
+    "message": "A konverziós szabályok segítségével médiakonverzió automatikusan végrehajtható a letöltés után"
+  },
+  "convrules_empty": {
+    "message": "Nincs konverziós szabály"
+  },
+  "copy_of": {
+    "message": "$1 másolata"
+  },
+  "corrupted_media_file": {
+    "message": "A(z) \"$1\" média információinak lekérése a(z) \"$2\" fájlból nem lehetséges. Lehetséges, hogy a fájl sérült."
+  },
+  "create": {
+    "message": "Létrehozás"
+  },
+  "custom_output": {
+    "message": "Egyedi kimeneti formátum"
+  },
+  "dash_streaming": {
+    "message": "DASH streaming"
+  },
+  "default": {
+    "message": "Alapértelmezett"
+  },
+  "details_parenthesis": {
+    "message": "(Részletek)"
+  },
+  "dev_build": {
+    "message": "Fejlesztői build"
+  },
+  "directory_not_exist": {
+    "message": "A mappa nem létezik"
+  },
+  "directory_not_exist_body": {
+    "message": "A(z) \"$1\" mappa nem létezik. Létrehozza?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Letöltés és konvertálás"
+  },
+  "dlconv_output_details": {
+    "message": "Kimeneti részletek szerkesztése"
+  },
+  "donate": {
+    "message": "Adományozz!"
+  },
+  "donate_vdh": {
+    "message": "Támogasd a Video DownloadHelpert!"
+  },
+  "download_error": {
+    "message": "Letöltési hiba"
+  },
+  "download_method": {
+    "message": "Letöltési módszer"
+  },
+  "download_method_not_again": {
+    "message": "Beállítás alapértelmezettként"
+  },
+  "download_modes1": {
+    "message": "A letöltés elvégezhető a böngésző vagy a társalkalmazás segítségével."
+  },
+  "download_modes2": {
+    "message": "Technikai okokból a böngésző elutasíthatja a letöltést, és nem lehetséges az alapértelmezett kimeneti mappa módosítása"
+  },
+  "download_with_browser": {
+    "message": "Böngésző használata"
+  },
+  "download_with_coapp": {
+    "message": "Társalkalmazás használata"
+  },
+  "downloading": {
+    "message": "Letöltés..."
+  },
+  "edge_req_review": {
+    "message": "Vagy esetleg írnál egy jó értékelést a Microsoft Edge Bővítményáruházban?"
+  },
+  "error": {
+    "message": "Hiba"
+  },
+  "error_not_directory": {
+    "message": "\"$1\" létezik, de nem mappa"
+  },
+  "errors": {
+    "message": "Hibák"
+  },
+  "exit_natmsgsh": {
+    "message": "Kilépés a társalkalmazásból"
+  },
+  "explain_qr1": {
+    "message": "A videó tartalmaz egy vízjelet a sarokban."
+  },
+  "explain_qr2": {
+    "message": "Ez azért van, mert ADP változatot választottál, és a konverziós képesség nincs regisztrálva."
+  },
+  "export": {
+    "message": "Exportálás"
+  },
+  "failed_aggregating": {
+    "message": "A(z) \"$1\" összefűzése sikertelen"
+  },
+  "failed_converting": {
+    "message": "A(z) \"$1\" konvertálása sikertelen"
+  },
+  "failed_getting_info": {
+    "message": "Az információgyűjtés a(z) \"$1\"-ből  sikertelen"
+  },
+  "failed_opening_directory": {
+    "message": "Mappa megnyitása sikertelen"
+  },
+  "failed_playing_file": {
+    "message": "Fájl lejátszása sikertelen"
+  },
+  "file_dialog_date": {
+    "message": "Dátum"
+  },
+  "file_dialog_name": {
+    "message": "Név"
+  },
+  "file_dialog_size": {
+    "message": "Méret"
+  },
+  "file_generated": {
+    "message": "A(z) \"$1\" fájl létrehozva"
+  },
+  "file_ready": {
+    "message": "A(z) \"$1\" kész"
+  },
+  "finalizing": {
+    "message": "Véglegesítés..."
+  },
+  "from_domain": {
+    "message": "$1-ról"
+  },
+  "gallery": {
+    "message": "Galéria"
+  },
+  "gallery_files_types": {
+    "message": "$1 fájl"
+  },
+  "gallery_from_domain": {
+    "message": "Galéria a(z) $1-ról"
+  },
+  "gallery_links_from_domain": {
+    "message": "Linkek a(z) $1-ról"
+  },
+  "general": {
+    "message": "Általános"
+  },
+  "get_conversion_license": {
+    "message": "Konverziós licensz beszerzése"
+  },
+  "help_translating": {
+    "message": "Segítsen a fordításban"
+  },
+  "hit_details": {
+    "message": "Találat részletei"
+  },
+  "hit_go_to_tab": {
+    "message": "Mutatás lapon"
+  },
+  "hls_streaming": {
+    "message": "HLS streaming"
+  },
+  "homepage": {
+    "message": "Kezdőlap"
+  },
+  "import": {
+    "message": "Importálás"
+  },
+  "import_invalid_format": {
+    "message": "Érvénytelen formátum"
+  },
+  "in_current_tab": {
+    "message": "Ezen a lapon"
+  },
+  "in_other_tab": {
+    "message": "Más lapokon"
+  },
+  "lic_mismatch1": {
+    "message": "A licensz $1-ra érvényes, de a böngésző build-je nincs meghatározva"
+  },
+  "lic_mismatch2": {
+    "message": "A licensz $1-ra érvényes, de a bővítmény build-je $2-ra"
+  },
+  "lic_not_needed_linux": {
+    "message": "Hozzájárulásunk a Linuxhoz: nincs szükség licenszre"
+  },
+  "lic_status_accepted": {
+    "message": "Licensz elfogadva"
+  },
+  "lic_status_blocked": {
+    "message": "Licensz elutasíva"
+  },
+  "lic_status_error": {
+    "message": "Licensz hiba"
+  },
+  "lic_status_locked": {
+    "message": "Licensz zárolva (újraellenőrzés)"
+  },
+  "lic_status_mismatch": {
+    "message": "Licensz/böngésző eltérés"
+  },
+  "lic_status_nocoapp": {
+    "message": "A licensz nem ellenőrizhető"
+  },
+  "lic_status_unneeded": {
+    "message": "Licensz nem szükséges"
+  },
+  "lic_status_unset": {
+    "message": "A licensz nincs beállítva"
+  },
+  "lic_status_unverified": {
+    "message": "A licensz nincs ellenőrizve"
+  },
+  "lic_status_verifying": {
+    "message": "Licensz ellenőrzése..."
+  },
+  "license": {
+    "message": "Licensz"
+  },
+  "license_key": {
+    "message": "Licensz-kulcs"
+  },
+  "licensing": {
+    "message": "Licenszelés"
+  },
+  "logs": {
+    "message": "Naplók"
+  },
+  "media": {
+    "message": "Média"
+  },
+  "merge_error": {
+    "message": "Egyesítési hiba"
+  },
+  "merge_local_files": {
+    "message": "Helyi hang- és videófájlok egyesítése"
+  },
+  "more": {
+    "message": "Több..."
+  },
+  "network_error_no_response": {
+    "message": "Hálózati hiba - nincs válasz"
+  },
+  "network_error_status": {
+    "message": "Hálózati hiba - státusz: $1"
+  },
+  "new_sub_directory": {
+    "message": "Almappa létrehozása"
+  },
+  "next": {
+    "message": "Tovább"
+  },
+  "no": {
+    "message": "Nem"
+  },
+  "no_audio_in_file": {
+    "message": "Nincs hangsáv a(z) $1 fájlhoz."
+  },
+  "no_coapp_license_unverified": {
+    "message": "A licensz ellenőrzése nem lehetséges, mert a társalkalmazás nincs telepítve"
+  },
+  "no_license_registered": {
+    "message": "Nincs regisztrált licensz"
+  },
+  "no_media_current_tab": {
+    "message": "Ezen a lapon nincs feldolgozható média"
+  },
+  "no_media_to_process": {
+    "message": "Nincs feldolgozható média"
+  },
+  "no_media_to_process_descr": {
+    "message": "Próbáld meg elindítani a videót, hogy segíts a fájlok észlelésében..."
+  },
+  "no_such_hit": {
+    "message": "Nincs találat"
+  },
+  "no_validate_without_coapp": {
+    "message": "A társalkalmazásnak telepítve kell lennie a licensz ellenőrzéséhez"
+  },
+  "no_video_in_file": {
+    "message": "Nincs videósáv a(z) $1 fájlhoz."
+  },
+  "not_again_3months": {
+    "message": "Elrejtés 3 hónapig"
+  },
+  "not_see_again": {
+    "message": "Ne mutassa többször"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "ok": {
+    "message": "OK"
+  },
+  "orphan": {
+    "message": "Elhagyott"
+  },
+  "output_configuration": {
+    "message": "Kimeneti beállítás"
+  },
+  "overwrite_file": {
+    "message": "A(z) \"$1\" fájl létezik. Felülírja?"
+  },
+  "per_month": {
+    "message": "/ hónap"
+  },
+  "per_year": {
+    "message": "/ év"
+  },
+  "pinned": {
+    "message": "Rögzített"
+  },
+  "platform": {
+    "message": "Eszköz"
+  },
+  "platform_info": {
+    "message": "Eszközinformációk: $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "Működteti a Weh"
+  },
+  "preferences": {
+    "message": "Beállítások"
+  },
+  "prod_build": {
+    "message": "Produkciós build"
+  },
+  "quality_medium": {
+    "message": "Közepes"
+  },
+  "quality_small": {
+    "message": "Alacsony"
+  },
+  "queued": {
+    "message": "Várólistára helyezve..."
+  },
+  "recheck_license": {
+    "message": "Licensz újraellenőrzése"
+  },
+  "register_converter": {
+    "message": "Konverter regisztálása"
+  },
+  "register_existing_license": {
+    "message": "Létező licensz regisztrálása"
+  },
+  "registered_email": {
+    "message": "E-mail"
+  },
+  "registered_key": {
+    "message": "Kulcs"
+  },
+  "reload_addon": {
+    "message": "Bővítmény újratöltése"
+  },
+  "reload_addon_confirm": {
+    "message": "Biztosan újra szeretnéd tölteni a bővítményt?"
+  },
+  "req_donate": {
+    "message": "Szeretnéd támogatni a fejlesztést egy kis adománnyal?"
+  },
+  "req_locale": {
+    "message": "Vagy segítesz lefordítani a bővítményt \"$1\"-ra ($2 szöveg hiányzik)?"
+  },
+  "req_review": {
+    "message": "Vagy esetleg írnál egy jó értékelést a Mozilla bővítmény-oldalán?"
+  },
+  "req_review_link": {
+    "message": "Értékeld a Video DownloadHelper-t"
+  },
+  "reset_settings": {
+    "message": "Beállítások visszaállítása"
+  },
+  "running": {
+    "message": "Fut"
+  },
+  "save": {
+    "message": "Mentés"
+  },
+  "save_as": {
+    "message": "Mentés másként..."
+  },
+  "save_file_as": {
+    "message": "Fájl mentése másként..."
+  },
+  "select_audio_file_to_merge": {
+    "message": "Válaszd ki a hangsávot tartalmazó fájlt!"
+  },
+  "select_files_to_convert": {
+    "message": "Helyi fájlok konvertálása"
+  },
+  "select_output_config": {
+    "message": "Válassz kimeneti konfigurációt..."
+  },
+  "select_output_directory": {
+    "message": "Kimeneti mappa"
+  },
+  "select_video_file_to_merge": {
+    "message": "Válaszd ki a videósávot tartalmazó fájlt!"
+  },
+  "selected_media": {
+    "message": "Csoportos kiválasztás"
+  },
+  "settings": {
+    "message": "Beállítások"
+  },
+  "smartname_add_domain": {
+    "message": "Okos elnevezési szabály hozzáadása"
+  },
+  "smartname_create_rule": {
+    "message": "Elnevezési szabály létrehozása"
+  },
+  "smartname_define": {
+    "message": "Elnevezési szabály meghatározása"
+  },
+  "smartname_edit_descr": {
+    "message": "Az elnevezési szabály segítségével a videók neve testreszabható a forrás neve alapján"
+  },
+  "smartname_empty": {
+    "message": "Nincs okos elnevezési szabály"
+  },
+  "smartname_update_rule": {
+    "message": "Elnevezési szabály módosítása"
+  },
+  "smartnamer_delay": {
+    "message": "Késleltetett elnevezés (ezredmásodpercben)"
+  },
+  "smartnamer_domain": {
+    "message": "Domain"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Név lekérése a dokumentum fejlécéből / URL-jéből"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Név lekérése az oldal tartalmából"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Név lekérése az oldal címéből"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Véletlenszerű név használata"
+  },
+  "smartnamer_regexp": {
+    "message": "Reguláris kifejezés"
+  },
+  "smartnamer_selected_text": {
+    "message": "Kiválasztott szöveg"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "XPath kifejezés"
+  },
+  "smartnaming_rule": {
+    "message": "Elnevezési szabály"
+  },
+  "smartnaming_rules": {
+    "message": "Elnevezési szabályok"
+  },
+  "sub_directory_name": {
+    "message": "Almappa neve"
+  },
+  "support_forum": {
+    "message": "Támogatási fórum"
+  },
+  "supported_sites": {
+    "message": "Támogatott oldalak"
+  },
+  "tbsn_quality_hd": {
+    "message": "Közepes minőség"
+  },
+  "tbsn_quality_sd": {
+    "message": "Alacsony minőség"
+  },
+  "tell_me_more": {
+    "message": "Tudj meg többet"
+  },
+  "title": {
+    "message": "Cím"
+  },
+  "translation": {
+    "message": "Fordítás"
+  },
+  "up": {
+    "message": "Fel"
+  },
+  "validate_license": {
+    "message": "Licensz regisztrálása"
+  },
+  "variants_list_adp": {
+    "message": "Adaptív változatok"
+  },
+  "variants_list_full": {
+    "message": "Változatok"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Verzió: $1"
+  },
+  "video_only": {
+    "message": "Csak videó"
+  },
+  "video_qualities": {
+    "message": "Videó minőség"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "Ablak"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "Lap"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "Kérdezzen rá"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "Böngésző"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "Társalkalmazás"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Hang letöltése"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "Videó és hang összefűzése"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Videó letöltése"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Ne mutassa az ADP változatokat a letöltési listában"
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "Figyelmeztetések megjelenítési módja"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Találat rögzítése letöltés után"
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "Videólejátszás engedélyezése a társalkalmazással"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Megakadályozza a média keresését néhány oldalon"
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "Csoportos letöltési lehetőségek engedélyezése"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "Ellenőrizze a társalkalmazás meglétét indításkor a jobb médiaérzékelésért"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "Feldarabolt adatok kérése a társalkalmazással"
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "Feldarabolt manifesztek kérése a társalkalmazással"
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "Egyidejűleg letöltött szegmensek maximális száma"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Feldarabolt streamelés engedélyezése"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "Előre letöltött szegmensek száma"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "A letöltéseket végrehajtó alkalmazás"
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "Automatikus leállítás ideje ezredmásodpercben (0 = kikapcsolva)"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "Késleltetés a társalkalmazás újraindítása előtt ezredmásodpercben"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "A társalkalmazás ugyanazt a proxyt használja mint az eredeti lekérés"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "Néhány oldal visszatéríthet egy URL-t a médiatartalom helyett"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "Parancsok elérése a helyi (jobb-klikkre megjelenő) menüből"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "Az egyidejű összefűzési és konvertálási műveletek maximális száma"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "H264-hangolás kényszerítése összefűzéskor"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "Ne törölje az ideiglenes fájlokat feldolgozás után"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "A konvertáláshoz használt szálak száma"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "DASH darabolt streamelés engedélyezése"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": ".ts fájlok elrejtése a letöltési listán"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Teendő, amikor a DASH hangot és videót is tartalmaz"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "Párbeszédpanel bezárása máshová kattintás esetén"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Szabályozza az egyidejű (bővítmény általi) letöltések maximális számát a sávszélesség megőrzéséhez"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Letöltési újrapróbálkozások száma"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Késleltetés az újrapróbálkozások között ezredmásodpercben"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "Szabályozza az egy elemhez tartozó stream-ek letöltésének számát"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "Fájl-párbeszédpanel megjelenésének módja"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "Galériából letöltött fájlok elnevezése"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "\"Megnyitás lapon\" link megjelenítése a leírásban"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "HLS streamek letöltése M2TS-ként"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "HLS darabolt streamelés engedélyezése"
+  },
+  "weh_prefs_description_hlsEndTimeout": {
+    "message": "Időtúllépés másodpercben, hogy ne várjon az új HLS-darabokra"
+  },
+  "weh_prefs_description_hlsRememberPrevLiveChunks": {
+    "message": "Korábbi HLS Live szegmensek megjegyzése"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "Eszköztárikon aktiválása"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "Eszköztárikon-jelvény megjelenítése"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "Védett változatok figyelmen kívül hagyása"
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "Csak a társalkalmazás letöltés-feldolgozójával használatos"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "Médiaként értelmezett fájlkiterjesztések"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "Végrehajtás minden lapbetöltéskor (hatása lehet a teljesítményre)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "Galériához számba vett fájlkiterjesztések"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "Galéria-bejegyzések maximális száma"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "Galéria-bejegyzések minimális száma"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "Galéria-bejegyzések maximális mérete"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "Képek észlelése a lapon"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "Közvetlenül az oldalról hivatkozott média észlelése"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Ennél kisebb méretű találatok figyelmen kívül hagyása"
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Média észlelésének kényszerítése efölött a méret fölött"
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "Ugyanolyan fejléc használata a letöltéshez, mint az eredeti lekéréskor"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": ".ts fájlok elrejtése a letöltési listán"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Reguláris kifejezés az egyező URL-ről származó média figyelmen kívül hagyásához"
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "Hálózati forgalom elemzése találatok észleléséhez"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Értesítés elrejtése a privát találatokról"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Értesítés, amikor a feldolgozás elkészül"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Várakozási idő a bezárt lapról származó (ún. elhagyott) találatok eltávolítása előtt másodpercben"
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Egy videó maximális kijelzett változatainak száma"
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "Legutóbbi letöltési mappa használata alapértelmezettként"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "Biztosítja, hogy a fájlnevek nem lépik át ezt a mérethatárt"
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "Videók nevében található szóközök kezelése"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "Videók észlelésének és letöltésének engedélyezése a Facebookon"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "Hosszú videó-nevek megjelenítése a főfelületen"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "Parancsok elérése az Eszközök menüből"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "Ablak"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "Lap"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "Index - URL"
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "Típus - Index"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "URL"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Találat bármelyik lapon"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Találat az aktív lapon"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Média az aktív lapon"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Média bármelyik lapon"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Vegyes"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Nincs"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Rögzített találatok"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Futó folyamatok"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "ADP-változatok elrejtése"
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "Figyelmeztető párbeszédpanel"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Automatikus rögzítés"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Lejátszó engedélyezése"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Feketelista engedélyezése"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "Csoportos műveletek engedélyezése"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "Társalkalmazás állapotának ellenőrzése indításkor"
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "Feldarabolt adat társalkalmazás-lekérések"
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "Feldarabolt manifeszt társalkalmazás-lekérések"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Egyidejű szegmensletöltések"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Feldarabolt streamelés engedélyezése"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Előre letöltött szegmensek"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "Letöltési feldolgozó"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "Társalkalmazás készenléti várakozása"
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "Társalkalmazás újraindítási időzítő"
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "Társalkalmazás proxy"
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "Tartalomátirányítás engedélyezése"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "Helyi menü engedélyezése"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "Egyidejű konvertáló folyamatok"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "H264-hangolás"
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "Ideglenes fájlok megtartása"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Konverziós szálak"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH engedélyezése"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": ".m4s elrejtése"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "DASH streamek"
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "Párbeszédpanelek automatikus bezárása"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Maximum egyidejű letöltések"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "Letöltési újrapróbálkozások"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "Újrapróbálkozás késleltetése"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "Maximum egyidejű stream-letöltések"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "Fájl-párbeszédpanel"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "Galéria fájl-elnevezés"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "\"Megjelenítés lapon\" engedélyezése"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS M2TS-ként"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS engedélyezése"
+  },
+  "weh_prefs_label_hlsEndTimeout": {
+    "message": "HLS időtúllépés vége"
+  },
+  "weh_prefs_label_hlsRememberPrevLiveChunks": {
+    "message": "HLS Live előzmények"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Ikonaktiválás"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Ikon-jelvény"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Védett változatok elrejtése"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "Alapértelmezett letöltési hely"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Kiterjesztések észlelése"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "Galéria automatikus észlelés"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "Média-hivatkozás kiterjesztések"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "Találatok maximális száma"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "Találatok minimális száma"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Minimális képméret"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Beágyazott képek észlelése"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Média-hivatkozások észlelése"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Minimális méret"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Méret-küszöbérték"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "Lekérési fejléc"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": ".ts elrejtése"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Hálózati szűrő"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Hálózatellenőrzés"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Privát értesítések"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Értesítés"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Elhagyott-találat időzítő"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Változatok maximális száma"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "Legutóbbi mappa megjegyzése"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Maximális fájlnévhossz"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Hosszú címek a főfelületen"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Facebook-támogatás"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Hosszú címek a főfelületen"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Eszközök menü"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Lecserélés kötőjelekre ( - )"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Megtartás"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Eltávolítás"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Lecserélés alsó vonalakra ( _ )"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "\"...\" a bal oldalon"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "Több sorban"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "\"...\" a jobb oldalon"
+  },
+  "yes": {
+    "message": "Igen"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Sikeresen letöltötted a(z) $1. fájlodat a Video DownloadHelper-rel!"
+  },
+  "v9_yes": {
+    "message": "Igen"
+  },
+  "v9_no": {
+    "message": "Nem"
+  },
+  "v9_error": {
+    "message": "Hiba"
+  },
+  "v9_no_media_current_tab": {
+    "message": "Ezen a lapon nincs feldolgozható média"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Próbáld meg elindítani a videót, hogy segíts a fájlok észlelésében..."
+  },
+  "v9_coapp_required": {
+    "message": "Társalkalmazásra van szükség"
+  },
+  "v9_coapp_required_text": {
+    "message": "Ehhez a művelethez egy külső alkalmazásra van szükség."
+  },
+  "v9_coapp_installed": {
+    "message": "A társalkalmazás telepítve"
+  },
+  "v9_coapp_recheck": {
+    "message": "Újraellenőrzés"
+  },
+  "v9_lic_status_accepted": {
+    "message": "Licensz elfogadva"
+  },
+  "v9_coapp_outdated": {
+    "message": "A társalkalmazás elavult, kérjük frissítsd!"
+  },
+  "v9_converter_needs_reg": {
+    "message": "Regisztráció szükséges"
+  },
+  "v9_get_conversion_license": {
+    "message": "Konverziós licensz beszerzése"
+  },
+  "v9_converter_reg_audio": {
+    "message": "A beállítások alapján egy csak hangot tartalmazó fájl létrehozását kérted. Ehhez regisztáció szükséges"
+  },
+  "v9_chrome_premium_required": {
+    "message": "Prémium mód szükséges"
+  },
+  "v9_chrome_premium_hls": {
+    "message": "Prémium mód nélkül HLS-letöltés csak $1 perccel az előző után kezdeményezhető"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Figyelmeztetés a Chrome felhasználóknak a YouTube miatt"
+  },
+  "v9_chrome_noyt_text3": {
+    "message": "Sajnos, a Chrome Webáruház nem engedélyez YouTube-videó letöltő bővítményeket, ezért ezt a funkciót el kellett távolítanunk a bővítmény Chrome-os verziójából."
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "A Video DownloadHelper Firefox-os verziója le tud tölteni videókat a YouTube-ról is."
+  },
+  "v9_about_qr": {
+    "message": "Fájl létrehozva"
+  },
+  "v9_explain_qr1": {
+    "message": "A videó tartalmaz egy vízjelet a sarokban."
+  },
+  "v9_not_see_again": {
+    "message": "Ne mutassa többször"
+  },
+  "v9_tell_me_more": {
+    "message": "Tudj meg többet"
+  },
+  "v9_settings": {
+    "message": "Beállítások"
+  },
+  "v9_coapp_unchecked": {
+    "message": "A társalkalmazás ellenőrzése..."
+  },
+  "v9_coapp_update": {
+    "message": "A társalkalmazás frissítése"
+  },
+  "v9_coapp_not_installed": {
+    "message": "A társalkalmazás nincs telepítve"
+  },
+  "v9_coapp_install": {
+    "message": "A társalkalmazás telepítése"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "A társalkalmazásnak telepítve kell lennie a licensz ellenőrzéséhez"
+  },
+  "v9_lic_status_verifying": {
+    "message": "Licensz ellenőrzése..."
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Maximum egyidejű letöltések"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "Parancsok elérése a helyi (jobb-klikkre megjelenő) menüből"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "A(z) \"$1\" kész"
+  },
+  "v9_lic_status_unset": {
+    "message": "A licensz nincs beállítva"
+  },
+  "v9_lic_status_blocked": {
+    "message": "Licensz elutasíva"
+  },
+  "v9_lic_status_locked": {
+    "message": "Licensz zárolva (újraellenőrzés)"
+  },
+  "v9_lic_mismatch2": {
+    "message": "A licensz $1-ra érvényes, de a bővítmény build-je $2-ra"
+  },
+  "v9_no_license_registered": {
+    "message": "Nincs regisztrált licensz"
+  }
+}

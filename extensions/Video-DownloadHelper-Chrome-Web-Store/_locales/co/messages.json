@@ -1,0 +1,2030 @@
+{
+  "__MSG_appDesc_": {
+    "message": "Video DownloadHelper"
+  },
+  "Bytes": {
+    "message": "$1 ottetti"
+  },
+  "GB": {
+    "message": "$1 Go"
+  },
+  "KB": {
+    "message": "$1 Ko"
+  },
+  "MB": {
+    "message": "$1 Mo"
+  },
+  "about": {
+    "message": "Apprupositu"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "Per via di cambiamenti tecnichi interni à Firefox, u modulu addiziunale hè statu riscrittu sanu sanu. Aspittate per piacè qualchì settimana di più per chì tutte e funzioni sianu di ritornu."
+  },
+  "about_alpha_intro": {
+    "message": "Què hè una versione alfa."
+  },
+  "about_beta_intro": {
+    "message": "Què hè una versione beta."
+  },
+  "about_chrome_licenses": {
+    "message": "Infurmazione apprupositu di e licenze Chrome"
+  },
+  "about_qr": {
+    "message": "Schedariu ingeneratu"
+  },
+  "about_vdh": {
+    "message": "Apprupositu Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "Interrompe l’azzione in corsu"
+  },
+  "action_abort_title": {
+    "message": "Interrompe"
+  },
+  "action_as_default": {
+    "message": "Impiegà st’azzione cum’è predefinizione"
+  },
+  "action_avplay_description": {
+    "message": "Leghje a video cù u lettore native di u cunvertidore"
+  },
+  "action_avplay_title": {
+    "message": "Lettura"
+  },
+  "action_blacklist_description": {
+    "message": "E video chì venenu da u(i) duminiu(i) selezziunatu(i) seranu ignurate"
+  },
+  "action_blacklist_title": {
+    "message": "Aghjunghje à a lista nera"
+  },
+  "action_bulkdownload_description": {
+    "message": "Scaricà e video selezziunate"
+  },
+  "action_bulkdownload_title": {
+    "message": "Scaricamentu da gruppu"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "Scaricà è cunvertisce da gruppu e video selezziunate"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Scaricà è cunvertisce da gruppu"
+  },
+  "action_copyurl_description": {
+    "message": "Cupià l’indirizzu web di u medià in u preme’papei"
+  },
+  "action_copyurl_title": {
+    "message": "Cupià l’indirizzu web"
+  },
+  "action_deletehit_description": {
+    "message": "Squassà u risultatu da a lista attuale"
+  },
+  "action_deletehit_title": {
+    "message": "Squassà"
+  },
+  "action_details_description": {
+    "message": "Affisseghja detaglii nant’à stu risultatu"
+  },
+  "action_details_title": {
+    "message": "Detaglii"
+  },
+  "action_download_description": {
+    "message": "Scaricheghja u schedariu nant’à u vostru discu duru"
+  },
+  "action_download_title": {
+    "message": "Scaricà"
+  },
+  "action_downloadaudio_description": {
+    "message": "Scaricheghja solu l’audio"
+  },
+  "action_downloadaudio_title": {
+    "message": "Scaricà solu l’audio"
+  },
+  "action_downloadconvert_description": {
+    "message": "Scaricheghja u medià è u cunvertisce in un’altru furmatu"
+  },
+  "action_downloadconvert_title": {
+    "message": "Scaricà è cunvertisce"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "Apre u cartulare lucale di u schedariu"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Apre u cartulare"
+  },
+  "action_openlocalfile_description": {
+    "message": "Apre u schedariu di medià lucale"
+  },
+  "action_openlocalfile_title": {
+    "message": "Apre u medià"
+  },
+  "action_pin_description": {
+    "message": "Rende u risultatu perennu"
+  },
+  "action_pin_title": {
+    "message": "Spirlà"
+  },
+  "action_quickdownload_description": {
+    "message": "Scaricheghja senza dumandà a destinazione"
+  },
+  "action_quickdownload_title": {
+    "message": "Scaricamentu rapidu"
+  },
+  "action_quickdownloadaudio_description": {
+    "message": "Scaricheghja solu l’audio senza dumandà a destinazione"
+  },
+  "action_quickdownloadaudio_title": {
+    "message": "Scaricamentu rapidu solu di l’audio"
+  },
+  "action_quicksidedownload_description": {
+    "message": "Scaricamentu laterale senza dumandà a destinazione"
+  },
+  "action_quicksidedownload_title": {
+    "message": "Scaricamentu laterale prestu"
+  },
+  "action_sidedownload_description": {
+    "message": "Scaricadore esperimentale"
+  },
+  "action_sidedownload_title": {
+    "message": "Scaricamentu laterale"
+  },
+  "action_sidedownloadconvert_description": {
+    "message": "Scaricamentu laterale di u medià è cunversione in un’altru furmatu"
+  },
+  "action_sidedownloadconvert_title": {
+    "message": "Scaricamentu laterale è cunversione"
+  },
+  "action_stop_description": {
+    "message": "Piantà a cattura"
+  },
+  "action_stop_title": {
+    "message": "Piantà"
+  },
+  "adaptative": {
+    "message": "$1 adattevule"
+  },
+  "add_to_blacklist": {
+    "message": "Aghjunghje à a lista nera"
+  },
+  "add_to_blacklist_help": {
+    "message": "E video chì venenu da u(i) duminiu(i) selezziunatu(i) seranu ignurate"
+  },
+  "advanced": {
+    "message": "Espertu"
+  },
+  "aggregating": {
+    "message": "Aghjunghjitura…"
+  },
+  "analyze_page": {
+    "message": "Analizà a pagina"
+  },
+  "appDesc": {
+    "message": "Scaricà filmetti da u Web"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Aspettu"
+  },
+  "audio_only": {
+    "message": "Audio solu"
+  },
+  "behavior": {
+    "message": "Cumpurtamentu"
+  },
+  "blacklist": {
+    "message": "Lista nera"
+  },
+  "blacklist_add_domain": {
+    "message": "Aghjunghje un duminiu à a lista nera"
+  },
+  "blacklist_add_placeholder": {
+    "message": "Duminiu à aghjunghje à a lista nera"
+  },
+  "blacklist_edit_descr": {
+    "message": "A lista nera permette d’ignurà i medià chì venenu da certi duminii"
+  },
+  "blacklist_empty": {
+    "message": "Nisunu duminiu in a lista nera"
+  },
+  "browser_info": {
+    "message": "Navigatore $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "Lingua di u navigatore : $1"
+  },
+  "build_options": {
+    "message": "Ozzioni di custruzzione : $1"
+  },
+  "built_on": {
+    "message": "Custruitu u $1"
+  },
+  "bulk_in_progress": {
+    "message": "Video DownloadHelper face un operazione di gruppu. Ùn chjudite micca st’unghjetta, què serà fattu autumaticamente"
+  },
+  "bulk_n_videos": {
+    "message": "$1 video"
+  },
+  "cancel": {
+    "message": "Abbandunà"
+  },
+  "change": {
+    "message": "Cambià"
+  },
+  "chrome_basic_mode": {
+    "message": "Chrome basicu (rinnovu ricumandatu)"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Statu Premium senza cunfine di tempu"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Statu Premium da una sottuscrizzione misinca"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Statu Premium da una sottuscrizzione annuale"
+  },
+  "chrome_inapp_no_subs": {
+    "message": "Nota : per via di l’abbandonu da Google di u sistema di pagamentu Chrome, e sottuscrizzioni ùn sò più dispunibule"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "Micca dispunibule"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Premium ab’eternu"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Sottuscrizzione Premium misinca"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Sottuscrizzione Premium annuale"
+  },
+  "chrome_install_firefox": {
+    "message": "Installà Firefox"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper per Firefox"
+  },
+  "chrome_license_webstore_accepted": {
+    "message": "A licenza Chrome Webstore hè attiva"
+  },
+  "chrome_licensing": {
+    "message": "Licenza Chrome"
+  },
+  "chrome_noyt_text": {
+    "message": "Per disgrazia, u Web Store di Chrome ùn permittendu micca i moduli addiziunale chì scaricheghjanu video YouTube, simu stati custreti di caccià sta funzione."
+  },
+  "chrome_noyt_text2": {
+    "message": "Pudete impiegà Video DownloadHelper per scaricà video YouTube via a versione Firefox."
+  },
+  "chrome_noyt_text3": {
+    "message": "Per disgrazia, u Web Store di Chrome ùn permittendu micca i moduli addiziunale chì scaricheghjanu video YouTube, ùn avemu micca pussutu inchjude sta funzione in a versione Chrome di l’estensione."
+  },
+  "chrome_premium_audio": {
+    "message": "A generazione di schedarii unicamente audio hè dispunibule solu in u modu Premium"
+  },
+  "chrome_premium_check_error": {
+    "message": "Sbagliu durante a verificazione di u statu Premium"
+  },
+  "chrome_premium_hls": {
+    "message": "Senza u statu Premium, un scaricamentu HLS pò esse fattu solu $1 minuti dopu à u precedente"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome Premium"
+  },
+  "chrome_premium_need_sign": {
+    "message": "Ci vole à esse cunnessu à Chrome per gode di i vantaghji Premium."
+  },
+  "chrome_premium_not_signed": {
+    "message": "Micca cunnessu à Chrome"
+  },
+  "chrome_premium_recheck": {
+    "message": "Torna à verificà u statu Premium"
+  },
+  "chrome_premium_required": {
+    "message": "Statu Premium richiestu"
+  },
+  "chrome_premium_source": {
+    "message": "Site un utilizatore Premium via $1"
+  },
+  "chrome_product_intro": {
+    "message": "Pudete mudernizà ver di Premium impieghendu qualsiasi ozzione quaghjò :"
+  },
+  "chrome_req_review": {
+    "message": "D’un’altra manera, chì ne pensate di lascià un bellu cummentu nant’à u Web Store di Chrome ?"
+  },
+  "chrome_signing_in": {
+    "message": "Cunnettesi à Chrome"
+  },
+  "chrome_verif_premium": {
+    "message": "Verificazione di u statu Premium…"
+  },
+  "chrome_verif_premium_error": {
+    "message": "L’interfaccia di pagamenti In-App ùn hè micca dispunibule"
+  },
+  "chrome_warning_yt": {
+    "message": "Avertimenti nant’à l’estensioni Chrome è YouTube"
+  },
+  "clear": {
+    "message": "Squassà"
+  },
+  "clear_hits": {
+    "message": "Squassà i risultati"
+  },
+  "clear_logs": {
+    "message": "Squassà i ghjurnali"
+  },
+  "coapp": {
+    "message": "CoApp"
+  },
+  "coapp_error": {
+    "message": "A verificazione di l’appiecazione cumpagnu hà rispostu :"
+  },
+  "coapp_found": {
+    "message": "Appiecazione cumpagnu trova :"
+  },
+  "coapp_help": {
+    "message": "Fate un cliccu quì per analizà i prublemi."
+  },
+  "coapp_install": {
+    "message": "Installà l’appiecazione cumpagnu"
+  },
+  "coapp_installed": {
+    "message": "Appiecazione cumpagnu installata :"
+  },
+  "coapp_latest_version": {
+    "message": "L’ultima versione dispunibule hè $1"
+  },
+  "coapp_not_installed": {
+    "message": "Appiecazione cumpagnu micca installata"
+  },
+  "coapp_outdated": {
+    "message": "Appiecazione cumpagnu troppu anziana, rinnovatela per piacè"
+  },
+  "coapp_outofdate": {
+    "message": "Rinnovu richiestu di l’appiecazione cumpagnu"
+  },
+  "coapp_outofdate_text": {
+    "message": "Impiegate a versione $1 di l’appiecazione cumpagnu ma sta funzione richiede a versione $2"
+  },
+  "coapp_path": {
+    "message": "Binariu di l’appiecazione cumpagnu :"
+  },
+  "coapp_recheck": {
+    "message": "Torna à verificà"
+  },
+  "coapp_required": {
+    "message": "Appiecazione cumpagnu richiesta"
+  },
+  "coapp_required_text": {
+    "message": "St’operazione richiede un’appiecazione esterna per compiesi."
+  },
+  "coapp_shell": {
+    "message": "Interpretadore Shell"
+  },
+  "coapp_unchecked": {
+    "message": "Verificazione di l’appiecazione cumpagnu…"
+  },
+  "coapp_update": {
+    "message": "Rinnovà l’appiecazione cumpagnu"
+  },
+  "collecting": {
+    "message": "Culletta…"
+  },
+  "confirmation_required": {
+    "message": "Cunfirmazione richiesta"
+  },
+  "congratulations": {
+    "message": "Felicitazioni !"
+  },
+  "continue": {
+    "message": "Cuntinuà"
+  },
+  "convconf_2passes": {
+    "message": "2 passagi"
+  },
+  "convconf_ac": {
+    "message": "Canali audio"
+  },
+  "convconf_acnone": {
+    "message": "Nisunu"
+  },
+  "convconf_acodec": {
+    "message": "Cudecu audio"
+  },
+  "convconf_aspect": {
+    "message": "Prupurzioni"
+  },
+  "convconf_audiobitrate": {
+    "message": "Flussu binariu audio"
+  },
+  "convconf_audiofreq": {
+    "message": "Frequenza audio"
+  },
+  "convconf_audioonly": {
+    "message": "Audio solu"
+  },
+  "convconf_bitrate": {
+    "message": "Flussu binariu"
+  },
+  "convconf_container": {
+    "message": "Furmatu"
+  },
+  "convconf_duplicate": {
+    "message": "Duppià"
+  },
+  "convconf_ext": {
+    "message": "Estensione di u schedariu d’esciuta"
+  },
+  "convconf_extra": {
+    "message": "Parametri addiziunali"
+  },
+  "convconf_level": {
+    "message": "Livellu"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Novu"
+  },
+  "convconf_preset": {
+    "message": "Prerigatura"
+  },
+  "convconf_profilev": {
+    "message": "Prufilu video"
+  },
+  "convconf_rate": {
+    "message": "Cadenza di fiura"
+  },
+  "convconf_readonly": {
+    "message": "Sta cunfigurazione predefinita pò solu si leghje. Diuppiatela per facci mudificazioni."
+  },
+  "convconf_remove": {
+    "message": "Caccià"
+  },
+  "convconf_reset": {
+    "message": "Tuttu rimette d’origine"
+  },
+  "convconf_reset_confirm": {
+    "message": "St’azzione caccierà tutte e vostre cunfigurazioni persunalizate"
+  },
+  "convconf_save": {
+    "message": "Arregistrà"
+  },
+  "convconf_size": {
+    "message": "Dimensione di a fiura"
+  },
+  "convconf_stereo": {
+    "message": "Stereo"
+  },
+  "convconf_target": {
+    "message": "Destinazione"
+  },
+  "convconf_tune": {
+    "message": "Rigatura"
+  },
+  "convconf_vcodec": {
+    "message": "Cudecu video"
+  },
+  "convconf_videobitrate": {
+    "message": "Flussu binariu video"
+  },
+  "conversion_create_rule": {
+    "message": "Creà una regula"
+  },
+  "conversion_outputs": {
+    "message": "Furmati di cunversione"
+  },
+  "conversion_rules": {
+    "message": "Regule di cunversione"
+  },
+  "conversion_update_rule": {
+    "message": "Mudificà a regula"
+  },
+  "convert": {
+    "message": "Cunvertisce"
+  },
+  "convert_local_files": {
+    "message": "Convertisce schedarii lucali"
+  },
+  "converter_needed_aggregate": {
+    "message": "St’operazione hà bisognu chì un cunvertidore sia installatu nant’à u vostru sistema per adunisce i flussi video è audio."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Perchè aghju bisognu d’un cunvertidore ?"
+  },
+  "converter_needs_reg": {
+    "message": "Inscrizzione richiesta"
+  },
+  "converter_queued": {
+    "message": "Attesa di u cunvertidore…"
+  },
+  "converter_reg_audio": {
+    "message": "Avete dumandatu, sia da manera esplicita, sia cù una regula di cunversione autumatica, a generazione d’un schedariu medià unicamente audio. Què richiede un cunvertidore arregistratu."
+  },
+  "converting": {
+    "message": "Cunversione…"
+  },
+  "convrule_convert": {
+    "message": "Cunvertisce"
+  },
+  "convrule_domain": {
+    "message": "Duminiu"
+  },
+  "convrule_extension": {
+    "message": "Estensione"
+  },
+  "convrule_format": {
+    "message": "à u furmatu $1"
+  },
+  "convrule_from_domain": {
+    "message": "da u duminiu $1"
+  },
+  "convrule_no_convert": {
+    "message": "Ùn micca cunvertisce"
+  },
+  "convrule_output_format": {
+    "message": "Furmatu d’esciuta"
+  },
+  "convrule_refresh_formats": {
+    "message": "Attualizà i furmati d’esciuta"
+  },
+  "convrule_with_ext": {
+    "message": "cù l’estensione « $1 »"
+  },
+  "convrules_add_rule": {
+    "message": "Creà una regula di cunversione nova"
+  },
+  "convrules_edit_descr": {
+    "message": "E regule di cunversione permettenu d’effettuà una cunversione autumaticamente, subitu dopu u scaricamentu"
+  },
+  "convrules_empty": {
+    "message": "Alcuna regula di cunversione"
+  },
+  "copy_of": {
+    "message": "Copia di $1"
+  },
+  "copy_settings_info_to_clipboard": {
+    "message": "Cupià l’infurmazione in u preme’papei"
+  },
+  "copy_settings_info_to_clipboard_success": {
+    "message": "Infurmazione cupiata in u preme’papei."
+  },
+  "corrupted_media_file": {
+    "message": "Ùn si pò micca ottene d’infurmazione di u medià « $1 » in u schedariu « $2 ». Stu schedariu hè alteratu podasse."
+  },
+  "create": {
+    "message": "Creà"
+  },
+  "custom_output": {
+    "message": "Furmatu persunalizatu d’esciuta"
+  },
+  "dash_streaming": {
+    "message": "Diffusione DASH"
+  },
+  "default": {
+    "message": "Predefinitu"
+  },
+  "details_parenthesis": {
+    "message": "(Detaglii)"
+  },
+  "dev_build": {
+    "message": "Custruzzione di sviluppu"
+  },
+  "dialog_audio_impossible": {
+    "message": "Stu tipu di medià ùn accetta micca di scaricà solu l’audio"
+  },
+  "dialog_audio_impossible_title": {
+    "message": "Ùn si pò micca scaricà l’audio"
+  },
+  "directory_not_exist": {
+    "message": "U cartulare ùn esiste micca"
+  },
+  "directory_not_exist_body": {
+    "message": "U cartulare « $1 » ùn esiste micca ; site prontu(a) à crealu ?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Scaricà è cunvertisce"
+  },
+  "dlconv_output_details": {
+    "message": "Cunfigurà i detaglii d’esciuta"
+  },
+  "donate": {
+    "message": "Dunazione"
+  },
+  "donate_vdh": {
+    "message": "Aiutà Video DownloadHelper"
+  },
+  "download_error": {
+    "message": "Sbagliu di scaricamentu"
+  },
+  "download_method": {
+    "message": "Metoda di scaricamentu"
+  },
+  "download_method_not_again": {
+    "message": "Impiegà sta metoda a prossima volta"
+  },
+  "download_modes1": {
+    "message": "U scaricamentu attuale pò esse fattu, sia cù u navigatore, sia cù l’appiecazione cumpagnu."
+  },
+  "download_modes2": {
+    "message": "Per raghjoni tecniche, scaricà cù i servizii di u navigatore pò cagiunà u righjettu di u scaricamentu da u servitore chì accoglie a video è ùn serà micca pussibule di sceglie un altru cartulare predefinitu di scaricamentu."
+  },
+  "download_with_browser": {
+    "message": "Impiegà u navigatore"
+  },
+  "download_with_coapp": {
+    "message": "Impiegà l’appiecazione cumpagnu"
+  },
+  "downloading": {
+    "message": "Scaricamentu…"
+  },
+  "edge_req_review": {
+    "message": "Osinnò, chì ne pensate di lascià un bellu cummentu nant’à u situ di l’estensioni di Microsoft Edge ?"
+  },
+  "error": {
+    "message": "Sbagliu"
+  },
+  "error_not_directory": {
+    "message": "« $1 » esiste ma ùn hè micca un cartulare"
+  },
+  "errors": {
+    "message": "Sbaglii"
+  },
+  "exit_natmsgsh": {
+    "message": "Chjode l’appiecazione cumpagnu"
+  },
+  "explain_qr1": {
+    "message": "Viderete chì a video risultante cuntene una filigrana in un scornu."
+  },
+  "explain_qr2": {
+    "message": "Ghjè perchè avete sceltu una variante adattevule è chì a funzione di cunversione ùn hè micca stata arregistrata."
+  },
+  "export": {
+    "message": "Espurtà"
+  },
+  "failed_aggregating": {
+    "message": "Fiascu à l’aghjunghjitura di « $1 »"
+  },
+  "failed_converting": {
+    "message": "Fiascu durante a cunversione di « $1 »"
+  },
+  "failed_getting_info": {
+    "message": "Fiascu durante a culletta d’infurmazione in « $1 »"
+  },
+  "failed_opening_directory": {
+    "message": "Fiascu à l’apertura di u cartulare di schedariu"
+  },
+  "failed_playing_file": {
+    "message": "Impussibule di leghje u schedariu"
+  },
+  "file_dialog_date": {
+    "message": "Data"
+  },
+  "file_dialog_name": {
+    "message": "Nome"
+  },
+  "file_dialog_size": {
+    "message": "Dimensione"
+  },
+  "file_generated": {
+    "message": "U schedariu « $1 » hè statu creatu."
+  },
+  "file_ready": {
+    "message": "« $1 » hè prontu avà"
+  },
+  "finalizing": {
+    "message": "Cunclusione…"
+  },
+  "from_domain": {
+    "message": "Da $1"
+  },
+  "gallery": {
+    "message": "Galleria"
+  },
+  "gallery_files_types": {
+    "message": "Schedarii di tipu « $1 »"
+  },
+  "gallery_from_domain": {
+    "message": "Galleria di « $1 »"
+  },
+  "gallery_links_from_domain": {
+    "message": "Liami di « $1 »"
+  },
+  "general": {
+    "message": "Generale"
+  },
+  "get_conversion_license": {
+    "message": "Ottene una licenza di cunversione"
+  },
+  "help_translating": {
+    "message": "Aiutà à traduce"
+  },
+  "hit_details": {
+    "message": "Detaglii di u risultatu"
+  },
+  "hit_go_to_tab": {
+    "message": "Andà à l’unghjetta"
+  },
+  "hls_streaming": {
+    "message": "Diffusione diretta HLS"
+  },
+  "homepage": {
+    "message": "Pagina d’accolta"
+  },
+  "import": {
+    "message": "Impurtà"
+  },
+  "import_invalid_format": {
+    "message": "Furmatu inaccettevule"
+  },
+  "in_current_tab": {
+    "message": "In l’unghjetta attuale"
+  },
+  "in_other_tab": {
+    "message": "In l’altre unghjette"
+  },
+  "lic_mismatch1": {
+    "message": "A licenza hè per « $1 » ma u tipu di navigatore ùn hè micca statu specificatu"
+  },
+  "lic_mismatch2": {
+    "message": "A licenza hè per « $1 » ma l’estensione hè stata custruita per « $2 »"
+  },
+  "lic_not_needed_linux": {
+    "message": "A nostra cuntribuzione à Linux : alcuna licenza hè richiesta"
+  },
+  "lic_status_accepted": {
+    "message": "Licenza verificata"
+  },
+  "lic_status_blocked": {
+    "message": "Licenza bluccata"
+  },
+  "lic_status_error": {
+    "message": "Sbagliu di licenza"
+  },
+  "lic_status_locked": {
+    "message": "Licenza ammarchjunata (rivalidazione)"
+  },
+  "lic_status_mismatch": {
+    "message": "Cunflittu trà a licenza è u navigatore"
+  },
+  "lic_status_nocoapp": {
+    "message": "Ùn si pò micca verificà a licenza"
+  },
+  "lic_status_unneeded": {
+    "message": "Licenza micca richiesta"
+  },
+  "lic_status_unset": {
+    "message": "Licenza micca definita"
+  },
+  "lic_status_unverified": {
+    "message": "Licenza micca verificata"
+  },
+  "lic_status_verifying": {
+    "message": "Verificazione di a licenza…"
+  },
+  "license": {
+    "message": "Licenza"
+  },
+  "license_key": {
+    "message": "Chjave di licenza"
+  },
+  "licensing": {
+    "message": "Licenza cuncessa"
+  },
+  "live_stream": {
+    "message": "flussu di cuntinuu"
+  },
+  "logs": {
+    "message": "Ghjurnali"
+  },
+  "media": {
+    "message": "Medià"
+  },
+  "merge_error": {
+    "message": "Sbagliu d’aghjunghjitura"
+  },
+  "merge_local_files": {
+    "message": "Adunisce schedarii audio è video lucale"
+  },
+  "more": {
+    "message": "Più…"
+  },
+  "mup_best_video_quality": {
+    "message": "Qualità video preferita"
+  },
+  "mup_ignore_low_quality": {
+    "message": "Ignurà e video di qualità bassa"
+  },
+  "mup_ignore_low_quality_help": {
+    "message": "Certe pagine cuntenenu medià di « qualità bassa » chì sò solu impiegati cum’è « effetti », tale un schedariu WAV per un sonu di cliccu, o un filmettu cortu per una chjuca animazione di pagina."
+  },
+  "mup_ignored_containers": {
+    "message": "Ùn affissà micca i medià cù cuntenidori"
+  },
+  "mup_ignored_video_codecs": {
+    "message": "Ùn affissà micca i medià cù cudechi"
+  },
+  "mup_lowest_video_quality": {
+    "message": "Ignurà i filmetti inferiore à"
+  },
+  "mup_max_variants": {
+    "message": "Numeru di variante"
+  },
+  "mup_max_variants_help": {
+    "message": "Ogni filmettu vene in furmati diversi. Vi affissemu prima a versione a più bona è ancu certi furmati alternativi (variante)."
+  },
+  "mup_page_title": {
+    "message": "Preferenze di i medià"
+  },
+  "mup_prefer_60fps": {
+    "message": "Preferisce 60 fiure à a seconda, è superiore"
+  },
+  "mup_prefered_container": {
+    "message": "Furmatu preferitu di u cuntenidore"
+  },
+  "mup_prefered_video_codecs": {
+    "message": "Cudechi di filmettu preferiti"
+  },
+  "mup_reset": {
+    "message": "reinizià"
+  },
+  "mup_saved": {
+    "message": "arregistratu !"
+  },
+  "network_error_no_response": {
+    "message": "Sbagliu di a reta - nisuna risposta"
+  },
+  "network_error_status": {
+    "message": "Sbagliu di a reta - statu « $1 »"
+  },
+  "new_sub_directory": {
+    "message": "Creà un sottucartulare"
+  },
+  "next": {
+    "message": "Seguente"
+  },
+  "no": {
+    "message": "Innò"
+  },
+  "no_audio_in_file": {
+    "message": "Nisunu flussu audio in u schedariu « $1 »"
+  },
+  "no_coapp_license_unverified": {
+    "message": "Ùn si pò micca verificà a licenza perchè l’appiecazione cumpagnu ùn hè micca installata"
+  },
+  "no_license_registered": {
+    "message": "Nisuna licenza ùn hè stata arregistrata"
+  },
+  "no_media_current_tab": {
+    "message": "Nisunu medià à trattà in l’unghjetta attuale"
+  },
+  "no_media_to_process": {
+    "message": "Nisunu medià à trattà"
+  },
+  "no_media_to_process_descr": {
+    "message": "Principià a lettura di u medià per aiutà a scuperta di i schedarii…"
+  },
+  "no_such_hit": {
+    "message": "Nisunu elementu"
+  },
+  "no_validate_without_coapp": {
+    "message": "L’appiecazione cumpagnu deve esse installata per validà a licenza"
+  },
+  "no_video_in_file": {
+    "message": "Nisunu flussu video in u schedariu « $1 »"
+  },
+  "not_again_3months": {
+    "message": "Ùn mi rumpite micca i stifali durante i 3 prossimi mesi"
+  },
+  "not_see_again": {
+    "message": "Ùn affissà più stu messaghju"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "ok": {
+    "message": "Vai"
+  },
+  "orphan": {
+    "message": "Urfanellu"
+  },
+  "output_configuration": {
+    "message": "Cunfigurazione d’esciuta"
+  },
+  "overwrite_file": {
+    "message": "Rimpiazzà u schedariu « $1 » ?"
+  },
+  "per_month": {
+    "message": "à u mese"
+  },
+  "per_year": {
+    "message": "à l’annu"
+  },
+  "pinned": {
+    "message": "Spirlatu"
+  },
+  "platform": {
+    "message": "Piattaforma"
+  },
+  "platform_info": {
+    "message": "Piattaforma $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "Funziuneghja grazia à Weh"
+  },
+  "preferences": {
+    "message": "Preferenze"
+  },
+  "prod_build": {
+    "message": "Custruzzione di pruduzzione"
+  },
+  "quality_medium": {
+    "message": "Mediana"
+  },
+  "quality_small": {
+    "message": "Bassa"
+  },
+  "queued": {
+    "message": "In fila d’attesa…"
+  },
+  "recheck_license": {
+    "message": "Cuntrollà torna a licenza"
+  },
+  "register_converter": {
+    "message": "Arregistrà u cunvertidore"
+  },
+  "register_existing_license": {
+    "message": "Arregistrà una licenza esistente"
+  },
+  "registered_email": {
+    "message": "Indirizzu elettronicu"
+  },
+  "registered_key": {
+    "message": "Chjave"
+  },
+  "reload_addon": {
+    "message": "Ricaricà l’estensione"
+  },
+  "reload_addon_confirm": {
+    "message": "Da veru, vulete ricaricà l’estensione ?"
+  },
+  "req_donate": {
+    "message": "Chì ne pensate di fà una chjuca dunazione per sustene u sviluppu ?"
+  },
+  "req_locale": {
+    "message": "Osinnò, aiutacci à traduce l’estensione in « $1 » chì ci sò ancu $2 catene micca tradutte ?"
+  },
+  "req_review": {
+    "message": "Osinnò, chì ne pensate di lascià un bellu cummentu nant’à u situ di l’estensioni di Mozilla ?"
+  },
+  "req_review_link": {
+    "message": "Scrive un bellu cummentu apprupositu di Video DownloadHelper"
+  },
+  "reset_settings": {
+    "message": "Reinizializazione di i parametri"
+  },
+  "running": {
+    "message": "In funzione"
+  },
+  "save": {
+    "message": "Arregistrà"
+  },
+  "save_as": {
+    "message": "Arregistrà cù u nome…"
+  },
+  "save_file_as": {
+    "message": "Arregistrà u schedariu cù u nome…"
+  },
+  "select_audio_file_to_merge": {
+    "message": "Selezziunà u schedariu cuntenendu u flussu audio"
+  },
+  "select_files_to_convert": {
+    "message": "Convertisce schedarii lucali"
+  },
+  "select_output_config": {
+    "message": "Selezziunà a cunfigurazione d’esciuta…"
+  },
+  "select_output_directory": {
+    "message": "Cartulare d’esciuta"
+  },
+  "select_video_file_to_merge": {
+    "message": "Selezziunà u schedariu cuntenendu u flussu video"
+  },
+  "selected_media": {
+    "message": "Selezzione da gruppu"
+  },
+  "settings": {
+    "message": "Parametri"
+  },
+  "smartname_add_domain": {
+    "message": "Aghjunghje una regula di numinazione astuta"
+  },
+  "smartname_create_rule": {
+    "message": "Creà una regula"
+  },
+  "smartname_define": {
+    "message": "Definisce una regula di numinazione astuta"
+  },
+  "smartname_edit_descr": {
+    "message": "Una regula di numinazione astuta permette di persunalizà i nomi di e video secondu à quellu di u situ"
+  },
+  "smartname_empty": {
+    "message": "Nisuna regula di numinazione astuta"
+  },
+  "smartname_update_rule": {
+    "message": "Mudificà a regula"
+  },
+  "smartnamer_delay": {
+    "message": "Cumportu di cattura di numinazione (in ms)"
+  },
+  "smartnamer_domain": {
+    "message": "Duminiu"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Ottene u nome da l’intestatura o l’indirizzu web di u ducumentu"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Ottene u nome da u cuntenutu di a pagina"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Ottene u nome da u titulu di a pagina"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Impiegà un nome cumplicatu"
+  },
+  "smartnamer_regexp": {
+    "message": "Spressione regulare"
+  },
+  "smartnamer_selected_text": {
+    "message": "Testu selezziunatu"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "Spressione XPath"
+  },
+  "smartnaming_rule": {
+    "message": "Regula di numinazione astuta"
+  },
+  "smartnaming_rules": {
+    "message": "Regule di numinazione astuta"
+  },
+  "sub_directory_name": {
+    "message": "Nome di sottucartulare"
+  },
+  "support_forum": {
+    "message": "Foru d’assistenza"
+  },
+  "supported_sites": {
+    "message": "Siti accettati"
+  },
+  "tbsn_quality_hd": {
+    "message": "Qualità mediana"
+  },
+  "tbsn_quality_sd": {
+    "message": "Qualità bassa"
+  },
+  "tell_me_more": {
+    "message": "Sapene di più apprupositu di què"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "translation": {
+    "message": "Traduzzione"
+  },
+  "up": {
+    "message": "Insù"
+  },
+  "validate_license": {
+    "message": "Arregistrà a licenza"
+  },
+  "variants_list_adp": {
+    "message": "Variante adattevule"
+  },
+  "variants_list_full": {
+    "message": "Variante"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Versione $1"
+  },
+  "video_only": {
+    "message": "Video solu"
+  },
+  "video_qualities": {
+    "message": "Qualità video"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "Finestra"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "Unghjetta"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "Dumandà"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "Navigatore"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "Appiecazione cumpagnu"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Scaricà l’audio"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "Adunisce audio è video"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Scaricà a video"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Ùn affissà micca e variante adattevule in a lista di scaricamentu"
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "Cumu i dialoghi d’alerta sò affissati"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Spirlà u risultatu dopu u scaricamentu"
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "Permette di leghje a video cù l’appiecazione cumpagnu"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Impedisce certi siti d’attivà a ricunniscenza di medià"
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "Permette u scaricamentu da gruppu"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "Vérificà à u lanciu di l’estensione, s’è l’appiecazione cumpagnu hè dispunibule per una scuperta più sana di i medià"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "Richiede i dati segmentati cù l’appiecazione cumpagnu"
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "Richiede l’appiecazione cumpagnu per i manifesti di i flussi segmentati"
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "Numeru massimu di scaricamenti in parallelu"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Attivazione di a diffusione segmentata"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "Quantu segmenti à scaricà capunanzu"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "Appiecazione facendu u scaricamentu attuale"
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "Chjode autumaticamente dopu u numeru di milliseconde ma funzione inattiva s’è 0"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "Cumportu in milliseconde per rilancià l’appiecazione cumpagnu"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "L’appiecazione cumpagnu impiega u listessu proxy chì a richiesta d’origine"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "Certi siti ponu restituisce un indirizzu web novu invece di u cuntenutu di u medià"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "Accede à e cumande da un cliccu dirittu nant’à a pagina"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "U numeru massimu di tacche simultanee d’aghjunghjitura o di cunversione"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Sfurzà a rigatura H264 per l’aghjunghjitura"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "Cunservà i schedarii timpurarii dopu u trattamentu"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "Numeru di flussi à impiegà durante a cunversione"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "Attivazione di a diffusione segmentata DASH"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "Ùn affissà micca l’elementi .m4s in a lista di scaricamentu"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Quandu u flussu DASH cuntene audio è video"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "Chjode i dialoghi quandu si cambia di finestra"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Cuntrolleghja u numeru di scaricamenti simultanei ingenerati da l’estensione per risparmià un pocu di fascia viandanta"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Numeru di tentativi per scaricà un schedariu"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Cumportu trà i tentativi di scaricamentu (in ms)"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "Cuntrolleghja u numeru di flussi per scaricà ogni elementu"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "Cumu i dialoghi di schedariu sò affissati"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "Cumu sceglie i nomi di schedariu quandu si scaricheghja da una galleria"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "Affissà un liame in a discrizzione di l’elementu per passà à l’unghjetta di a video"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "Scaricà i flussi HLS à u furmatu M2TS"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "Attivazione di a diffusione segmentata HLS"
+  },
+  "weh_prefs_description_hlsEndTimeout": {
+    "message": "Cumportu d’attesa in seconde per fermà d’aspettà i segmenti HLS novi"
+  },
+  "weh_prefs_description_hlsRememberPrevLiveChunks": {
+    "message": "Arricurdassi di i segmenti HLS vivi precedente"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "Quandu attivà l’icona di a barra d’attrezzi"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "Affissà u scudu nant’à l’icona di a barra d’attrezzi"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "Ùn affissà micca e variante chì sò prutette"
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "Impiegatu solu quandu si scaricheghja cù l’appiecazione cumpagnu"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "Estensioni à cunsiderà cum’è multimedià"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "Eseguisce à ogni caricamentu di pagina (pò rallentà e perfurmenze)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "Estensioni di schedarii à cunsiderà per a cattura di galleria"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "Limità u numeru d’elementi scuperti cum’è galleria"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "Numeru minimu per esse scuperti cum’è galleria"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "Dimensione minima per esse cunsiderata cum’è fiura di a galleria"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "Scopre e fiure in a pagina"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "Scopre i cuntenuti multimedià ligati direttamente da a pagina"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Ignurà i risultati sottu sta dimensione"
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Sfurzà a scuperta di i schedarii multimedià sopra sta dimensione"
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "Scaricà impieghendu e listesse intestature chì a richiesta d’origine"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": " Ùn affissà micca l’elementi .ts in a lista di scaricamentu"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Espressione regulare per ignurà certi indirizzi web di medià"
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "Esplurà u trafficu di reta per scopre l’elementi"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Nisuna nutificazione per i risultati privati"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Affissà una nutificazione à a fine d’un trattamentu"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Cumportu d’attesa in seconde prima di caccià i risultati urfanelli"
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Numeru massimu di variante per una stessa video"
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "Impiegà l’ultimu cartulare di scaricamentu cum’è locu predefinitu"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "S’assicurreghja chì i nomi creati ùn eccedenu micca sta lunghezza"
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "Cumu trattà i spazii in i nomi di video"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "Permette a scuperta è u scaricamentu di e video nant’à Facebook"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "Cumu i tituli longhi di video seranu affissati nant’à u pannellu principale"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "Accede à e cumande da u listinu Attrezzi"
+  },
+  "weh_prefs_description_use_native_filepicker": {
+    "message": "Impiegà u selettore di schedariu di u sistema"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "Finestra"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "Unghjetta"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "Indice - Indirizzu web"
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "Tipu - Indice"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "Indirizzu web"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Da tutte l’unghjette"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Da l’unghjetta attiva"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "medià di l’unghjetta attiva"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "medià di tutte l’unghjette"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Mistu"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Nisunu"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Risultati spirlati"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Tacche in esecuzione"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "Piattà e variante adattevule"
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "Dialogu d’alerta"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Spirlà autumaticamente"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Attivà u lettore nativu"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Attivà a lista nera"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "Gruppu permessu"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "Cuntrollà l’appiecazione cumpagnu à u lanciu"
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "Richieste CoApp di i dati di flussi segmentati"
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "Richieste CoApp di i manifesti di flussi segmentati"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Segmenti à scaricà simultaneamente"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Flussi segmentati"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Numeru di segmenti à precaricà"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "Prucessore di scaricamentu"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "Cumportu d’inatività per a chjusura di l’appiecazione cumpagnu"
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "Cumportu per rilancià l’appiecazione cumpagnu"
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "Proxy di l’appiecazione cumpagnu"
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "Ridirezzione di cuntenutu attivata"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "Listinu cuntestuale"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "Numeru d’operazioni simultanee di cunversione"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "Rigatura H264"
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "Cunservà i schedarii timpurarii"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Flussi di cunversione"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "Attivà « DASH »"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": "Piattà « .m4s »"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "Flussi « DASH »"
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "Chjusura autumatica di i dialoghi"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Numeru massimu di scaricamenti simultanei"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "Numeru di tentativi di scaricamentu"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "Cumportu trà i tentativi di scaricamentu"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "Numeru massimu di scaricamenti di flussu simultanei"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "Dialogu di schedariu"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "Numinazione di i schedarii di galleria"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "Affissà a cumanda « Andà à l’unghjetta »"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS à u furmatu M2TS"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS attivatu"
+  },
+  "weh_prefs_label_hlsEndTimeout": {
+    "message": "Cumportu d’attesa HLS di fine"
+  },
+  "weh_prefs_label_hlsRememberPrevLiveChunks": {
+    "message": "Cronolugia viva HLS"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Attivazione di l’icona"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Scudu nant’à l’icona"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Ignurà e variante prutette"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "Cartulare predefinitu di scaricamentu"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Scopre i schedarii cù st’estensioni"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "Scuperta autumatica di galleria"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "Estensioni di i liami multimedià"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "Numeru massimu d’elementi"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "Numeru minimu d’elementi"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Dimensione minima di fiura"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Scopre e fiure incurpurate"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Scopre i liami ver di i schedarii multimedià"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Dimensione minima"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Sogliu di dimensione"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "Intestature di richiesta"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": "Piattà « .ts »"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Filtru di reta disattivatu"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Esplurà a reta"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Nutificazioni private"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Nutificazione"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Cumportu d’attesa di scadenza per i liami urfanelli"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Numeru massimu di variante"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "Arricurdassi di l’ultimu cartulare"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Longhezza massima di nome di schedariu"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Tituli longhi nant’à u pannellu principale"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Accettà Facebook"
+  },
+  "weh_prefs_label_tbvwsExtractionMethod": {
+    "message": "Metoda d’estrazzione"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Tituli longhi nant’à u pannellu principale"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Listinu d’attrezzi"
+  },
+  "weh_prefs_label_use_native_filepicker": {
+    "message": "Impiegà u selettore di schedariu nativu"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Rimpiazzà cù lineette"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Cunservà"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Caccià"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Rimpiazzà cù lineette basse (spazii sottulineati)"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "Ellisse à manu manca"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "Nant’à parechje linee"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "Ellisse à manu diritta"
+  },
+  "yes": {
+    "message": "Sì"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Venite subitu di riesce à scaricà u vostru $1u schedariu cù Video DownloadHelper."
+  },
+  "v9_yes": {
+    "message": "Sì"
+  },
+  "v9_no": {
+    "message": "Innò"
+  },
+  "v9_error": {
+    "message": "Sbagliu"
+  },
+  "v9_no_media_current_tab": {
+    "message": "Nisunu medià à trattà in l’unghjetta attuale"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Principià a lettura di u medià per aiutà a scuperta di i schedarii…"
+  },
+  "v9_coapp_required": {
+    "message": "Appiecazione cumpagnu richiesta"
+  },
+  "v9_coapp_required_text": {
+    "message": "St’operazione richiede un’appiecazione esterna per compiesi."
+  },
+  "v9_coapp_help": {
+    "message": "Fate un cliccu quì per analizà i prublemi."
+  },
+  "v9_coapp_installed": {
+    "message": "Appiecazione cumpagnu installata :"
+  },
+  "v9_coapp_recheck": {
+    "message": "Torna à verificà"
+  },
+  "v9_coapp_outdated": {
+    "message": "Appiecazione cumpagnu troppu anziana, rinnovatela per piacè"
+  },
+  "v9_dialog_audio_impossible_title": {
+    "message": "Ùn si pò micca scaricà l’audio"
+  },
+  "v9_dialog_audio_impossible": {
+    "message": "Stu tipu di medià ùn accetta micca di scaricà solu l’audio"
+  },
+  "v9_converter_needs_reg": {
+    "message": "Inscrizzione richiesta"
+  },
+  "v9_get_conversion_license": {
+    "message": "Ottene una licenza di cunversione"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Avete dumandatu, sia da manera esplicita, sia cù una regula di cunversione autumatica, a generazione d’un schedariu medià unicamente audio. Què richiede un cunvertidore arregistratu."
+  },
+  "v9_chrome_premium_required": {
+    "message": "Statu Premium richiestu"
+  },
+  "v9_chrome_premium_hls": {
+    "message": "Senza u statu Premium, un scaricamentu HLS pò esse fattu solu $1 minuti dopu à u precedente"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Avertimenti nant’à l’estensioni Chrome è YouTube"
+  },
+  "v9_chrome_noyt_text3": {
+    "message": "Per disgrazia, u Web Store di Chrome ùn permittendu micca i moduli addiziunale chì scaricheghjanu video YouTube, ùn avemu micca pussutu inchjude sta funzione in a versione Chrome di l’estensione."
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Pudete impiegà Video DownloadHelper per scaricà video YouTube via a versione Firefox."
+  },
+  "v9_about_qr": {
+    "message": "Schedariu ingeneratu"
+  },
+  "v9_explain_qr1": {
+    "message": "Viderete chì a video risultante cuntene una filigrana in un scornu."
+  },
+  "v9_not_see_again": {
+    "message": "Ùn affissà più stu messaghju"
+  },
+  "v9_tell_me_more": {
+    "message": "Sapene di più apprupositu di què"
+  },
+  "v9_settings": {
+    "message": "Parametri"
+  },
+  "v9_copy_settings_info_to_clipboard": {
+    "message": "Cupià l’infurmazione in u preme’papei"
+  },
+  "v9_coapp_unchecked": {
+    "message": "Verificazione di l’appiecazione cumpagnu…"
+  },
+  "v9_coapp_update": {
+    "message": "Rinnovà l’appiecazione cumpagnu"
+  },
+  "v9_coapp_not_installed": {
+    "message": "Appiecazione cumpagnu micca installata"
+  },
+  "v9_coapp_install": {
+    "message": "Installà l’appiecazione cumpagnu"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "L’appiecazione cumpagnu deve esse installata per validà a licenza"
+  },
+  "v9_lic_status_verifying": {
+    "message": "Verificazione di a licenza…"
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Numeru massimu di scaricamenti simultanei"
+  },
+  "v9_mup_max_variants": {
+    "message": "Numeru di variante"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "Accede à e cumande da un cliccu dirittu nant’à a pagina"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "« $1 » hè prontu avà"
+  },
+  "v9_lic_status_unset": {
+    "message": "Licenza micca definita"
+  },
+  "v9_lic_status_blocked": {
+    "message": "Licenza bluccata"
+  },
+  "v9_lic_status_locked2": {
+    "message": "Licenza ammarchjunata (verificate i vostri messaghji elettronichi)"
+  },
+  "v9_lic_mismatch2": {
+    "message": "A licenza hè per « $1 » ma l’estensione hè stata custruita per « $2 »"
+  },
+  "v9_lic_status_accepted": {
+    "message": "Licenza verificata"
+  },
+  "v9_no_license_registered": {
+    "message": "Nisuna licenza ùn hè stata arregistrata"
+  },
+  "v9_panel_view_show_all_tabs": {
+    "message": "Affissà tutte l’unghjette"
+  },
+  "v9_panel_view_show_low_quality": {
+    "message": "Affissà i medià di qualità bassa"
+  },
+  "v9_panel_view_sort_status": {
+    "message": "Ordinà da u statu"
+  },
+  "v9_panel_view_sort_reverse": {
+    "message": "Arritrusà l’ordine"
+  },
+  "v9_panel_view_clean": {
+    "message": "Affissà u buttone Nettà"
+  },
+  "v9_panel_view_clean_all": {
+    "message": "Affissà u buttone Tuttu nettà"
+  },
+  "v9_panel_view_open_settings": {
+    "message": "Altri parametri"
+  },
+  "v9_panel_downloadable_variant_no_details": {
+    "message": "nisunu detagliu"
+  },
+  "v9_panel_variant_menu_prefer_quality": {
+    "message": "Preferisce sempre sta qualità"
+  },
+  "v9_panel_variant_menu_prefer_format": {
+    "message": "Preferisce sempre stu furmatu"
+  },
+  "v9_panel_downloaded_retry_tooltip": {
+    "message": "Scaricà torna"
+  },
+  "v9_panel_downloaded_delete_file_tooltip": {
+    "message": "Squassà u schedariu"
+  },
+  "v9_panel_downloaded_show_dir_tooltip": {
+    "message": "Affissà u cartulare di scaricamentu"
+  },
+  "v9_panel_downloading_stop": {
+    "message": "Piantà"
+  },
+  "v9_panel_error_coapp_failure_title": {
+    "message": "Fiascu di u scaricamentu"
+  },
+  "v9_panel_error_coapp_failure_description": {
+    "message": "Per disgrazia, ùn era micca pussibule di scaricà stu medià specificu. Pruvemu d’accettà u numeru u più maiò di siti web, dunque, ci aiuteria assai s’è vo pudiate signalacci stu sbagliu (què hè anonimu !)"
+  },
+  "v9_panel_error_coapp_failure_report_button": {
+    "message": "Apre un ticchettu"
+  },
+  "v9_panel_error_coapp_failure_copy_report_button": {
+    "message": "Cupià i detaglii di u prublema"
+  },
+  "v9_panel_footer_show_in_sidebar_tooltip": {
+    "message": "Affissà in a barra laterale"
+  },
+  "v9_panel_footer_show_in_popup_tooltip": {
+    "message": "Affissà in un finestrinu"
+  },
+  "v9_panel_footer_clean_tooltip": {
+    "message": "Caccià da a lista i medià scuperti"
+  },
+  "v9_panel_footer_clean_all_tooltip": {
+    "message": "Caccià da a lista i medià scuperti è scaricati (i schedarii ùn sò micca squassati)"
+  },
+  "v9_panel_footer_convert_local_tooltip": {
+    "message": "Convertisce schedarii lucali"
+  },
+  "v9_panel_error_nocoapp_button_install": {
+    "message": "Scaricà è installà"
+  },
+  "v9_panel_error_coapp_too_old_button_udpate": {
+    "message": "Messe à livellu"
+  },
+  "v9_short_help": {
+    "message": "Bisognu d’aiutu ?"
+  },
+  "v9_settings_button_reset": {
+    "message": "Reinizializazione di i parametri"
+  },
+  "v9_settings_button_import": {
+    "message": "Impurtà i parametri"
+  },
+  "v9_settings_button_export": {
+    "message": "Espurtazione di i parametri"
+  },
+  "v9_settings_button_reload": {
+    "message": "Ricaricà l’estensione"
+  },
+  "v9_settings_download_directory": {
+    "message": "Cartulare di scaricamentu"
+  },
+  "v9_settings_download_directory_change": {
+    "message": "Cambià"
+  },
+  "v9_settings_variants_title": {
+    "message": "Tipu di medià preferitu"
+  },
+  "v9_settings_variants_clear": {
+    "message": "Squassà"
+  },
+  "v9_settings_checkbox_force_inbrowser": {
+    "message": "Ùn impiegà micca CoApp s’ella hè pussibule"
+  },
+  "v9_settings_checkbox_notification": {
+    "message": "Affissà a nutificazione di fine d’un scaricamentu"
+  },
+  "v9_settings_checkbox_notification_incognito": {
+    "message": "Affissà e nutificazioni in modu di navigazione privata"
+  },
+  "v9_settings_checkbox_forget_on_close": {
+    "message": "Viutà a lista di medià quandu l’unghjetta hè chjosa"
+  },
+  "v9_settings_checkbox_view_convert_local": {
+    "message": "Affissà u buttone di cunversione di i schedarii lucali"
+  },
+  "v9_settings_checkbox_use_wide_ui": {
+    "message": "Aumentà a dimensione di u finestrinu di l’estensione"
+  },
+  "v9_settings_checkbox_use_legacy_ui": {
+    "message": "Impiegà l’interfaccia anziana"
+  },
+  "v9_settings_license_placeholder": {
+    "message": "Stampittà a licenza"
+  },
+  "v9_settings_license_check": {
+    "message": "Cuntrollà a chjave di licenza"
+  },
+  "v9_settings_license_get": {
+    "message": "Ottene a licenza"
+  },
+  "v9_settings_theme_title": {
+    "message": "Tema"
+  },
+  "v9_settings_theme_system": {
+    "message": "sistema"
+  },
+  "v9_settings_theme_light": {
+    "message": "chjaru"
+  },
+  "v9_settings_theme_dark": {
+    "message": "scuru"
+  },
+  "v9_badge_new": {
+    "message": "novu"
+  },
+  "v9_panel_download_button_label": {
+    "message": "Scaricà"
+  },
+  "v9_panel_download_as_button_label": {
+    "message": "Scaricà cum’è…"
+  },
+  "v9_panel_download_audio_button_label": {
+    "message": "Scaricà l’audio"
+  },
+  "v9_panel_copy_url_button_label": {
+    "message": "Cupià l’indirizzu web"
+  },
+  "v9_panel_view_hide_downloaded": {
+    "message": "Piattà autumaticamente i medià scaricati"
+  },
+  "v9_user_message_auto_hide_downloaded": {
+    "message": "Piattà autumaticamente i medià scaricati ?"
+  },
+  "v9_checkbox_remember_action": {
+    "message": "Arricurdassi cum’è azzione predefinita"
+  },
+  "v9_menu_item_download_and_convert": {
+    "message": "Scaricà è cunvertisce à u furmatu"
+  },
+  "v9_menu_item_details": {
+    "message": "Detaglii"
+  },
+  "v9_menu_item_smartnaming": {
+    "message": "Numinazione astuta"
+  },
+  "v9_menu_item_blacklist": {
+    "message": "Lista nera"
+  },
+  "v9_menu_item_blacklist_media": {
+    "message": "Medià"
+  },
+  "v9_menu_item_blacklist_page": {
+    "message": "Pagina"
+  },
+  "v9_menu_item_blacklist_domain": {
+    "message": "Duminiu"
+  },
+  "v9_blacklist_glob": {
+    "message": "Impiegà a stella (*) per una ricerca più larga"
+  },
+  "v9_smartnaming_title": {
+    "message": "Numinazione astuta"
+  },
+  "v9_smartnaming_reset_for": {
+    "message": "Reinizià per"
+  },
+  "v9_smartnaming_save_for": {
+    "message": "Arregistrà per"
+  },
+  "v9_smartnaming_reset_for_all": {
+    "message": "Reinizià tutte e regule di u nome d’ospite."
+  },
+  "v9_smartnaming_save_for_all": {
+    "message": "Arregistrà per tutti i nomi d’ospite."
+  },
+  "v9_smartnaming_template": {
+    "message": "Mudellu : Impiegà : %title %hostname %pathname %selector"
+  },
+  "v9_smartnaming_max_length": {
+    "message": "Longhezza massima"
+  },
+  "v9_smartnaming_selector": {
+    "message": "Testu per u selettore CSS (ozzionale)"
+  },
+  "v9_smartnaming_result": {
+    "message": "Risultatu"
+  },
+  "v9_smartnaming_test": {
+    "message": "Verificà"
+  },
+  "v9_filepicker_select_file": {
+    "message": "Selezziunà un schedariu"
+  },
+  "v9_filepicker_select_download_dir": {
+    "message": "Selezziunà u cartulare di i scaricamenti"
+  },
+  "v9_reset": {
+    "message": "Reinizià"
+  },
+  "v9_save": {
+    "message": "Arregistrà"
+  },
+  "v9_user_message_no_incognito_title": {
+    "message": "Micca modu di navigazione anonima"
+  },
+  "v9_user_message_no_incognito_body": {
+    "message": "Video DownloadHelper ùn hè micca attivatu in modu di navigazione privata o anonima. Ci culerà à attivà st’ozzione manualmente (ma ùn hè micca richiestu)."
+  },
+  "v9_user_message_no_incognito_open_settings": {
+    "message": "Attivà i i parametri di u navigatore"
+  },
+  "v9_yt_bulk_detected": {
+    "message": "Scuperta di $1 filmetti nant’à Youtube"
+  },
+  "v9_yt_bulk_detected_trigger": {
+    "message": "Principià u scaricamentu da gruppu"
+  },
+  "v9_panel_footer_show_history_tooltip": {
+    "message": "Affissà a cronolugia di i scaricamenti"
+  },
+  "v9_history_page_title": {
+    "message": "Cronolugia di i vostri scaricamenti"
+  },
+  "v9_history_button_clear": {
+    "message": "Viutà a cronolugia"
+  },
+  "v9_history_button_start_recording": {
+    "message": "Arricurdassi di a mo cronolugia"
+  },
+  "v9_history_button_stop_recording": {
+    "message": "Ùn arricurdassi di a mo cronolugia"
+  },
+  "v9_history_no_recording_description": {
+    "message": "Ùn arricurdemu micca a cronolugia di i vostri scaricamenti. Vulete chì Video DownloadHelper s’arricurdeghji di a cronolugia di i vostri scaricamenti ?"
+  },
+  "v9_history_no_recording_description_safe": {
+    "message": "Ùn v’inchietate, tuttu stà nant’à a vostra mascina. Ci impreme a vostra vita privata."
+  },
+  "v9_history_no_entries": {
+    "message": "Nisuna infurmazione fin’avà."
+  },
+  "v9_history_input_search": {
+    "message": "Ricercà"
+  },
+  "v9_settings_history_limit": {
+    "message": "Scurdassi di a cronolugia di i scaricamenti dopu à X ghjorni"
+  },
+  "v9_date_today": {
+    "message": "oghje"
+  },
+  "v9_date_yesterday": {
+    "message": "eri"
+  },
+  "v9_date_x_days_ago": {
+    "message": "$1 ghjorni fà"
+  },
+  "v9_date_long_ago": {
+    "message": "tempi fà"
+  }
+}

@@ -1,0 +1,1994 @@
+{
+  "Bytes": {
+    "message": "$1 字节"
+  },
+  "GB": {
+    "message": "$1 GB"
+  },
+  "KB": {
+    "message": "$1 KB"
+  },
+  "MB": {
+    "message": "$1 MB"
+  },
+  "about": {
+    "message": "关于"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "由于在 Firefox 中的内部技术的变化，附加组件必须完全重写。在获取先前版本的所有功能回来前请允许我们等几周。"
+  },
+  "about_alpha_intro": {
+    "message": "这是一个内测版本。"
+  },
+  "about_beta_intro": {
+    "message": "这是一个测试版本。"
+  },
+  "about_chrome_licenses": {
+    "message": "关于Chrome的许可证"
+  },
+  "about_qr": {
+    "message": "生成文件"
+  },
+  "about_vdh": {
+    "message": "关于 Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "终止正在运行的活动"
+  },
+  "action_abort_title": {
+    "message": "终止"
+  },
+  "action_as_default": {
+    "message": "使用此动作作为默认设置"
+  },
+  "action_avplay_description": {
+    "message": "使用转换器的原生查看器播放视频"
+  },
+  "action_avplay_title": {
+    "message": "播放"
+  },
+  "action_blacklist_description": {
+    "message": "选定域名所提供的视频源将被忽略"
+  },
+  "action_blacklist_title": {
+    "message": "加入黑名单"
+  },
+  "action_bulkdownload_description": {
+    "message": "批量下载任务描述"
+  },
+  "action_bulkdownload_title": {
+    "message": "批量下载任务标题"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "批量下载并转换格式任务描述"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "批量下载并转换格式"
+  },
+  "action_copyurl_description": {
+    "message": "拷贝视频链接到剪切板"
+  },
+  "action_copyurl_title": {
+    "message": "拷贝链接"
+  },
+  "action_deletehit_description": {
+    "message": "从当前列表中删除"
+  },
+  "action_deletehit_title": {
+    "message": "删除"
+  },
+  "action_details_description": {
+    "message": "显示详细内容"
+  },
+  "action_details_title": {
+    "message": "详细信息"
+  },
+  "action_download_description": {
+    "message": "下载文件到你的磁盘"
+  },
+  "action_download_title": {
+    "message": "下载"
+  },
+  "action_downloadconvert_description": {
+    "message": "下载视频并转化其他格式"
+  },
+  "action_downloadconvert_title": {
+    "message": "下载和转换"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "打开本地文件目录"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "打开目录"
+  },
+  "action_openlocalfile_description": {
+    "message": "打开本地媒体文件"
+  },
+  "action_openlocalfile_title": {
+    "message": "打开媒体文件"
+  },
+  "action_pin_description": {
+    "message": "标记文永久"
+  },
+  "action_pin_title": {
+    "message": "标签"
+  },
+  "action_quickdownload_description": {
+    "message": "下载超时询问"
+  },
+  "action_quickdownload_title": {
+    "message": "快速下载"
+  },
+  "action_stop_description": {
+    "message": "停止捕捉"
+  },
+  "action_stop_title": {
+    "message": "停止"
+  },
+  "adaptative": {
+    "message": "自动 $1"
+  },
+  "add_to_blacklist": {
+    "message": "加入黑名单"
+  },
+  "add_to_blacklist_help": {
+    "message": "选定域名所提供的视频源将被忽略"
+  },
+  "advanced": {
+    "message": "高级"
+  },
+  "aggregating": {
+    "message": "正在汇总..."
+  },
+  "analyze_page": {
+    "message": "分析页面"
+  },
+  "appDesc": {
+    "message": "下载网页上面的视频"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "界面"
+  },
+  "audio_only": {
+    "message": "仅音频"
+  },
+  "behavior": {
+    "message": "常规"
+  },
+  "blacklist": {
+    "message": "黑名单"
+  },
+  "blacklist_add_domain": {
+    "message": "添加一个列入黑名单的域名"
+  },
+  "blacklist_add_placeholder": {
+    "message": "要被列入黑名单的域名"
+  },
+  "blacklist_edit_descr": {
+    "message": "黑名单允许忽略来自某些域名的媒体"
+  },
+  "blacklist_empty": {
+    "message": "无列入黑名单域名"
+  },
+  "browser_info": {
+    "message": "浏览器 $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "浏览器语言: $1"
+  },
+  "build_options": {
+    "message": "构建选项: $1"
+  },
+  "built_on": {
+    "message": "构建于 $1"
+  },
+  "bulk_in_progress": {
+    "message": "影片下載幫手正在進行大量作業程序,對話窗將自行關閉請勿逕行關閉"
+  },
+  "bulk_n_videos": {
+    "message": "$1 个视频"
+  },
+  "cancel": {
+    "message": "取消"
+  },
+  "change": {
+    "message": "更改"
+  },
+  "chrome_basic_mode": {
+    "message": "chrome 基本模式 （建议升级）"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "无时间限制的高级版"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "月度定制的高级版"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "年度定制的高级版"
+  },
+  "chrome_inapp_no_subs": {
+    "message": "注意：Google不赞成下列Chrome支付服务，订阅不再可用"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "不可获得"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "终身高级版"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "订购月度高级版"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "订购年度高级版"
+  },
+  "chrome_install_firefox": {
+    "message": "安装火狐浏览器"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "安装适用于火狐浏览器的视频下载助手"
+  },
+  "chrome_license_webstore_accepted": {
+    "message": "来自Chrome Webstore的激活许可证"
+  },
+  "chrome_licensing": {
+    "message": "Chrome许可"
+  },
+  "chrome_noyt_text": {
+    "message": "抱歉，Chrome Web Store 不允许扩展下载 YouTube 视频，所以我们不得不去掉这个功能。"
+  },
+  "chrome_noyt_text2": {
+    "message": "你可以在 Firefox 版本上使用 Video DownloadHelper 下载 YouTube 视频。"
+  },
+  "chrome_noyt_text3": {
+    "message": "遗憾的是，Chrome网上应用店不允许扩展程序下载YouTube视频，因此我们无法在扩展程序的Chrome版本中包含此功能。"
+  },
+  "chrome_premium_audio": {
+    "message": "仅能在高级版中创造纯音频文件"
+  },
+  "chrome_premium_check_error": {
+    "message": "高级版状态检测出错"
+  },
+  "chrome_premium_hls": {
+    "message": "如果没有高级版，一个HLS下载只能在前次下载$1分钟后进行"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome高级版"
+  },
+  "chrome_premium_need_sign": {
+    "message": "您需要登录才能获取高级版的高级功能"
+  },
+  "chrome_premium_not_signed": {
+    "message": "没有登录进入Chrome"
+  },
+  "chrome_premium_recheck": {
+    "message": "重新检查高级版状态"
+  },
+  "chrome_premium_required": {
+    "message": "需要高级版"
+  },
+  "chrome_premium_source": {
+    "message": "您是通过$1的高级版用户"
+  },
+  "chrome_product_intro": {
+    "message": "您可以使用下列选项升级为高级版用户"
+  },
+  "chrome_req_review": {
+    "message": "另外，您愿意在Chrome的Webstore上面留下积极的评价吗？"
+  },
+  "chrome_signing_in": {
+    "message": "登录到Chrome"
+  },
+  "chrome_verif_premium": {
+    "message": "验证高级版状态。。。"
+  },
+  "chrome_verif_premium_error": {
+    "message": "应用内支付API不可用"
+  },
+  "chrome_warning_yt": {
+    "message": "Chrome 扩展和 YouTube 的警告"
+  },
+  "clear": {
+    "message": "清除"
+  },
+  "clear_hits": {
+    "message": "清除历史"
+  },
+  "clear_logs": {
+    "message": "清除日志"
+  },
+  "coapp": {
+    "message": "合作应用"
+  },
+  "coapp_error": {
+    "message": "正在检查返回的合作应用:"
+  },
+  "coapp_found": {
+    "message": "找到的合作应用:"
+  },
+  "coapp_install": {
+    "message": "安装合作应用"
+  },
+  "coapp_installed": {
+    "message": "合作应用已安装"
+  },
+  "coapp_latest_version": {
+    "message": "最新可用版本是 $1"
+  },
+  "coapp_not_installed": {
+    "message": "合作应用未安装"
+  },
+  "coapp_outdated": {
+    "message": "合作应用已过期 - 请更新"
+  },
+  "coapp_outofdate": {
+    "message": "需要合作应用升级"
+  },
+  "coapp_outofdate_text": {
+    "message": "你正在应用合作应用版本 $1 但是本功能需要版本 $2"
+  },
+  "coapp_path": {
+    "message": "合作应用二进制:"
+  },
+  "coapp_recheck": {
+    "message": "重复检查"
+  },
+  "coapp_required": {
+    "message": "需要合作应用"
+  },
+  "coapp_required_text": {
+    "message": "本操作需要一个外部应用来完成。"
+  },
+  "coapp_shell": {
+    "message": "合作应用 Shell"
+  },
+  "coapp_unchecked": {
+    "message": "正在验证合作应用..."
+  },
+  "coapp_update": {
+    "message": "更新合作应用"
+  },
+  "collecting": {
+    "message": "正在收集..."
+  },
+  "confirmation_required": {
+    "message": "需要确认"
+  },
+  "congratulations": {
+    "message": "恭喜！"
+  },
+  "continue": {
+    "message": "继续"
+  },
+  "convconf_2passes": {
+    "message": "2 通"
+  },
+  "convconf_ac": {
+    "message": "音频声道"
+  },
+  "convconf_acnone": {
+    "message": "无"
+  },
+  "convconf_acodec": {
+    "message": "音频编码器"
+  },
+  "convconf_aspect": {
+    "message": "宽高比"
+  },
+  "convconf_audiobitrate": {
+    "message": "音频比特率"
+  },
+  "convconf_audiofreq": {
+    "message": "音频频率"
+  },
+  "convconf_audioonly": {
+    "message": "仅音频"
+  },
+  "convconf_bitrate": {
+    "message": "比特率"
+  },
+  "convconf_container": {
+    "message": "格式"
+  },
+  "convconf_duplicate": {
+    "message": "克隆"
+  },
+  "convconf_ext": {
+    "message": "输出文件扩展名"
+  },
+  "convconf_extra": {
+    "message": "额外参数"
+  },
+  "convconf_level": {
+    "message": "级别"
+  },
+  "convconf_mono": {
+    "message": "单声道"
+  },
+  "convconf_new": {
+    "message": "新建"
+  },
+  "convconf_preset": {
+    "message": "预设"
+  },
+  "convconf_profilev": {
+    "message": "视频简介"
+  },
+  "convconf_rate": {
+    "message": "帧率"
+  },
+  "convconf_readonly": {
+    "message": "默认配置为只读。请克隆再进行修改。"
+  },
+  "convconf_remove": {
+    "message": "删除"
+  },
+  "convconf_reset": {
+    "message": "全部重置"
+  },
+  "convconf_reset_confirm": {
+    "message": "这将删除您的所有自定义配置"
+  },
+  "convconf_save": {
+    "message": "保存"
+  },
+  "convconf_size": {
+    "message": "帧尺寸"
+  },
+  "convconf_stereo": {
+    "message": "立体声"
+  },
+  "convconf_target": {
+    "message": "目标"
+  },
+  "convconf_tune": {
+    "message": "调节"
+  },
+  "convconf_vcodec": {
+    "message": "视频编码器"
+  },
+  "convconf_videobitrate": {
+    "message": "视频比特率"
+  },
+  "conversion_create_rule": {
+    "message": "创建规则"
+  },
+  "conversion_outputs": {
+    "message": "转换输出"
+  },
+  "conversion_rules": {
+    "message": "格式转换规则"
+  },
+  "conversion_update_rule": {
+    "message": "格式转换规则更新"
+  },
+  "convert": {
+    "message": "转换"
+  },
+  "convert_local_files": {
+    "message": "转换本地文件"
+  },
+  "converter_needed_aggregate": {
+    "message": "此操作系统需要安装一个转换器以便汇总视频和音频的流媒体。"
+  },
+  "converter_needed_aggregate_why": {
+    "message": "为什么需要一个转换器？"
+  },
+  "converter_needs_reg": {
+    "message": "需要注册"
+  },
+  "converter_queued": {
+    "message": "转换器已列队..."
+  },
+  "converter_reg_audio": {
+    "message": "无论是主动或被动转换规则，生成纯音频的媒体文件都需要已注册的转换器。"
+  },
+  "converting": {
+    "message": "正在转化..."
+  },
+  "convrule_convert": {
+    "message": "转换"
+  },
+  "convrule_domain": {
+    "message": "域名"
+  },
+  "convrule_extension": {
+    "message": "扩展"
+  },
+  "convrule_format": {
+    "message": "为格式 $1"
+  },
+  "convrule_from_domain": {
+    "message": "来自域名 $1"
+  },
+  "convrule_no_convert": {
+    "message": "不转换"
+  },
+  "convrule_output_format": {
+    "message": "输出格式"
+  },
+  "convrule_refresh_formats": {
+    "message": "刷新输出格式"
+  },
+  "convrule_with_ext": {
+    "message": "带扩展名 '$1'"
+  },
+  "convrules_add_rule": {
+    "message": "创建一条新转换规则"
+  },
+  "convrules_edit_descr": {
+    "message": "转换规则可以在下载后立即自动执行媒体转换"
+  },
+  "convrules_empty": {
+    "message": "无转换规则"
+  },
+  "copy_of": {
+    "message": "$1 的副本"
+  },
+  "corrupted_media_file": {
+    "message": "不能从文件 ‘$2’ 中的媒体 '$1' 获取信息。文件可能损坏。"
+  },
+  "create": {
+    "message": "创建"
+  },
+  "custom_output": {
+    "message": "自定义输出格式"
+  },
+  "dash_streaming": {
+    "message": "DASH 流"
+  },
+  "default": {
+    "message": "默认"
+  },
+  "details_parenthesis": {
+    "message": "（详细信息）"
+  },
+  "dev_build": {
+    "message": "开发构建版本"
+  },
+  "directory_not_exist": {
+    "message": "不存在文件夹"
+  },
+  "directory_not_exist_body": {
+    "message": "文件夹 ‘$1’ 不存在，确定要创建它吗?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "下载并转换"
+  },
+  "dlconv_output_details": {
+    "message": "配置输出细节"
+  },
+  "donate": {
+    "message": "捐款"
+  },
+  "donate_vdh": {
+    "message": "帮助 Video DownloadHelper"
+  },
+  "download_error": {
+    "message": "下载错误"
+  },
+  "download_method": {
+    "message": "下载方式"
+  },
+  "download_method_not_again": {
+    "message": "下一次按默认使用这个方式"
+  },
+  "download_modes1": {
+    "message": "实际的下载可以配合浏览器或者合作应用来执行。"
+  },
+  "download_modes2": {
+    "message": "基于技术原因，从浏览器服务的下载可能导致被托管视频的服务器所拒绝，并且不能定义一个备选的默认下载文件夹。"
+  },
+  "download_with_browser": {
+    "message": "使用浏览器"
+  },
+  "download_with_coapp": {
+    "message": "使用合作应用"
+  },
+  "downloading": {
+    "message": "正在下载..."
+  },
+  "edge_req_review": {
+    "message": "或者，您愿意在微软Edge扩展商店里给个好评吗？"
+  },
+  "error": {
+    "message": "错误"
+  },
+  "error_not_directory": {
+    "message": "‘$1’ 已存在但不是一个目录"
+  },
+  "errors": {
+    "message": "错误"
+  },
+  "exit_natmsgsh": {
+    "message": "退出合作应用"
+  },
+  "explain_qr1": {
+    "message": "您会发现生成的视频角落包含水印。"
+  },
+  "explain_qr2": {
+    "message": "这是因为您选择了一个 ADP 变量并且转换功能未注册。"
+  },
+  "export": {
+    "message": "导出"
+  },
+  "failed_aggregating": {
+    "message": "汇总“$1”失败"
+  },
+  "failed_converting": {
+    "message": "转换“$1”失败"
+  },
+  "failed_getting_info": {
+    "message": "从“$1”获取信息失败"
+  },
+  "failed_opening_directory": {
+    "message": "未能打开文件目录"
+  },
+  "failed_playing_file": {
+    "message": "未能播放文件"
+  },
+  "file_dialog_date": {
+    "message": "日期"
+  },
+  "file_dialog_name": {
+    "message": "用户名"
+  },
+  "file_dialog_size": {
+    "message": "大小"
+  },
+  "file_generated": {
+    "message": "文件“$1”已被生成。"
+  },
+  "file_ready": {
+    "message": "“$1”现已就绪"
+  },
+  "finalizing": {
+    "message": "即将完成..."
+  },
+  "from_domain": {
+    "message": "来自 $1"
+  },
+  "gallery": {
+    "message": "图库"
+  },
+  "gallery_files_types": {
+    "message": "$1文件"
+  },
+  "gallery_from_domain": {
+    "message": "来自 $1 的图库"
+  },
+  "gallery_links_from_domain": {
+    "message": "来自 $1 的链接"
+  },
+  "general": {
+    "message": "常规"
+  },
+  "get_conversion_license": {
+    "message": "获取转换许可证"
+  },
+  "help_translating": {
+    "message": "帮助翻译"
+  },
+  "hit_details": {
+    "message": "获得详细信息"
+  },
+  "hit_go_to_tab": {
+    "message": "转到标签"
+  },
+  "hls_streaming": {
+    "message": "HLS 流"
+  },
+  "homepage": {
+    "message": "主页"
+  },
+  "import": {
+    "message": "导入"
+  },
+  "import_invalid_format": {
+    "message": "无效格式"
+  },
+  "in_current_tab": {
+    "message": "在当前标签页"
+  },
+  "in_other_tab": {
+    "message": "在其他标签页"
+  },
+  "lic_mismatch1": {
+    "message": "许可证适用于$1，不适用于当前浏览器"
+  },
+  "lic_mismatch2": {
+    "message": "许可证适用于$1，但本扩展版本适用于$2"
+  },
+  "lic_not_needed_linux": {
+    "message": "我们对 Linux 的贡献: 不需要许可"
+  },
+  "lic_status_accepted": {
+    "message": "许可已验证"
+  },
+  "lic_status_blocked": {
+    "message": "许可已屏蔽"
+  },
+  "lic_status_error": {
+    "message": "许可错误"
+  },
+  "lic_status_locked": {
+    "message": "许可已锁定(正在重新验证)"
+  },
+  "lic_status_mismatch": {
+    "message": "许可证/浏览器不匹配"
+  },
+  "lic_status_nocoapp": {
+    "message": "许可不能验证"
+  },
+  "lic_status_unneeded": {
+    "message": "不需要许可"
+  },
+  "lic_status_unset": {
+    "message": "许可未设置"
+  },
+  "lic_status_unverified": {
+    "message": "许可未验证"
+  },
+  "lic_status_verifying": {
+    "message": "正在验证许可..."
+  },
+  "license": {
+    "message": "许可"
+  },
+  "license_key": {
+    "message": "许可密钥"
+  },
+  "licensing": {
+    "message": "授权"
+  },
+  "logs": {
+    "message": "日志"
+  },
+  "media": {
+    "message": "媒体"
+  },
+  "merge_error": {
+    "message": "文件合并出错"
+  },
+  "merge_local_files": {
+    "message": "合并本地音视频文件"
+  },
+  "more": {
+    "message": "更多..."
+  },
+  "network_error_no_response": {
+    "message": "网络错误 - 无响应"
+  },
+  "network_error_status": {
+    "message": "网络错误 - 状态 $1"
+  },
+  "new_sub_directory": {
+    "message": "创建子目录"
+  },
+  "next": {
+    "message": "下一个"
+  },
+  "no": {
+    "message": "否"
+  },
+  "no_audio_in_file": {
+    "message": "在文件 $1 中没有音频流"
+  },
+  "no_coapp_license_unverified": {
+    "message": "由于合作应用未安装，所以许可不能验证"
+  },
+  "no_license_registered": {
+    "message": "未注册许可"
+  },
+  "no_media_current_tab": {
+    "message": "没有在当前标签页检测到任何视频"
+  },
+  "no_media_to_process": {
+    "message": "没有检测到任何视频"
+  },
+  "no_media_to_process_descr": {
+    "message": "点击播放视频以帮助检测文件…"
+  },
+  "no_such_hit": {
+    "message": "无这样的命中"
+  },
+  "no_validate_without_coapp": {
+    "message": "必须安装合作应用以验证许可"
+  },
+  "no_video_in_file": {
+    "message": "在文件 $1 中没有视频流"
+  },
+  "not_again_3months": {
+    "message": "三个月内不再提醒"
+  },
+  "not_see_again": {
+    "message": "禁止再次提醒"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "ok": {
+    "message": "确定"
+  },
+  "orphan": {
+    "message": "列表"
+  },
+  "output_configuration": {
+    "message": "输出配置"
+  },
+  "overwrite_file": {
+    "message": "覆盖文件 '$1' ?"
+  },
+  "per_month": {
+    "message": "/月"
+  },
+  "per_year": {
+    "message": "/年"
+  },
+  "pinned": {
+    "message": "固定"
+  },
+  "platform": {
+    "message": "平台"
+  },
+  "platform_info": {
+    "message": "平台 $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "由 Weh 提供"
+  },
+  "preferences": {
+    "message": "首选项"
+  },
+  "prod_build": {
+    "message": "产品构建号"
+  },
+  "quality_medium": {
+    "message": "中等"
+  },
+  "quality_small": {
+    "message": "较低"
+  },
+  "queued": {
+    "message": "正在排队..."
+  },
+  "recheck_license": {
+    "message": "重新检查许可"
+  },
+  "register_converter": {
+    "message": "注册转换器"
+  },
+  "register_existing_license": {
+    "message": "注册现有的许可证"
+  },
+  "registered_email": {
+    "message": "邮箱地址"
+  },
+  "registered_key": {
+    "message": "密钥"
+  },
+  "reload_addon": {
+    "message": "重载扩展"
+  },
+  "reload_addon_confirm": {
+    "message": "你是否确认你想重载扩展?"
+  },
+  "req_donate": {
+    "message": "您会考虑小小捐款以支持开发团队吗？"
+  },
+  "req_locale": {
+    "message": "或者可以帮助翻译附加组件为 '$1' (缺少 $2 个字符串)?"
+  },
+  "req_review": {
+    "message": "或者，在 Mozilla 附加组件上写一个优秀评价？"
+  },
+  "req_review_link": {
+    "message": "撰写对 Video DownloadHelper 的评价"
+  },
+  "reset_settings": {
+    "message": "重置设置"
+  },
+  "running": {
+    "message": "运行"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "save_as": {
+    "message": "另存为..."
+  },
+  "save_file_as": {
+    "message": "保存文件为…"
+  },
+  "select_audio_file_to_merge": {
+    "message": "请选择待合并的音频流文件"
+  },
+  "select_files_to_convert": {
+    "message": "转换本地文件"
+  },
+  "select_output_config": {
+    "message": "选择输出配置…"
+  },
+  "select_output_directory": {
+    "message": "输出目录"
+  },
+  "select_video_file_to_merge": {
+    "message": "请选择待合并的视频流文件"
+  },
+  "selected_media": {
+    "message": "批量选择"
+  },
+  "settings": {
+    "message": "设置"
+  },
+  "smartname_add_domain": {
+    "message": "添加一条智能命名规则"
+  },
+  "smartname_create_rule": {
+    "message": "创建规则"
+  },
+  "smartname_define": {
+    "message": "定義智慧命名規則"
+  },
+  "smartname_edit_descr": {
+    "message": "智能命名规则可以基于主机名定制视频名称"
+  },
+  "smartname_empty": {
+    "message": "无智能命名规则"
+  },
+  "smartname_update_rule": {
+    "message": "更新规则"
+  },
+  "smartnamer_delay": {
+    "message": "延迟捕获名称 (ms)"
+  },
+  "smartnamer_domain": {
+    "message": "域名"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "从网页标题/网址获取名称"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "从页面内容获取名称"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "从页面标题获取名称"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "使用模糊命名"
+  },
+  "smartnamer_regexp": {
+    "message": "正则表达式"
+  },
+  "smartnamer_selected_text": {
+    "message": "选中文本"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "XPath 表达式"
+  },
+  "smartnaming_rule": {
+    "message": "智能命名规则"
+  },
+  "smartnaming_rules": {
+    "message": "智能命名规则"
+  },
+  "sub_directory_name": {
+    "message": "子目录名称"
+  },
+  "support_forum": {
+    "message": "支持论坛"
+  },
+  "supported_sites": {
+    "message": "网站支持"
+  },
+  "tbsn_quality_hd": {
+    "message": "中等质量"
+  },
+  "tbsn_quality_sd": {
+    "message": "低质量"
+  },
+  "tell_me_more": {
+    "message": "了解更多"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "translation": {
+    "message": "翻译"
+  },
+  "up": {
+    "message": "上"
+  },
+  "validate_license": {
+    "message": "注册许可证"
+  },
+  "variants_list_adp": {
+    "message": "自动变量"
+  },
+  "variants_list_full": {
+    "message": "变量"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "版本 $1"
+  },
+  "video_only": {
+    "message": "仅视频"
+  },
+  "video_qualities": {
+    "message": "视频品质"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "窗口"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "标签页"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "询问"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "浏览器"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "合作应用"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "下载音频"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "汇聚音频与视频"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "下载视频"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "下载列表中不显示 ADP 变体"
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "如何显示提醒对话框"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "下载之后打开。"
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "允许使用合作应用播放视频"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "禁止网站激活媒体许可。"
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "启用批量下载操作"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "在附加组件启动，检查合作应用是否可以更好的用于媒体检测"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "使用合作应用请求分块数据"
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "使用合作应用请求分块 manifests"
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "并行下载的最大分片数"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "启用分块流"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "预先多少分片要下载"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "执行实际下载的应用"
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "在指定毫秒数后自动关闭，如果为 0 则禁用"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "当重启合作应用时的延迟(毫秒)"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "合作应用使用和原始请求同一代理"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "某些站点可能返回一个新的 URL 而不是媒体内容"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "访问来自页面右击的命令"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "最大的同时聚合或转换任务数量"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "强制汇总为 H264 封装"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "在处理后不要清除临时文件"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "在转换期间使用的线程数"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "启用 DASH 分块流"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "下载列表不显示 .m4s 项"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "当 DASH 包含音频与视频时"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "在失去焦点时关闭对话框"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "控制扩展下载所占用的最大带宽数量。"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "下载重试次数"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "下载重试延迟 (毫秒)"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "控制一个单一项被下载的串流数"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "文件对话框如何显示"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "如何命名图册中下载的文件"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "在条目描述中显示一个链接来切换到视频标签页"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "下载 HLS 流媒体为 M2TS"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "HLS 分块流已启用"
+  },
+  "weh_prefs_description_hlsEndTimeout": {
+    "message": "在指定秒数后，结束等待新的HLS块"
+  },
+  "weh_prefs_description_hlsRememberPrevLiveChunks": {
+    "message": "记住以前的HLS块"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "激活工具栏图标的时机"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "工具栏图标标记显示"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "不显示不受保护的变种。"
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "仅配合合作应用下载处理器使用"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "被视为媒体的扩展名"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "在每次页面加载时执行(可能影响性能)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "视为图库捕捉的文件扩展名"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "显示检测为图库的条目数"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "要检测为图库的最小条目数"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "视为图像图库的最小图像尺寸"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "检测页面中的图像"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "检测直接从页面链接的媒体"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "忽略低于此尺寸。"
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "强制检测检测超出阈值部分。"
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "使用和原始请求相同的头信息下载"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": "下载列表不显示 .ts 项"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "利用正则表达式忽略一些媒体链接。"
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "扫描网络流量以检测命中"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "隐私命中不通知"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "遇到问题时通知我"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "单独触发在超时前将被移除。"
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "显示相同视频的最大数量。"
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "使用最后下载的目录作为默认位置"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "确保生成的文件名不超过此长度。"
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "如何处理视频名称中的空格"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "允许Facebook的视频监测和下载"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "视频的长标题如何在主面板中显示"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "访问来自工具菜单的命令"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "窗口"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "标签页"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "目录 - 网址"
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "分类 - 目录"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "网址"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "来自任何标签页"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "来自当前标签页"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "当前标签页有媒体"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "其他标签页有媒体"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "混合式显示"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "无任何显示"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "触发式显示"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "正在运行任务"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "隐藏 ADP 变种"
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "提醒对话框"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "完成后自动打开文件"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "播放器已启用"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "启用"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "启用批量"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "在启动时检查合作应用"
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "分块数据合作应用请求"
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "分块 manifests 合作应用请求"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "并行分块下载"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "分块流"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "预取分块数"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "下载处理器"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "合作应用空闲退出计时器"
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "合作应用重启延时"
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "合作应用的代理"
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "内容重定向已启用"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "上下文菜单"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "同时转换器操作"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "H264 调整"
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "保留临时文件"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "转换主题"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "启用 DASH"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": "隐藏 .m4s"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "DASH 流"
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "自动关闭对话框"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "最大执行下载任务"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "下载重试次数"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "重试延时"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "最大同时流媒体下载数"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "文件对话框"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "命名图册文件"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "显示‘转到标签’"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS 视为 M2TS"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "启用 HLS"
+  },
+  "weh_prefs_label_hlsEndTimeout": {
+    "message": "HLS等待超时"
+  },
+  "weh_prefs_label_hlsRememberPrevLiveChunks": {
+    "message": "HLS历史记录"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "激活图标"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "图标徽章"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "忽略受保护变量"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "默认下载目录"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "要检测的扩展名"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "图库自动检测"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "媒体链接扩展名"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "最大条目数"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "最小条目数"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "最小图像尺寸"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "检测嵌入的图像"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "检测指向媒体的链接"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "最小尺寸"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "尺寸阈值"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "请求头信息"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": "隐藏 .ts"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "网络滤镜"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "网络探测器"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "私人通知"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "通知"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "过期超时"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "最大数量"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "记住最后的目录"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "文件名最大长度"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "主面板长标题"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Facebook支持"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "主面板长标题"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "工具菜单"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "替换为连字符（-）"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "保留"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "删除"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "替换为下划线（_）"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "省略号居左"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "在过去的几行"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "省略号居右"
+  },
+  "yes": {
+    "message": "是"
+  },
+  "you_downloaded_n_videos": {
+    "message": "您刚刚成功用 Video DownloadHelper 下载您的第 $1 个文件。"
+  },
+  "v9_yes": {
+    "message": "是"
+  },
+  "v9_no": {
+    "message": "否"
+  },
+  "v9_error": {
+    "message": "错误"
+  },
+  "v9_no_media_current_tab": {
+    "message": "没有在当前标签页检测到任何视频"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "点击播放视频以帮助检测文件…"
+  },
+  "v9_coapp_required": {
+    "message": "需要合作应用"
+  },
+  "v9_coapp_required_text": {
+    "message": "本操作需要一个外部应用来完成。"
+  },
+  "v9_coapp_installed": {
+    "message": "合作应用已安装"
+  },
+  "v9_coapp_recheck": {
+    "message": "再次检查"
+  },
+  "v9_lic_status_accepted": {
+    "message": "许可已验证"
+  },
+  "v9_coapp_outdated": {
+    "message": "合作应用已过期 - 请更新"
+  },
+  "v9_converter_needs_reg": {
+    "message": "需要注册"
+  },
+  "v9_get_conversion_license": {
+    "message": "获取转换许可证"
+  },
+  "v9_converter_reg_audio": {
+    "message": "无论是主动或被动转换规则，生成纯音频的媒体文件都需要已注册的转换器。"
+  },
+  "v9_chrome_premium_required": {
+    "message": "需要高级版"
+  },
+  "v9_chrome_premium_hls": {
+    "message": "如果没有高级版，一个HLS下载只能在前次下载$1分钟后进行"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Chrome 扩展和 YouTube 的警告"
+  },
+  "v9_chrome_noyt_text3": {
+    "message": "遗憾的是，Chrome网上应用店不允许扩展程序下载YouTube视频，因此我们无法在扩展程序的Chrome版本中包含此功能。"
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "你可以在 Firefox 版本上使用 Video DownloadHelper 下载 YouTube 视频。"
+  },
+  "v9_about_qr": {
+    "message": "文件已生成"
+  },
+  "v9_explain_qr1": {
+    "message": "您会发现生成的视频角落包含水印。"
+  },
+  "v9_not_see_again": {
+    "message": "不再提醒"
+  },
+  "v9_tell_me_more": {
+    "message": "了解更多"
+  },
+  "v9_settings": {
+    "message": "设置"
+  },
+  "v9_coapp_unchecked": {
+    "message": "正在验证合作应用..."
+  },
+  "v9_coapp_update": {
+    "message": "更新合作应用"
+  },
+  "v9_coapp_not_installed": {
+    "message": "合作应用未安装"
+  },
+  "v9_coapp_install": {
+    "message": "安装合作应用"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "必须安装合作应用以验证许可"
+  },
+  "v9_lic_status_verifying": {
+    "message": "正在验证许可..."
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "最大下载任务数"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "访问来自页面右击的命令"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "“$1”现已就绪"
+  },
+  "v9_lic_status_unset": {
+    "message": "许可未设置"
+  },
+  "v9_lic_status_blocked": {
+    "message": "许可已屏蔽"
+  },
+  "v9_lic_status_locked": {
+    "message": "许可已锁定(正在重新验证)"
+  },
+  "v9_lic_mismatch2": {
+    "message": "许可证适用于$1，但本扩展版本适用于$2"
+  },
+  "v9_no_license_registered": {
+    "message": "未注册许可"
+  },
+  "mup_reset": {
+    "message": "重置"
+  },
+  "action_downloadaudio_description": {
+    "message": "仅下载音频"
+  },
+  "action_quickdownloadaudio_description": {
+    "message": "无需询问，仅下载音频"
+  },
+  "action_quickdownloadaudio_title": {
+    "message": "快速音频下载"
+  },
+  "action_downloadaudio_title": {
+    "message": "音频下载"
+  },
+  "coapp_help": {
+    "message": "单击此处解决您的问题。"
+  },
+  "copy_settings_info_to_clipboard": {
+    "message": "复制配置信息到剪贴板"
+  },
+  "copy_settings_info_to_clipboard_success": {
+    "message": "成功复制配置信息到剪贴板"
+  },
+  "dialog_audio_impossible": {
+    "message": "该媒体不支持仅下载音频"
+  },
+  "dialog_audio_impossible_title": {
+    "message": "无法下载音频"
+  },
+  "live_stream": {
+    "message": "直播流"
+  },
+  "mup_best_video_quality": {
+    "message": "首选视频质量"
+  },
+  "mup_ignore_low_quality": {
+    "message": "忽略低质量视频"
+  },
+  "mup_page_title": {
+    "message": "媒体首选项"
+  },
+  "mup_prefer_60fps": {
+    "message": "首选帧率 60FPS 及以上"
+  },
+  "mup_prefered_container": {
+    "message": "首选编码格式"
+  },
+  "mup_prefered_video_codecs": {
+    "message": "首选视频编码器"
+  },
+  "mup_saved": {
+    "message": "已保存！"
+  },
+  "weh_prefs_description_use_native_filepicker": {
+    "message": "使用操作系统文件选择器"
+  },
+  "weh_prefs_label_tbvwsExtractionMethod": {
+    "message": "提取方式"
+  },
+  "weh_prefs_label_use_native_filepicker": {
+    "message": "使用本地文件选择器"
+  },
+  "action_sidedownload_description": {
+    "message": "实验性下载器"
+  },
+  "mup_lowest_video_quality": {
+    "message": "忽略以下视频"
+  },
+  "mup_max_variants_help": {
+    "message": "每个视频都有不同的格式。我们优先提供最佳格式，并根据该参数配置提供其他可选格式。"
+  },
+  "mup_ignored_containers": {
+    "message": "忽略以下格式的媒体"
+  },
+  "mup_ignored_video_codecs": {
+    "message": "忽略以下编码方式的媒体"
+  },
+  "mup_max_variants": {
+    "message": "可选格式配置"
+  },
+  "mup_ignore_low_quality_help": {
+    "message": "有些页面包含仅用于“效果演示”的“低质量”媒体，如：用于点击时的声音 WAV 文件，或用于页面的短视频小动画。。"
+  },
+  "v9_coapp_help": {
+    "message": "单击此处解决您的问题。"
+  },
+  "v9_dialog_audio_impossible_title": {
+    "message": "无法下载音频"
+  },
+  "v9_dialog_audio_impossible": {
+    "message": "该媒体不支持仅下载音频"
+  },
+  "v9_copy_settings_info_to_clipboard": {
+    "message": "复制配置信息到剪贴板"
+  },
+  "v9_mup_max_variants": {
+    "message": "可选格式配置"
+  },
+  "v9_badge_new": {
+    "message": "新建"
+  },
+  "v9_blacklist_glob": {
+    "message": "使用 '*' 进行模糊匹配。"
+  },
+  "v9_checkbox_remember_action": {
+    "message": "设为默认操作"
+  },
+  "v9_filepicker_select_download_dir": {
+    "message": "选择下载目录"
+  },
+  "v9_filepicker_select_file": {
+    "message": "选择文件"
+  },
+  "v9_lic_status_locked2": {
+    "message": "许可已锁定（检查您的Email）"
+  },
+  "v9_menu_item_blacklist": {
+    "message": "黑名单"
+  },
+  "v9_menu_item_blacklist_domain": {
+    "message": "域名"
+  },
+  "v9_menu_item_blacklist_media": {
+    "message": "媒体"
+  },
+  "v9_menu_item_blacklist_page": {
+    "message": "页"
+  },
+  "v9_menu_item_details": {
+    "message": "详情"
+  },
+  "v9_menu_item_download_and_convert": {
+    "message": "下载并转换为"
+  },
+  "v9_menu_item_smartnaming": {
+    "message": "智能命名"
+  },
+  "v9_panel_copy_url_button_label": {
+    "message": "复制URL"
+  },
+  "v9_panel_download_as_button_label": {
+    "message": "下载为..."
+  },
+  "v9_panel_download_audio_button_label": {
+    "message": "下载音频"
+  },
+  "v9_panel_download_button_label": {
+    "message": "下载"
+  },
+  "v9_panel_downloadable_variant_no_details": {
+    "message": "无详情"
+  },
+  "v9_panel_downloaded_delete_file_tooltip": {
+    "message": "删除文件"
+  },
+  "v9_panel_downloaded_retry_tooltip": {
+    "message": "重新下载"
+  },
+  "v9_panel_downloaded_show_dir_tooltip": {
+    "message": "显示下载文件夹"
+  },
+  "v9_panel_downloading_stop": {
+    "message": "停止"
+  },
+  "v9_panel_error_coapp_failure_copy_report_button": {
+    "message": "复制Bug详情"
+  },
+  "v9_panel_error_coapp_failure_description": {
+    "message": "抱歉，下载指定媒体失败。我们希望您可以上传匿名的错误报告，以便我们可以尽快支持更多网站"
+  },
+  "v9_panel_error_coapp_failure_report_button": {
+    "message": "打开票据"
+  },
+  "v9_panel_error_coapp_failure_title": {
+    "message": "下载失败"
+  },
+  "v9_panel_error_coapp_too_old_button_udpate": {
+    "message": "更新"
+  },
+  "v9_panel_error_nocoapp_button_install": {
+    "message": "下载并安装"
+  },
+  "v9_panel_footer_clean_all_tooltip": {
+    "message": "移除已发现及已下载的媒体（文件不会被删除）"
+  },
+  "v9_panel_footer_clean_tooltip": {
+    "message": "移除已发现的媒体"
+  },
+  "v9_panel_footer_convert_local_tooltip": {
+    "message": "转换本地文件"
+  },
+  "v9_panel_footer_show_in_popup_tooltip": {
+    "message": "在弹出窗口显示"
+  },
+  "v9_panel_footer_show_in_sidebar_tooltip": {
+    "message": "在侧边栏显示"
+  },
+  "v9_panel_variant_menu_prefer_format": {
+    "message": "总是偏好此格式"
+  },
+  "v9_panel_variant_menu_prefer_quality": {
+    "message": "总是偏好此质量"
+  },
+  "v9_panel_view_clean": {
+    "message": "显示清除按钮"
+  },
+  "v9_panel_view_clean_all": {
+    "message": "显示清除全部按钮"
+  },
+  "v9_panel_view_hide_downloaded": {
+    "message": "自动隐藏已下载媒体"
+  },
+  "v9_panel_view_open_settings": {
+    "message": "更多设置"
+  },
+  "v9_panel_view_show_all_tabs": {
+    "message": "显示所有标签页"
+  },
+  "v9_panel_view_show_low_quality": {
+    "message": "显示低质量媒体"
+  },
+  "v9_panel_view_sort_reverse": {
+    "message": "倒序"
+  },
+  "v9_panel_view_sort_status": {
+    "message": "按状态排序"
+  },
+  "v9_reset": {
+    "message": "重置"
+  },
+  "v9_save": {
+    "message": "保存"
+  },
+  "v9_settings_button_export": {
+    "message": "导出设置"
+  },
+  "v9_settings_button_import": {
+    "message": "导入设置"
+  },
+  "v9_settings_button_reload": {
+    "message": "刷新插件"
+  },
+  "v9_settings_button_reset": {
+    "message": "重置设置"
+  },
+  "v9_settings_checkbox_force_inbrowser": {
+    "message": "当可能时不使用CoApp"
+  },
+  "v9_settings_checkbox_forget_on_close": {
+    "message": "选项卡关闭时清除已发现的媒体"
+  },
+  "v9_settings_checkbox_notification": {
+    "message": "下载完成后显示通知"
+  },
+  "v9_settings_checkbox_notification_incognito": {
+    "message": "隐私浏览时显示通知"
+  },
+  "v9_settings_checkbox_use_legacy_ui": {
+    "message": "使用传统UI"
+  },
+  "v9_settings_checkbox_use_wide_ui": {
+    "message": "更大的弹出窗口"
+  },
+  "v9_settings_checkbox_view_convert_local": {
+    "message": "显示本地转换按钮"
+  },
+  "v9_settings_download_directory": {
+    "message": "下载目录"
+  },
+  "v9_settings_download_directory_change": {
+    "message": "变更"
+  },
+  "v9_settings_license_check": {
+    "message": "检查许可"
+  },
+  "v9_settings_license_get": {
+    "message": "获取许可"
+  },
+  "v9_settings_license_placeholder": {
+    "message": "输入许可"
+  },
+  "v9_settings_theme_dark": {
+    "message": "深色"
+  },
+  "v9_settings_theme_light": {
+    "message": "浅色"
+  },
+  "v9_settings_theme_system": {
+    "message": "系统"
+  },
+  "v9_settings_theme_title": {
+    "message": "主题"
+  },
+  "v9_settings_variants_clear": {
+    "message": "清除"
+  },
+  "v9_settings_variants_title": {
+    "message": "可变参数"
+  },
+  "v9_short_help": {
+    "message": "需要帮助？"
+  },
+  "v9_smartnaming_max_length": {
+    "message": "最大长度"
+  },
+  "v9_smartnaming_reset_for": {
+    "message": "重置为"
+  },
+  "v9_smartnaming_reset_for_all": {
+    "message": "重置所有主机名规则"
+  },
+  "v9_smartnaming_result": {
+    "message": "结果"
+  },
+  "v9_smartnaming_save_for": {
+    "message": "另存为"
+  },
+  "v9_smartnaming_save_for_all": {
+    "message": "保存所有主机名"
+  },
+  "v9_smartnaming_selector": {
+    "message": "CSS 文本选择器（可选）"
+  },
+  "v9_smartnaming_template": {
+    "message": "模板。使用：%title %hostname %pathname %selector"
+  },
+  "v9_smartnaming_test": {
+    "message": "测试"
+  },
+  "v9_smartnaming_title": {
+    "message": "智能命名"
+  },
+  "v9_user_message_auto_hide_downloaded": {
+    "message": "自动隐藏已下载媒体？"
+  },
+  "v9_user_message_no_incognito_body": {
+    "message": "Video DownloadHelper 未在隐身模式中启用，你需要在选项中手工启动（非必须）。"
+  },
+  "v9_user_message_no_incognito_open_settings": {
+    "message": "启用浏览器中设置"
+  },
+  "v9_user_message_no_incognito_title": {
+    "message": "隐身模式未激活"
+  },
+  "v9_yt_bulk_detected": {
+    "message": "检测来自Youtube的 $1 个视频"
+  },
+  "v9_yt_bulk_detected_trigger": {
+    "message": "开始批量下载"
+  },
+  "v9_panel_error_report_button2": {
+    "message": "报告"
+  },
+  "v9_panel_error_reported_button": {
+    "message": "已上传，谢谢！"
+  },
+  "v9_panel_error_unknown_description": {
+    "message": "抱歉，拓展遇到未知问题。我们希望您可以上传匿名的错误报告以便我们分析"
+  },
+  "v9_user_message_one_hundred_downloads_body": {
+    "message": "我们希望您享受此扩展带来的便利 :) 请留下您的评价"
+  },
+  "v9_user_message_one_hundred_downloads": {
+    "message": "已完成100次下载！"
+  },
+  "v9_user_message_one_hundred_downloads_leave_review": {
+    "message": "去评论"
+  },
+  "v9_user_message_one_hundred_downloads_never_show_again": {
+    "message": "不再询问"
+  }
+}

@@ -1,0 +1,1607 @@
+{
+  "Bytes": {
+    "message": "$1 Bytov"
+  },
+  "GB": {
+    "message": "$1 GB"
+  },
+  "KB": {
+    "message": "$1 KB"
+  },
+  "MB": {
+    "message": "$1 MB"
+  },
+  "about": {
+    "message": "O programe"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "Z dôvodu interných technických zmien vo Firefoxe, bol tento doplnok úplne prepísaný. Prosíme Vás a strpenie, nejakú dobu potrvá vrátenie všetkých možností z predošlých verzií."
+  },
+  "about_alpha_intro": {
+    "message": "Toto je alfa verzia"
+  },
+  "about_beta_intro": {
+    "message": "Toto je beta verzia"
+  },
+  "about_qr": {
+    "message": "Súbor vygenerovaný"
+  },
+  "about_vdh": {
+    "message": "O Pomocníkovi sťahovania videa"
+  },
+  "action_abort_description": {
+    "message": "Prerušenie bežiacej akcie"
+  },
+  "action_abort_title": {
+    "message": "Prerušiť"
+  },
+  "action_as_default": {
+    "message": "Použiť akciu ako východziu"
+  },
+  "action_avplay_description": {
+    "message": "Prehrať konvertované video natívnym prehliadačom"
+  },
+  "action_avplay_title": {
+    "message": "Prehrať"
+  },
+  "action_blacklist_description": {
+    "message": "Videá pochádzajúce z danej(ných) alebo vybranej(tých) domény(én) budú ignorované"
+  },
+  "action_blacklist_title": {
+    "message": "Pridať na čiernu listinu"
+  },
+  "action_bulkdownload_description": {
+    "message": "Stiahnuť vybrané videá"
+  },
+  "action_bulkdownload_title": {
+    "message": "Hromadné sťahovanie"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "Hromadné sťahovanie a konverzia vybraných videí"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Hromadné sťahovanie a konverzia"
+  },
+  "action_copyurl_description": {
+    "message": "Kopírovať URL adresu média do schránky"
+  },
+  "action_copyurl_title": {
+    "message": "Kopírovať URL"
+  },
+  "action_deletehit_description": {
+    "message": "Vymazať z aktuálneho zoznamu"
+  },
+  "action_deletehit_title": {
+    "message": "Vymazať"
+  },
+  "action_details_description": {
+    "message": "Zobraziť detaily o aktuálnych"
+  },
+  "action_details_title": {
+    "message": "Detaily o aktuálnych"
+  },
+  "action_download_description": {
+    "message": "Stiahnuť súbor na pevný disk"
+  },
+  "action_download_title": {
+    "message": "Stiahnuť"
+  },
+  "action_downloadconvert_description": {
+    "message": "Stiahnuť a konvertovať média na iný formát"
+  },
+  "action_downloadconvert_title": {
+    "message": "Stiahnuť&Konvertovať"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "Otvoriť súbor v lokálnom adresári"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Otvoriť adresár"
+  },
+  "action_openlocalfile_description": {
+    "message": "Otvoriť mediálny súbor"
+  },
+  "action_openlocalfile_title": {
+    "message": "Otvoriť média"
+  },
+  "action_pin_description": {
+    "message": "Vytvoriť trvale"
+  },
+  "action_pin_title": {
+    "message": "Pripnúť"
+  },
+  "action_quickdownload_description": {
+    "message": "Stiahnuť bez otázky na umiestnenie"
+  },
+  "action_quickdownload_title": {
+    "message": "Rýchle stiahnutie"
+  },
+  "action_stop_description": {
+    "message": "Zastaviť snímanie"
+  },
+  "action_stop_title": {
+    "message": "Zastaviť"
+  },
+  "adaptative": {
+    "message": "Adaptívne $1"
+  },
+  "add_to_blacklist": {
+    "message": "Pridať na čierny zoznam"
+  },
+  "add_to_blacklist_help": {
+    "message": "Videá pochádzajúce z vybraného(ných) serveru(ov) budú ignorované"
+  },
+  "advanced": {
+    "message": "Rozšírené"
+  },
+  "aggregating": {
+    "message": "Agregovanie..."
+  },
+  "analyze_page": {
+    "message": "Analýza stránky"
+  },
+  "appDesc": {
+    "message": "Download Videos from the Web"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Výstup"
+  },
+  "audio_only": {
+    "message": "Iba zvuk"
+  },
+  "behavior": {
+    "message": "Počínanie"
+  },
+  "blacklist": {
+    "message": "Čierny zoznam"
+  },
+  "blacklist_add_domain": {
+    "message": "Pridať doménu na čierny zoznam"
+  },
+  "blacklist_add_placeholder": {
+    "message": "Doména na čierny zoznam"
+  },
+  "blacklist_edit_descr": {
+    "message": "Čierna listina umožňuje ignorovať médiá prichádzajúce z niektorých domén"
+  },
+  "blacklist_empty": {
+    "message": "Bez domén na čiernej listine"
+  },
+  "browser_info": {
+    "message": "Prehliadač $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "Lokalizácia prehliadača $1"
+  },
+  "build_options": {
+    "message": "Voľby vytvorenia: $1"
+  },
+  "built_on": {
+    "message": "Vytvorenie: $1"
+  },
+  "bulk_in_progress": {
+    "message": "Prebiehajú hromadné operácie vo Video DownloadHelper. Nezatvárajte túto kartu, zatvorená bude automaticky."
+  },
+  "bulk_n_videos": {
+    "message": "$1 videá"
+  },
+  "cancel": {
+    "message": "Prerušenie"
+  },
+  "change": {
+    "message": "Zmeny"
+  },
+  "chrome_basic_mode": {
+    "message": "Chrome Basic"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Premium status bez časového obmedzenia"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Premium status na základe mesačnej objednávky"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Premium status na základe ročnej objednávky"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "Nie je k dispozícii"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Doživotný Premium"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Mešačná objednávka Premium"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Ročná objednávka Premium"
+  },
+  "chrome_install_firefox": {
+    "message": "Nainštalujte Firefox"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper pre Firefox"
+  },
+  "chrome_licensing": {
+    "message": "Chrome licencie"
+  },
+  "chrome_noyt_text": {
+    "message": "Žiaľ, obchod Google Web Store nepovoľuje rozšírenia na sťahovanie YouTube videí, takže sme museli funkciu odstrániť."
+  },
+  "chrome_noyt_text2": {
+    "message": "Video DownloadHelper môžete používať na sťahovanie YouTube videí vo verzii pre Firefox."
+  },
+  "chrome_noyt_text3": {
+    "message": "Bohužiaľ, Internetový obchod Chrome neumožňuje rozšíreniam sťahovať videá z YouTube, takže sme túto funkcionalitu nemohli zahrnúť do vydania tohto rozšírenia pre Chrome."
+  },
+  "chrome_premium_audio": {
+    "message": "Generovanie iba-audio fúborov je možné iba v Premium mode"
+  },
+  "chrome_premium_check_error": {
+    "message": "Chyba pri kontrole Premium status"
+  },
+  "chrome_premium_hls": {
+    "message": "Bez Premium status HLS download sa môže uskutočniť iba $1 minút po predošlom"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome Premium"
+  },
+  "chrome_premium_need_sign": {
+    "message": "Aby ste mali k dispozícii výhody Premium, musíte sa prihlásiť do Chrome"
+  },
+  "chrome_premium_not_signed": {
+    "message": "Neprihlásený do Chrome"
+  },
+  "chrome_premium_recheck": {
+    "message": "Skontrolujte Premium status"
+  },
+  "chrome_premium_required": {
+    "message": "Je vyžadovaný Premium status"
+  },
+  "chrome_premium_source": {
+    "message": "Máte aktívny prémiový účet na $1"
+  },
+  "chrome_product_intro": {
+    "message": "Upgrade na Premium môžete získať použitím ktorejkoľvek z nasledujúcich možností"
+  },
+  "chrome_req_review": {
+    "message": "Alternatívne, mohli by ste napísať peknú recenziu na Chrome WebStore?"
+  },
+  "chrome_signing_in": {
+    "message": "Prihlasovanie do Chrome"
+  },
+  "chrome_verif_premium": {
+    "message": "Verifikovanie Premium status ..."
+  },
+  "chrome_verif_premium_error": {
+    "message": "API pre platby v aplikácii nie je dostupné"
+  },
+  "chrome_warning_yt": {
+    "message": "Varovanie o rozšíreniach Chrome a YouTube"
+  },
+  "clear": {
+    "message": "Vymazanie"
+  },
+  "clear_hits": {
+    "message": "Zmazať aktuálne"
+  },
+  "clear_logs": {
+    "message": "Vymazanie logov"
+  },
+  "coapp": {
+    "message": "Pridružená aplikácia"
+  },
+  "coapp_error": {
+    "message": "Kontrola pridruženej aplikácie vrátila:"
+  },
+  "coapp_found": {
+    "message": "Nájdená pridružená apl. :"
+  },
+  "coapp_install": {
+    "message": "Inštalácia pridruženej apl.:"
+  },
+  "coapp_installed": {
+    "message": "Pridružená apl. naištalovaná"
+  },
+  "coapp_latest_version": {
+    "message": "Posledná dostupná verzia je  $1"
+  },
+  "coapp_not_installed": {
+    "message": "Pridružená apl. nie je inštalovaná"
+  },
+  "coapp_outdated": {
+    "message": "Pridružená apl. je zastaraná - prosím aktualizujte"
+  },
+  "coapp_outofdate": {
+    "message": "Vyžaduje sa aktualizácia pridruženej apl."
+  },
+  "coapp_outofdate_text": {
+    "message": "Pridružená apl. beží vo verzii $1, ale toto rozšírenie si vyžaduje verziu $2"
+  },
+  "coapp_path": {
+    "message": "Umiestnenie pridruženej apl. :"
+  },
+  "coapp_recheck": {
+    "message": "Skontrolovať"
+  },
+  "coapp_required": {
+    "message": "Požaduje sa pridružená aplikácia"
+  },
+  "coapp_required_text": {
+    "message": "Daná operácia potrebuje externú pridruženú aplikáciu pre dokončenie."
+  },
+  "coapp_shell": {
+    "message": "Prostredie pridruženej apl."
+  },
+  "coapp_unchecked": {
+    "message": "Overuje sa pridružená apl. ..."
+  },
+  "coapp_update": {
+    "message": "Aktualizácia pridruženej aplikácie"
+  },
+  "collecting": {
+    "message": "Zbieranie..."
+  },
+  "confirmation_required": {
+    "message": "Požaduje sa potvrdenie"
+  },
+  "congratulations": {
+    "message": "Gratulujeme !"
+  },
+  "continue": {
+    "message": "Pokračovanie"
+  },
+  "convconf_2passes": {
+    "message": "2 priechody"
+  },
+  "convconf_ac": {
+    "message": "Zvukový kanál"
+  },
+  "convconf_acnone": {
+    "message": "Nič"
+  },
+  "convconf_acodec": {
+    "message": "Audio kodek"
+  },
+  "convconf_aspect": {
+    "message": "Pomer strán"
+  },
+  "convconf_audiobitrate": {
+    "message": "Kvalita audio (bitrate)"
+  },
+  "convconf_audiofreq": {
+    "message": "Frekvenčný rozsah"
+  },
+  "convconf_audioonly": {
+    "message": "Iba zvuk"
+  },
+  "convconf_bitrate": {
+    "message": "Kvalita (bitrate)"
+  },
+  "convconf_container": {
+    "message": "Formát"
+  },
+  "convconf_duplicate": {
+    "message": "Duplikácia"
+  },
+  "convconf_ext": {
+    "message": "Výstupná prípona súboru"
+  },
+  "convconf_extra": {
+    "message": "Parametre naviac"
+  },
+  "convconf_level": {
+    "message": "Úroveň"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Nové"
+  },
+  "convconf_preset": {
+    "message": "Prednastaviť"
+  },
+  "convconf_profilev": {
+    "message": "Video profil"
+  },
+  "convconf_rate": {
+    "message": "Počet snímkov"
+  },
+  "convconf_readonly": {
+    "message": "Východzie nastavenie je iba na čítanie. Vytvorenie duplikátu umožní modifikácie."
+  },
+  "convconf_remove": {
+    "message": "Odstrániť"
+  },
+  "convconf_reset": {
+    "message": "Resetovať všetko"
+  },
+  "convconf_reset_confirm": {
+    "message": "Budú odstránené všetky používateľské nastavenia"
+  },
+  "convconf_save": {
+    "message": "Uložiť"
+  },
+  "convconf_size": {
+    "message": "Veľkosť snímky"
+  },
+  "convconf_stereo": {
+    "message": "Stereo"
+  },
+  "convconf_target": {
+    "message": "Cieľ"
+  },
+  "convconf_tune": {
+    "message": "Ladenie"
+  },
+  "convconf_vcodec": {
+    "message": "Video kodek"
+  },
+  "convconf_videobitrate": {
+    "message": "Rýchlosť videa (bitrate)"
+  },
+  "conversion_create_rule": {
+    "message": "Vytvoriť pravidlo"
+  },
+  "conversion_outputs": {
+    "message": "Výstupy konverzie"
+  },
+  "conversion_rules": {
+    "message": "Pravidlá konverzie"
+  },
+  "conversion_update_rule": {
+    "message": "Aktualizácia pravidla"
+  },
+  "convert": {
+    "message": "Konverzia"
+  },
+  "convert_local_files": {
+    "message": "Konverzia lokálnych súborov"
+  },
+  "converter_needed_aggregate": {
+    "message": "Operácia požaduje v systéme nainštalovanú pridruženú apl. na zlučovanie video a audio streamov."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Prečo je potrebný konvertor ?"
+  },
+  "converter_needs_reg": {
+    "message": "Vyžadovaná registrácia"
+  },
+  "converter_queued": {
+    "message": "Konvertor zastavený..."
+  },
+  "converter_reg_audio": {
+    "message": "Požadovali ste nejaké explicitné alebo automatické konverzné pravidlo na generovania audia z mediálneho súboru. Je požadovaný zaregistrovaný konvertor."
+  },
+  "converting": {
+    "message": "Konvertujem..."
+  },
+  "convrule_convert": {
+    "message": "Konverzia"
+  },
+  "convrule_domain": {
+    "message": "Doména"
+  },
+  "convrule_extension": {
+    "message": "Prípona"
+  },
+  "convrule_format": {
+    "message": "do formátu $1"
+  },
+  "convrule_from_domain": {
+    "message": "z domény $1"
+  },
+  "convrule_no_convert": {
+    "message": "Nekonvertovať"
+  },
+  "convrule_output_format": {
+    "message": "Výstupný formát"
+  },
+  "convrule_refresh_formats": {
+    "message": "Obnoviť výstupné formáty"
+  },
+  "convrule_with_ext": {
+    "message": "s príponou '$1'"
+  },
+  "convrules_add_rule": {
+    "message": "Vytvoriť nové pravidlo konverzie"
+  },
+  "convrules_edit_descr": {
+    "message": "Pravidlá konverzie umožňujú vykonať konverziu média automaticky ihneď po stiahnutí"
+  },
+  "convrules_empty": {
+    "message": "Žiadne pravidlá konverzie"
+  },
+  "copy_of": {
+    "message": "Kópia z $1"
+  },
+  "corrupted_media_file": {
+    "message": "Nedajú sa zistiť informácie o médiu '$1' zo súboru '$2'. Súbor môže byť poškodený."
+  },
+  "create": {
+    "message": "Vytvorenie"
+  },
+  "custom_output": {
+    "message": "Používateľský výstupný formát"
+  },
+  "dash_streaming": {
+    "message": "DASH stremovanie"
+  },
+  "default": {
+    "message": "Východzie"
+  },
+  "details_parenthesis": {
+    "message": "(Detaily)"
+  },
+  "dev_build": {
+    "message": "Vývojársky build"
+  },
+  "directory_not_exist": {
+    "message": "Neexistujúca zložka"
+  },
+  "directory_not_exist_body": {
+    "message": "Zložka '$1' neexistuje, OK vytvoriť ?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Stiahnutie & Konverzia"
+  },
+  "dlconv_output_details": {
+    "message": "Nastavenie podrobností výstupu"
+  },
+  "donate": {
+    "message": "Sponzorovať"
+  },
+  "donate_vdh": {
+    "message": "Návod Pomocníka sťahovania videa"
+  },
+  "download_error": {
+    "message": "Chyba sťahovania"
+  },
+  "download_method": {
+    "message": "Metóda sťahovania"
+  },
+  "download_method_not_again": {
+    "message": "Použiť túto metódu aj v budúcnosti"
+  },
+  "download_modes1": {
+    "message": "Sťahovanie sa môže uskutočniť buď pomocou prehliadača, alebo pomocou sprievodnej aplikácie."
+  },
+  "download_modes2": {
+    "message": "Z technických dôvodov môže sťahovanie zo služieb prehliadača spôsobiť odmietnutie preberania serverom, ktorý hosťuje video a nie je možné definovať alternatívnu predvolenú zložku na prevzatie."
+  },
+  "download_with_browser": {
+    "message": "Použiť prehliadač"
+  },
+  "download_with_coapp": {
+    "message": "Použiť sprievodnú aplikáciu"
+  },
+  "downloading": {
+    "message": "Sťahovanie..."
+  },
+  "edge_req_review": {
+    "message": "Alebo, nevadilo by Vám napísať pozitívnu recenziu v obchode s doplnkami pre Microsoft Edge?"
+  },
+  "error": {
+    "message": "Chyba"
+  },
+  "error_not_directory": {
+    "message": "'$1' už existuje, ale nie je adresár"
+  },
+  "errors": {
+    "message": "Chyby"
+  },
+  "exit_natmsgsh": {
+    "message": "Ukončiť sprievodnú aplikáciu"
+  },
+  "explain_qr1": {
+    "message": "Môžete si všimnúť,  že výsledné video obsahuje v rohu vodoznak."
+  },
+  "explain_qr2": {
+    "message": "Je to preto, lebo bol zvolený variant ADP a funkcia konverzie nie je registrovaná."
+  },
+  "export": {
+    "message": "Export"
+  },
+  "failed_aggregating": {
+    "message": "Nepodarila sa agregácia \"$1\""
+  },
+  "failed_converting": {
+    "message": "Chyba konverzie \"$1\""
+  },
+  "failed_getting_info": {
+    "message": "Chyba získania informácie z \"$1\""
+  },
+  "failed_opening_directory": {
+    "message": "Zlyhanie otvárania súboru v adresári"
+  },
+  "failed_playing_file": {
+    "message": "Zlyhanie prehrávania súboru"
+  },
+  "file_dialog_date": {
+    "message": "Dátum"
+  },
+  "file_dialog_name": {
+    "message": "Meno"
+  },
+  "file_dialog_size": {
+    "message": "Veľkosť"
+  },
+  "file_generated": {
+    "message": "Súbor \"$1\" bol vygenerovaný(á)"
+  },
+  "file_ready": {
+    "message": "\"$1\" je už pripravený(á)"
+  },
+  "finalizing": {
+    "message": "Finalizácia..."
+  },
+  "from_domain": {
+    "message": "Z $1"
+  },
+  "gallery": {
+    "message": "Galéria"
+  },
+  "gallery_files_types": {
+    "message": "$1 súborov"
+  },
+  "gallery_from_domain": {
+    "message": "Galéria z $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Linky z $1"
+  },
+  "general": {
+    "message": "Všeobecné"
+  },
+  "get_conversion_license": {
+    "message": "Získať konverznú licenciu"
+  },
+  "help_translating": {
+    "message": "Pomôcť s prekladom"
+  },
+  "hit_details": {
+    "message": "Podrobnosti o aktuálnych"
+  },
+  "hit_go_to_tab": {
+    "message": "Ísť na kartu"
+  },
+  "hls_streaming": {
+    "message": "HLS streamovanie"
+  },
+  "homepage": {
+    "message": "Domáca stránka"
+  },
+  "import": {
+    "message": "Import"
+  },
+  "import_invalid_format": {
+    "message": "Chybný formát"
+  },
+  "in_current_tab": {
+    "message": "Na aktuálnej karte"
+  },
+  "in_other_tab": {
+    "message": "Na inej karte"
+  },
+  "lic_mismatch1": {
+    "message": "Licencia je pre $1 ale verzia doplnku prehliadača nebola špecifikovaná"
+  },
+  "lic_mismatch2": {
+    "message": "Licencia je pre $1 ale verzia dplnku je pre $2"
+  },
+  "lic_not_needed_linux": {
+    "message": "Náš príspevok k Linuxu: Licencia sa nevyžaduje"
+  },
+  "lic_status_accepted": {
+    "message": "Licencia overená"
+  },
+  "lic_status_blocked": {
+    "message": "Licencia blokovaná"
+  },
+  "lic_status_error": {
+    "message": "Chyba licencie"
+  },
+  "lic_status_locked": {
+    "message": "Licencia uzamknutá"
+  },
+  "lic_status_mismatch": {
+    "message": "Nezhodná licencia s prehliadačom"
+  },
+  "lic_status_nocoapp": {
+    "message": "Licenciu sa nepodarilo overiť"
+  },
+  "lic_status_unneeded": {
+    "message": "Licencia sa nevyžaduje"
+  },
+  "lic_status_unset": {
+    "message": "Licencia nie je nastavená"
+  },
+  "lic_status_unverified": {
+    "message": "Licencia nie je overená"
+  },
+  "lic_status_verifying": {
+    "message": "Overuje sa licencia..."
+  },
+  "license": {
+    "message": "Licencia"
+  },
+  "license_key": {
+    "message": "Licenčný kľúč"
+  },
+  "licensing": {
+    "message": "Licencovanie"
+  },
+  "logs": {
+    "message": "Logy"
+  },
+  "media": {
+    "message": "Média"
+  },
+  "merge_error": {
+    "message": "Chyba zlúčenia"
+  },
+  "merge_local_files": {
+    "message": "Zlúčiť miestne zvukové a obrazové súbory"
+  },
+  "more": {
+    "message": "Viac ..."
+  },
+  "network_error_no_response": {
+    "message": "Chyba siete - neodpovedá"
+  },
+  "network_error_status": {
+    "message": "Chyba siete - status $1"
+  },
+  "new_sub_directory": {
+    "message": "Vytvoriť podadresár"
+  },
+  "next": {
+    "message": "Ďalej"
+  },
+  "no": {
+    "message": "Nie"
+  },
+  "no_audio_in_file": {
+    "message": "Žiadna stopa so zvukom v súbore $1"
+  },
+  "no_coapp_license_unverified": {
+    "message": "Licencia nemôže byť overená, pretože sprievodná apl. nie je nainštalovaná"
+  },
+  "no_license_registered": {
+    "message": "Žiadna licencia nebola registrovaná"
+  },
+  "no_media_current_tab": {
+    "message": "Na aktuálnej karte sa nespracováva žiadne médium"
+  },
+  "no_media_to_process": {
+    "message": "Žiadne médium na spracovanie"
+  },
+  "no_media_to_process_descr": {
+    "message": "Prehrať video na pomoc s chybným(i) súborom(mi)..."
+  },
+  "no_such_hit": {
+    "message": "Aktuálne nenájdené"
+  },
+  "no_validate_without_coapp": {
+    "message": "Sprievodná apl. musí byť inštalovaná na overenie licencie"
+  },
+  "no_video_in_file": {
+    "message": "Žiadna stopa s obrazom v súbore $1"
+  },
+  "not_again_3months": {
+    "message": "Neobťažovať ma opakovane počas 3 mesiacov"
+  },
+  "not_see_again": {
+    "message": "Nechcem vidieť túto správu opakovane"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "ok": {
+    "message": "OK"
+  },
+  "orphan": {
+    "message": "Osamotené"
+  },
+  "output_configuration": {
+    "message": "Výstupná konfigurácia"
+  },
+  "overwrite_file": {
+    "message": "Prepísať súbor '$1' ?"
+  },
+  "per_month": {
+    "message": "/ mesiac"
+  },
+  "per_year": {
+    "message": "/ rok"
+  },
+  "pinned": {
+    "message": "Pripnuté"
+  },
+  "platform": {
+    "message": "Platforma"
+  },
+  "platform_info": {
+    "message": "Platforma $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "Powered na Weh"
+  },
+  "preferences": {
+    "message": "Preferencie"
+  },
+  "prod_build": {
+    "message": "Build produktu"
+  },
+  "quality_medium": {
+    "message": "Médium"
+  },
+  "quality_small": {
+    "message": "Nízka"
+  },
+  "queued": {
+    "message": "V poradí..."
+  },
+  "recheck_license": {
+    "message": "Skontrolovať licenciu"
+  },
+  "register_converter": {
+    "message": "Registrovať konverter"
+  },
+  "register_existing_license": {
+    "message": "Registrovať existujúcu licenciu"
+  },
+  "registered_email": {
+    "message": "Mail"
+  },
+  "registered_key": {
+    "message": "Kľúč"
+  },
+  "reload_addon": {
+    "message": "Obnoviť prípony"
+  },
+  "reload_addon_confirm": {
+    "message": "Určite obnoviť prípony ?"
+  },
+  "req_donate": {
+    "message": "Zvážili by ste podporu vývoja a podarovali niečo málo ?"
+  },
+  "req_locale": {
+    "message": "Alebo možno pomôžete s prekladom add-on '$1' (chýbajúce reťazce sú v $2) ?"
+  },
+  "req_review": {
+    "message": "Alternatívne, mohli by ste napísať peknú recenziu  na Mozilla \"add-on stránkach\" ?"
+  },
+  "req_review_link": {
+    "message": "Napíšte recenziu o Pomocníkovi sťahovania videa"
+  },
+  "reset_settings": {
+    "message": "Reset nastavení"
+  },
+  "running": {
+    "message": "Bežiace"
+  },
+  "save": {
+    "message": "Uložiť"
+  },
+  "save_as": {
+    "message": "Uložiť ako"
+  },
+  "save_file_as": {
+    "message": "Uložiť súbor ako"
+  },
+  "select_audio_file_to_merge": {
+    "message": "Vybrať súbor obsahujúci stopu so zvukom"
+  },
+  "select_files_to_convert": {
+    "message": "Konverzia lokálneho súboru"
+  },
+  "select_output_config": {
+    "message": "Vybrať výstupnú konfiguráciu..."
+  },
+  "select_output_directory": {
+    "message": "Výstupný adresár"
+  },
+  "select_video_file_to_merge": {
+    "message": "Vybrať súbor obsahujúci stopu s obrazom"
+  },
+  "selected_media": {
+    "message": "Hromadný výber"
+  },
+  "settings": {
+    "message": "Nastavenia"
+  },
+  "smartname_add_domain": {
+    "message": "Pridať Šikovné pravidlo pomenovania"
+  },
+  "smartname_create_rule": {
+    "message": "Vytvoriť šikovné pravidlo pomenovania"
+  },
+  "smartname_define": {
+    "message": "Definovať Šikovné pravidlo pomenovania"
+  },
+  "smartname_edit_descr": {
+    "message": "Šikovné pravidlo pomenovania umožňuje prispôsobenie videa podľa mena hostitaľa"
+  },
+  "smartname_empty": {
+    "message": "Bez Šikovného pravidla pomenovania"
+  },
+  "smartname_update_rule": {
+    "message": "Upraviť šikovné pravidlo pomenovania"
+  },
+  "smartnamer_delay": {
+    "message": "Odloženie zachytenia mena (ms)"
+  },
+  "smartnamer_domain": {
+    "message": "Doména"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Vziať meno z hlavičky dokumentu/URL"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Prevzať meno z obsahu stránky"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Prevzať meno z názvu stránky"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Použiť zmätočné meno"
+  },
+  "smartnamer_regexp": {
+    "message": "Regulárna prípona"
+  },
+  "smartnamer_selected_text": {
+    "message": "Vybraný text"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "Výraz XPath"
+  },
+  "smartnaming_rule": {
+    "message": "Šikovné pravidlo pomenovania"
+  },
+  "smartnaming_rules": {
+    "message": "Šikovné pravidlá pomenovania"
+  },
+  "sub_directory_name": {
+    "message": "Názov podadresára"
+  },
+  "support_forum": {
+    "message": "Podpora fóra"
+  },
+  "supported_sites": {
+    "message": "Podporované stránky"
+  },
+  "tbsn_quality_hd": {
+    "message": "Stredná kvalita"
+  },
+  "tbsn_quality_sd": {
+    "message": "Nízka kvalita"
+  },
+  "tell_me_more": {
+    "message": "Povedať viac o..."
+  },
+  "title": {
+    "message": "Pomocník sťahovania videa"
+  },
+  "translation": {
+    "message": "Preklad"
+  },
+  "up": {
+    "message": "Nahor"
+  },
+  "validate_license": {
+    "message": "Registrovať licenciu"
+  },
+  "variants_list_adp": {
+    "message": "Adaptívne varianty"
+  },
+  "variants_list_full": {
+    "message": "Varianty"
+  },
+  "vdh_notification": {
+    "message": "Pomocník sťahovania videa"
+  },
+  "version": {
+    "message": "Verzia $1"
+  },
+  "video_only": {
+    "message": "Iba video"
+  },
+  "video_qualities": {
+    "message": "Kvalita videa"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "Okno"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "Karta"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "Opýtať sa"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "Prehliadač"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "Sprievodná aplikácia"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Stiahnuť audio"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "Agregácia zvuku a videa"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Stiahnuť video"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Nezobrazovať ADP varianty v zozname sťahovania"
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "Ako sa zobrazia upozorňujúce dialógy"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Pripnúť aktuálne po stiahnutí"
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "Prehrať všetko video pomocou CoAPP"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Preventívne niektorým stránkam zabrániť v aktivovaní rozpoznania média"
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "Povoliť operácie hromadného sťahovania"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "Pri spustení doplnku overte či je dostupná sprievodná aplikácia lepšieho detekovania médií"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "Požiadať o čiastočné dáta použitím sprievodnej apl."
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "Požiadať o čiastočné manifesty použitím sprievodnej apl."
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "Maximum segmentov, ktoré budú sťahované paralelne"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Čiastočný streaming povolený"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "Koľko segmentov sa stiahne vopred"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "Aplikácia vykonáva skutočné prevzatie"
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "Automaticky uzavrieť po hodnote v ms, vypnuté ak je 0"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "Čakanie v ms až sa reštaruje CoApp"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "CoApp používa rovnaké proxy ako pôvodná požiadavka"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "Niektoré stránky môžu vrátiť novú URL namiesto mediálneho obsahu"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "Prístup k príkazom kliknutím pravého tlačidla myši na stránke"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "Maximálny počet súčasných agregácií alebo konverzných úloh"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Vynútenie H264 ladenia v agregácii"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "Neodstraňovať dočasné súbory po skončení procesov"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "Počet vlákien použitých počas konverzie"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "DASH čiastočný streaming povolený"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "Nezobrazovať .m4s položky v zozname sťahovania"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Keď Dash obsahuje audio a video"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "Dialógy budú zatvorené keď stratíte fokus"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Kontroluje počet addonom generovaných stiahnutí bežiacich súčasne, aby sa zachovala šírka pásma"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Počet zopakovaných stiahnutí"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Oneskorenie medzi zopakovanými stiahnutiami (ms)"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "Ovláda počet streamov sťahovaných pre jednu položku"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "Ako sú suborové dialógy zobrazené"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "Ako úpmenovať súbory z galérie stiahnutých"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "Zobraziť odkaz vo vstupnom popise pri prepnutí na kartu videa"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "Stiahnuť HLS streamy ako M2TS"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "HLS čiastočný straming povolený"
+  },
+  "weh_prefs_description_hlsRememberPrevLiveChunks": {
+    "message": "Zapamätať si predchádzajúce časti živého prenosu cez HLS"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "Kedy sa aktivovuje ikona panelu s nástrojmi"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "Zobrazenie značky ikony panela nástrojov"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "Nezobrazovať varianty, čo sú chránené"
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "Použiť iba sprievodnú aplikáciu na sťahovanie"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "Prípony, čo sú považované za média"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "Vykonať vždy nahratie stránky (môže ovplyvniť výkon)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "Prípony súborov zvažované pre zachytie v galérii"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "Limit počtu vstupov detekovaných v galérii"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "Minimum počtu vstupov detekovaných v galérii"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "Minimálna veľkosť obrazu zvažovaná ako obrázok galérie"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "Detekcia obrázkov v rámci stránky"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "Detekcia média priamo prepojeného zo stránkou"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Ignorovať pod túto veľosť"
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Vynútiť detekciu média nad túto veľkosť"
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "Stiahnuť použitím rovnakej hlavičky ako originálny požiadavok"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": "Nezobrazovať.ts položky v zozname sťahovania"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Regulárny výraz na ignorovanie rovnakých adries médií"
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "Skenovanie sieťovej komunikácia na detekciu prístupov"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Bez upozornení na privátne prístupy"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Upozorniť počas spracovania"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Časový limit v sekundách pred odstránením osamotených"
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Maximálny počet zobrazovaných variantov rovnakého videa"
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "Použiť poslený adresár na sťahovanie ako východzie umiestnenie"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "Zabezpečí generovanie názvov súborov nepresiahujúcich túto veľkosť."
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "Ako sa vysporiadať s medzerami v názvoch videa"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "Povoliť detekciu a sťahovanie videí na Facebook-u"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "Ako dlho by sa mali tituly videa zobrazovať na hlavnom panely"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "Príkazy na prístup z ponuky Menu nástrojov"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "Okno"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "Karta"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "Index  - Url"
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "Typ - Index"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "Url"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Z ľubovoľnej karty"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Z aktuálnej karty"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Média z aktívnej karty"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Média z ľubovoľnej karty"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Zmiešané"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Žiadne"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Pripnuté"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Bežiace úlohy"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "Skryť ADP varianty"
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "Úpozorňujúci dialóg"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Auto pripnutie"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Prehrávač povolený"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Povoliť čierny zoznam"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "Hromadný výber povolený"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "Skontrolovať sprievodnú apl. pri štarte"
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "Vyžadované časti dát sprievodnou apl."
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "Vyžadované časti maninfestu sprievodnou apl."
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Súčasne sťahované časti"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Streaming časti"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Predbežný počet častí"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "Použitý sťahovač"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "Časovač ukončenia sprievodnej apl."
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "Oneskorenie reštartu sprievodnej apl."
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "Proxy sprievodnej apl."
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "Presmerovanie obsahu povolené"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "Obsahové menu"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "Súčasné operácie konvertora"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "H264 vyladenie"
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "Uchovať dočasné súbory"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Vlákna konverzie"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH povolený"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": "Skryť.m4s"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "DASH stremy"
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "Auto ukončovanie dialógov"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Max. súčasných sťahovaní"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "Opakované stiahnutie"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "Oneskorenie opakovania"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "Max. súčasné sťahovanie streamov"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "Dialóg súboru"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "Pomenovanie súborov v galérii"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "Zobraziť použitie Choď na kartu"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS ako M2TS"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS povolené"
+  },
+  "weh_prefs_label_hlsRememberPrevLiveChunks": {
+    "message": "História živého prenosu cez HLS"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Aktivácia ikony"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Značka ikony"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Ignorovať chránené varianty"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "Východzí adresár sťahovania"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Detekovať prípony"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "Autodetekcia Galérie"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "Prípony mediálnych odkazov"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "Maximum položiek"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "Minimum položiek"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Minimálna veľkosť obrázku"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Detekcia vložených obrázkov"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Detekcia odkazov na média"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Minimálna veľkosť"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Hraničná veľkosť"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "Požadovanie hlavičky"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": "Skryť .ts"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Sieťové odfiltrovanie"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Sondovanie v sieti"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Súkromné notifikácie"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Notifikácie"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Časový limit vypršania platnosti osamotených"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Max. variantov"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "Pamätať posledný adresár"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Max. dĺžka mena súboru"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Hlavný panel s dlhým popisom"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Facebook podpora"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Hlavný panel s dlhým popisom"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Menu nástrojov"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Nahradiť pomlčkami"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Uložiť"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Odstrániť"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Medzery nahradiť podčiarknutím"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "Elipsa vľavo"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "V niekoľkých riadkoch"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "Elipsa napravo"
+  },
+  "yes": {
+    "message": "Áno"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Práve teraz bolo dokončené stiahnutie $1 aplikáciou Pomocník sťahovania videa."
+  },
+  "v9_yes": {
+    "message": "Áno"
+  },
+  "v9_no": {
+    "message": "Nie"
+  },
+  "v9_error": {
+    "message": "Chyba"
+  },
+  "v9_no_media_current_tab": {
+    "message": "Na aktuálnej karte sa nespracováva žiadne médium"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Prehrať video na pomoc s chybným(i) súborom(mi)..."
+  },
+  "v9_coapp_required": {
+    "message": "Požaduje sa pridružená aplikácia"
+  },
+  "v9_coapp_required_text": {
+    "message": "Daná operácia potrebuje externú pridruženú aplikáciu pre dokončenie."
+  },
+  "v9_coapp_installed": {
+    "message": "Pridružená apl. naištalovaná"
+  },
+  "v9_coapp_recheck": {
+    "message": "Skontrolovať"
+  },
+  "v9_lic_status_accepted": {
+    "message": "Licencia overená"
+  },
+  "v9_coapp_outdated": {
+    "message": "Pridružená apl. je zastaraná - prosím aktualizujte"
+  },
+  "v9_converter_needs_reg": {
+    "message": "Vyžadovaná registrácia"
+  },
+  "v9_get_conversion_license": {
+    "message": "Získať konverznú licenciu"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Požadovali ste nejaké explicitné alebo automatické konverzné pravidlo na generovania audia z mediálneho súboru. Je požadovaný zaregistrovaný konvertor."
+  },
+  "v9_chrome_premium_required": {
+    "message": "Je vyžadovaný Premium status"
+  },
+  "v9_chrome_premium_hls": {
+    "message": "Bez Premium status HLS download sa môže uskutočniť iba $1 minút po predošlom"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Varovanie o rozšíreniach Chrome a YouTube"
+  },
+  "v9_chrome_noyt_text3": {
+    "message": "Bohužiaľ, Internetový obchod Chrome neumožňuje rozšíreniam sťahovať videá z YouTube, takže sme túto funkcionalitu nemohli zahrnúť do vydania tohto rozšírenia pre Chrome."
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Video DownloadHelper môžete používať na sťahovanie YouTube videí vo verzii pre Firefox."
+  },
+  "v9_about_qr": {
+    "message": "Súbor vygenerovaný"
+  },
+  "v9_explain_qr1": {
+    "message": "Môžete si všimnúť, že výsledné video obsahuje v rohu vodoznak."
+  },
+  "v9_not_see_again": {
+    "message": "Nechcem vidieť túto správu opakovane"
+  },
+  "v9_tell_me_more": {
+    "message": "Povedať viac o..."
+  },
+  "v9_settings": {
+    "message": "Nastavenia"
+  },
+  "v9_coapp_unchecked": {
+    "message": "Overuje sa pridružená apl. ..."
+  },
+  "v9_coapp_update": {
+    "message": "Aktualizácia pridruženej aplikácie"
+  },
+  "v9_coapp_not_installed": {
+    "message": "Pridružená apl. nie je inštalovaná"
+  },
+  "v9_coapp_install": {
+    "message": "Inštalácia pridruženej apl.:"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "Sprievodná apl. musí byť inštalovaná na overenie licencie"
+  },
+  "v9_lic_status_verifying": {
+    "message": "Overuje sa licencia..."
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Max. súčasných sťahovaní"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "Prístup k príkazom kliknutím pravého tlačidla myši na stránke"
+  },
+  "v9_vdh_notification": {
+    "message": "Pomocník sťahovania videa"
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" je už pripravený(á)"
+  },
+  "v9_lic_status_unset": {
+    "message": "Licencia nie je nastavená"
+  },
+  "v9_lic_status_blocked": {
+    "message": "Licencia blokovaná"
+  },
+  "v9_lic_status_locked": {
+    "message": "Licencia uzamknutá"
+  },
+  "v9_lic_mismatch2": {
+    "message": "Licencia je pre $1 ale verzia dplnku je pre $2"
+  },
+  "v9_no_license_registered": {
+    "message": "Žiadna licencia nebola registrovaná"
+  }
+}

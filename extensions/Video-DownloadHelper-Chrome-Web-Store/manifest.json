@@ -1,0 +1,95 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "author": "Michel Gutierrez",
+  "default_locale": "en_US",
+  "description": "__MSG_appDesc__",
+  "version": "9.3.5.4",
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "downloads",
+    "webNavigation",
+    "notifications",
+    "scripting",
+    "storage",
+    "contextMenus",
+    "nativeMessaging",
+    "declarativeNetRequest",
+    "sidePanel"
+  ],
+  "optional_permissions": [
+    "browsingData",
+    "downloads.open"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.downloadhelper.net/*"
+      ],
+      "js": [
+        "injected/downloadhelper.net.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.downloadhelper.net/changelog/mozilla/*"
+      ],
+      "js": [
+        "injected/changelog.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.downloadhelper.net/debugger"
+      ],
+      "js": [
+        "injected/debugger.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "commands": {
+    "default-action": {
+      "description": "Execute default action",
+      "suggested_key": {
+        "default": "Alt+Down",
+        "mac": "Ctrl+Shift+Down"
+      }
+    },
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Up",
+        "mac": "Ctrl+Shift+Up"
+      }
+    }
+  },
+  "manifest_version": 3,
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/main.js"
+  },
+  "action": {
+    "default_popup": "/content2/popup.html",
+    "default_title": "Video DownloadHelper",
+    "default_icon": {
+      "128": "/content2/icons/stable-color.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "/content2/sidebar.html",
+    "default_title": "Video DownloadHelper",
+    "default_icon": {
+      "128": "/content2/icons/stable-color.png"
+    }
+  },
+  "name": "Video DownloadHelper",
+  "icons": {
+    "128": "/content2/icons/stable-color.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqm/Cdcx4ikjVJbadUGpwrgJXdkc6Is8smuMiuAQbzgOg0cETVxuAY55UxgCxsh3lu4Os0RFK11bMBhu79Jbwv8tyml6mFGLLncLU2dFPZwnZWnIt5U+KC+uOvjryOacIPLxS/PeF2sXScNd0QJg/wTyl5WIizFtbcM3ZmFDFsj39FuUoH/OhO1Ux1/4Xn6dbSRb5F6qgkS2CU9ptTPQz0NJNaEmbL7vnWQkl2C8N4SjlDpRf/lC5r72Ow16hmbNmCGRhbxjPF0Dm+EO2uyF6dBw4n9V8BjBXQ7AdL5J3k4dXJk/oIOD2GQJsGyHK6TobNPPjy6W7bpPBtSfesIXS+wIDAQAB"
+}

@@ -1,0 +1,1616 @@
+{
+  "Bytes": {
+    "message": "$1 Bytes"
+  },
+  "GB": {
+    "message": "$1 GB"
+  },
+  "KB": {
+    "message": "$1 KB"
+  },
+  "MB": {
+    "message": "$1 MB"
+  },
+  "about": {
+    "message": "Quant a"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "Degut a canvis tècnics interns del Firefox, el connector s'ha hagur de reescriure completament. Si et plau, deixa passar unes setmanes per tornar a tenir totes les característiques de les versions anteriors"
+  },
+  "about_alpha_intro": {
+    "message": "Això és una versió alfa"
+  },
+  "about_beta_intro": {
+    "message": "Això és una versió beta"
+  },
+  "about_chrome_licenses": {
+    "message": "Sobre llicències Chrome"
+  },
+  "about_qr": {
+    "message": "Fitxer generat"
+  },
+  "about_vdh": {
+    "message": "Quant a Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "Interromp l'acció en progrés"
+  },
+  "action_abort_title": {
+    "message": "Interromp"
+  },
+  "action_as_default": {
+    "message": "Fes servir aquesta acció per omissió"
+  },
+  "action_avplay_description": {
+    "message": "Reprodueix el vídeo amb el visualitzador nadiu del conversor"
+  },
+  "action_avplay_title": {
+    "message": "Reprodueix"
+  },
+  "action_blacklist_description": {
+    "message": "Els vídeos procedents o servits des del(s) dimoni(s) seleccionats s'ignoraran"
+  },
+  "action_blacklist_title": {
+    "message": "Afegeix a la llista negra"
+  },
+  "action_bulkdownload_description": {
+    "message": "Baixa els vídeos seleccionats"
+  },
+  "action_bulkdownload_title": {
+    "message": "Baixada en grup"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "Baixa i converteix en grup els vídeos seleccionats"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Baixada i Conversió en Grup"
+  },
+  "action_copyurl_description": {
+    "message": "Copia l'URL del mitjà al portapapers"
+  },
+  "action_copyurl_title": {
+    "message": "Copia l'URL"
+  },
+  "action_deletehit_description": {
+    "message": "Suprimeix l'impacte de la llista actual"
+  },
+  "action_deletehit_title": {
+    "message": "Suprimeix"
+  },
+  "action_details_description": {
+    "message": "Mostra els detalls de l'impacte"
+  },
+  "action_details_title": {
+    "message": "Detalls"
+  },
+  "action_download_description": {
+    "message": "Baixa el fitxer al disc dur"
+  },
+  "action_download_title": {
+    "message": "Baixa"
+  },
+  "action_downloadconvert_description": {
+    "message": "Baixa el mitjà i el converteix a un altre format"
+  },
+  "action_downloadconvert_title": {
+    "message": "Baixada i Conversió"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "Obre un directori local"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Obre un directori"
+  },
+  "action_openlocalfile_description": {
+    "message": "Obre un fitxer local de mitjans"
+  },
+  "action_openlocalfile_title": {
+    "message": "Obre un mitjà"
+  },
+  "action_pin_description": {
+    "message": "Fes persistent l'impacte"
+  },
+  "action_pin_title": {
+    "message": "Fixa"
+  },
+  "action_quickdownload_description": {
+    "message": "Baixa sense demanar la destinació"
+  },
+  "action_quickdownload_title": {
+    "message": "Baixada ràpida"
+  },
+  "action_stop_description": {
+    "message": "Atura la captura"
+  },
+  "action_stop_title": {
+    "message": "Atura"
+  },
+  "adaptative": {
+    "message": "$1 adaptatives"
+  },
+  "add_to_blacklist": {
+    "message": "Afegeix a la llista negra"
+  },
+  "add_to_blacklist_help": {
+    "message": "Els vídeos procedents o servits des del(s) dominis seleccionats s'ignoraran"
+  },
+  "advanced": {
+    "message": "Avançat"
+  },
+  "aggregating": {
+    "message": "S'està agregant..."
+  },
+  "analyze_page": {
+    "message": "Analitza la pàgina"
+  },
+  "appDesc": {
+    "message": "Download Videos from the Web"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Aparença"
+  },
+  "audio_only": {
+    "message": "Només Àudio"
+  },
+  "behavior": {
+    "message": "Comportament"
+  },
+  "blacklist": {
+    "message": "Llista Negra"
+  },
+  "blacklist_add_domain": {
+    "message": "Afegeix un domini a la llista negra"
+  },
+  "blacklist_add_placeholder": {
+    "message": "Domini per afegir a la llista negra"
+  },
+  "blacklist_edit_descr": {
+    "message": "La llista negra permet ignorar mitjans provinents d'alguns dominis"
+  },
+  "blacklist_empty": {
+    "message": "No hi ha cap domini a la llista negra"
+  },
+  "browser_info": {
+    "message": "Navegador $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "Locale del navegador: $1"
+  },
+  "build_options": {
+    "message": "Opcions de compilació: $1"
+  },
+  "built_on": {
+    "message": "Compilat sobre $1"
+  },
+  "bulk_in_progress": {
+    "message": "L'operació en grup del Video DownloadHelper està en progrés. No tanquis aquesta pestanya, això es farà automàticament"
+  },
+  "bulk_n_videos": {
+    "message": "$1 vídeos"
+  },
+  "cancel": {
+    "message": "Cancel·la"
+  },
+  "change": {
+    "message": "Canvia"
+  },
+  "chrome_basic_mode": {
+    "message": "Bàsic de Chrome (se n'aconsella l'actualització)"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Estat Premium sense límit de temps"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Estat Premium amb una subscripció mensual"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Estat premium amb una subscripció anual"
+  },
+  "chrome_inapp_no_subs": {
+    "message": "Nota: Al seguir la desestimació dels serveis de pagament de Chrome, les subscripcions ja no estan disponibles"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "No està disponible"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Premium de Per Vida"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Subscripció Premium Mensual"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Subscripció Premium Anual"
+  },
+  "chrome_install_firefox": {
+    "message": "Instal·la el Firefox"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper per a Firefox"
+  },
+  "chrome_license_webstore_accepted": {
+    "message": "LLicència activa de la botiga web de Chrome"
+  },
+  "chrome_licensing": {
+    "message": "Llicència de Chrome"
+  },
+  "chrome_noyt_text": {
+    "message": "Desgraciadament, la Botiga Web de Chrome no permet extensions per a baixar vídeos de YouTube, així que hem hagut d'eliminar aquesta característica."
+  },
+  "chrome_noyt_text2": {
+    "message": "Pots fer servir el Video DownloadHelper per baixar vídeos de YouTube amb la versió de Firefox."
+  },
+  "chrome_noyt_text3": {
+    "message": "Desafortunadament, la botiga web de Chrome no permet extensions per baixar videos de YouTube i per tant no podem incloure aquesta característica a la versió Chrome de l'extensió"
+  },
+  "chrome_premium_audio": {
+    "message": "La generació de fitxers només àudio només està disponible amb el mode Premium"
+  },
+  "chrome_premium_check_error": {
+    "message": "Error en comprovar l'estat Premium"
+  },
+  "chrome_premium_hls": {
+    "message": "Sense l'estat Premium, una baixada HLS només es pot efectuar $1 minuts després de l'anterior"
+  },
+  "chrome_premium_mode": {
+    "message": "Premium de Chrome"
+  },
+  "chrome_premium_need_sign": {
+    "message": "T'has de registrar a Chrome per tenir els avantatges de Premium"
+  },
+  "chrome_premium_not_signed": {
+    "message": "No estàs registrat/da a Chrome"
+  },
+  "chrome_premium_recheck": {
+    "message": "Torna a comprovar l'estat Premium"
+  },
+  "chrome_premium_required": {
+    "message": "Cal tenir l'estat Premium"
+  },
+  "chrome_premium_source": {
+    "message": "Ets un usuari Premium a través de $1"
+  },
+  "chrome_product_intro": {
+    "message": "Et pots actualitzar a Premium fent servir qualsevol de les opcions següents:"
+  },
+  "chrome_req_review": {
+    "message": "De forma alternativa, voldries donar una bona opinió a la Botiga Web de Chrome?"
+  },
+  "chrome_signing_in": {
+    "message": "Registre de Chrome"
+  },
+  "chrome_verif_premium": {
+    "message": "S'està verificant l'estat Premium..."
+  },
+  "chrome_verif_premium_error": {
+    "message": "L'API de pagaments integrada no està disponible"
+  },
+  "chrome_warning_yt": {
+    "message": "Avís d'extensions de Chrome i YouTube"
+  },
+  "clear": {
+    "message": "Esborra"
+  },
+  "clear_hits": {
+    "message": "Esborra els impactes"
+  },
+  "clear_logs": {
+    "message": "Esborra els registres"
+  },
+  "coapp": {
+    "message": "Aplicació Addicional"
+  },
+  "coapp_error": {
+    "message": "La comprovació de l'Aplicació Addicional ha retornat:"
+  },
+  "coapp_found": {
+    "message": "S'ha trobat l'Aplicació Addicional:"
+  },
+  "coapp_install": {
+    "message": "Instal·la l'Aplicació Addicional"
+  },
+  "coapp_installed": {
+    "message": "L'Aplicació Addicional està instal·lada"
+  },
+  "coapp_latest_version": {
+    "message": "La darrera versió disponible és la $1"
+  },
+  "coapp_not_installed": {
+    "message": "L'Aplicació Addicional no està instal·lada"
+  },
+  "coapp_outdated": {
+    "message": "L'Aplicació Addicional està obsoleta - actualitza-la, si et plau"
+  },
+  "coapp_outofdate": {
+    "message": "Cal una actualització de l'Aplicació Addicional"
+  },
+  "coapp_outofdate_text": {
+    "message": "Estàs executant l'Aplicació Addicional amb versió $1, però aquesta característica requereix la versió $2"
+  },
+  "coapp_path": {
+    "message": "Binari de l'Aplicació Addicional"
+  },
+  "coapp_recheck": {
+    "message": "Torna-ho a comprovar"
+  },
+  "coapp_required": {
+    "message": "Cal l'Aplicació Addicional"
+  },
+  "coapp_required_text": {
+    "message": "Aquesta operació requereix una aplicació externa per a completar-se."
+  },
+  "coapp_shell": {
+    "message": "Shell de l'Aplicació Addicional"
+  },
+  "coapp_unchecked": {
+    "message": "S'està verificant l'Aplicació Addicional..."
+  },
+  "coapp_update": {
+    "message": "Actualitza l'Aplicació Addicional..."
+  },
+  "collecting": {
+    "message": "S'està recollint..."
+  },
+  "confirmation_required": {
+    "message": "Cal confirmació"
+  },
+  "congratulations": {
+    "message": "Felicitats!"
+  },
+  "continue": {
+    "message": "Continua"
+  },
+  "convconf_2passes": {
+    "message": "2 passos"
+  },
+  "convconf_ac": {
+    "message": "Canals d'àudio"
+  },
+  "convconf_acnone": {
+    "message": "Cap"
+  },
+  "convconf_acodec": {
+    "message": "Còdec de l'àudio"
+  },
+  "convconf_aspect": {
+    "message": "Relació d'aspecte"
+  },
+  "convconf_audiobitrate": {
+    "message": "Bitrate de l'àudio"
+  },
+  "convconf_audiofreq": {
+    "message": "Freqüència de l'àudio"
+  },
+  "convconf_audioonly": {
+    "message": "Només àudio"
+  },
+  "convconf_bitrate": {
+    "message": "Bitrate"
+  },
+  "convconf_container": {
+    "message": "Format"
+  },
+  "convconf_duplicate": {
+    "message": "Duplica"
+  },
+  "convconf_ext": {
+    "message": "Extensió del fitxer de sortida"
+  },
+  "convconf_extra": {
+    "message": "Paràmetres extra"
+  },
+  "convconf_level": {
+    "message": "Nivell"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Nova"
+  },
+  "convconf_preset": {
+    "message": "Configuració per defecte"
+  },
+  "convconf_profilev": {
+    "message": "Perfil del vídeo"
+  },
+  "convconf_rate": {
+    "message": "Freqüència dels marcs"
+  },
+  "convconf_readonly": {
+    "message": "Aquesta configuració per defecte és de només lectura. Duplica-la per fer-ne modificacions."
+  },
+  "convconf_remove": {
+    "message": "Elimina"
+  },
+  "convconf_reset": {
+    "message": "Reinicia-ho tot"
+  },
+  "convconf_reset_confirm": {
+    "message": "Això eliminarà totes les teves configuracions personalitzades"
+  },
+  "convconf_save": {
+    "message": "Desa"
+  },
+  "convconf_size": {
+    "message": "Mida dels marcs"
+  },
+  "convconf_stereo": {
+    "message": "Estèreo"
+  },
+  "convconf_target": {
+    "message": "Objectiu"
+  },
+  "convconf_tune": {
+    "message": "Sintonització"
+  },
+  "convconf_vcodec": {
+    "message": "Còdec del vídeo"
+  },
+  "convconf_videobitrate": {
+    "message": "Bitrate del vídeo"
+  },
+  "conversion_create_rule": {
+    "message": "Crea una regla"
+  },
+  "conversion_outputs": {
+    "message": "Sortides de la conversió"
+  },
+  "conversion_rules": {
+    "message": "Regles de conversió"
+  },
+  "conversion_update_rule": {
+    "message": "Actualitza la regla"
+  },
+  "convert": {
+    "message": "Converteix"
+  },
+  "convert_local_files": {
+    "message": "Converteix els fitxers locals"
+  },
+  "converter_needed_aggregate": {
+    "message": "Aquesta operació necessita tenir instal·lat un conversor al sistema per agregar els corrents de vídeo i àudio."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Per què necessito un conversor?"
+  },
+  "converter_needs_reg": {
+    "message": "Cal registrar-se"
+  },
+  "converter_queued": {
+    "message": "S'ha posat el conversor a la cua..."
+  },
+  "converter_reg_audio": {
+    "message": "Has demanat, bé de forma explícita o a partir d'una regla automàtica de conversió, la generació d'un fitxer de mitjans només àudio. Això requereix un conversor registrat."
+  },
+  "converting": {
+    "message": "S'està convertint..."
+  },
+  "convrule_convert": {
+    "message": "Converteix"
+  },
+  "convrule_domain": {
+    "message": "Domini"
+  },
+  "convrule_extension": {
+    "message": "Extensió"
+  },
+  "convrule_format": {
+    "message": "a format $1"
+  },
+  "convrule_from_domain": {
+    "message": "des del domini $1"
+  },
+  "convrule_no_convert": {
+    "message": "No converteixis"
+  },
+  "convrule_output_format": {
+    "message": "Format de sortida"
+  },
+  "convrule_refresh_formats": {
+    "message": "Refresca els formats de sortida"
+  },
+  "convrule_with_ext": {
+    "message": "amb l'extensió '$1'"
+  },
+  "convrules_add_rule": {
+    "message": "Crea una nova regla de conversió"
+  },
+  "convrules_edit_descr": {
+    "message": "Les regles de conversió permeten portar a terme la conversió automàtica just després de la baixada"
+  },
+  "convrules_empty": {
+    "message": "No hi ha cap regla de conversió"
+  },
+  "copy_of": {
+    "message": "Còpia de $1"
+  },
+  "corrupted_media_file": {
+    "message": "No s'ha pogut obtenir la informació del mitjà '$1' a partir del fitxer '$2'. Pots ser que el fitxer estigui corrupte."
+  },
+  "create": {
+    "message": "Crea"
+  },
+  "custom_output": {
+    "message": "Format de sortida personalitzat"
+  },
+  "dash_streaming": {
+    "message": "Corrents DASH"
+  },
+  "default": {
+    "message": "Per omissió"
+  },
+  "details_parenthesis": {
+    "message": "(Detalls)"
+  },
+  "dev_build": {
+    "message": "Versió de desenvolupament"
+  },
+  "directory_not_exist": {
+    "message": "Carpeta inexistent"
+  },
+  "directory_not_exist_body": {
+    "message": "La carpeta '$1' no existeix, estàs d'acord amb crear-la?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Baixa i Converteix"
+  },
+  "dlconv_output_details": {
+    "message": "Configura els detalls de la sortida"
+  },
+  "donate": {
+    "message": "Dóna"
+  },
+  "donate_vdh": {
+    "message": "Ajuda el Video DownloadHelper"
+  },
+  "download_error": {
+    "message": "Error en la baixada"
+  },
+  "download_method": {
+    "message": "Mètode de baixada"
+  },
+  "download_method_not_again": {
+    "message": "Fes servir aquest mètode per omissió la propera vegada"
+  },
+  "download_modes1": {
+    "message": "La baixada actual es pot portar a terme bé amb el navegador, bé amb l'Aplicació Addicional."
+  },
+  "download_modes2": {
+    "message": "Per motius tècnics, els serveis de baixada amb el navegador poden provocar que el servidor que allotja el vídeo rebutgi la baixada, i no és possible definir una carpeta alternativa de baixades per omissió."
+  },
+  "download_with_browser": {
+    "message": "Fes servir el navegador"
+  },
+  "download_with_coapp": {
+    "message": "Fes servir l'Aplicació Addicional"
+  },
+  "downloading": {
+    "message": "S'està baixant.."
+  },
+  "edge_req_review": {
+    "message": "Altenativament, t'importaria escriure una revisió bonica a la botiga d'extensions de Microsoft Edge?"
+  },
+  "error": {
+    "message": "Error"
+  },
+  "error_not_directory": {
+    "message": "'$1' existeix però no és un directori"
+  },
+  "errors": {
+    "message": "Errors"
+  },
+  "exit_natmsgsh": {
+    "message": "Surt de l'Aplicació Addicional"
+  },
+  "explain_qr1": {
+    "message": "Veuràs que el vídeo resultant té una marca d'aigües a la cantonada."
+  },
+  "explain_qr2": {
+    "message": "Això és perquè has triat una variant ADP i la característica de conversió no ha estat registrada."
+  },
+  "export": {
+    "message": "Exporta"
+  },
+  "failed_aggregating": {
+    "message": "L'agregació de \"$1\" ha fallat"
+  },
+  "failed_converting": {
+    "message": "La conversió de \"$1\" ha fallat"
+  },
+  "failed_getting_info": {
+    "message": "L'obtenció d'informació de \"$1\" ha fallat"
+  },
+  "failed_opening_directory": {
+    "message": "L'obertura del directori de fitxers ha fallat"
+  },
+  "failed_playing_file": {
+    "message": "La reproducció del fitxer ha fallat"
+  },
+  "file_dialog_date": {
+    "message": "Data"
+  },
+  "file_dialog_name": {
+    "message": "Nom"
+  },
+  "file_dialog_size": {
+    "message": "Mida"
+  },
+  "file_generated": {
+    "message": "S'ha generat el fitxer \"$1\""
+  },
+  "file_ready": {
+    "message": "\"$1\" està a punt"
+  },
+  "finalizing": {
+    "message": "Està finalitzant..."
+  },
+  "from_domain": {
+    "message": "De $1"
+  },
+  "gallery": {
+    "message": "Galeria"
+  },
+  "gallery_files_types": {
+    "message": "$1 fitxers"
+  },
+  "gallery_from_domain": {
+    "message": "Galeria de $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Enllaços de $1"
+  },
+  "general": {
+    "message": "General"
+  },
+  "get_conversion_license": {
+    "message": "Obtingues una llicència de conversió"
+  },
+  "help_translating": {
+    "message": "Ajuda a traduir"
+  },
+  "hit_details": {
+    "message": "Detalls de l'Impacte"
+  },
+  "hit_go_to_tab": {
+    "message": "Ves a la pestanya"
+  },
+  "hls_streaming": {
+    "message": "Corrents HLS"
+  },
+  "homepage": {
+    "message": "Pàgina arrel"
+  },
+  "import": {
+    "message": "Importa"
+  },
+  "import_invalid_format": {
+    "message": "Format invàlid"
+  },
+  "in_current_tab": {
+    "message": "A la pestanya actual"
+  },
+  "in_other_tab": {
+    "message": "En altres pestanyes"
+  },
+  "lic_mismatch1": {
+    "message": "La llicència és per $1, però el muntatge de la extensió del navegador no ha estat especificada"
+  },
+  "lic_mismatch2": {
+    "message": "La llicència és per $1, però el muntatge de la extensió és per $2"
+  },
+  "lic_not_needed_linux": {
+    "message": "La nostra contribució a Linux: no cal llicència"
+  },
+  "lic_status_accepted": {
+    "message": "La llicència s'ha verificat"
+  },
+  "lic_status_blocked": {
+    "message": "La llicència està bloquejada"
+  },
+  "lic_status_error": {
+    "message": "Error de llicència"
+  },
+  "lic_status_locked": {
+    "message": "La llicència està bloquejada (s'està revalidant)"
+  },
+  "lic_status_mismatch": {
+    "message": "Malaparellament llicència/navegador"
+  },
+  "lic_status_nocoapp": {
+    "message": "No s'ha pogut verificar la llicència"
+  },
+  "lic_status_unneeded": {
+    "message": "No cal llicència"
+  },
+  "lic_status_unset": {
+    "message": "No s'ha establert la llicencia"
+  },
+  "lic_status_unverified": {
+    "message": "No s'ha verificat la llicència"
+  },
+  "lic_status_verifying": {
+    "message": "S'està verificant la llicència..."
+  },
+  "license": {
+    "message": "Llicència"
+  },
+  "license_key": {
+    "message": "Clau de llicència"
+  },
+  "licensing": {
+    "message": "Llicència"
+  },
+  "logs": {
+    "message": "Registres"
+  },
+  "media": {
+    "message": "Mitjans"
+  },
+  "merge_error": {
+    "message": "Error d'agregació"
+  },
+  "merge_local_files": {
+    "message": "Agregar fitxers locals d'audio i video"
+  },
+  "more": {
+    "message": "Més..."
+  },
+  "network_error_no_response": {
+    "message": "Error de xarxa - no hi ha resposta"
+  },
+  "network_error_status": {
+    "message": "Error de xarxa - estat $1"
+  },
+  "new_sub_directory": {
+    "message": "Crea un subdirectori"
+  },
+  "next": {
+    "message": "Següent"
+  },
+  "no": {
+    "message": "No"
+  },
+  "no_audio_in_file": {
+    "message": "Sense flux d'audio en el fitxer $1"
+  },
+  "no_coapp_license_unverified": {
+    "message": "No s'ha pogut verificar la llicència perquè l?aplicació Addicional no està instal·lada"
+  },
+  "no_license_registered": {
+    "message": "No s'ha registrat cap llicència"
+  },
+  "no_media_current_tab": {
+    "message": "No hi ha cap mitjà per processar a la pestanya actual"
+  },
+  "no_media_to_process": {
+    "message": "No hi ha cap mitjà per processar"
+  },
+  "no_media_to_process_descr": {
+    "message": "Fes clic a reproduir el vídeo per ajudar a detectar els fitxers..."
+  },
+  "no_such_hit": {
+    "message": "Ni hi ha tal impacte"
+  },
+  "no_validate_without_coapp": {
+    "message": "Cal instal·lar l'Aplicació Addicional per a validar la llicència"
+  },
+  "no_video_in_file": {
+    "message": "Sense flux de video en el fitxer $1"
+  },
+  "not_again_3months": {
+    "message": "No em tornis a emprenyar amb això fins d'aquí a 3 mesos"
+  },
+  "not_see_again": {
+    "message": "No mostris més aquest missatge"
+  },
+  "number_type": {
+    "message": " $2 $1"
+  },
+  "ok": {
+    "message": "D'acord"
+  },
+  "orphan": {
+    "message": "Orfe"
+  },
+  "output_configuration": {
+    "message": "Configuració de la sortida"
+  },
+  "overwrite_file": {
+    "message": "Vols sobreescriure el fitxer '$1'?"
+  },
+  "per_month": {
+    "message": "/mes"
+  },
+  "per_year": {
+    "message": "/any"
+  },
+  "pinned": {
+    "message": "Fixat"
+  },
+  "platform": {
+    "message": "Plataforma"
+  },
+  "platform_info": {
+    "message": "Plataforma $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "Powered by Weh"
+  },
+  "preferences": {
+    "message": "Preferències"
+  },
+  "prod_build": {
+    "message": "Versió de producció"
+  },
+  "quality_medium": {
+    "message": "Mitjana"
+  },
+  "quality_small": {
+    "message": "Baixa"
+  },
+  "queued": {
+    "message": "En cua..."
+  },
+  "recheck_license": {
+    "message": "Torna a comprovar la llicència"
+  },
+  "register_converter": {
+    "message": "Registra el conversor"
+  },
+  "register_existing_license": {
+    "message": "Registra una llicència existent"
+  },
+  "registered_email": {
+    "message": "Correu electrònic"
+  },
+  "registered_key": {
+    "message": "Clau"
+  },
+  "reload_addon": {
+    "message": "Torna a carregar l'extensió"
+  },
+  "reload_addon_confirm": {
+    "message": "Segur que vols tornar a carregar l'extensió?"
+  },
+  "req_donate": {
+    "message": "Vols pensar-te de donar suport al desenvolupament i donar alguna cosa?"
+  },
+  "req_locale": {
+    "message": "O potser vols ajudar a traduir el connector a '$1' (hi ha $2 textos que falten) ?"
+  },
+  "req_review": {
+    "message": "De forma alternativa, voldries donar una bona opinió al lloc de connectors de Mozilla?"
+  },
+  "req_review_link": {
+    "message": "Dóna una opinió del Video DownloadHelper"
+  },
+  "reset_settings": {
+    "message": "Reinicia la configuració"
+  },
+  "running": {
+    "message": "S'està executant"
+  },
+  "save": {
+    "message": "Desa"
+  },
+  "save_as": {
+    "message": "Anomena i desa..."
+  },
+  "save_file_as": {
+    "message": "Anomena i desa el fitxer..."
+  },
+  "select_audio_file_to_merge": {
+    "message": "Seleccioneu el fitxer que conté el flux d'audio"
+  },
+  "select_files_to_convert": {
+    "message": "Converteix els fitxers locals"
+  },
+  "select_output_config": {
+    "message": "Selecciona la configuració de la sortida..."
+  },
+  "select_output_directory": {
+    "message": "Directori de sortida"
+  },
+  "select_video_file_to_merge": {
+    "message": "Seleccioneu el fitxer que conté el flux de video"
+  },
+  "selected_media": {
+    "message": "Selecció de grup"
+  },
+  "settings": {
+    "message": "Configuració"
+  },
+  "smartname_add_domain": {
+    "message": "Afegeix una regla de Reanomenament Intel·ligent"
+  },
+  "smartname_create_rule": {
+    "message": "Crea una regla"
+  },
+  "smartname_define": {
+    "message": "Defineix una regla de Reanomenament Intel·ligent"
+  },
+  "smartname_edit_descr": {
+    "message": "Una regla de Reanomenament Intel·ligent permet la personalització dels noms dels vídeos basant-se en els noms dels hosts"
+  },
+  "smartname_empty": {
+    "message": "No hi ha cap regla de Reanomenament Intel·ligent"
+  },
+  "smartname_update_rule": {
+    "message": "Actualitza la regla"
+  },
+  "smartnamer_delay": {
+    "message": "Endarrereix la captura del nom (ms)"
+  },
+  "smartnamer_domain": {
+    "message": "Domini"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Obtingues el nom a partir de la capçalera del document/URL actual"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Obtingues el nom a partir del contingut de la pàgina"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Obtingues el nom a partir del títol de la pàgina"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Fes servir un nom ofuscat"
+  },
+  "smartnamer_regexp": {
+    "message": "Expressió regular"
+  },
+  "smartnamer_selected_text": {
+    "message": "Text seleccionat"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "Expressió XPath"
+  },
+  "smartnaming_rule": {
+    "message": "Regla de Reanomenament Intel·ligent"
+  },
+  "smartnaming_rules": {
+    "message": "Regles de Reanomenament Intel·ligent"
+  },
+  "sub_directory_name": {
+    "message": "Nom del subdirectori"
+  },
+  "support_forum": {
+    "message": "Fòrum suportat"
+  },
+  "supported_sites": {
+    "message": "Llocs suportats"
+  },
+  "tbsn_quality_hd": {
+    "message": "Qualitat mitjana"
+  },
+  "tbsn_quality_sd": {
+    "message": "Qualitat baixa"
+  },
+  "tell_me_more": {
+    "message": "Explica me'n més coses"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "translation": {
+    "message": "Traducció"
+  },
+  "up": {
+    "message": "Amunt"
+  },
+  "validate_license": {
+    "message": "Registra la llicència"
+  },
+  "variants_list_adp": {
+    "message": "Variacions adaptatives"
+  },
+  "variants_list_full": {
+    "message": "Variacions"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Versió $1"
+  },
+  "video_only": {
+    "message": "Només vídeo"
+  },
+  "video_qualities": {
+    "message": "Qualitats de vídeo"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "Finestra"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "Pestanya"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "Pregunta"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "Navegador"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "Aplicació Addicional"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Baixa l'àudio"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "Agrega l'àudio i el vídeo"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Baixa el vídeo"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "No mostris les variacions ADP a la llista de baixades"
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "Com es mostren els diàlegs d'avís"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Fixa l'impacte després de la baixada"
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "Permet la reproducció de vídeo amb l'Aplicació Addicional"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Evita que alguns llocs activin el reconeixement de mitjans"
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "Activa les operacions de baixada en grup"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "En iniciar-se el connector, verifica si l'Aplicació Addicional està disponible per a una millor detecció dels mitjans"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "Requereix els blocs de dades fent servir l'Aplicació Addicional"
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "Requereix els blocs de manifestos fent servir l'Aplicació Addicional"
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "Nombre màxim de segments a baixar en paral·lel"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Blocs de corrents activats"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "Quants segments es baixen per endavant"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "Aplicació que porta a terme de fet la baixada "
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "Tanca automàticament passat el nombre de mil·lisegons, desactivat si és 0"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "Retard en mil·lisegons a l'hora de reiniciar l'Aplicació Addicional"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "L'Aplicació Addicional fa servir la mateixa proxy que la petició original"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "Alguns llocs poden retornar una nova URL en lloc del contingut del mitjà"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "Accedeix a les ordres amb clic-dreta dins de la pàgina"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "El nombre màxim d'agregacions o tasques de conversió simultànies"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Força la sintonització H264 en l'agregació"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "No eliminis els fitxers temporals després de processar"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "Nombre de fils a fer servir durant la conversió"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "Blocs de corrents DASH activats"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "No mostris les entrades .m4s a la llista de baixades"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Quan DASH conté tant àudio com vídeo"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "Els diàlegs es tanquen en perdre el focus"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Controla el nombre de baixades generades pel connector que s'executen simultàniament per estalviar amplada de banda"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Nombre de reintents de baixada"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Retard entre reintents de baixada (ms)"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "Controla el nombre de corrents que es baixen per a un sol element"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "Quants diàlegs de fitxers des mostren"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "Com anomenar els fitxers de la baixada de galeria"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "Mostra un enllaç a la descripció de l'entrada per canviar a la pestanya de vídeo"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "Baixa els corrents HLS com a M2TS"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "Blocs de corrents HLS activats"
+  },
+  "weh_prefs_description_hlsRememberPrevLiveChunks": {
+    "message": "Recordar capçals HLS en directe previs"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "Quan s'activa la icona de la barra d'eines"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "Visualització del badge de la icona de la barra d'eines"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "No mostris les variacions que estan protegides"
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "Utilitzat només amb el processador de baixades de l'Aplicació Addicional"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "Extensions que s'han de considerar com a mitjans"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "Executa a cada càrrega de pàgina (pot impactar els rendiments)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "Extensions de fitxers a tenir en consideració per a la captura de galeries"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "Limita el nombre d'entrades detectades com a galeries"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "Nombre mínim d'entrades a detectar com a galeries"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "Mida mínima d'imatge a tenir en consideració com a galeria d'imatges"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "Detecta les imatges de la pàgina"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "Detecta els mitjans enllaçats directament a partir de la pàgina"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Ignora els impactes per sota d'aquesta mida."
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Força la detecció de mitjans per sobre d'aquesta mida."
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "Baixa-ho fent servir les mateixes capçaleres que la petició original"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": "No mostris les entrades .ts a la llista de baixades"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Expressió regular per ignorar alguns urls de mitjans"
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "Rastreja el trànsit de xarxa per detectar impactes"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "No hi ha cap notificació d'impactes privats"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Notifica quan s'hagi processat"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Temps límit en segons abans d'eliminar els impactes orfes"
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Nombre màxim de variacions mostrades per al mateix vídeo"
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "Fes servir el darrer directori de baixada com a ubicació per defecte"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "Assegura que els noms de fitxer generats no excedeixin aquesta mida."
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "Com es tracten els espais en els noms dels vídeos"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "Permet la detecció i descàrrega de vídeos de Facebook"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "Com s'han de mostrar els títols de vídeo llargs al plafó principal"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "Accedeix a les ordres des del menú d'Eines"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "Finestra"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "Pestanya"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "Índex - Url"
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "Tipus - Índex"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "Url"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Impacte de qualsevol pestanya"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Impacte de la pestanya actual"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Mitjà de la pestanya activa"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Mitjà de qualsevol pestanya"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Barrejat"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Cap"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Impactes fixats"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Tasques en execució"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "Amaga les variacions ADP"
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "Diàleg d'avís"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Fixa Automàticament"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Reproductor activat"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Activa la llista negra"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "Grup activat"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "Comprova l'Aplicació Addicional en iniciar"
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "Peticions de blocs de dades de l'Aplicació Addicional"
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "Peticions de blocs de manifestos de l'Aplicació Addicional"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Baixades en bloc simultànies"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Corrents en bloc"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Recompte de blocs precercats"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "Processador de baixades"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "Cronòmetre de sortida d'inactivitat de l'Aplicació Addicional"
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "Retard de reinici de l'Aplicació Addicional"
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "Proxy de l'Aplicació Addicional"
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "Redirecció de contingut activada"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "Menú de context"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "Operacions simultànies del conversor"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "Sintonització H264"
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "Conserva els fitxers temporals"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Fils de conversió"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH activat"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": "Amaga .m4s"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "Corrents DASH"
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "Tanca els diàlegs automàticament"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Nombre màxim de baixades simultànies"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "Reintents de baixada"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "Retard en els reintents"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "Nombre màxim de baixades de corrents"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "Diàleg de fitxer"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "Noms de fitxer de galeries"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "Mostra la nansa Ves-a-la-Pestanya"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS com a M2TS"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS activat"
+  },
+  "weh_prefs_label_hlsRememberPrevLiveChunks": {
+    "message": "Historial d' HLS en directe"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Activació d'icones"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Badge de la icona"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Ignora les variacions protegides"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "Directori de baixades per omissió"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Detecta les extensions"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "Autodetecció de galeria"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "Extensions dels enllaços a mitjans"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "Nombre màxim d'entrades"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "Nombre mínim d'entrades"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Mida mínima d'imatge"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Detecta imatges incrustades"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Detecta enllaços als mitjans"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Mida mínima"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Llindar de la mida"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "Demana les capçaleres"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": "Amaga .ts"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Filtratge de xarxa"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Sonda de xarxa"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Notificacions privades"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Notificació"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Temps límit d'expiració d'orfes"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Nombre màxim de variants"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "Recorda el directori anterior"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Llargària màxima de nom de fitxer"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Títols llargs del plafó principal"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Suport de Facebook"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Títols llargs del plafó principal"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Menú d'eines"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Substitueix amb guions"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Mantingues"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Elimina"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Substitueix amb subguions"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "Punts suspensius a l'esquerra"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "Sobre diverses línies"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "Punts suspensius a la dreta"
+  },
+  "yes": {
+    "message": "Sí"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Has baixat el teu $1è fitxer amb Video DownloadHelper "
+  },
+  "v9_yes": {
+    "message": "Sí"
+  },
+  "v9_no": {
+    "message": "No"
+  },
+  "v9_error": {
+    "message": "Error"
+  },
+  "v9_no_media_current_tab": {
+    "message": "No hi ha cap mitjà per processar a la pestanya actual"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Fes clic a reproduir el vídeo per ajudar a detectar els fitxers..."
+  },
+  "v9_coapp_required": {
+    "message": "Cal l'Aplicació Addicional"
+  },
+  "v9_coapp_required_text": {
+    "message": "Aquesta operació requereix una aplicació externa per a completar-se."
+  },
+  "v9_coapp_installed": {
+    "message": "L'Aplicació Addicional està instal·lada"
+  },
+  "v9_coapp_recheck": {
+    "message": "Torna-ho a comprovar"
+  },
+  "v9_lic_status_accepted": {
+    "message": "La llicència s'ha verificat"
+  },
+  "v9_coapp_outdated": {
+    "message": "L'Aplicació Addicional està obsoleta - actualitza-la, si et plau"
+  },
+  "v9_converter_needs_reg": {
+    "message": "Cal registrar-se"
+  },
+  "v9_get_conversion_license": {
+    "message": "Obtingues una llicència de conversió"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Has demanat, bé de forma explícita o a partir d'una regla automàtica de conversió, la generació d'un fitxer de mitjans només àudio. Això requereix un conversor registrat."
+  },
+  "v9_chrome_premium_required": {
+    "message": "Cal tenir l'estat Premium"
+  },
+  "v9_chrome_premium_hls": {
+    "message": "Sense l'estat Premium, una baixada HLS només es pot efectuar $1 minuts després de l'anterior"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Avís d'extensions de Chrome i YouTube"
+  },
+  "v9_chrome_noyt_text3": {
+    "message": "Desafortunadament, la botiga web de Chrome no permet extensions per baixar videos de YouTube i per tant no podem incloure aquesta característica a la versió Chrome de l'extensió"
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Pots fer servir el Video DownloadHelper per baixar vídeos de YouTube amb la versió de Firefox."
+  },
+  "v9_about_qr": {
+    "message": "Fitxer generat"
+  },
+  "v9_explain_qr1": {
+    "message": "Veuràs que el vídeo resultant té una marca d'aigües a la cantonada."
+  },
+  "v9_not_see_again": {
+    "message": "No mostris més aquest missatge"
+  },
+  "v9_tell_me_more": {
+    "message": "Explica me'n més coses"
+  },
+  "v9_settings": {
+    "message": "Configuració"
+  },
+  "v9_coapp_unchecked": {
+    "message": "S'està verificant l'Aplicació Addicional..."
+  },
+  "v9_coapp_update": {
+    "message": "Actualitza l'Aplicació Addicional..."
+  },
+  "v9_coapp_not_installed": {
+    "message": "L'Aplicació Addicional no està instal·lada"
+  },
+  "v9_coapp_install": {
+    "message": "Instal·la l'Aplicació Addicional"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "Cal instal·lar l'Aplicació Addicional per a validar la llicència"
+  },
+  "v9_lic_status_verifying": {
+    "message": "S'està verificant la llicència..."
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Nombre màxim de baixades simultànies"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "Accedeix a les ordres amb clic-dreta dins de la pàgina"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" està a punt"
+  },
+  "v9_lic_status_unset": {
+    "message": "No s'ha establert la llicencia"
+  },
+  "v9_lic_status_blocked": {
+    "message": "La llicència està bloquejada"
+  },
+  "v9_lic_status_locked": {
+    "message": "La llicència està bloquejada (s'està revalidant)"
+  },
+  "v9_lic_mismatch2": {
+    "message": "La llicència és per $1, però el muntatge de la extensió és per $2"
+  },
+  "v9_no_license_registered": {
+    "message": "No s'ha registrat cap llicència"
+  }
+}

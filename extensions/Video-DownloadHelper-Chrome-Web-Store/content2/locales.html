@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=200, initial-scale=1.0">
+
+    <link rel="stylesheet" href="xul.css"/>
+    <link rel="stylesheet" href="base.css"/>
+    <title>VDH: translation</title>
+    <link rel="shortcut icon" href="/content2/icons/stable-color.png"/>
+    <style>
+      body {
+        max-width: 800px;
+        margin: auto;
+      }
+
+      #entries > vbox {
+        padding: var(--sl-spacing-medium);
+        margin: var(--sl-spacing-medium);
+        border: 0.5px solid transparent;
+        border-bottom-color: var(--sl-color-neutral-200);
+      }
+
+      #entries > vbox.custom {
+        background-color: var(--sl-color-green-100);
+      }
+
+      .reference {
+        font-style: italic;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div id="header">
+      <h1>Translation</h1>
+      <sl-input class="input-inline" id="filter" placeholder="filter" type="text" clearable></sl-input>
+      <sl-button id="button-reset">Reset all</sl-button>
+      <sl-button id="button-export">Export</sl-button>
+      <sl-checkbox id="only-empty">Only show non-translated strings</sl-checkbox>
+      <hbox pack="end">
+        <sl-button id="button-help" variant="text">How to submit your translation?</sl-button>
+      </hbox>
+    </div>
+    <vbox id="core">
+      <vbox id="entries"></vbox>
+    </vbox>
+    <script type="module" src="shoelace.js"></script>
+    <script type="module" src="locales.js"></script>
+  </body>
+</html>

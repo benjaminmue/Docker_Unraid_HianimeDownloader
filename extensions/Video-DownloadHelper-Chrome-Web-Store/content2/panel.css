@@ -1,0 +1,525 @@
+/*
+Window width:
+  216px: firefox sidebar
+  327px: chrome sidebar
+  400px: popup
+*/
+
+body.not-loaded {
+  visibility: hidden;
+}
+
+/* We use hh as an inline header, as we can't use H3 in p */
+hh {
+  display: inline-block;
+  font-weight: bold;
+}
+
+hh:after {
+  content: ": ";
+}
+
+sl-alert {
+  margin: var(--sl-spacing-medium);
+}
+
+sl-alert h2 {
+  margin-top: 0;
+}
+
+sl-alert::part(close-button) {
+  align-items: start;
+  margin-top: var(--sl-spacing-large);
+}
+
+/* ------- */
+
+#core {
+  overflow-y: auto;
+  overflow-x: auto;
+  background: var(--sl-color-gray-100);
+  padding: var(--sl-spacing-x-small);
+  gap: var(--sl-spacing-small);
+}
+
+#nomedia {
+  text-align: center;
+  font-style: italic;
+  color: var(--sl-color-neutral-500);
+  font-weight: lighter;
+  font-size: 0.8rem;
+}
+
+#nomedia > div > p {
+  margin: 0.5rem;
+}
+
+sl-icon-button[variant="danger"] {
+  color: var(--sl-color-danger-700);
+}
+
+[status="downloadable"] .button-stop,
+[status="downloadable"] .span-percent,
+[status="downloadable"] .span-bitrate,
+[status="downloadable"] .button-downloaded-action,
+[status="downloadable"] .progress-unknown-component,
+[status="downloadable"] .span-downloading-duration,
+[status="downloadable"] sl-progress-bar {
+  display: none;
+}
+
+[status="downloading"] .dropdown-variants,
+[status="downloading"] .button-hide,
+[status="downloading"] .download-bottom > spacer,
+[status="downloading"] .hbox-tags,
+[status="downloading"] .button-downloaded-action,
+[status="downloading"]:not(.progress-unknown) .progress-unknown-component,
+[status="downloading"]:not(.progress-unknown) .span-downloading-duration,
+[status="downloading"] .button-group-actions {
+  display: none;
+}
+
+[status="downloaded"] .button-stop,
+[status="downloaded"] .dropdown-variants,
+[status="downloaded"] .hbox-tags,
+[status="downloaded"] .span-percent,
+[status="downloaded"] .span-bitrate,
+[status="downloaded"] .button-group-actions,
+[status="downloaded"] .progress-unknown-component,
+[status="downloaded"] .span-downloading-duration,
+[status="downloaded"] sl-progress-bar {
+  display: none;
+}
+
+html.sidebar #button-use-sidebar,
+html:not(.sidebar) #button-use-popup {
+  display: none;
+}
+
+#core a, #core a:visited {
+  color: var(--sl-color-blue-500) !important;
+  text-decoration: none;
+}
+
+#footer:not(.used-history-button) #button-show-history {
+  margin-right: 2rem; /* give some room for badge */
+}
+
+#footer.used-history-button #button-show-history > sl-badge {
+  display: none;
+}
+
+#footer {
+  border-top: 1px solid var(--sl-color-neutral-200);
+}
+
+#footer sl-button::part(base) {
+  border-width: 0;
+  border-radius: 0;
+}
+
+/* ┌───────┬────────────────┐ */
+/* │       │                │ */
+/* │       ├────────────────┤ */
+/* │       │                │ */
+/* └───────┴────────────────┘ */
+
+#nomedia, .download, .download-error, .user-message {
+  border: 1px solid var(--sl-color-neutral-200);
+  box-shadow: var(--sl-shadow-small);
+  border-radius: var(--sl-border-radius-large);
+  background-color: var(--sl-color-neutral-0);
+  padding: var(--sl-spacing-x-small);
+}
+
+#nomedia, .download {
+  --block-height: 5rem;
+  flex-basis: var(--block-height);
+  height: var(--block-height);
+}
+
+#core-downloads {
+  position: relative;
+}
+
+.download {
+  transition: top 200ms ease-out;
+  position: absolute;
+  top: calc(var(--order) * (var(--block-height) + var(--sl-spacing-small)));
+  width: 100%;
+}
+
+.download-right {
+  padding-left: var(--sl-spacing-x-small);
+}
+
+.download-bottom {
+  margin-top: var(--sl-spacing-x-small);
+}
+
+/* ┌───────┬────────────────┐ */
+/* │|||||||│                │ */
+/* │|||||||├────────────────┤ */
+/* │|||||||│                │ */
+/* └───────┴────────────────┘ */
+
+.download-left {
+  min-width: 5.8rem; /* gives just enough space to have margin between download and variants in chrome smallest sidebar size */
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #D9D9D9;
+  border-radius: var(--sl-border-radius-large);
+  user-select: none;
+}
+
+.download-left > .favicon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  bottom: 2px;
+  left: 2px;
+  background-size: 15px 15px;
+  /* For now, we do not show any white background */
+  /* background-color: white; */
+  /* border-radius: var(--sl-border-radius-medium); */
+}
+
+/* Label is gonna be larger - go compact */
+.download[status="downloadable"]:not([data-default-action="download"]) > .download-left {
+  min-width: 3.8rem;
+}
+
+.download[status="downloadable"]:not([data-default-action="download"]) .favicon {
+  display: none;
+}
+
+.download-left > .duration {
+  position: absolute;
+  line-height: 15px;
+  bottom: 2px;
+  right: 2px;
+  color: white;
+  vertical-align: middle;
+  padding: 0 6px;
+  font-size: 8px;
+  border-radius: var(--sl-border-radius-medium);
+  background: black;
+}
+
+/* ┌───────┬────────────────┐ */
+/* │       │||||||||||||||||│ */
+/* │       ├────────────────┤ */
+/* │       │                │ */
+/* └───────┴────────────────┘ */
+
+sl-tag {
+  margin-right: var(--sl-spacing-2x-small);
+}
+
+.button-hide {
+  font-size: 1.2rem;
+}
+
+.download-top {
+  text-overflow: ellipsis;
+}
+
+.button-hide::part(base) {
+  padding: 0;
+}
+
+.download-top > .favicon {
+  min-width: 15px;
+  min-height: 15px;
+  background-size: 15px 15px;
+  background-color: white;
+  border-radius: var(--sl-border-radius-medium);
+  margin-right: var(--sl-spacing-small);
+  display: none;
+}
+
+.download-top > .title {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.hbox-tags {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hbox-tags sl-tag::part(base) {
+  font-size: 8px;
+  height: 14px;
+  padding: 0 3px
+}
+
+.span-bitrate, .span-percent, .span-downloading-duration {
+  color: var(--sl-color-gray-400);
+  display: inline-block;
+  text-align: right;
+}
+.span-downloading-duration { min-width: 4rem; }
+.span-bitrate { min-width: 5rem; }
+.span-percent { min-width: 3rem; }
+
+/* ┌───────┬────────────────┐ */
+/* │       │                │ */
+/* │       ├────────────────┤ */
+/* │       │||||||||||||||||│ */
+/* └───────┴────────────────┘ */
+
+sl-progress-bar {
+  --height: 6px;
+  margin-right: var(--sl-spacing-small);
+}
+
+.dropdown-variants {
+  margin-bottom: -2px; /* That's a mystery. No idea why the dropdown has an extra bottom margin of 2px */
+}
+
+.dropdown-variants > sl-button {
+  max-width: 8rem;
+  overflow: hidden;
+}
+
+.dropdown-variants > sl-button::part(label) {
+  padding: 0 var(--sl-spacing-x-small);
+}
+
+.menu-actions {
+  width: 17rem;
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  z-index: 999;
+  transition-property: opacity;
+  transition-duration: 100ms;
+  transition-timing-function: ease-out;
+}
+
+.menu-actions.closed {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.download[data-default-action="download"] .menu-actions > sl-menu-item.action-download,
+.download[data-default-action="download_as"] .menu-actions > sl-menu-item.action-download_as,
+.download[data-default-action="download_audio"] .menu-actions > sl-menu-item.action-download_audio,
+.download[data-default-action="copy"] .menu-actions > sl-menu-item.action-copy {
+  display: none;
+}
+
+.menu-item-variant > span {
+  padding-right: var(--sl-spacing-x-small);
+}
+
+sl-button-group.button-downloaded-action {
+  margin-left: var(--sl-spacing-x-small);
+}
+
+.variant-container {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.variant-differentiator {
+  margin-left: var(--sl-spacing-x-small);
+  font-style: italic;
+  color: var(--sl-color-neutral-500);
+}
+
+.variant-quality {
+  margin-left: var(--sl-spacing-x-small);
+  height: calc(var(--sl-input-height-small) * 0.8);
+  line-height: calc(var(--sl-input-height-small) - var(--sl-input-border-width) * 2);
+  border-radius: var(--sl-border-radius-medium);
+  padding: 0 var(--sl-spacing-x-small);
+  border-width: 1px;
+  border-style: solid;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  background-color: var(--sl-color-gray-50);
+  color: var(--sl-color-gray-800);
+  border-color: var(--sl-color-gray-200);
+}
+
+.variant-quality._1080p {
+  background-color: var(--sl-color-blue-50);
+  color: var(--sl-color-blue-800);
+  border-color: var(--sl-color-blue-200);
+}
+
+.variant-quality._1440p,
+.variant-quality._2160p,
+.variant-quality._4320p {
+  background-color: var(--sl-color-green-50);
+  color: var(--sl-color-green-800);
+  border-color: var(--sl-color-green-200);
+}
+
+.progress-unknown-component > sl-icon {
+  color: var(--sl-color-neutral-700);
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.progress-unknown-component > sl-icon {
+  margin-right: var(--sl-spacing-x-small);
+  animation: beat 1s infinite alternate;
+  transform-origin: center;
+}
+
+.default-action-button-label {
+  display: inline-block;
+  text-align: center;
+}
+
+/* Errors & User messages */
+
+.user-message, .download-error {
+  gap: var(--sl-spacing-x-small);
+}
+
+.user-message > hbox:first-of-type > sl-icon,
+.download-error > hbox:first-of-type > sl-icon {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+.download-error:not([report-status="reported"]) .button-error-reported,
+.download-error[report-status="reported"] .button-report-error {
+  display: none;
+}
+
+.user-message p, .download-error p {
+  margin: 0;
+}
+
+.user-message-actions, .download-error-actions {
+  gap: var(--sl-spacing-x-small);
+  color: var(--sl-color-neutral-500);
+  font-weight: lighter;
+}
+
+.download-error[error-type="qrcode"] img {
+  width: 7rem;
+  float: right;
+  margin-left: 1rem;
+}
+
+.download-error-actions > sl-button > img {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  margin-right: var(--sl-spacing-x-small);
+}
+
+.download-error pre {
+  border-left: 4px solid var(--sl-color-neutral-200);
+  padding: var(--sl-spacing-x-small) 0 var(--sl-spacing-x-small) var(--sl-spacing-x-small);
+  overflow: auto;
+  max-height: 5rem;
+}
+
+.download-error > hbox:first-of-type {
+  margin: 0 calc(-1* var(--sl-spacing-x-small));
+  padding: 0 var(--sl-spacing-x-small);
+  border-bottom: 1px solid var(--sl-color-neutral-100);
+  padding-bottom: var(--sl-spacing-x-small);
+}
+
+.download-error sl-checkbox::part(label), .download-error p:not(.title) {
+  font-size: 0.8rem;
+}
+
+@keyframes beat {
+  to { transform: scale(0.8); }
+}
+
+@media(max-width:327px) {
+  html:not(.wide) .menu-actions {
+    width: 14rem;
+  }
+  html:not(.wide) .button-group-actions > sl-button::part(label) {
+    display: none;
+  }
+  html:not(.wide) .button-group-actions > sl-button::part(base) {
+    padding-inline-end: var(--sl-spacing-x-small);
+  }
+}
+
+@media(max-width:275px) {
+  html:not(.wide) .hbox-tags {
+    display: none;
+  }
+
+  html:not(.wide) .download-top > .favicon {
+    display: inline-block;
+  }
+
+  html:not(.wide) :root {
+    font-size: 10px;
+  }
+}
+
+@media(max-width:255px) {
+  html:not(.wide) .download-left {
+    display: none;
+  }
+}
+
+/* WIDE UI */
+
+@media(max-width:403px) {
+  html.wide .menu-actions {
+    width: 14rem;
+  }
+  html.wide .button-group-actions > sl-button::part(label) {
+    display: none;
+  }
+  html.wide .button-group-actions > sl-button::part(base) {
+    padding-inline-end: var(--sl-spacing-x-small);
+  }
+}
+
+@media(max-width:339px) {
+  html.wide .hbox-tags {
+    display: none;
+  }
+
+  html.wide .download-top > .favicon {
+    display: inline-block;
+  }
+
+  html.wide :root {
+    font-size: 10px;
+  }
+}
+
+@media(max-width:314px) {
+  html.wide .download-left {
+    display: none;
+  }
+}
+
+
+/* Font on Windows is a little lighter */
+
+html[os="win"] .hbox-tags sl-tag::part(base),
+html[os="win"] .download-left > .duration,
+html[os="win"] sl-button::part(label) {
+  font-weight: 600;
+}
+
+html[os="win"].wide .download-top > .title {
+  font-weight: 600;
+}

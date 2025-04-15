@@ -1,0 +1,767 @@
+{
+  "Bytes": {
+    "message": "Bytes"
+  },
+  "GB": {
+    "message": "GB"
+  },
+  "KB": {
+    "message": "KB"
+  },
+  "MB": {
+    "message": "MB"
+  },
+  "about": {
+    "message": "Om"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "På grunn av interne tekniske endringer i Firefox, måtte tillegget skrives helt om. Det kan ta noen uker før du får tilbake alle funksjonene fra tidligere versjoner."
+  },
+  "about_alpha_intro": {
+    "message": "Dette er en alfaversjon"
+  },
+  "about_beta_intro": {
+    "message": "Dette er en betaversjon."
+  },
+  "about_chrome_licenses": {
+    "message": "Om Chrome-lisenser"
+  },
+  "about_qr": {
+    "message": "Fil generert"
+  },
+  "about_vdh": {
+    "message": "Om Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "Avbryt gjeldende operasjon"
+  },
+  "action_abort_title": {
+    "message": "Avbryt"
+  },
+  "action_as_default": {
+    "message": "Utfør denne handlingen som standard"
+  },
+  "action_avplay_description": {
+    "message": "Spill av videoen med konvertererens opprinnelige viewer"
+  },
+  "action_avplay_title": {
+    "message": "Spill av"
+  },
+  "action_blacklist_description": {
+    "message": "Videoer som stammer/kommer fra valgt(e) domener vil ignoreres"
+  },
+  "action_blacklist_title": {
+    "message": "Svartelist"
+  },
+  "action_bulkdownload_description": {
+    "message": "Last ned valgte videoer"
+  },
+  "action_bulkdownload_title": {
+    "message": "Bulk nedlasting"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "Bulk nedlasting og konverter utvalgte videoer"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Bulk nedlasting og konverter"
+  },
+  "action_copyurl_description": {
+    "message": "Kopier mediets adresse til utklippstavle"
+  },
+  "action_copyurl_title": {
+    "message": "Kopier URL"
+  },
+  "action_deletehit_description": {
+    "message": "Slett treff fra gjeldende liste"
+  },
+  "action_deletehit_title": {
+    "message": "Slett"
+  },
+  "action_details_title": {
+    "message": "Detaljer"
+  },
+  "action_download_description": {
+    "message": "Last ned filen til harddisk"
+  },
+  "action_download_title": {
+    "message": "Last ned"
+  },
+  "action_downloadconvert_description": {
+    "message": "Last ned mediet og konverter til et annet format"
+  },
+  "action_downloadconvert_title": {
+    "message": "Last ned og konverter"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "Åpne lokal filkatalog"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Åpne katalogen"
+  },
+  "action_openlocalfile_description": {
+    "message": "Åpne lokal mediefil"
+  },
+  "action_openlocalfile_title": {
+    "message": "Åpne media"
+  },
+  "action_pin_title": {
+    "message": "Fest"
+  },
+  "action_quickdownload_description": {
+    "message": "Last ned uten å spørre etter målmappe"
+  },
+  "action_quickdownload_title": {
+    "message": "Rask nedlasting"
+  },
+  "action_stop_title": {
+    "message": "Stopp"
+  },
+  "adaptative": {
+    "message": "Adaptive $1"
+  },
+  "add_to_blacklist": {
+    "message": "Svartelist"
+  },
+  "add_to_blacklist_help": {
+    "message": "Videoer som stammer/kommer fra valgt(e) domener vil ignoreres"
+  },
+  "advanced": {
+    "message": "Avansert"
+  },
+  "aggregating": {
+    "message": "Aggregerer"
+  },
+  "analyze_page": {
+    "message": "Analyser siden."
+  },
+  "appDesc": {
+    "message": "Last ned videoer fra Internett"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Utseende"
+  },
+  "audio_only": {
+    "message": "Kun audio"
+  },
+  "behavior": {
+    "message": "Oppførsel"
+  },
+  "blacklist": {
+    "message": "Svarteliste"
+  },
+  "browser_info": {
+    "message": "Nettleser $1 $2 $3"
+  },
+  "cancel": {
+    "message": "Avbryt"
+  },
+  "change": {
+    "message": "Endre"
+  },
+  "chrome_basic_mode": {
+    "message": "Chrome Basic (oppgradering anbefales)"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Premium-status uten tidsbegrensning"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Premium-status fra et månedlig abonnement"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Premium-status fra et årlig abonnement"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "Ikke tilgjengelig"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Lifetime Premium"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Månedlig Premium-abonnement"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Årlig Premium-abonnement"
+  },
+  "chrome_install_firefox": {
+    "message": "Installer Firefox"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper for Firefox"
+  },
+  "chrome_license_webstore_accepted": {
+    "message": "Aktiv lisens fra Chrome Webstore"
+  },
+  "chrome_licensing": {
+    "message": "Chrome-lisensiering"
+  },
+  "chrome_noyt_text": {
+    "message": "Dessverre tillater ikke Chrome Web Store utvidelser som laster ned videoer fra YouTube, så vi ble nødt til å fjerne denne funksjonen."
+  },
+  "chrome_noyt_text2": {
+    "message": "Du kan bruke Video DownloadHelper for å laste ned YouTube videoer på Firefox-versjonen."
+  },
+  "chrome_premium_audio": {
+    "message": "Generering av kun lydfiler er bare tilgjengelig i Premium-modus"
+  },
+  "chrome_premium_check_error": {
+    "message": "Feil ved sjekk av Premium-status"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome Premium"
+  },
+  "chrome_premium_not_signed": {
+    "message": "Ikke logget inn på Chrome"
+  },
+  "chrome_premium_recheck": {
+    "message": "Sjekk Premium-status på nytt"
+  },
+  "chrome_premium_required": {
+    "message": "Premium-status kreves"
+  },
+  "chrome_premium_source": {
+    "message": "Du er en premium-bruker via $1"
+  },
+  "chrome_product_intro": {
+    "message": "Du kan oppgradere til Premium ved å bruke et av alternativene nedenfor:"
+  },
+  "chrome_req_review": {
+    "message": "Alternativt, vil du skrive en hyggelig anmeldelse på Chrome WebStore?"
+  },
+  "chrome_signing_in": {
+    "message": "Logger inn på Chrome"
+  },
+  "chrome_verif_premium": {
+    "message": "Bekrefter premiumstatus ..."
+  },
+  "chrome_warning_yt": {
+    "message": "Advarsel om Chrome utvidelser og YouTube"
+  },
+  "clear_hits": {
+    "message": "Tøm treff"
+  },
+  "clear_logs": {
+    "message": "Tøm logger"
+  },
+  "congratulations": {
+    "message": "Gratulerer!"
+  },
+  "continue": {
+    "message": "Fortsett"
+  },
+  "convconf_2passes": {
+    "message": "2 pasninger"
+  },
+  "convconf_ac": {
+    "message": "Audiokanaler"
+  },
+  "convconf_acnone": {
+    "message": "Ingen"
+  },
+  "convconf_acodec": {
+    "message": "Audiokodek"
+  },
+  "convconf_aspect": {
+    "message": "Størrelsesforhold"
+  },
+  "convconf_audiobitrate": {
+    "message": "Audio bitrate"
+  },
+  "convconf_audiofreq": {
+    "message": "Audiofrekvens"
+  },
+  "convconf_audioonly": {
+    "message": "Bare lyd"
+  },
+  "convconf_bitrate": {
+    "message": "Bitrate"
+  },
+  "convconf_container": {
+    "message": "Format"
+  },
+  "convconf_duplicate": {
+    "message": "Duplikat"
+  },
+  "convconf_ext": {
+    "message": "Filtype for resultat"
+  },
+  "convconf_extra": {
+    "message": "Ekstra parameter"
+  },
+  "convconf_level": {
+    "message": "Nivå"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Ny"
+  },
+  "convconf_preset": {
+    "message": "Forhåndsinnstilling"
+  },
+  "convconf_profilev": {
+    "message": "Videoprofil"
+  },
+  "convconf_rate": {
+    "message": "Bildefrekvens"
+  },
+  "convconf_readonly": {
+    "message": "Denne standardkonfigurasjonen er skrivebeskyttet. Dupliker for å gjøre endringer."
+  },
+  "convconf_remove": {
+    "message": "Fjern"
+  },
+  "convconf_reset": {
+    "message": "Nullstill alt"
+  },
+  "convconf_reset_confirm": {
+    "message": "Dette vil fjerne alle tilpassede konfigurasjoner."
+  },
+  "convconf_save": {
+    "message": "Lagre"
+  },
+  "convconf_size": {
+    "message": "Bildestørrelse"
+  },
+  "convconf_stereo": {
+    "message": "Stereo"
+  },
+  "convconf_target": {
+    "message": "Mål"
+  },
+  "convconf_tune": {
+    "message": "Juster"
+  },
+  "convconf_vcodec": {
+    "message": "Videokodek"
+  },
+  "convconf_videobitrate": {
+    "message": "Video bitrate"
+  },
+  "conversion_outputs": {
+    "message": "Konverteringsresultat"
+  },
+  "convert": {
+    "message": "Konverter"
+  },
+  "convert_local_files": {
+    "message": "Konverter lokale filer"
+  },
+  "converter_needed_aggregate": {
+    "message": "Denne operasjonen krever en konverter installert på din maskin for å aggregere video- og audiostrømmene."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Hvorfor trenger jeg en konverter?"
+  },
+  "converter_needs_reg": {
+    "message": "Registrering nødvendig"
+  },
+  "converter_reg_audio": {
+    "message": "Du har forespurt, enten eksplisitt eller fra en automatisk konverteringsregel, om generering av en mediefil med bare lyd. Dette krever en registrert konverter."
+  },
+  "converting": {
+    "message": "Konverterer..."
+  },
+  "convrule_convert": {
+    "message": "Konverter"
+  },
+  "convrule_domain": {
+    "message": "Domene"
+  },
+  "convrule_extension": {
+    "message": "Utvidelse"
+  },
+  "copy_of": {
+    "message": "Kopi av $1"
+  },
+  "custom_output": {
+    "message": "Tilpasset filformat"
+  },
+  "details_parenthesis": {
+    "message": "(Detaljer)"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Last ned og konverter"
+  },
+  "dlconv_output_details": {
+    "message": "Konfigurer detaljer"
+  },
+  "donate": {
+    "message": "Doner"
+  },
+  "donate_vdh": {
+    "message": "Hjelp Video DownloadHelper"
+  },
+  "downloading": {
+    "message": "Laster ned..."
+  },
+  "errors": {
+    "message": "Feil"
+  },
+  "explain_qr1": {
+    "message": "Du vil legge merke til at videoen vil inneholde et vannmerke i hjørnet."
+  },
+  "explain_qr2": {
+    "message": "Dette er fordi du valgte en ADP-variant, og konverteringsfunksjonen har ikke blitt registrert."
+  },
+  "failed_aggregating": {
+    "message": "Feil ved samling av \"$1\""
+  },
+  "failed_converting": {
+    "message": "Feilet konvertering \"$1\""
+  },
+  "failed_getting_info": {
+    "message": "Kunne ikke hente info fra \"$1\""
+  },
+  "file_dialog_name": {
+    "message": "Navn"
+  },
+  "file_generated": {
+    "message": "Filen \"$1\" har blitt generert."
+  },
+  "file_ready": {
+    "message": "\"$1\" er nå klar"
+  },
+  "finalizing": {
+    "message": "Fullfører..."
+  },
+  "from_domain": {
+    "message": "Fra"
+  },
+  "gallery": {
+    "message": "Galleri"
+  },
+  "gallery_files_types": {
+    "message": "$1 filer"
+  },
+  "gallery_from_domain": {
+    "message": "Galleri fra $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Lenker fra $1"
+  },
+  "general": {
+    "message": "Generelt"
+  },
+  "get_conversion_license": {
+    "message": "Skaff en konverteringslisens"
+  },
+  "hit_details": {
+    "message": "Treff-detaljer"
+  },
+  "hit_go_to_tab": {
+    "message": "Gå til fane"
+  },
+  "in_current_tab": {
+    "message": "I nåværende fane"
+  },
+  "in_other_tab": {
+    "message": "Fra andre faner"
+  },
+  "license_key": {
+    "message": "Lisensnøkkel"
+  },
+  "logs": {
+    "message": "Logger"
+  },
+  "media": {
+    "message": "Media"
+  },
+  "more": {
+    "message": "Mer..."
+  },
+  "no_media_current_tab": {
+    "message": "Ingen media å behandle i nåværende fane"
+  },
+  "no_media_to_process": {
+    "message": "Ingen media å behandle"
+  },
+  "no_media_to_process_descr": {
+    "message": "Spill av video for å hjelpe å oppdage filer..."
+  },
+  "not_again_3months": {
+    "message": "Ikke plag meg med dette igjen før om 3 måneder"
+  },
+  "not_see_again": {
+    "message": "Ikke vis denne meldingen igjen"
+  },
+  "pinned": {
+    "message": "Festet"
+  },
+  "quality_medium": {
+    "message": "Middels"
+  },
+  "quality_small": {
+    "message": "Lav"
+  },
+  "queued": {
+    "message": "I kø..."
+  },
+  "register_converter": {
+    "message": "Registrer konverter"
+  },
+  "register_existing_license": {
+    "message": "Registrer en eksisterende lisens"
+  },
+  "registered_email": {
+    "message": "E-post"
+  },
+  "registered_key": {
+    "message": "Nøkkel"
+  },
+  "req_donate": {
+    "message": "Kunne du tenke deg å støtte utviklingen og donere litt?"
+  },
+  "req_review": {
+    "message": "Alternativt, kunne du tenkt deg å skrive en hyggelig anmeldelse på Mozilla sin utvidelsesside?"
+  },
+  "req_review_link": {
+    "message": "Skriv en anmeldelse om Video DownloadHelper"
+  },
+  "running": {
+    "message": "Kjører"
+  },
+  "save": {
+    "message": "Lagre"
+  },
+  "select_files_to_convert": {
+    "message": "Konverter lokale filer"
+  },
+  "settings": {
+    "message": "Innstillinger"
+  },
+  "smartnamer_domain": {
+    "message": "Domene"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Finn navn fra dokument header/URL"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Finn navn fra sideinnhold"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Finn navn fra sidetittel"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Bruk obfuskert navn"
+  },
+  "smartnamer_regexp": {
+    "message": "Ordinært uttrykk"
+  },
+  "smartnamer_selected_text": {
+    "message": "Valgt tekst"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "XPath uttrykk"
+  },
+  "supported_sites": {
+    "message": "Støttede sider"
+  },
+  "tell_me_more": {
+    "message": "Fortell meg mer"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "validate_license": {
+    "message": "Registrer lisens"
+  },
+  "variants_list_adp": {
+    "message": "Adaptive varianter"
+  },
+  "variants_list_full": {
+    "message": "Varianter"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Version"
+  },
+  "video_only": {
+    "message": "Kun video"
+  },
+  "video_qualities": {
+    "message": "Videoegenskaper"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Ikke vis ADP-varianter i nedlastingslisten"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Tving H264-justering i aggregering"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "Ikke vis .m4s treff i nedlastingslisten"
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Antall nedlastingsforsøk"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "Last ned HLS-strømmer som M2TS"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Ignorer treff under denne størrelsen"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": "Ikke vis .ts treff i nedlastingslisten"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Gi beskjed ved fullføring"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Treff fra alle faner"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Treff i nåværende fane"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Media fra aktiv fane"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Media fra alle faner"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Blandet"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Ingen"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Festede treff"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Kjørende oppgaver"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Avpiller aktivert"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Aktiver svarteliste"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Antall fildeler som blir lastet ned samtidig"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Konverteringstråder"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH aktivert"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Maks. samtidige nedlastinger"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS aktivert"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Ignorer beskyttede varianter"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Detekter utvidelser"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Minste bildestørrelse"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Detekter innebygde bilder"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Detekter lenker til media"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Minimum størrelse"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Nettverksovervåking"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Private varsler"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Varsling"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Maks varianter"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Maks lengde på filnavn"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Facebook-støtte"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Verktøy-menyen"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Erstatt med bindestrek"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Behold"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Fjern"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Erstatt med understrek"
+  },
+  "yes": {
+    "message": "Ja"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Du har nettopp lastet ned din $1th vellykkede fil med Video DownloadHelper."
+  },
+  "v9_yes": {
+    "message": "Ja"
+  },
+  "v9_no_media_current_tab": {
+    "message": "Ingen media å behandle i nåværende fane"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Spill av video for å hjelpe å oppdage filer..."
+  },
+  "v9_converter_needs_reg": {
+    "message": "Registrering nødvendig"
+  },
+  "v9_get_conversion_license": {
+    "message": "Skaff en konverteringslisens"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Du har forespurt, enten eksplisitt eller fra en automatisk konverteringsregel, om generering av en mediefil med bare lyd. Dette krever en registrert konverter."
+  },
+  "v9_chrome_premium_required": {
+    "message": "Premium-status kreves"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Advarsel om Chrome utvidelser og YouTube"
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Du kan bruke Video DownloadHelper for å laste ned YouTube videoer på Firefox-versjonen."
+  },
+  "v9_about_qr": {
+    "message": "Fil generert"
+  },
+  "v9_explain_qr1": {
+    "message": "Du vil legge merke til at videoen vil inneholde et vannmerke i hjørnet."
+  },
+  "v9_not_see_again": {
+    "message": "Ikke vis denne meldingen igjen"
+  },
+  "v9_tell_me_more": {
+    "message": "Fortell meg mer"
+  },
+  "v9_settings": {
+    "message": "Innstillinger"
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Maks. samtidige nedlastinger"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" er nå klar"
+  }
+}

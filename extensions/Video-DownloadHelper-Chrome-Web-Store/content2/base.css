@@ -1,0 +1,48 @@
+@import url("/content2/shoelace/themes/light.css");
+@import url("/content2/shoelace/themes/dark.css");
+
+:root {
+  font-size: 13px; /* Make sure we use the same REM everywhere */
+  background-color: var(--sl-color-neutral-0);
+}
+
+html.wide {
+  font-size: 16px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: var(--sl-spacing-medium);
+  background-image: url("/content2/icons/stable-color.png");
+  background-repeat: no-repeat;
+  background-color: var(--sl-color-neutral-100);
+  background-size: 24px;
+  background-position: 12px 24px;
+  padding-left: 48px;
+  margin-bottom: 40px;
+}
+
+sl-textarea::part(textarea) {
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+
+* {
+  font-family: var(--sl-font-sans);
+  text-align: left;
+}
+
+.input-inline {
+  display: inline-block;
+}

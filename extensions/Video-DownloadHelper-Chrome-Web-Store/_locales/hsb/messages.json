@@ -1,0 +1,1559 @@
+{
+  "Bytes": {
+    "message": "$1 bajtow"
+  },
+  "GB": {
+    "message": "$1 GB"
+  },
+  "KB": {
+    "message": "$1 KB"
+  },
+  "MB": {
+    "message": "$1 MB"
+  },
+  "about": {
+    "message": "Wo"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "Nutřkownych techniskich změnow w Firefox dla, dyrbješe so přidatk dospołnje přepisać. Prošu wočakajće mało tydźenjow, doniž so wšě funkcije z předchadnych wersijow wróćo njejsu."
+  },
+  "about_alpha_intro": {
+    "message": "To je alfawersija."
+  },
+  "about_beta_intro": {
+    "message": "To je betawersija"
+  },
+  "about_qr": {
+    "message": "Dataja je so wutworiła."
+  },
+  "about_vdh": {
+    "message": "Wo Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "Běžacu akciju přetorhnyć"
+  },
+  "action_abort_title": {
+    "message": "Přetorhnyć"
+  },
+  "action_as_default": {
+    "message": "Wužiwajće tutu akciju jako standard"
+  },
+  "action_avplay_description": {
+    "message": "Wothrajće widejo z wobhladowakom konwertera"
+  },
+  "action_avplay_title": {
+    "message": "Wothrać"
+  },
+  "action_blacklist_description": {
+    "message": "Wideja, kotrež z wubranych domenow pochadźeja abo so poskićeja, budu so ignorować"
+  },
+  "action_blacklist_title": {
+    "message": "Čornej lisćinje přidać"
+  },
+  "action_bulkdownload_description": {
+    "message": "Wubrane wideja sćahnyć"
+  },
+  "action_bulkdownload_title": {
+    "message": "Masowe sćehnjenje"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "Masowe sćehnjenje a wubrane wideja konwertować"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Masowe sćehnjenje a konwertować"
+  },
+  "action_copyurl_description": {
+    "message": "URL medija do mjezyskłada kopěrować"
+  },
+  "action_copyurl_title": {
+    "message": "URL kopěrować"
+  },
+  "action_deletehit_description": {
+    "message": "Wotpowědnik z aktualneje lisćiny zhašeć"
+  },
+  "action_deletehit_title": {
+    "message": "Zhašeć"
+  },
+  "action_details_description": {
+    "message": "Podrobnosće wo wotpowědniku pokazać"
+  },
+  "action_details_title": {
+    "message": "Podrobnosće"
+  },
+  "action_download_description": {
+    "message": "Dataju na wašu krutu tačel sćahnyć"
+  },
+  "action_download_title": {
+    "message": "Sćahnyć"
+  },
+  "action_downloadconvert_description": {
+    "message": "Medij sćahnyć a do druheho formata konwertować"
+  },
+  "action_downloadconvert_title": {
+    "message": "Scahnyć a konwertować"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "Rjadowak lokalneje dataje wočinić"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Rjadowak wočinić"
+  },
+  "action_openlocalfile_description": {
+    "message": "Lokalnu medijowu dataju wočinić"
+  },
+  "action_openlocalfile_title": {
+    "message": "Medij wočinić"
+  },
+  "action_pin_description": {
+    "message": "Wotpowědnik připjeć"
+  },
+  "action_pin_title": {
+    "message": "Připjeć"
+  },
+  "action_quickdownload_description": {
+    "message": "Sćahnyć, bjez toho zo by so za cil prašało"
+  },
+  "action_quickdownload_title": {
+    "message": "Spěšne sćehnjenje"
+  },
+  "action_stop_description": {
+    "message": "Natočenje zastajić"
+  },
+  "action_stop_title": {
+    "message": "Zastajić"
+  },
+  "adaptative": {
+    "message": "Přiměrjomny $1"
+  },
+  "add_to_blacklist": {
+    "message": "Čornej lisćinje přidać"
+  },
+  "add_to_blacklist_help": {
+    "message": "Wideja, kotrež z wubranych domenow pochadźeja abo so poskićeja, budu so ignorować"
+  },
+  "advanced": {
+    "message": "Rozšěrjene"
+  },
+  "aggregating": {
+    "message": "Agreguje so…"
+  },
+  "analyze_page": {
+    "message": "Stronu analyzować"
+  },
+  "appDesc": {
+    "message": "Download Videos from the Web"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Napohlad"
+  },
+  "audio_only": {
+    "message": "Jenož awdio"
+  },
+  "behavior": {
+    "message": "Zadźerženje"
+  },
+  "blacklist": {
+    "message": "Čorna lisćina"
+  },
+  "blacklist_add_domain": {
+    "message": "Domenu čorneje lisćiny přidać"
+  },
+  "blacklist_add_placeholder": {
+    "message": "Domena, kotraž ma so na čornu lisćinu stajić"
+  },
+  "blacklist_edit_descr": {
+    "message": "Čorna lisćina wam zmóžnja, medije ignorować, kotrež z wěstych domenow pochadźeja"
+  },
+  "blacklist_empty": {
+    "message": "Žana domena čorneje lisćiny"
+  },
+  "browser_info": {
+    "message": "Wobhladowak $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "Lokale wobhladowaka: $1"
+  },
+  "build_options": {
+    "message": "Wersijowe opcije: $1"
+  },
+  "built_on": {
+    "message": "$1 wutworjeny"
+  },
+  "bulk_in_progress": {
+    "message": "Masowe sćehnjenje Video DownloadHelper běži. Njezačińće tutón rajtark, to so awtomatisce stanje."
+  },
+  "bulk_n_videos": {
+    "message": "$1 widejow"
+  },
+  "cancel": {
+    "message": "Přetorhnyć"
+  },
+  "change": {
+    "message": "Změnić"
+  },
+  "chrome_basic_mode": {
+    "message": "Chrome Basic (aktualizacija doporučena)"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Premiumowy status bjez časoweho limita"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Premiumowy status z měsačneho abonementa"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Premiumowy status z lětneho abonementa"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "NIc k dispoziciji"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Čas fungowanja premium"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Měsačny premiumowy abonement"
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Lětny premiumowy abonement"
+  },
+  "chrome_install_firefox": {
+    "message": "Firefox instalować"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper za Firefox"
+  },
+  "chrome_licensing": {
+    "message": "Licencowanje Chrome"
+  },
+  "chrome_noyt_text": {
+    "message": "Bohužel Chrome Web Store rozšěrjenja za sćahowanje widejow Youtube njedowola. Tohodla dyrbjachmy tutu funkciju wotstronić."
+  },
+  "chrome_noyt_text2": {
+    "message": "Móžeće VideoDownloadHelper wužiwać, zo byšće wideja Youtube z Firefox sćahnył."
+  },
+  "chrome_premium_audio": {
+    "message": "Awdiodataje dadźa so jenož w premiumowym modusu wutworić"
+  },
+  "chrome_premium_check_error": {
+    "message": "Zmylk při přepruwowanju premiumoweho statusa"
+  },
+  "chrome_premium_hls": {
+    "message": "Bjez premiumoweho statusa da so HLS-sćehnjenje hakle $1 mjeńšin po předchadnym wuwjesć"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome Premium"
+  },
+  "chrome_premium_need_sign": {
+    "message": "Dyrbiće so pola Chrome přizjewić, zo byšće lěpšiny Premium wužiwał."
+  },
+  "chrome_premium_not_signed": {
+    "message": "Njejsće pola Chrome přizjewjeny."
+  },
+  "chrome_premium_recheck": {
+    "message": "Premiumowy status znowa přepruwować"
+  },
+  "chrome_premium_required": {
+    "message": "Premiumowy status trěbny"
+  },
+  "chrome_premium_source": {
+    "message": "Sće premiumowy wužiwar přez $1"
+  },
+  "chrome_product_intro": {
+    "message": "Móžeće z pomocu slědowaceho nastajenja na Premium aktualizować:"
+  },
+  "chrome_req_review": {
+    "message": "Abo, byšće rjane pohódnoćenje na Chrome WebStore pisał?"
+  },
+  "chrome_signing_in": {
+    "message": "Přizjewjenje pola Chrome"
+  },
+  "chrome_verif_premium": {
+    "message": "Premiumowy status so přepruwuje..."
+  },
+  "chrome_verif_premium_error": {
+    "message": "API za płaćenja w nałoženju k dispoziciji njeje"
+  },
+  "chrome_warning_yt": {
+    "message": "Warnowanje za rozšěrjenja Chrome a Youtube"
+  },
+  "clear": {
+    "message": "Zhašeć"
+  },
+  "clear_hits": {
+    "message": "Wotpowědniki zhašeć"
+  },
+  "clear_logs": {
+    "message": "Protokole zhašeć"
+  },
+  "coapp": {
+    "message": "Přewodne nałoženje"
+  },
+  "coapp_error": {
+    "message": "Přepruwowanje přewodneho nałoženja wróći:"
+  },
+  "coapp_found": {
+    "message": "Přewodne nałoženje namakane:"
+  },
+  "coapp_install": {
+    "message": "Přewodne nałoženje instalować"
+  },
+  "coapp_installed": {
+    "message": "Přewodne nałoženje instalowane"
+  },
+  "coapp_latest_version": {
+    "message": "Najnowša k dispoziciji stejaca wersija je $1"
+  },
+  "coapp_not_installed": {
+    "message": "Přewodne nałoženje njeinstalowane"
+  },
+  "coapp_outdated": {
+    "message": "Přewodne nałoženje zestarjene - aktualizujće prošu "
+  },
+  "coapp_outofdate": {
+    "message": "Aktualizacija přewodneho nałoženja trěbna"
+  },
+  "coapp_outofdate_text": {
+    "message": "Wužiwaće wersiju $1 přewodneho nałoženja, ale tuta funkcija sej wersiju $2 wužaduje"
+  },
+  "coapp_path": {
+    "message": "Dataja přewodneho nałoženja:"
+  },
+  "coapp_recheck": {
+    "message": "Znowa kontrolować"
+  },
+  "coapp_required": {
+    "message": "Přewodne nałoženje trěbne"
+  },
+  "coapp_required_text": {
+    "message": "Tuta operacija sej eksterne nałoženje wužaduje, zo by so dokónčiła."
+  },
+  "coapp_shell": {
+    "message": "Přikazowa linka přewodneho nałoženja"
+  },
+  "coapp_unchecked": {
+    "message": "Přewodne nałoženje so přepruwuje…"
+  },
+  "coapp_update": {
+    "message": "Přewodne nałoženje aktualizować"
+  },
+  "collecting": {
+    "message": "Zběra so…"
+  },
+  "confirmation_required": {
+    "message": "Wobkrućenje trěbne"
+  },
+  "congratulations": {
+    "message": "Zbožopřeće!"
+  },
+  "continue": {
+    "message": "Dale"
+  },
+  "convconf_2passes": {
+    "message": "2 přechodaj"
+  },
+  "convconf_ac": {
+    "message": "Awdiokanale"
+  },
+  "convconf_acnone": {
+    "message": "Žadyn"
+  },
+  "convconf_acodec": {
+    "message": "Awdiocodec"
+  },
+  "convconf_aspect": {
+    "message": "Wobrazowy format"
+  },
+  "convconf_audiobitrate": {
+    "message": "Awdiobitrata"
+  },
+  "convconf_audiofreq": {
+    "message": "Awdiofrekwenca"
+  },
+  "convconf_audioonly": {
+    "message": "Jenož awdio"
+  },
+  "convconf_bitrate": {
+    "message": "Bitrata"
+  },
+  "convconf_container": {
+    "message": "Format"
+  },
+  "convconf_duplicate": {
+    "message": "Podwójić"
+  },
+  "convconf_ext": {
+    "message": "Kóncowka wudateje dataje"
+  },
+  "convconf_extra": {
+    "message": "Přidatne parametry"
+  },
+  "convconf_level": {
+    "message": "Schodźenk"
+  },
+  "convconf_mono": {
+    "message": "Mono"
+  },
+  "convconf_new": {
+    "message": "Nowy"
+  },
+  "convconf_preset": {
+    "message": "Přednastajenje"
+  },
+  "convconf_profilev": {
+    "message": "Widejoprofil"
+  },
+  "convconf_rate": {
+    "message": "Wobrazowa frekwenca"
+  },
+  "convconf_readonly": {
+    "message": "Standardna konfiguracija je škitana přećiwo pisanju. Podwójće ju, zo byšće ju změnił."
+  },
+  "convconf_remove": {
+    "message": "Wotstronić"
+  },
+  "convconf_reset": {
+    "message": "Wšě wróćo stajić"
+  },
+  "convconf_reset_confirm": {
+    "message": "To wšě waše swójske konfiguracije wotstroni"
+  },
+  "convconf_save": {
+    "message": "Składować"
+  },
+  "convconf_size": {
+    "message": "Wulkosć wobłuka"
+  },
+  "convconf_stereo": {
+    "message": "Stereo"
+  },
+  "convconf_target": {
+    "message": "Cil"
+  },
+  "convconf_tune": {
+    "message": "Zhłosować"
+  },
+  "convconf_vcodec": {
+    "message": "Widejocodec"
+  },
+  "convconf_videobitrate": {
+    "message": "Widejobitrata"
+  },
+  "conversion_create_rule": {
+    "message": "Prawidło wutworić"
+  },
+  "conversion_outputs": {
+    "message": "Konwertowanske wudaća"
+  },
+  "conversion_rules": {
+    "message": "Konwertowanske prawidła"
+  },
+  "conversion_update_rule": {
+    "message": "Prawidło aktualizować"
+  },
+  "convert": {
+    "message": "Konwertować"
+  },
+  "convert_local_files": {
+    "message": "Lokalne dataje konwertować"
+  },
+  "converter_needed_aggregate": {
+    "message": "Tuta operacija sej konwerter na wašim systemje wužaduje, zo bychu so widejo- a awdioprudy agregowali."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Čehodla konwerter trjebam?"
+  },
+  "converter_needs_reg": {
+    "message": "Registracija trěbna"
+  },
+  "converter_queued": {
+    "message": "Konwerter w čakanskim rynku…"
+  },
+  "converter_reg_audio": {
+    "message": "Sće, pak eksplicitnje abo z awtomatiskeho konwertowanskeho prawidła, wutworjenje awdiodataje požadał. To sej zregistrowany konwerter wužaduje."
+  },
+  "converting": {
+    "message": "Konwertuje so…"
+  },
+  "convrule_convert": {
+    "message": "Konwertować"
+  },
+  "convrule_domain": {
+    "message": "Domena"
+  },
+  "convrule_extension": {
+    "message": "Kóncowka"
+  },
+  "convrule_format": {
+    "message": "do formata $1"
+  },
+  "convrule_from_domain": {
+    "message": "z domeny $1"
+  },
+  "convrule_no_convert": {
+    "message": "Njekonwertować"
+  },
+  "convrule_output_format": {
+    "message": "Wudawanski format"
+  },
+  "convrule_refresh_formats": {
+    "message": "Wudawanske formaty wobnowić"
+  },
+  "convrule_with_ext": {
+    "message": "z kóncowku '$1'"
+  },
+  "convrules_add_rule": {
+    "message": "Nowe konwertowanske prawidło wutworić"
+  },
+  "convrules_edit_descr": {
+    "message": "Konwertowanske prawidła zmóžnjeja wuwjedźenje awtomatiskeje medijoweje konwersacije hnydom po sćehnjenju"
+  },
+  "convrules_empty": {
+    "message": "Žane konwertowanske prawidła"
+  },
+  "copy_of": {
+    "message": "Kopija $1"
+  },
+  "corrupted_media_file": {
+    "message": "Njeje móžno było, informacije wot medija '$1' z dataje '$2' dóstać. Dataja je snano wobškodźena."
+  },
+  "create": {
+    "message": "Wutworić"
+  },
+  "custom_output": {
+    "message": "Swójski wudawanski format"
+  },
+  "dash_streaming": {
+    "message": "DASH-prudźenje"
+  },
+  "default": {
+    "message": "Standard"
+  },
+  "details_parenthesis": {
+    "message": "(Podrobnosće)"
+  },
+  "dev_build": {
+    "message": "Wuwiwanska wersija"
+  },
+  "directory_not_exist": {
+    "message": "Njeeksistowacy rjadowak"
+  },
+  "directory_not_exist_body": {
+    "message": "Rjadowak '$1' njeeksistuje, ma so wutworić?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Sćahnyć a konwertować"
+  },
+  "dlconv_output_details": {
+    "message": "Wudawanske podrobnosće konfigurować"
+  },
+  "donate": {
+    "message": "Darić"
+  },
+  "donate_vdh": {
+    "message": "Video DownloadHelper pomhać"
+  },
+  "download_error": {
+    "message": "Sćehnjenski zmylk"
+  },
+  "download_method": {
+    "message": "Sćehnjenska metoda"
+  },
+  "download_method_not_again": {
+    "message": "Tutu metodu přichodny raz po standardźe wužiwać"
+  },
+  "download_modes1": {
+    "message": "Aktualne sćehnjenje da so pak z wobhladowakom pak z přewodnym nałoženjom přewjesć."
+  },
+  "download_modes2": {
+    "message": "Z techniskich přičinow móže sćahowanje ze słužbow wobhladowaka zawinować, zo so sćehnjenje přez serwera wotpokazuje, na kotrymž widejo je a njeje móžno, alternatiwny sćehnjenski rjadowak postajić."
+  },
+  "download_with_browser": {
+    "message": "Wobhladowak wužiwać"
+  },
+  "download_with_coapp": {
+    "message": "Přewodne nałoženje wužiwać"
+  },
+  "downloading": {
+    "message": "Sćahuje so…"
+  },
+  "error": {
+    "message": "Zmylk"
+  },
+  "error_not_directory": {
+    "message": "'$1' eksistuje, folder wšak njeje"
+  },
+  "errors": {
+    "message": "Zmylki"
+  },
+  "exit_natmsgsh": {
+    "message": "Přewodne nałoženje skónčić"
+  },
+  "explain_qr1": {
+    "message": "Pytnjeće, zo nastate widejo wódne znamjo w róžku wobsahuje."
+  },
+  "explain_qr2": {
+    "message": "To so stawa, hdyž ADP-wariantu wuběraće a konwertowanska funkcija njeje zregistrowana."
+  },
+  "export": {
+    "message": "Eksportować"
+  },
+  "failed_aggregating": {
+    "message": "\"$1\" njeda so agregować"
+  },
+  "failed_converting": {
+    "message": "\"$1\" njeda so konwertować"
+  },
+  "failed_getting_info": {
+    "message": "Žane informacije wo \"$1\" dóstane"
+  },
+  "failed_opening_directory": {
+    "message": "Rjadowak dataje njeda so wočinić"
+  },
+  "failed_playing_file": {
+    "message": "Dataja njeda so wothrać"
+  },
+  "file_dialog_date": {
+    "message": "Datum"
+  },
+  "file_dialog_name": {
+    "message": "Mjeno"
+  },
+  "file_dialog_size": {
+    "message": "Wulkosć"
+  },
+  "file_generated": {
+    "message": "Dataja \"$1 je so wutworiła."
+  },
+  "file_ready": {
+    "message": "\"$1\" je nětko hotowa"
+  },
+  "finalizing": {
+    "message": "Dokónča so…"
+  },
+  "from_domain": {
+    "message": "Z $1"
+  },
+  "gallery": {
+    "message": "Galerija"
+  },
+  "gallery_files_types": {
+    "message": "$1 datajow"
+  },
+  "gallery_from_domain": {
+    "message": "Galerija z $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Wotkazy z $1"
+  },
+  "general": {
+    "message": "Powšitkowne"
+  },
+  "get_conversion_license": {
+    "message": "Konwertowansku licencu wobstarać"
+  },
+  "help_translating": {
+    "message": "Při přełožowanju pomhać"
+  },
+  "hit_details": {
+    "message": "Podrobnosće wotpowědnika"
+  },
+  "hit_go_to_tab": {
+    "message": "K rajtarce přeńć"
+  },
+  "hls_streaming": {
+    "message": "HLS-prudźenje"
+  },
+  "homepage": {
+    "message": "Startowa strona"
+  },
+  "import": {
+    "message": "Importować"
+  },
+  "import_invalid_format": {
+    "message": "Njepłaćiwy format"
+  },
+  "in_current_tab": {
+    "message": "W aktualnym rajtarku"
+  },
+  "in_other_tab": {
+    "message": "W druhich rajtarkach"
+  },
+  "lic_not_needed_linux": {
+    "message": "Naš přinošk za Linux: žana licenca trěbna"
+  },
+  "lic_status_accepted": {
+    "message": "Licenca je so wobkrućiła"
+  },
+  "lic_status_blocked": {
+    "message": "Licenca je so blokowała"
+  },
+  "lic_status_error": {
+    "message": "Licencny zmylk"
+  },
+  "lic_status_locked": {
+    "message": "Licenca je zawrjena (přepruwuje so znowa)."
+  },
+  "lic_status_nocoapp": {
+    "message": "Licenca njeda so wobkrućić"
+  },
+  "lic_status_unneeded": {
+    "message": "Licenca trěbna njeje"
+  },
+  "lic_status_unset": {
+    "message": "Licenca njeje postajena"
+  },
+  "lic_status_unverified": {
+    "message": "Licenca njeje přepruwowana"
+  },
+  "lic_status_verifying": {
+    "message": "Licenca so přepruwuje…"
+  },
+  "license": {
+    "message": "Licenca"
+  },
+  "license_key": {
+    "message": "Licencny kluč"
+  },
+  "licensing": {
+    "message": "Licencowanje"
+  },
+  "logs": {
+    "message": "Protokole"
+  },
+  "media": {
+    "message": "Medije"
+  },
+  "more": {
+    "message": "Wjace…"
+  },
+  "network_error_no_response": {
+    "message": "Syćowy zmylk - žana wotmołwa"
+  },
+  "network_error_status": {
+    "message": "Syćowy zmylk - status $1"
+  },
+  "new_sub_directory": {
+    "message": "Podrjadowak wutworić"
+  },
+  "no": {
+    "message": "Ně"
+  },
+  "no_coapp_license_unverified": {
+    "message": "Tuta licenca njeda so wobkrućić, dokelž přewodne nałoženje instalowane njeje"
+  },
+  "no_license_registered": {
+    "message": "Žana licenca zregistrowana"
+  },
+  "no_media_current_tab": {
+    "message": "Žadyn medij za předźěłowanje w aktualnym rajtarku"
+  },
+  "no_media_to_process": {
+    "message": "Žadyn medij za předźěłowanje"
+  },
+  "no_media_to_process_descr": {
+    "message": "Klikńće na Wothrać na wideju, zo byšće dataje namakał…"
+  },
+  "no_such_hit": {
+    "message": "Tajki woptowědnik njeje"
+  },
+  "no_validate_without_coapp": {
+    "message": "Přewodne nałoženje dyrbi instalowane być, zo by so licenca wobkrućiła"
+  },
+  "not_again_3months": {
+    "message": "Wostajće mje z tym 3 měsacy na pokoj"
+  },
+  "not_see_again": {
+    "message": "Tutu zdźělenku hižo njepokazać"
+  },
+  "number_type": {
+    "message": "$1  $2"
+  },
+  "ok": {
+    "message": "W porjadku"
+  },
+  "orphan": {
+    "message": "Wosyroćeny zapisk"
+  },
+  "output_configuration": {
+    "message": "Wudawanska konfiguracija"
+  },
+  "overwrite_file": {
+    "message": "Dataju '$1' přepisać?"
+  },
+  "per_month": {
+    "message": "/ měsac"
+  },
+  "per_year": {
+    "message": "/ lěto"
+  },
+  "pinned": {
+    "message": "Připjaty"
+  },
+  "platform": {
+    "message": "Platforma"
+  },
+  "platform_info": {
+    "message": "Platforma $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "Spěchowany wot Weh"
+  },
+  "preferences": {
+    "message": "Nastajenja"
+  },
+  "prod_build": {
+    "message": "Zhotowjenska wersija"
+  },
+  "quality_medium": {
+    "message": "Srěni"
+  },
+  "quality_small": {
+    "message": "Niski"
+  },
+  "queued": {
+    "message": "W čakanskim rynku…"
+  },
+  "recheck_license": {
+    "message": "Licencu znowa přepruwować"
+  },
+  "register_converter": {
+    "message": "Konwerter registrować"
+  },
+  "register_existing_license": {
+    "message": "Eksistowacu licencu registrować"
+  },
+  "registered_email": {
+    "message": "E-mejlowa adresa"
+  },
+  "registered_key": {
+    "message": "Kluč"
+  },
+  "reload_addon": {
+    "message": "Rozšěrjenje znowa začitać"
+  },
+  "reload_addon_confirm": {
+    "message": "Chceće rozšěrjenje woprawdźe znowa začitać?"
+  },
+  "req_donate": {
+    "message": "Byšće rady wuwiwanje podpěrał a trochu darił?"
+  },
+  "req_locale": {
+    "message": "Abo snano pomhał, přidatk do '$1' přełožować ($2 znamježkowych rjećazkow je přełožene)?"
+  },
+  "req_review": {
+    "message": "Jeli chceće, móžeće wšak tež pohódnoćenje na sydle přidatkow Mozilla pisać."
+  },
+  "req_review_link": {
+    "message": "Pohódnoćenje wo Video DownloadHelper pisać"
+  },
+  "reset_settings": {
+    "message": "Nastajenja za wróćostajenje"
+  },
+  "running": {
+    "message": "Běži"
+  },
+  "save": {
+    "message": "Składować"
+  },
+  "save_as": {
+    "message": "Składować jako…"
+  },
+  "save_file_as": {
+    "message": "Dataju składować jako…"
+  },
+  "select_files_to_convert": {
+    "message": "Lokalne dataje konwertować"
+  },
+  "select_output_config": {
+    "message": "Wudawansku konfiguraciju wubrać…"
+  },
+  "select_output_directory": {
+    "message": "Wudawanski rjadowak"
+  },
+  "selected_media": {
+    "message": "Masowy wuběr"
+  },
+  "settings": {
+    "message": "Nastajenja"
+  },
+  "smartname_add_domain": {
+    "message": "Prawidło za inteligentne pomjenowanje přidać"
+  },
+  "smartname_create_rule": {
+    "message": "Prawidło přidać"
+  },
+  "smartname_define": {
+    "message": "Prawidło za inteligentne mjeno definować"
+  },
+  "smartname_edit_descr": {
+    "message": "Prawidło za inteligentne mjeno zmóžnja přiměrjenje widejomjenow na zakładźe hostmjenow"
+  },
+  "smartname_empty": {
+    "message": "Žane prawidło za inteligentne pomjenowanje"
+  },
+  "smartname_update_rule": {
+    "message": "Prawidło aktualizować"
+  },
+  "smartnamer_delay": {
+    "message": "Komdźenje pomjenowanskeho zapřijeća (ms)"
+  },
+  "smartnamer_domain": {
+    "message": "Domena"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Mjeno z dokumentoweje hłowy/URL wobstarać"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Mjeno z wobsaha strony wobstarać"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Mjeno z titula strony wobstarać"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Skepsane mjeno wužiwać"
+  },
+  "smartnamer_regexp": {
+    "message": "Regularny wuraz"
+  },
+  "smartnamer_selected_text": {
+    "message": "Wubrany tekst"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "XPath-wuraz"
+  },
+  "smartnaming_rule": {
+    "message": "Prawidło za inteligentne pomjenowanje"
+  },
+  "smartnaming_rules": {
+    "message": "Prawidła za inteligentne pomjenowanje"
+  },
+  "sub_directory_name": {
+    "message": "Mjeno podrjadowaka"
+  },
+  "support_forum": {
+    "message": "Forum pomocy"
+  },
+  "supported_sites": {
+    "message": "Podpěrane sydła"
+  },
+  "tbsn_quality_hd": {
+    "message": "Přerězna kwalita"
+  },
+  "tbsn_quality_sd": {
+    "message": "Niska kwalita"
+  },
+  "tell_me_more": {
+    "message": "Powědajće wjace wo tym"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "translation": {
+    "message": "Přełožk"
+  },
+  "up": {
+    "message": "Horje"
+  },
+  "validate_license": {
+    "message": "Licencu registrować"
+  },
+  "variants_list_adp": {
+    "message": "Přiměrjomne warianty"
+  },
+  "variants_list_full": {
+    "message": "Warianty"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Wersija $1"
+  },
+  "video_only": {
+    "message": "Jenož widejo"
+  },
+  "video_qualities": {
+    "message": "Widejokwality"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "Wokno"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "Rajtark"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "Prašeć so"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "Wobhladowak"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "Přewodne nałoženje"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Awdio sćahnyć"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "Awdio a widejo agregować"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Widejo sćahnyć"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "ADP-warianty w lisćinje sćehnjenjow njepokazać."
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "Kak so warnowanske dialogi zwobraznjeja"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Wotpowědnik po sćehnjenju připjeć."
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "Widejo z přewodnym nałoženjom wothrać"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Někotrym sydłam zakazać, medijowe spóznaće zmóžnić."
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "Masowe sćehnjenja zmóžnić"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "Přepruwujće při startowanju přidatka, hač je so přewodne nałoženje za lěpše namakanje medijow k dispoziciji"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "Daty po segmentach z pomocu přewodneho nałoženja požadać"
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "Manifesty po segmentach z pomocu přewodneho nałoženja požadać"
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "Maksimalna ličba segmentow, kotrež so paralelnje sćahuja"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Prudźenje po segmentow zmóžnjene"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "Kelko segmentow da so dočasa sćahnyć"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "Nałoženje, kotrež aktualne sćehnjenje wuwjedźe"
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "Po tutej ličbje milisekundow awtomatisce začinić, 0 je znjemóžnjeny"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "Komdźenje w milisekundach, hdyž so přewodne nałoženje znowa startuje"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "Přewodne nałoženje samsny proksy jako originalne naprašowanje wužiwa"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "Někotre sydła móža nowy URL město medijoweho wobsaha wróćić"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "Přistup na prikazy z praweho kliknjenja na stronje"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "Maksimalna ličba runočasnych agregaciskich abo konwertowanskich nadawkow"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "H264-zhłosowanje w agregaciji wunuzować"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "Nachwilne dataje po předźěłowanju njewotstronić"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "Ličba nitkow, kotrež maja so při konwertowanju wužiwać"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "DASH-prudźenje po segmentach zmóžnjene"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": ".m4s-zapiski w lisćinje sćehnjenjow njepokazać"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Hdyž DASH awdio kaž tež widejo wobsahuje"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "Dialogi so začinjeja, hdyž fokus zhubjeja"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Kontroluje ličbu sćehnjenjow wutworjenych přez přidatka, kotrež w samsnym času běži, zo by so šěrokosć pasma wobchowała."
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Ličba sćehnjenskich pospytow"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Čas mjez sćehnjenskimi pospytami (ms)"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "Kontroluje ličbu prudow, kotrež so za jednotliwy zapisk sćahuje"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "Kak so datajowe dialogi pokazuja"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "Kak maja so dataje z galerijoweho sćehnjenja pomjenować"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "Wotkaz we wopisanju zapiska pokazać, zo by k widejorajtarkej přešło"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "HLS-prudy jako M2TS sćahnyć"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "HLS-prudźenje po segmentach zmóžnjene"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "Hdyž so symbol na symbolowej lajsće aktiwizuje"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "Zwobraznjenje symboloweje znački"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "Warianty njepokazać, kotrež su škitane."
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "Jenož ze sćehnjenskim procesorom přewodneho nałoženja wužity"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "Datajowe kóncowki, kotrež so maja za medije"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "Při kóždym začitanju wuwjesć (móže wukon wobwliwować)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "Dataje rozšěrjenja, kotrež maja za natočenje galerije wobkedźbować"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "Ličbu zapiskow wobmjezować, kotrež maja za galeriju"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "Minimalna ličba zapiskow, kotrež maja so za galeriju"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "Minimalna wobrazowa wulkosć, kotrež maja za wobrazowu galeriju"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "Wobrazy na stronje namakać"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "Medije namakać, kotrež su direktnje ze strony wotkazane"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Wotpowědniki pod tutej wulkosću ignorować"
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Pytanje medijow nad tutej wulkosću wunuzować"
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "Ze samsnymi hłowami kaž originalne naprašowanje sćahnyć"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": ".ts-zapiski w lisćinje sćehnjenjow njepokazać"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Regularny wuraz za ignorowanje někotrych medijowych URL."
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "Syćowy wobchad skenować, zo bychu so wotpowědniki namakali"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Žana zdźělenka za priwatne wotpowědniki"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Při předźěłowanju informować"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Časowe překročenje, prjedy hač so wosyroćene wotpowědniki wotstronja."
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Maksimalna ličba zwobraznjenych wariantow za samsne widejo"
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "Poslednju sćehnjenski rjadowak jako standardne městno wužiwać"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "Zawěsća, zo wutworjene datajowe mjena tutu wulkosć njepřekročuja."
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "Kak ma so z mjezotami we widejomjenach wobchadźeć"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "Wideja z Facebook namakać a sćahnyć"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "Kak dołho so widejotitule maja we hłownym woknje pokazać"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "Přistup na přikazy z menija Nastroje"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "Wokno"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "Rajtark"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "Indeks - Url"
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "Typ - Indeks"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "Url"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Wotpowědnik z někajkeho rajtarka"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Wotpowědnik z aktualneho rajtarka"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Medij z aktiwneho rajtarka"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Medij z někajkeho rajtarka"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Měšany"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Žadyn"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Připjate wotpowědniki"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Běžace nadawki"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "ADP-warianty schować"
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "Warnowanski dialog"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Awtomatisce připjeć"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Wothrawak je zmóžnjeny"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Čornu lisćinu zmóžnić"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "Masowe sćehnjenje zmóžnjene"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "Přewodne nałoženje při startowanju zmóžnić"
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "Naprašowanja přewodneho nałoženja za daty po segmentach"
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "Naprašowanja přewodneho nałoženja za manifesty po segmentach"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Runočasne sćehnjenja po segmentach"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Prudźenje po segmentach"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Ličba dočasa sćehnjenych segmentow"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "Scéhnjenski procesor"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "Timer přewodneho nałoženja za wopušćenje prózdnoběha"
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "Komdźenje při znowastartowanju přewodneho nałoženja"
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "Proksy přewodneho nałoženja"
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "Wobsahowe dalesposrědkowanje zmóžnjene"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "Kontekstowy meni"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "Runočasne konwertowanske operacije"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "H264-zhłosowanje"
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "Nachwilne dataje wobchować"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Konwertowanske nitki"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH zmóžnjeny"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": ".m4s schować"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "DASH-prudy"
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "Dialogi awtomatisce začinić"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Maksimalna ličba runočasnych sćehnjenjow"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "Sćehnjenske pospyty"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "Čas mjez pospytami"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "Maksimalna ličba runočasnych prudowych sćehnjenjow"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "Datajowy dialog"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "Pomjenowanje galerijoweje dataje"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "Wotkaz za přeńdźenje k rajtarkej pokazać"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS jako M2TS"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS zmóžnjeny"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Symbolowe aktiwizowanje"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Symbolowa značka"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Škitane warianty ignorować"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "Standardny datajowy rjadowak"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Rozšěrjenja namakać"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "Galeriju awtomatisce namakać"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "Kóncowki medijoweho wotkaza"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "Maksimalna ličba zapiskow"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "Minimalna ličba zapiskow"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Minimalna wobrazowa wulkosć"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Zasadźene wobrazy namakać"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Wotkazy k medijam namakać"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Minimalna wulkosć"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Próh wulkosće"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "Naprašowanske hłowy"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": ".ts schować"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Syćowy filter"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Syćowa sonda"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Priwatne zdźělenki"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Zdźělenka"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Časowe překročenje za spadnjenje wosyroćenych zapiskow"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Maksimalne warianty"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "Posedni rjadowak sej spomjatkować"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Maksimalna dołhosć datajoweho mjena"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Dołhe titule hłowneho wokna"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Podpěra Facebook"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Dołhe titule hłowneho wokna"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Meni Nastroje"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Z wjazawkami wuměnić"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Wobchować"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Wotstronić"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Z podsmužkami wuměnić"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "Třidypk nalěwo"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "Nad wjacorymi linkami"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "Třidypk naprawo"
+  },
+  "yes": {
+    "message": "Haj"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Sće runje swoju dataju $1. dataju z Video DownloadHelper wuspěšnje sćahnył."
+  },
+  "v9_yes": {
+    "message": "Haj"
+  },
+  "v9_no": {
+    "message": "Ně"
+  },
+  "v9_error": {
+    "message": "Zmylk"
+  },
+  "v9_no_media_current_tab": {
+    "message": "Žadyn medij za předźěłowanje w aktualnym rajtarku"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Klikńće na Wothrać na wideju, zo byšće dataje namakał…"
+  },
+  "v9_coapp_required": {
+    "message": "Přewodne nałoženje trěbne"
+  },
+  "v9_coapp_required_text": {
+    "message": "Tuta operacija sej eksterne nałoženje wužaduje, zo by so dokónčiła."
+  },
+  "v9_coapp_installed": {
+    "message": "Přewodne nałoženje instalowane"
+  },
+  "v9_coapp_recheck": {
+    "message": "Znowa kontrolować"
+  },
+  "v9_lic_status_accepted": {
+    "message": "Licenca je so wobkrućiła"
+  },
+  "v9_coapp_outdated": {
+    "message": "Přewodne nałoženje zestarjene - aktualizujće prošu "
+  },
+  "v9_converter_needs_reg": {
+    "message": "Registracija trěbna"
+  },
+  "v9_get_conversion_license": {
+    "message": "Konwertowansku licencu wobstarać"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Sće, pak eksplicitnje abo z awtomatiskeho konwertowanskeho prawidła, wutworjenje awdiodataje požadał. To sej zregistrowany konwerter wužaduje."
+  },
+  "v9_chrome_premium_required": {
+    "message": "Premiumowy status trěbny"
+  },
+  "v9_chrome_premium_hls": {
+    "message": "Bjez premiumoweho statusa da so HLS-sćehnjenje hakle $1 mjeńšin po předchadnym wuwjesć"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Warnowanje za rozšěrjenja Chrome a Youtube"
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Móžeće VideoDownloadHelper wužiwać, zo byšće wideja Youtube z Firefox sćahnył."
+  },
+  "v9_about_qr": {
+    "message": "Dataja je so wutworiła."
+  },
+  "v9_explain_qr1": {
+    "message": "Pytnjeće, zo nastate widejo wódne znamjo w róžku wobsahuje."
+  },
+  "v9_not_see_again": {
+    "message": "Tutu zdźělenku hižo njepokazać"
+  },
+  "v9_tell_me_more": {
+    "message": "Powědajće wjace wo tym"
+  },
+  "v9_settings": {
+    "message": "Nastajenja"
+  },
+  "v9_coapp_unchecked": {
+    "message": "Přewodne nałoženje so přepruwuje…"
+  },
+  "v9_coapp_update": {
+    "message": "Přewodne nałoženje aktualizować"
+  },
+  "v9_coapp_not_installed": {
+    "message": "Přewodne nałoženje njeinstalowane"
+  },
+  "v9_coapp_install": {
+    "message": "Přewodne nałoženje instalować"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "Přewodne nałoženje dyrbi instalowane być, zo by so licenca wobkrućiła"
+  },
+  "v9_lic_status_verifying": {
+    "message": "Licenca so přepruwuje…"
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Maksimalna ličba runočasnych sćehnjenjow"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "Přistup na prikazy z praweho kliknjenja na stronje"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" je nětko hotowa"
+  },
+  "v9_lic_status_unset": {
+    "message": "Licenca njeje postajena"
+  },
+  "v9_lic_status_blocked": {
+    "message": "Licenca je so blokowała"
+  },
+  "v9_lic_status_locked": {
+    "message": "Licenca je zawrjena (přepruwuje so znowa)."
+  },
+  "v9_no_license_registered": {
+    "message": "Žana licenca zregistrowana"
+  }
+}

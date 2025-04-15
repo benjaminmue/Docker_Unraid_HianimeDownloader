@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html id="sidebar">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="xul.css"/>
+    <link rel="stylesheet" href="base.css"/>
+    <link rel="stylesheet" href="panel.css"/>
+    <link rel="stylesheet" href="settings.css"/>
+
+    <style>
+      html, body {
+        height: 100vh;
+        max-height: 100vh;
+      }
+    </style>
+
+  </head>
+
+<body class="not-loaded">
+
+  <!--
+    Hide nomedia by default. It will show once we calculated that there's no media,
+    better than having it until we build all the media and then hide it.
+  -->
+  <vbox id="core" class="hide-no-media" flex="1">
+    <vbox pack="center" align="center" id="nomedia">
+      <div>
+        <p data-i18n="v9_no_media_current_tab"></p>
+        <p data-i18n="v9_no_media_to_process_descr"></p>
+      </div>
+    </vbox>
+    <vbox flex="1" id="core-downloads">
+    </vbox>
+  </vbox>
+
+  <sl-include id="include-settings" src="./settings.html"></sl-include>
+
+  <sl-drawer placement="bottom" class="drawer-placement-bottom drawer-header-actions" id="drawer-convert-to">
+    <sl-menu id="drawer-menu-convert-to">
+      <sl-menu-item value="Mp4">Mp4</sl-menu-item>
+      <sl-menu-item value="Mkv">Mkv</sl-menu-item>
+      <sl-menu-item value="WebM">WebM</sl-menu-item>
+    </sl-menu>
+  </sl-drawer>
+
+  <hbox id="footer" align="center" pack="end" class="used-history-button" wrap>
+
+    <sl-dropdown stay-open-on-select="true" id="dropdown-menu-view">
+      <sl-button slot="trigger" size="large">
+        <sl-icon name="gear"></sl-icon>
+      </sl-button>
+      <sl-menu>
+        <sl-menu-item id="menu-view-clean-all" data-i18n="v9_panel_view_clean_all" type="checkbox"></sl-menu-item>
+        <sl-menu-item id="menu-view-clean" data-i18n="v9_panel_view_clean" type="checkbox"></sl-menu-item>
+        <sl-menu-item id="menu-view-hide-downloaded" data-i18n="v9_panel_view_hide_downloaded" type="checkbox"></sl-menu-item>
+        <sl-divider></sl-divider>
+        <sl-menu-item id="menu-view-all-tabs" data-i18n="v9_panel_view_show_all_tabs" type="checkbox"></sl-menu-item>
+        <sl-menu-item id="menu-view-show-low-quality" data-i18n="v9_panel_view_show_low_quality" type="checkbox"></sl-menu-item>
+        <sl-divider></sl-divider>
+        <sl-menu-item id="menu-view-sort-status" data-i18n="v9_panel_view_sort_status" type="checkbox"></sl-menu-item>
+        <sl-menu-item id="menu-view-sort-reverse" data-i18n="v9_panel_view_sort_reverse" type="checkbox"></sl-menu-item>
+        <sl-divider></sl-divider>
+        <sl-menu-item id="menu-view-open-settings">
+          <sl-icon slot="suffix" name="three-dots"></sl-icon>
+          <span data-i18n="v9_panel_view_open_settings"></span>
+        </sl-menu-item>
+      </sl-menu>
+    </sl-dropdown>
+
+
+    <sl-tooltip data-i18n="v9_panel_footer_show_in_sidebar_tooltip" data-i18n-attr="content">
+      <sl-button id="button-use-sidebar" size="large">
+        <sl-icon name="layout-sidebar-inset-reverse"></sl-icon>
+      </sl-button>
+    </sl-tooltip>
+
+    <sl-tooltip data-i18n="v9_panel_footer_show_in_popup_tooltip" data-i18n-attr="content">
+      <sl-button id="button-use-popup" size="large">
+        <sl-icon name="front"></sl-icon>
+      </sl-button>
+    </sl-tooltip>
+
+    <sl-tooltip data-i18n="v9_panel_footer_show_history_tooltip" data-i18n-attr="content">
+      <sl-button id="button-show-history" size="large">
+        <sl-icon name="clock-history"></sl-icon>
+        <sl-badge variant="primary" pill pulse data-i18n="v9_badge_new"></sl-badge>
+      </sl-button>
+    </sl-tooltip>
+
+    <spacer flex="1"></spacer>
+
+    <sl-tooltip data-i18n="v9_panel_footer_force_reload" data-i18n-attr="content">
+      <sl-button id="button-force" size="large">
+        <sl-icon name="arrow-repeat"></sl-icon>
+      </sl-button>
+    </sl-tooltip>
+
+    <sl-tooltip data-i18n="v9_panel_footer_convert_local_tooltip" data-i18n-attr="content">
+      <sl-button id="button-convert-local" size="large">
+        <sl-icon name="recycle"></sl-icon>
+      </sl-button>
+    </sl-tooltip>
+
+    <sl-tooltip data-i18n="v9_panel_footer_clean_tooltip" data-i18n-attr="content">
+      <sl-button id="button-clean" size="large">
+        <sl-icon name="trash"></sl-icon>
+      </sl-button>
+    </sl-tooltip>
+
+    <sl-tooltip data-i18n="v9_panel_footer_clean_all_tooltip" data-i18n-attr="content">
+      <sl-button id="button-clean-all" size="large">
+        <sl-icon name="trash-fill"></sl-icon>
+      </sl-button>
+    </sl-tooltip>
+
+  </hbox>
+  <template>
+
+    <vbox class="download-error" error-type="nocoapp">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-primary-600)"></sl-icon>
+        <p class="title" data-i18n="v9_coapp_required"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p><span data-i18n="v9_coapp_required_text"></span> <a target="_blank" href="https://github.com/aclap-dev/video-downloadhelper/wiki/CoApp-not-recognized" data-i18n="v9_coapp_help"></a></p>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button size="small" variant="success" class="error-nocoapp-button-success">
+          <sl-icon slot="prefix" name="check-circle"></sl-icon>
+          <span data-i18n="v9_coapp_installed"></span>
+        </sl-button>
+        <sl-button size="small" class="error-nocoapp-button-recheck">
+          <sl-icon slot="prefix" name="arrow-clockwise"></sl-icon>
+          <span data-i18n="v9_coapp_recheck"></span>
+        </sl-button>
+        <sl-button size="small" variant="primary" class="error-nocoapp-button-install">
+          <img src="/content2/icons/stable-color.png">
+          <span data-i18n="v9_panel_error_nocoapp_button_install"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="user-message" data-user-message-id="yt_bulk_detected">
+      <hbox align="center">
+        <sl-icon name="youtube"></sl-icon>
+        <p class="title"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" class="button-hide"></sl-icon-button>
+      </hbox>
+      <vbox class="user-message-actions">
+        <hbox pack="end">
+          <sl-button class="button-trigger-bulk-download" size="small" data-i18n="v9_yt_bulk_detected_trigger"></sl-button>
+        </hbox>
+      </vbox>
+    </vbox>
+
+    <vbox class="user-message" data-user-message-id="license_now_valid">
+      <hbox align="center">
+        <sl-icon name="check-circle" style="color: var(--sl-color-success-600)"></sl-icon>
+        <p class="title" data-i18n="v9_lic_status_accepted"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" class="button-hide"></sl-icon-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="user-message" data-user-message-id="no_incognito">
+      <hbox align="center">
+        <sl-icon name="incognito"></sl-icon>
+        <p class="title" data-i18n="v9_user_message_no_incognito_title"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" class="button-hide"></sl-icon-button>
+      </hbox>
+      <vbox class="user-message-actions">
+        <p data-i18n="v9_user_message_no_incognito_body"></p>
+        <hbox pack="end">
+          <sl-button class="button-open-browser-settings" size="small" data-i18n="v9_user_message_no_incognito_open_settings"></sl-button>
+        </hbox>
+      </vbox>
+    </vbox>
+
+    <vbox class="user-message" data-user-message-id="one_hundred_downloads">
+      <hbox align="center">
+        <spacer flex="1"></spacer>
+        <sl-icon style="color: var(--sl-color-yellow-400)" name="stars"></sl-icon>
+        <p class="title" data-i18n="v9_user_message_one_hundred_downloads"></p>
+        <sl-icon style="color: var(--sl-color-yellow-400)" name="stars"></sl-icon>
+        <spacer flex="1"></spacer>
+      </hbox>
+      <vbox class="user-message-actions">
+        <p data-i18n="v9_user_message_one_hundred_downloads_body"></p>
+        <hbox pack="end">
+          <div>
+            <sl-button class="button-leave-review" variant="success" size="small" data-i18n="v9_user_message_one_hundred_downloads_leave_review"></sl-button>
+            <sl-button class="button-never-show-one-hundred-message" size="small" data-i18n="v9_user_message_one_hundred_downloads_never_show_again"></sl-button>
+          </div>
+        </hbox>
+      </vbox>
+    </vbox>
+
+    <vbox class="user-message" data-user-message-id="auto_hide_downloaded">
+      <hbox align="center">
+        <sl-icon name="patch-question-fill" style="color: var(--sl-color-primary-600)"></sl-icon>
+        <p class="title" data-i18n="v9_user_message_auto_hide_downloaded"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" class="button-hide"></sl-icon-button>
+      </hbox>
+      <hbox class="user-message-actions" pack="end">
+        <sl-button size="small" data-i18n="v9_yes" class="user-message-hide-downloaded"></sl-button>
+        <sl-button size="small" data-i18n="v9_no" class="button-hide"></sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="coapp_too_old">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-yellow-600)"></sl-icon>
+        <p class="title" data-i18n="v9_coapp_outdated"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button size="small" variant="primary" class="error-nocoapp-button-install">
+          <img src="/content2/icons/stable-color.png">
+          <span data-i18n="v9_panel_error_coapp_too_old_button_udpate"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="cant_download_audio">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_dialog_audio_impossible_title"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_dialog_audio_impossible"></p>
+    </vbox>
+
+    <vbox class="download-error" error-type="invalid_license">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_chrome_premium_required"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_converter_needs_reg"></p>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button size="small" variant="primary" class="error-invalid-license-get">
+          <span data-i18n="v9_get_conversion_license"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="invalid_license_for_audio">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_chrome_premium_required"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_converter_reg_audio"></p>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button size="small" variant="primary" class="error-invalid-license-get">
+          <span data-i18n="v9_get_conversion_license"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="download_limit">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-yellow-600)"></sl-icon>
+        <p class="title" data-i18n="v9_chrome_premium_required"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_chrome_premium_hls" data-i18n-args="[120]"></p>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button size="small" variant="primary" class="error-invalid-license-get">
+          <span data-i18n="v9_get_conversion_license"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="noyt">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_chrome_warning_yt"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_chrome_noyt_text3"></p>
+      <p data-i18n="v9_chrome_noyt_text2"></p>
+    </vbox>
+
+    <vbox class="download-error" error-type="qrcode">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_about_qr"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p>
+        <img src="/content/images/qr-video.png">
+        <span data-i18n="v9_explain_qr1"></span>
+      </p>
+      <hbox pack="end">
+        <sl-checkbox slot="suffix" data-i18n="v9_not_see_again"></sl-checkbox>
+      </hbox>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button size="small" class="error-why-qr">
+          <span data-i18n="v9_tell_me_more"></span>
+        </sl-button>
+        <sl-button size="small" variant="primary" class="error-invalid-license-get">
+          <span data-i18n="v9_get_conversion_license"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="coapp_failure">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_panel_error_coapp_failure_title"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_panel_error_coapp_failure_description"></p>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button class="button-report-error" size="small" variant="primary">
+          <sl-icon slot="prefix" name="bug"></sl-icon>
+          <span data-i18n="v9_panel_error_report_button2"></span>
+        </sl-button>
+        <sl-button class="button-error-reported" size="small" variant="success">
+          <sl-icon slot="prefix" name="bug"></sl-icon>
+          <span data-i18n="v9_panel_error_reported_button"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <vbox class="download-error" error-type="unknown">
+      <hbox align="center">
+        <sl-icon name="exclamation-square-fill" style="color: var(--sl-color-red-600)"></sl-icon>
+        <p class="title" data-i18n="v9_error"></p>
+        <spacer flex="1"></spacer>
+        <sl-icon-button name="x" label="Hide media" class="button-hide"></sl-icon-button>
+      </hbox>
+      <p data-i18n="v9_panel_error_unknown_description"></p>
+      <hbox class="download-error-actions" pack="end">
+        <sl-button class="button-report-error" size="small" variant="primary">
+          <sl-icon slot="prefix" name="bug"></sl-icon>
+          <span data-i18n="v9_panel_error_report_button2"></span>
+        </sl-button>
+        <sl-button class="button-error-reported" size="small" variant="success">
+          <sl-icon slot="prefix" name="bug"></sl-icon>
+          <span data-i18n="v9_panel_error_reported_button"></span>
+        </sl-button>
+      </hbox>
+    </vbox>
+
+    <sl-button-group class="button-group-actions">
+      <sl-button variant="primary" size="small" pill>
+        <sl-icon slot="prefix"></sl-icon>
+        <span class="default-action-button-label"></span>
+      </sl-button>
+      <sl-button class="dropdown-actions" variant="primary" size="small" pill>
+        <sl-icon slot="prefix" name="three-dots-vertical"></sl-icon>
+      </sl-button>
+    </sl-button-group>
+
+    <sl-menu class="menu-actions closed" hidden>
+      <sl-menu-item class="action-download">
+        <sl-icon slot="prefix" name="arrow-down-circle"></sl-icon>
+        <span data-i18n="v9_panel_download_button_label"></span>
+      </sl-menu-item>
+      <sl-menu-item class="action-download_audio">
+        <sl-icon slot="prefix" name="music-note-beamed"></sl-icon>
+        <span data-i18n="v9_panel_download_audio_button_label"></span>
+      </sl-menu-item>
+      <sl-menu-item class="action-download_as">
+        <sl-icon slot="prefix" name="floppy"></sl-icon>
+        <span data-i18n="v9_panel_download_as_button_label"></span>
+      </sl-menu-item>
+      <sl-menu-item class="action-copy">
+        <sl-icon slot="prefix" name="copy"></sl-icon>
+        <span data-i18n="v9_panel_copy_url_button_label"></span>
+      </sl-menu-item>
+      <sl-divider></sl-divider>
+      <sl-menu-item class="checkbox-remember-action" type="checkbox" data-i18n="v9_checkbox_remember_action"></sl-menu-item>
+      <sl-divider></sl-divider>
+      <sl-menu-item><span data-i18n="v9_menu_item_download_and_convert"></span><sl-icon slot="prefix" name="boxes"></sl-icon>
+        <sl-menu slot="submenu">
+          <sl-menu-item class="menu-convert-to" value="Mp4">Mp4</sl-menu-item>
+          <sl-menu-item class="menu-convert-to" value="Mkv">Mkv</sl-menu-item>
+          <sl-menu-item class="menu-convert-to" value="WebM">WebM</sl-menu-item>
+        </sl-menu>
+      </sl-menu-item>
+      <sl-divider></sl-divider>
+      <sl-menu-item class="menu-smartnaming"><span data-i18n="v9_menu_item_smartnaming"></span><sl-icon slot="prefix" name="vector-pen"></sl-icon></sl-menu-item>
+      <sl-menu-item class="menu-blacklist"><span data-i18n="v9_menu_item_blacklist"></span>
+        <sl-icon slot="prefix" name="radioactive"></sl-icon>
+        <sl-menu slot="submenu">
+          <sl-menu-item class="menu-blacklist-media" data-i18n="v9_menu_item_blacklist_media"></sl-menu-item>
+          <sl-menu-item class="menu-blacklist-page" data-i18n="v9_menu_item_blacklist_page"></sl-menu-item>
+          <sl-menu-item class="menu-blacklist-domain" data-i18n="v9_menu_item_blacklist_domain"></sl-menu-item>
+          <sl-divider></sl-divider>
+          <sl-menu-item class="menu-blacklist-edit">edit</sl-menu-item>
+        </sl-menu>
+      </sl-menu-item>
+      <sl-menu-item class="menu-details"><span data-i18n="v9_menu_item_details"></span><sl-icon slot="prefix" name="card-checklist"></sl-icon></sl-menu-item>
+    </sl-menu>
+
+
+  </template>
+  <script type="module" src="shoelace.js"></script>
+  <script type="module" src="panel.js"></script>
+  <script type="module" src="settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2009 @@
+{
+  "__MSG_appDesc_": {
+    "message": "Video DownloadHelper"
+  },
+  "Bytes": {
+    "message": "$1 байт"
+  },
+  "GB": {
+    "message": "$1 Гб"
+  },
+  "KB": {
+    "message": "$1 Кб"
+  },
+  "MB": {
+    "message": "$1 Мб"
+  },
+  "about": {
+    "message": "Про"
+  },
+  "about_alpha_extra7_fx": {
+    "message": "У зв'язку з внутрішніми технічними змінами у Firefox, довелося повністю переписати додаток. Будь ласка, зачекайте кілька тижнів для повернення всіх функцій попередніх версій додатку"
+  },
+  "about_alpha_intro": {
+    "message": "Це є альфа версія."
+  },
+  "about_beta_intro": {
+    "message": "Це є бета версія."
+  },
+  "about_chrome_licenses": {
+    "message": "Про ліцензії Chrome"
+  },
+  "about_qr": {
+    "message": "Файл створено"
+  },
+  "about_vdh": {
+    "message": "Про Video DownloadHelper"
+  },
+  "action_abort_description": {
+    "message": "Скасування цієї дії у процесі"
+  },
+  "action_abort_title": {
+    "message": "Скасувати"
+  },
+  "action_as_default": {
+    "message": "Використовувати цю дію за замовчуванням"
+  },
+  "action_avplay_description": {
+    "message": "Відтворити відео з оглядачем конвертера"
+  },
+  "action_avplay_title": {
+    "message": "Відтворити"
+  },
+  "action_blacklist_description": {
+    "message": "Відео, які походять з обраного домену(ів) або ним(и) обслуговуються, будуть ігноруватися."
+  },
+  "action_blacklist_title": {
+    "message": "Додати в чорний список"
+  },
+  "action_bulkdownload_description": {
+    "message": "Завантажити вибрані відео"
+  },
+  "action_bulkdownload_title": {
+    "message": "Масове завантаження"
+  },
+  "action_bulkdownloadconvert_description": {
+    "message": "Масове завантаження та конвертування вибраних відео"
+  },
+  "action_bulkdownloadconvert_title": {
+    "message": "Масове завантаження та конвертація"
+  },
+  "action_copyurl_description": {
+    "message": "Копіювати медіа посилання в буфер обміну"
+  },
+  "action_copyurl_title": {
+    "message": "Копіювати посилання"
+  },
+  "action_deletehit_description": {
+    "message": "Видалити елемент з поточного списку"
+  },
+  "action_deletehit_title": {
+    "message": "Видалити"
+  },
+  "action_details_description": {
+    "message": "Показати деталі цього елементу"
+  },
+  "action_details_title": {
+    "message": "Деталі"
+  },
+  "action_download_description": {
+    "message": "Завантажити цей файл на ваш жорсткий диск"
+  },
+  "action_download_title": {
+    "message": "Завантажити"
+  },
+  "action_downloadaudio_description": {
+    "message": "Завантажити лише аудіо"
+  },
+  "action_downloadaudio_title": {
+    "message": "Завантаження лише аудіо"
+  },
+  "action_downloadconvert_description": {
+    "message": "Завантажити медіа та конвертувати в інший формат"
+  },
+  "action_downloadconvert_title": {
+    "message": "Завантажити та конвертувати"
+  },
+  "action_openlocalcontainer_description": {
+    "message": "Відкрити локальну теку"
+  },
+  "action_openlocalcontainer_title": {
+    "message": "Відкрити теку"
+  },
+  "action_openlocalfile_description": {
+    "message": "Відкрити локальний медіа файл"
+  },
+  "action_openlocalfile_title": {
+    "message": "Відкрити медіа"
+  },
+  "action_pin_description": {
+    "message": "Закріпити цей елемент"
+  },
+  "action_pin_title": {
+    "message": "Закріпити"
+  },
+  "action_quickdownload_description": {
+    "message": "Завантажити без запиту призначення"
+  },
+  "action_quickdownload_title": {
+    "message": "Швидке завантаження"
+  },
+  "action_quickdownloadaudio_description": {
+    "message": "Завантажити лише аудіо, не запитуючи шлях"
+  },
+  "action_quickdownloadaudio_title": {
+    "message": "Швидке завантаження лише аудіо"
+  },
+  "action_quicksidedownload_description": {
+    "message": "Завантаження супутнім додатком, не запитуючи шлях "
+  },
+  "action_quicksidedownload_title": {
+    "message": "Швидке завантаження супутнім додатком"
+  },
+  "action_sidedownload_description": {
+    "message": "Експериментальний завантажувач"
+  },
+  "action_sidedownload_title": {
+    "message": "Завантаження супутнім додатком"
+  },
+  "action_sidedownloadconvert_description": {
+    "message": "Завантаження супутнім додатком і конвертація"
+  },
+  "action_sidedownloadconvert_title": {
+    "message": "Завантажити супутнім додатком і конвертувати"
+  },
+  "action_stop_description": {
+    "message": "Зупинити запис"
+  },
+  "action_stop_title": {
+    "message": "Зупинити"
+  },
+  "adaptative": {
+    "message": "Адаптивні $1"
+  },
+  "add_to_blacklist": {
+    "message": "Додати в чорний список"
+  },
+  "add_to_blacklist_help": {
+    "message": "Відео, які походять з обраного домену(ів) або ним(и) обслуговуються, будуть ігноруватися."
+  },
+  "advanced": {
+    "message": "Розширені"
+  },
+  "aggregating": {
+    "message": "Об’єднання"
+  },
+  "analyze_page": {
+    "message": "Аналізувати сторінку"
+  },
+  "appDesc": {
+    "message": "Завантаження відео з Інтернету"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Вигляд"
+  },
+  "audio_only": {
+    "message": "Аудіо тільки"
+  },
+  "behavior": {
+    "message": "Поведінка"
+  },
+  "blacklist": {
+    "message": "Чорний список"
+  },
+  "blacklist_add_domain": {
+    "message": "Додати домен до чорного списку"
+  },
+  "blacklist_add_placeholder": {
+    "message": "Домен буде заблоковано"
+  },
+  "blacklist_edit_descr": {
+    "message": "Чорний список дозволяє ігнорувати медіа з деяких доменів"
+  },
+  "blacklist_empty": {
+    "message": "Чорний список порожній"
+  },
+  "browser_info": {
+    "message": "Браузер $1 $2 $3"
+  },
+  "browser_locale": {
+    "message": "Локаль браузера: $1"
+  },
+  "build_options": {
+    "message": "Параметри збірки: $1"
+  },
+  "built_on": {
+    "message": "Побудовано на $1 "
+  },
+  "bulk_in_progress": {
+    "message": "Виконується масове завантаження. Не закривайте цю вкладку, це буде зроблено автоматично"
+  },
+  "bulk_n_videos": {
+    "message": "Відео $1"
+  },
+  "cancel": {
+    "message": "Відміна"
+  },
+  "change": {
+    "message": "Змінити"
+  },
+  "chrome_basic_mode": {
+    "message": "Chrome Basic (рекомендується оновити)"
+  },
+  "chrome_inapp_descr_premium_lifetime": {
+    "message": "Преміум-статус без обмеження за часом"
+  },
+  "chrome_inapp_descr_premium_monthly": {
+    "message": "Преміум-статус із щомісячною передплатою"
+  },
+  "chrome_inapp_descr_premium_yearly": {
+    "message": "Преміум-статус із річною передплатою "
+  },
+  "chrome_inapp_no_subs": {
+    "message": "Примітка: після припинення підтримки Google платіжних сервісів Chrome підписки більше не доступні"
+  },
+  "chrome_inapp_not_avail": {
+    "message": "Недоступний"
+  },
+  "chrome_inapp_premium_lifetime": {
+    "message": "Преміум без обмеження за часом (пожиттєвий)"
+  },
+  "chrome_inapp_premium_monthly": {
+    "message": "Щомісячна Преміум підписка "
+  },
+  "chrome_inapp_premium_yearly": {
+    "message": "Річна Преміум підписка"
+  },
+  "chrome_install_firefox": {
+    "message": "Встановити Firefox"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper для Firefox"
+  },
+  "chrome_license_webstore_accepted": {
+    "message": "Активна ліцензія з Chrome Webstore"
+  },
+  "chrome_licensing": {
+    "message": "Ліцензування Chrome "
+  },
+  "chrome_noyt_text": {
+    "message": "На жаль, Chrome Web Store не дозволяє додатки для завантаження відео YouTube і тому ми прибрали цю функцію."
+  },
+  "chrome_noyt_text2": {
+    "message": "Ви можете використати Video DownloadHelper, щоб завантажити відео YouTube в Firefox версії."
+  },
+  "chrome_noyt_text3": {
+    "message": "На жаль, Веб-магазин Chrome не дозволяє розширення для завантаження відео YouTube, тому ми не могли включити цю функцію до версії розширення Chrome."
+  },
+  "chrome_premium_audio": {
+    "message": "Створення аудіофайлів доступне лише у Преміум-версії"
+  },
+  "chrome_premium_check_error": {
+    "message": "Помилка перевірки Преміум-статусу "
+  },
+  "chrome_premium_hls": {
+    "message": "Без Преміум статусу HLS-завантаження може виконуватися лише через $1 хвилин після попереднього"
+  },
+  "chrome_premium_mode": {
+    "message": "Chrome Преміум"
+  },
+  "chrome_premium_need_sign": {
+    "message": "Вам потрібно увійти в Chrome, щоб отримати переваги Преміум-версії.. "
+  },
+  "chrome_premium_not_signed": {
+    "message": "Не виконано вхід у Chrome"
+  },
+  "chrome_premium_recheck": {
+    "message": "Перевірте Преміум-статус"
+  },
+  "chrome_premium_required": {
+    "message": "Потрібен Преміум-статус"
+  },
+  "chrome_premium_source": {
+    "message": "Ви користувач преміум-класу через  $1"
+  },
+  "chrome_product_intro": {
+    "message": "Ви можете перейти на Преміум-версію, використовуючи будь-який варіант нижче: "
+  },
+  "chrome_req_review": {
+    "message": "Як альтернатива, чи не могли б ви написати хороший відгук у веб-магазині Chrome? "
+  },
+  "chrome_signing_in": {
+    "message": "Вхід у Chrome "
+  },
+  "chrome_verif_premium": {
+    "message": "Перевірка Преміум статусу..."
+  },
+  "chrome_verif_premium_error": {
+    "message": "API для оплати через додаток недоступний "
+  },
+  "chrome_warning_yt": {
+    "message": "Попередження про додатки Chrome та YouTube"
+  },
+  "clear": {
+    "message": "Очистити"
+  },
+  "clear_hits": {
+    "message": "Очистити елементи"
+  },
+  "clear_logs": {
+    "message": "Очистити логи"
+  },
+  "coapp": {
+    "message": "Допоміжний додаток"
+  },
+  "coapp_error": {
+    "message": "Перевірка супутньої програми повернута:"
+  },
+  "coapp_found": {
+    "message": "Знайдено допоміжний додаток"
+  },
+  "coapp_help": {
+    "message": "Клацніть тут для вирішення проблеми."
+  },
+  "coapp_install": {
+    "message": "Встановити допоміжний додаток"
+  },
+  "coapp_installed": {
+    "message": "Допоміжний додаток встановлено"
+  },
+  "coapp_latest_version": {
+    "message": "Остання доступна версія $1"
+  },
+  "coapp_not_installed": {
+    "message": "Допоміжний додаток не встановлено"
+  },
+  "coapp_outdated": {
+    "message": "Допоміжний додаток застарів - будь-ласка оновіть"
+  },
+  "coapp_outofdate": {
+    "message": "Оновлення допоміжного додатоку обов'язкове"
+  },
+  "coapp_outofdate_text": {
+    "message": "У вас запущена супровідна програма версії $1, але для цієї функції потрібна версія $2 "
+  },
+  "coapp_path": {
+    "message": "Розташування додатку"
+  },
+  "coapp_recheck": {
+    "message": "Перевірити"
+  },
+  "coapp_required": {
+    "message": "Допоміжний додаток"
+  },
+  "coapp_required_text": {
+    "message": "Ця операція потребує зовнішню програму."
+  },
+  "coapp_shell": {
+    "message": "CoApp оболонка"
+  },
+  "coapp_unchecked": {
+    "message": "Перевірка супутньої програми..."
+  },
+  "coapp_update": {
+    "message": "Оновіть супутню програму"
+  },
+  "collecting": {
+    "message": "Збір…"
+  },
+  "confirmation_required": {
+    "message": "Необхідне підтвердження"
+  },
+  "congratulations": {
+    "message": "Вітаємо!"
+  },
+  "continue": {
+    "message": "Продовжити"
+  },
+  "convconf_2passes": {
+    "message": "2 проходи"
+  },
+  "convconf_ac": {
+    "message": "Аудіо канали"
+  },
+  "convconf_acnone": {
+    "message": "Нема"
+  },
+  "convconf_acodec": {
+    "message": "Аудіо кодек"
+  },
+  "convconf_aspect": {
+    "message": "Співвідношення сторін"
+  },
+  "convconf_audiobitrate": {
+    "message": "Аудіо бітрейт"
+  },
+  "convconf_audiofreq": {
+    "message": "Аудіо частота"
+  },
+  "convconf_audioonly": {
+    "message": "Аудіо тільки"
+  },
+  "convconf_bitrate": {
+    "message": "Бітрейт"
+  },
+  "convconf_container": {
+    "message": "Формат"
+  },
+  "convconf_duplicate": {
+    "message": "Дублікат"
+  },
+  "convconf_ext": {
+    "message": "Вихідне розширення файлу"
+  },
+  "convconf_extra": {
+    "message": "Екстра параметри"
+  },
+  "convconf_level": {
+    "message": "Рівень"
+  },
+  "convconf_mono": {
+    "message": "Моно"
+  },
+  "convconf_new": {
+    "message": "Нова"
+  },
+  "convconf_preset": {
+    "message": "Передустановка"
+  },
+  "convconf_profilev": {
+    "message": "Відео профіль"
+  },
+  "convconf_rate": {
+    "message": "Частота кадрів"
+  },
+  "convconf_readonly": {
+    "message": "Це налаштування за замовчуванням є тільки для читання. Зробіть дублікат, щоб робити модифікації."
+  },
+  "convconf_remove": {
+    "message": "Видалити"
+  },
+  "convconf_reset": {
+    "message": "Скинути все"
+  },
+  "convconf_reset_confirm": {
+    "message": "Це видалить усі налаштовані конфігурації"
+  },
+  "convconf_save": {
+    "message": "Зберегти"
+  },
+  "convconf_size": {
+    "message": "Розмір рамки"
+  },
+  "convconf_stereo": {
+    "message": "Стерео"
+  },
+  "convconf_target": {
+    "message": "Об’єкт"
+  },
+  "convconf_tune": {
+    "message": "Настройка"
+  },
+  "convconf_vcodec": {
+    "message": "Відео кодек"
+  },
+  "convconf_videobitrate": {
+    "message": "Відео бітрейт"
+  },
+  "conversion_create_rule": {
+    "message": "Створити правило"
+  },
+  "conversion_outputs": {
+    "message": "Виходи перетворення"
+  },
+  "conversion_rules": {
+    "message": "Правила конвертації"
+  },
+  "conversion_update_rule": {
+    "message": "Оновити правило"
+  },
+  "convert": {
+    "message": "Конвертувати"
+  },
+  "convert_local_files": {
+    "message": "Конвертувати локальні файли"
+  },
+  "converter_needed_aggregate": {
+    "message": "Ця операція потребує конвертер, який встановлений у вашій системі, щоб об’єднати відео та аудіо потоки."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Чому мені потрібен конвертер?"
+  },
+  "converter_needs_reg": {
+    "message": "Необхідна реєстрація"
+  },
+  "converter_queued": {
+    "message": "Конвертація у черзі ..."
+  },
+  "converter_reg_audio": {
+    "message": "Ви запросили, або явно або з-за автоматичного правила перетворення, генерацію лише звуку медіа-файлу. Це вимагає зареєстрованого конвертера."
+  },
+  "converting": {
+    "message": "Конвертація..."
+  },
+  "convrule_convert": {
+    "message": "Конвертувати"
+  },
+  "convrule_domain": {
+    "message": "Домен"
+  },
+  "convrule_extension": {
+    "message": "Розширення"
+  },
+  "convrule_format": {
+    "message": "у формат $1"
+  },
+  "convrule_from_domain": {
+    "message": "для домену $1"
+  },
+  "convrule_no_convert": {
+    "message": "Не конвертувати"
+  },
+  "convrule_output_format": {
+    "message": "Формат виводу"
+  },
+  "convrule_refresh_formats": {
+    "message": "Оновити вихідні формати"
+  },
+  "convrule_with_ext": {
+    "message": "з розширенням '$1'"
+  },
+  "convrules_add_rule": {
+    "message": "Створіть нове правило конверсії"
+  },
+  "convrules_edit_descr": {
+    "message": "Правила конверсії дозволяють автоматично здійснювати конверсію медіа після завантаження"
+  },
+  "convrules_empty": {
+    "message": "Немає правил конверсії"
+  },
+  "copy_of": {
+    "message": "Копія $1"
+  },
+  "copy_settings_info_to_clipboard": {
+    "message": "Скопіювати до буферу"
+  },
+  "copy_settings_info_to_clipboard_success": {
+    "message": "Інформацію скопійовано до буферу"
+  },
+  "corrupted_media_file": {
+    "message": "Не вдалося отримати інформацію із носія \"$1\" із файлу \"$2\". Файл може бути пошкоджений. "
+  },
+  "create": {
+    "message": "Створити"
+  },
+  "custom_output": {
+    "message": "Вихідний формат користувача"
+  },
+  "dash_streaming": {
+    "message": "DASH потік"
+  },
+  "default": {
+    "message": "За замовчуванням"
+  },
+  "details_parenthesis": {
+    "message": "(Подробиці)"
+  },
+  "dev_build": {
+    "message": "Версія розробки"
+  },
+  "dialog_audio_impossible": {
+    "message": "Цей тип медіа не дозволяє завантижити лише аудіо"
+  },
+  "dialog_audio_impossible_title": {
+    "message": "Неможливо завантажити аудіо"
+  },
+  "directory_not_exist": {
+    "message": "Тека не існує"
+  },
+  "directory_not_exist_body": {
+    "message": "Тека '$1' не існує, натисніть OK щоб її створити?"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Завантажити та конвертувати"
+  },
+  "dlconv_output_details": {
+    "message": "Налаштувати вихідні деталі"
+  },
+  "donate": {
+    "message": "Пожертвувати"
+  },
+  "donate_vdh": {
+    "message": "Допомога Video DownloadHelper"
+  },
+  "download_error": {
+    "message": "Помилка завантаження"
+  },
+  "download_method": {
+    "message": "Метод завантаження"
+  },
+  "download_method_not_again": {
+    "message": "Використовувати цей метод за замовчуванням у майбутньому"
+  },
+  "download_modes1": {
+    "message": "Фактичне завантаження можна виконати за допомогою браузера або додатка."
+  },
+  "download_modes2": {
+    "message": "З технічних причин завантаження з сервісів браузера може призвести до відхилення завантаження сервером, на якому розміщено відео, і неможливо визначити альтернативну папку завантаження за замовчуванням."
+  },
+  "download_with_browser": {
+    "message": "Використовувати браузер"
+  },
+  "download_with_coapp": {
+    "message": "Використовувати допоміжний додаток"
+  },
+  "downloading": {
+    "message": "Завантаження..."
+  },
+  "edge_req_review": {
+    "message": "Як альтернатива, ви б не подумали написати хороший огляд у магазині розширень Microsoft Edge?"
+  },
+  "error": {
+    "message": "Помилка"
+  },
+  "error_not_directory": {
+    "message": "'$1' існує, але не є текою"
+  },
+  "errors": {
+    "message": "Помилки"
+  },
+  "exit_natmsgsh": {
+    "message": "Вихід із супутньої програми"
+  },
+  "explain_qr1": {
+    "message": "Ви помітите, що відео в результаті містить водяний знак у кутку."
+  },
+  "explain_qr2": {
+    "message": "Це тому, що функція конвертації не була зареєстрована."
+  },
+  "export": {
+    "message": "Експорт"
+  },
+  "failed_aggregating": {
+    "message": "Не вдалося об’єднання \"$1\""
+  },
+  "failed_converting": {
+    "message": "Не вдалася конвертація \"$1\""
+  },
+  "failed_getting_info": {
+    "message": "Не вдалося отримати інфо з \"$1\""
+  },
+  "failed_opening_directory": {
+    "message": "Помилка выдкривання теки"
+  },
+  "failed_playing_file": {
+    "message": "Помилка програвання файла"
+  },
+  "file_dialog_date": {
+    "message": "Дата"
+  },
+  "file_dialog_name": {
+    "message": "І’мя"
+  },
+  "file_dialog_size": {
+    "message": "Розмір"
+  },
+  "file_generated": {
+    "message": "Файл \"$1\" було створено."
+  },
+  "file_ready": {
+    "message": "\"$1\" зараз готовий"
+  },
+  "finalizing": {
+    "message": "Завершення…"
+  },
+  "from_domain": {
+    "message": "З $1"
+  },
+  "gallery": {
+    "message": "Галерея"
+  },
+  "gallery_files_types": {
+    "message": "$1 файли"
+  },
+  "gallery_from_domain": {
+    "message": "Галерея з $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Посилання з $1"
+  },
+  "general": {
+    "message": "Основні"
+  },
+  "get_conversion_license": {
+    "message": "Отримати ліцензію конвертації"
+  },
+  "help_translating": {
+    "message": "Допоможіть з перекладом"
+  },
+  "hit_details": {
+    "message": "Деталі елементів"
+  },
+  "hit_go_to_tab": {
+    "message": "Перейти до вкладки"
+  },
+  "hls_streaming": {
+    "message": "HLS потік"
+  },
+  "homepage": {
+    "message": "Домашня сторінка"
+  },
+  "import": {
+    "message": "Імпорт"
+  },
+  "import_invalid_format": {
+    "message": "Неправильний формат"
+  },
+  "in_current_tab": {
+    "message": "У поточній вкладці"
+  },
+  "in_other_tab": {
+    "message": "В інших вкладках"
+  },
+  "lic_mismatch1": {
+    "message": "Ліцензія для $1, але розширення версії браузера не вказано"
+  },
+  "lic_mismatch2": {
+    "message": "Ліцензія для $1, але версія розширення розрахована на $2"
+  },
+  "lic_not_needed_linux": {
+    "message": "Наш внесок у Linux: ліцензія не потрібна "
+  },
+  "lic_status_accepted": {
+    "message": "Ліцензію перевірено"
+  },
+  "lic_status_blocked": {
+    "message": "Ліцензію заблоковано"
+  },
+  "lic_status_error": {
+    "message": "Помилка  ліцензії"
+  },
+  "lic_status_locked": {
+    "message": "Ліцензія заблокована (перевірка) "
+  },
+  "lic_status_mismatch": {
+    "message": "Невідповідність ліцензії / браузера "
+  },
+  "lic_status_nocoapp": {
+    "message": "Не вдалося перевірити ліцензію "
+  },
+  "lic_status_unneeded": {
+    "message": "Ліцензія не потрібна"
+  },
+  "lic_status_unset": {
+    "message": "Немає ліцензії"
+  },
+  "lic_status_unverified": {
+    "message": "Ліцензію не перевірено"
+  },
+  "lic_status_verifying": {
+    "message": "Перевірка ліцензії"
+  },
+  "license": {
+    "message": "Ліцензія"
+  },
+  "license_key": {
+    "message": "Ліцензійний ключ"
+  },
+  "licensing": {
+    "message": "Ліцензування"
+  },
+  "live_stream": {
+    "message": "прямий ефір"
+  },
+  "logs": {
+    "message": "Логи"
+  },
+  "media": {
+    "message": "Медіа"
+  },
+  "merge_error": {
+    "message": "Помилка агрегації "
+  },
+  "merge_local_files": {
+    "message": "Агрегація локальних аудіо- та відеофайлів "
+  },
+  "more": {
+    "message": "Більше..."
+  },
+  "mup_best_video_quality": {
+    "message": "Бажана якість відео"
+  },
+  "mup_ignore_low_quality": {
+    "message": "Ігнорувати відео низької якості"
+  },
+  "mup_ignore_low_quality_help": {
+    "message": "Деякі сторінки містять \"відео низької якості\" потрібні лише як ефекти, наприклад яе WAW файли для звуку кліка або відео анімації сторінки."
+  },
+  "mup_ignored_containers": {
+    "message": "Не показувати медіа з контейнерами"
+  },
+  "mup_ignored_video_codecs": {
+    "message": "Не показувати медіа з кодеками"
+  },
+  "mup_lowest_video_quality": {
+    "message": "Ігнорувати відео нижче"
+  },
+  "mup_max_variants": {
+    "message": "Кільксть варіантів"
+  },
+  "mup_max_variants_help": {
+    "message": "Кожне відео має різні формати. Ми спершу показуємо кращі варіанти, а потім альтернативні."
+  },
+  "mup_page_title": {
+    "message": "Налаштування медіа"
+  },
+  "mup_prefer_60fps": {
+    "message": "Бажано 60 кадрів/с і вище"
+  },
+  "mup_prefered_container": {
+    "message": "Бажаний формат контейнера"
+  },
+  "mup_prefered_video_codecs": {
+    "message": "Бажані відео кодеки"
+  },
+  "mup_reset": {
+    "message": "скинути"
+  },
+  "mup_saved": {
+    "message": "збережено!"
+  },
+  "network_error_no_response": {
+    "message": "Помилка мережі - немає відповіді"
+  },
+  "network_error_status": {
+    "message": "Помилка мережі - статус $1"
+  },
+  "new_sub_directory": {
+    "message": "Створити під-теку"
+  },
+  "next": {
+    "message": "Далі"
+  },
+  "no": {
+    "message": "Ні"
+  },
+  "no_audio_in_file": {
+    "message": "У файлі $1 немає аудіопотоку "
+  },
+  "no_coapp_license_unverified": {
+    "message": "Ліцензія не може бути перевірена, оскільки партнерський застосунок не встановлено"
+  },
+  "no_license_registered": {
+    "message": "Жодна ліцензія не зареєстрована"
+  },
+  "no_media_current_tab": {
+    "message": "Немає медіа для обробки в поточній вкладці"
+  },
+  "no_media_to_process": {
+    "message": "Немає медіа для обробки"
+  },
+  "no_media_to_process_descr": {
+    "message": "Запустіть відео, щоб допомогти виявити файли…"
+  },
+  "no_such_hit": {
+    "message": "Немає відповідності"
+  },
+  "no_validate_without_coapp": {
+    "message": "Для перевірки ліцензії має бути встановлений партнерський застосунок"
+  },
+  "no_video_in_file": {
+    "message": "У файлі $1 немає відеопотоку "
+  },
+  "not_again_3months": {
+    "message": "Не турбувати мене з цим знову протягом 3 місяців"
+  },
+  "not_see_again": {
+    "message": "Не дивитися це повідомлення знову"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "ok": {
+    "message": "Ок"
+  },
+  "orphan": {
+    "message": "Зависання"
+  },
+  "output_configuration": {
+    "message": "Конфігурація виводу"
+  },
+  "overwrite_file": {
+    "message": "Перезаписати файл '$1' ?"
+  },
+  "per_month": {
+    "message": "/ місяць"
+  },
+  "per_year": {
+    "message": "/ рік"
+  },
+  "pinned": {
+    "message": "Прикріплено"
+  },
+  "platform": {
+    "message": "Платформа"
+  },
+  "platform_info": {
+    "message": "Платформа $1 $2"
+  },
+  "powered_by_weh": {
+    "message": "Працює на Weh "
+  },
+  "preferences": {
+    "message": "Налаштування"
+  },
+  "prod_build": {
+    "message": "Версія продукту"
+  },
+  "quality_medium": {
+    "message": "Середня"
+  },
+  "quality_small": {
+    "message": "Низька"
+  },
+  "queued": {
+    "message": "У черзі..."
+  },
+  "recheck_license": {
+    "message": "Перевірити ліцензію"
+  },
+  "register_converter": {
+    "message": "Зареєструвати конвертер"
+  },
+  "register_existing_license": {
+    "message": "Зареєструвати існуючу ліцензію"
+  },
+  "registered_email": {
+    "message": "Електронна пошта"
+  },
+  "registered_key": {
+    "message": "Ключ"
+  },
+  "reload_addon": {
+    "message": "Перезавантажити розширення"
+  },
+  "reload_addon_confirm": {
+    "message": "Ви дыйсно бажаэте перезавантажити розширення?"
+  },
+  "req_donate": {
+    "message": "Ви б розглянути питання про підтримку розвитку і пожертвували дещо?"
+  },
+  "req_locale": {
+    "message": "Або, можливо, допоможіть перекласти додаток на '$1' мову (відсутні $2 рядки)? "
+  },
+  "req_review": {
+    "message": "Крім того, ви не могли б написати хороший відгук на сайті додатків Mozilla?"
+  },
+  "req_review_link": {
+    "message": "Написати відгук про Video DownloadHelper"
+  },
+  "reset_settings": {
+    "message": "Скинути налаштування"
+  },
+  "running": {
+    "message": "Хід"
+  },
+  "save": {
+    "message": "Зберегти"
+  },
+  "save_as": {
+    "message": "Зберегти як..."
+  },
+  "save_file_as": {
+    "message": "Збкркгти файл як..."
+  },
+  "select_audio_file_to_merge": {
+    "message": "Виберіть файл, що містить аудіопотік"
+  },
+  "select_files_to_convert": {
+    "message": "Конвертувати локальні файли"
+  },
+  "select_output_config": {
+    "message": "Виберіть вихідну конфігурацію..."
+  },
+  "select_output_directory": {
+    "message": "Вихідний каталог"
+  },
+  "select_video_file_to_merge": {
+    "message": "Виберіть файл, що містить відеопотік "
+  },
+  "selected_media": {
+    "message": "Масовий вибір"
+  },
+  "settings": {
+    "message": "Налаштування"
+  },
+  "smartname_add_domain": {
+    "message": "Додайте правило розумного найменування"
+  },
+  "smartname_create_rule": {
+    "message": "Створіть правило"
+  },
+  "smartname_define": {
+    "message": "Визначте правило розумного найменування"
+  },
+  "smartname_edit_descr": {
+    "message": "Правило розумного найменування дозволяє налаштувати назви відео на основі імен хостів"
+  },
+  "smartname_empty": {
+    "message": "Немає правила розумного найменування"
+  },
+  "smartname_update_rule": {
+    "message": "Правило оновлення"
+  },
+  "smartnamer_delay": {
+    "message": "Затримка називання захоплення (мс)"
+  },
+  "smartnamer_domain": {
+    "message": "Домен"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Отримати назву із заголовку документа/адреси"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Отримати назву із вмісту сторінки"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Отримати назву із заголовку сторінки"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Використати заплутану назву"
+  },
+  "smartnamer_regexp": {
+    "message": "Регулярне вираження"
+  },
+  "smartnamer_selected_text": {
+    "message": "Вибраний текст"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "XPath вираження"
+  },
+  "smartnaming_rule": {
+    "message": "Правило розумного найменування"
+  },
+  "smartnaming_rules": {
+    "message": "Правила розумного найменування"
+  },
+  "sub_directory_name": {
+    "message": "Назва підкаталога"
+  },
+  "support_forum": {
+    "message": "Форум підтримки"
+  },
+  "supported_sites": {
+    "message": "Сайти, що підтримуються"
+  },
+  "tbsn_quality_hd": {
+    "message": "Середня якість"
+  },
+  "tbsn_quality_sd": {
+    "message": "Низька якість"
+  },
+  "tell_me_more": {
+    "message": "Розкажіть більше про це"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "translation": {
+    "message": "Переклад"
+  },
+  "up": {
+    "message": "Вгору"
+  },
+  "v9_about_qr": {
+    "message": "Файл створено"
+  },
+  "v9_badge_new": {
+    "message": "новий"
+  },
+  "v9_blacklist_glob": {
+    "message": "Використовуйте '*' для ширшої відповідності."
+  },
+  "v9_checkbox_remember_action": {
+    "message": "Запам'ятати, як звичайну дію"
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Ви можете використати Video DownloadHelper, щоб завантажити відео YouTube в Firefox версії."
+  },
+  "v9_chrome_noyt_text3": {
+    "message": "На жаль, Веб-магазин Chrome не дозволяє розширення для завантаження відео YouTube, тому ми не могли включити цю функцію до версії розширення Chrome."
+  },
+  "v9_chrome_premium_hls": {
+    "message": "Без Преміум статусу HLS-завантаження може виконуватися лише через $1 хвилин після попереднього"
+  },
+  "v9_chrome_premium_required": {
+    "message": "Потрібен Преміум-статус"
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Попередження про додатки Chrome та YouTube"
+  },
+  "v9_coapp_help": {
+    "message": "Клацніть тут для вирішення проблеми."
+  },
+  "v9_coapp_install": {
+    "message": "Встановити допоміжний додаток"
+  },
+  "v9_coapp_installed": {
+    "message": "Допоміжний додаток встановлено"
+  },
+  "v9_coapp_not_installed": {
+    "message": "Допоміжний додаток не встановлено"
+  },
+  "v9_coapp_outdated": {
+    "message": "Допоміжний додаток застарів - будь-ласка оновіть"
+  },
+  "v9_coapp_recheck": {
+    "message": "Перевірити"
+  },
+  "v9_coapp_required": {
+    "message": "Допоміжний додаток"
+  },
+  "v9_coapp_required_text": {
+    "message": "Ця операція потребує зовнішню програму."
+  },
+  "v9_coapp_unchecked": {
+    "message": "Перевірка супутньої програми..."
+  },
+  "v9_coapp_update": {
+    "message": "Оновіть супутню програму"
+  },
+  "v9_converter_needs_reg": {
+    "message": "Необхідна реєстрація"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Ви запросили, або явно або з-за автоматичного правила перетворення, генерацію лише звуку медіа-файлу. Це вимагає зареєстрованого конвертера."
+  },
+  "v9_copy_settings_info_to_clipboard": {
+    "message": "Скопіювати до буферу"
+  },
+  "v9_dialog_audio_impossible": {
+    "message": "Цей тип медіа не дозволяє завантижити лише аудіо"
+  },
+  "v9_dialog_audio_impossible_title": {
+    "message": "Неможливо завантажити аудіо"
+  },
+  "v9_error": {
+    "message": "Помилка"
+  },
+  "v9_explain_qr1": {
+    "message": "Ви помітите, що відео в результаті містить водяний знак у кутку."
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" зараз готовий"
+  },
+  "v9_filepicker_select_download_dir": {
+    "message": "Вибрати директорію завантаження"
+  },
+  "v9_filepicker_select_file": {
+    "message": "Вибрати файл"
+  },
+  "v9_get_conversion_license": {
+    "message": "Отримати ліцензію конвертації"
+  },
+  "v9_lic_mismatch2": {
+    "message": "Ліцензія для $1, але версія розширення розрахована на $2"
+  },
+  "v9_lic_status_accepted": {
+    "message": "Ліцензію перевірено"
+  },
+  "v9_lic_status_blocked": {
+    "message": "Ліцензію заблоковано"
+  },
+  "v9_lic_status_locked": {
+    "message": "Ліцензія заблокована (перевірка) "
+  },
+  "v9_lic_status_locked2": {
+    "message": "Ліцензія заблокована (перевірте свою електронну пошту)"
+  },
+  "v9_lic_status_unset": {
+    "message": "Немає ліцензії"
+  },
+  "v9_lic_status_verifying": {
+    "message": "Перевірка ліцензії"
+  },
+  "v9_menu_item_blacklist": {
+    "message": "Чорний список"
+  },
+  "v9_menu_item_blacklist_domain": {
+    "message": "Домен"
+  },
+  "v9_menu_item_blacklist_media": {
+    "message": "Медіа"
+  },
+  "v9_menu_item_blacklist_page": {
+    "message": "Сторінка"
+  },
+  "v9_menu_item_details": {
+    "message": "Деталі"
+  },
+  "v9_menu_item_download_and_convert": {
+    "message": "Завантажити й конвертувати до"
+  },
+  "v9_menu_item_smartnaming": {
+    "message": "Розумне найменування"
+  },
+  "v9_mup_max_variants": {
+    "message": "Кільксть варіантів"
+  },
+  "v9_no": {
+    "message": "Ні"
+  },
+  "v9_no_license_registered": {
+    "message": "Жодна ліцензія не зареєстрована"
+  },
+  "v9_no_media_current_tab": {
+    "message": "Немає медіа для обробки в поточній вкладці"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Запустіть відео, щоб допомогти виявити файли…"
+  },
+  "v9_no_validate_without_coapp": {
+    "message": "Для перевірки ліцензії має бути встановлений партнерський застосунок"
+  },
+  "v9_not_see_again": {
+    "message": "Не дивитися це повідомлення знову"
+  },
+  "v9_panel_copy_url_button_label": {
+    "message": "Скопіювати посилання"
+  },
+  "v9_panel_download_as_button_label": {
+    "message": "Завантажити як..."
+  },
+  "v9_panel_download_audio_button_label": {
+    "message": "Завантажити аудіо"
+  },
+  "v9_panel_download_button_label": {
+    "message": "Завантажити"
+  },
+  "v9_panel_downloadable_variant_no_details": {
+    "message": "без подробиць"
+  },
+  "v9_panel_downloaded_delete_file_tooltip": {
+    "message": "Видалити файл"
+  },
+  "v9_panel_downloaded_retry_tooltip": {
+    "message": "Перезавантажити"
+  },
+  "v9_panel_downloaded_show_dir_tooltip": {
+    "message": "Показати теку завантаження"
+  },
+  "v9_panel_downloading_stop": {
+    "message": "стоп"
+  },
+  "v9_panel_error_coapp_failure_description": {
+    "message": "Нажаль, не вдалося завантажити цей конкретний медіа-файл. Ми намагаємося підтримувати якомога більше веб-сайтів, тому буде корисно, якщо ви зможете повідомити про цю помилку (це анонімно!)."
+  },
+  "v9_panel_error_coapp_failure_title": {
+    "message": "Помилка завантаження"
+  },
+  "v9_panel_error_coapp_too_old_button_udpate": {
+    "message": "Оновлення"
+  },
+  "v9_panel_error_nocoapp_button_install": {
+    "message": "Завантажити та Встановити"
+  },
+  "v9_panel_error_report_button2": {
+    "message": "Повідомити"
+  },
+  "v9_panel_error_reported_button": {
+    "message": "Повідомлено, дякую вам!"
+  },
+  "v9_panel_error_unknown_description": {
+    "message": "На жаль, додаток зіткнувся з неочікуваною помилкою. Буде корисно, якщо ви зможете повідомити про цю помилку (це анонімно!)."
+  },
+  "v9_panel_footer_clean_all_tooltip": {
+    "message": "Видалити виявлені та завантажені медіа (файли не видаляються)"
+  },
+  "v9_panel_footer_clean_tooltip": {
+    "message": "Видалити виявлені медіа"
+  },
+  "v9_panel_footer_convert_local_tooltip": {
+    "message": "Конвертувати локальні файли"
+  },
+  "v9_panel_footer_show_in_popup_tooltip": {
+    "message": "Показати у спливаючому вікні"
+  },
+  "v9_panel_footer_show_in_sidebar_tooltip": {
+    "message": "Показати у бічній панелі"
+  },
+  "v9_panel_variant_menu_prefer_format": {
+    "message": "Завжди надавати перевагу цьому формату"
+  },
+  "v9_panel_variant_menu_prefer_quality": {
+    "message": "Завжди надавати перевагу цій якості"
+  },
+  "v9_panel_view_clean": {
+    "message": "Показати кнопку \"Очищення\""
+  },
+  "v9_panel_view_clean_all": {
+    "message": "Показати кнопку \"Очистити все\" "
+  },
+  "v9_panel_view_hide_downloaded": {
+    "message": "Автоматично приховувати завантажені медіа"
+  },
+  "v9_panel_view_open_settings": {
+    "message": "Більше налаштувань"
+  },
+  "v9_panel_view_show_all_tabs": {
+    "message": "Показати всі вкладки"
+  },
+  "v9_panel_view_show_low_quality": {
+    "message": "Показати медіа низької якості"
+  },
+  "v9_panel_view_sort_reverse": {
+    "message": "Реверсивне сортування"
+  },
+  "v9_panel_view_sort_status": {
+    "message": "Сортування за статусом "
+  },
+  "v9_reset": {
+    "message": "Скинути"
+  },
+  "v9_save": {
+    "message": "Зберегти"
+  },
+  "v9_settings": {
+    "message": "Налаштування"
+  },
+  "v9_settings_button_export": {
+    "message": "Експортувати налаштування"
+  },
+  "v9_settings_button_import": {
+    "message": "Імпортувати налаштування"
+  },
+  "v9_settings_button_reload": {
+    "message": "Перезавантажити додаток"
+  },
+  "v9_settings_button_reset": {
+    "message": "Скинути налаштування"
+  },
+  "v9_settings_checkbox_force_inbrowser": {
+    "message": "Не використовувати СoApp, коли це можливо"
+  },
+  "v9_settings_checkbox_forget_on_close": {
+    "message": "Очищати виявлені медіа при закритті вкладки"
+  },
+  "v9_settings_checkbox_notification": {
+    "message": "Показати сповіщення після завершення завантаження"
+  },
+  "v9_settings_checkbox_notification_incognito": {
+    "message": "Показувати сповіщення під час приватного перегляду"
+  },
+  "v9_settings_checkbox_thumbnail_in_notification": {
+    "message": "Показати мініатюру в сповіщеннях"
+  },
+  "v9_settings_checkbox_use_legacy_ui": {
+    "message": "Використовувати старий інтерфейс"
+  },
+  "v9_settings_checkbox_use_wide_ui": {
+    "message": "Збільшити розмір спливаючого вікна додатку"
+  },
+  "v9_settings_checkbox_view_convert_local": {
+    "message": "Показати кнопку \"Конвертувати локально\""
+  },
+  "v9_settings_download_directory": {
+    "message": "Завантажити директорію"
+  },
+  "v9_settings_download_directory_change": {
+    "message": "Змінити"
+  },
+  "v9_settings_license_check": {
+    "message": "Перевірити ліцензійний ключ"
+  },
+  "v9_settings_license_get": {
+    "message": "Отримати ліцензію"
+  },
+  "v9_settings_license_placeholder": {
+    "message": "Введіть ліцензійний ключ"
+  },
+  "v9_settings_theme_dark": {
+    "message": "темна"
+  },
+  "v9_settings_theme_light": {
+    "message": "світла"
+  },
+  "v9_settings_theme_system": {
+    "message": "система"
+  },
+  "v9_settings_theme_title": {
+    "message": "Тема"
+  },
+  "v9_settings_variants_clear": {
+    "message": "Очистити"
+  },
+  "v9_settings_variants_title": {
+    "message": "Варіант налаштувань"
+  },
+  "v9_short_help": {
+    "message": "допомога?"
+  },
+  "v9_smartnaming_max_length": {
+    "message": "Максимальна довжина"
+  },
+  "v9_smartnaming_reset_for": {
+    "message": "Скинути для"
+  },
+  "v9_smartnaming_reset_for_all": {
+    "message": "Скинути всі правила для імен хостів"
+  },
+  "v9_smartnaming_result": {
+    "message": "Результат"
+  },
+  "v9_smartnaming_save_for": {
+    "message": "Зберегти для"
+  },
+  "v9_smartnaming_save_for_all": {
+    "message": "Зберегти для всіх імен хостів."
+  },
+  "v9_smartnaming_selector": {
+    "message": "Текст для CSS селектора (опційно)"
+  },
+  "v9_smartnaming_template": {
+    "message": "Шаблон. Використовуйте: %заголовок %ім'я_хоста %шлях %селектор"
+  },
+  "v9_smartnaming_test": {
+    "message": "Тест"
+  },
+  "v9_smartnaming_title": {
+    "message": "Розумне найменування"
+  },
+  "v9_tell_me_more": {
+    "message": "Розкажіть більше про це"
+  },
+  "v9_user_message_auto_hide_downloaded": {
+    "message": "Автоматично приховувати завантажені медіа?"
+  },
+  "v9_user_message_no_incognito_body": {
+    "message": "Video DownloadHelper не активовано в приватних/інкогніто вікнах. Вам потрібно активувати цю опцію вручну (це необов'язково)."
+  },
+  "v9_user_message_no_incognito_open_settings": {
+    "message": "Увімкніть у налаштуваннях браузера"
+  },
+  "v9_user_message_no_incognito_title": {
+    "message": "Режим \"без інкогніто\""
+  },
+  "v9_user_message_one_hundred_downloads": {
+    "message": "Ви завантажили 100 відео!"
+  },
+  "v9_user_message_one_hundred_downloads_body": {
+    "message": "Ми сподіваємося, що вам подобається Video DownloadHelper :) Не могли б ви написати хороший відгук на веб-сайті додатка?"
+  },
+  "v9_user_message_one_hundred_downloads_leave_review": {
+    "message": "Залишити відгук"
+  },
+  "v9_user_message_one_hundred_downloads_never_show_again": {
+    "message": "Не запитувати знову "
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_weh_prefs_description_contextMenuEnabled": {
+    "message": "Доступ до команд через клік правою кнопкою миші на сторінці"
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Максимальне число одночасних завантажень"
+  },
+  "v9_yes": {
+    "message": "Так"
+  },
+  "v9_yt_bulk_detected": {
+    "message": "Виявлено $1 відео з Youtube."
+  },
+  "v9_yt_bulk_detected_trigger": {
+    "message": "Розпочати масове завантаження"
+  },
+  "validate_license": {
+    "message": "Реєстраційна ліцензія"
+  },
+  "variants_list_adp": {
+    "message": "Адаптивні варіанти"
+  },
+  "variants_list_full": {
+    "message": "Варіанти"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Версія $1"
+  },
+  "video_only": {
+    "message": "Відео тільки"
+  },
+  "video_qualities": {
+    "message": "Якість відео"
+  },
+  "weh_prefs_alertDialogType_option_panel": {
+    "message": "Вікно"
+  },
+  "weh_prefs_alertDialogType_option_tab": {
+    "message": "Вкладка"
+  },
+  "weh_prefs_coappDownloads_option_ask": {
+    "message": "Запитувати"
+  },
+  "weh_prefs_coappDownloads_option_browser": {
+    "message": "Браузер"
+  },
+  "weh_prefs_coappDownloads_option_coapp": {
+    "message": "Супутня програма"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Завантажити аудіо"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "З'єднати аудіо та відео"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Завантажити відео"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Не показувати ADP варіанти в списку завантаження"
+  },
+  "weh_prefs_description_alertDialogType": {
+    "message": "Як відображаються діалоги попередження"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Прикріпити елемент після завантаження."
+  },
+  "weh_prefs_description_avplayEnabled": {
+    "message": "Дозволити відтворення відео за допомогою супутньої програми"
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Запобігти активації медіа упізнавання деякими сайтами."
+  },
+  "weh_prefs_description_bulkEnabled": {
+    "message": "Увімкнути операції масового завантаження"
+  },
+  "weh_prefs_description_checkCoappOnStartup": {
+    "message": "Під час запуску додатка перевірте, чи доступна супутня програма для кращого виявлення медіа"
+  },
+  "weh_prefs_description_chunkedCoappDataRequests": {
+    "message": "Запит запитуваних даних за допомогою супутньої програми"
+  },
+  "weh_prefs_description_chunkedCoappManifestsRequests": {
+    "message": "Попросіть чітко налаштовані маніфести за допомогою супутньої програми"
+  },
+  "weh_prefs_description_chunksConcurrentDownloads": {
+    "message": "Максимальне завантаження паралельних сегментів"
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Потік частинами увімкнено"
+  },
+  "weh_prefs_description_chunksPrefetchCount": {
+    "message": "Скільки сегментів потрібно заздалегідь завантажити"
+  },
+  "weh_prefs_description_coappDownloads": {
+    "message": "Додаток, що виконує фактичне завантаження"
+  },
+  "weh_prefs_description_coappIdleExit": {
+    "message": "Автоматичне закриття після кількості мілісекунд, вимкнено, якщо 0"
+  },
+  "weh_prefs_description_coappRestartDelay": {
+    "message": "Затримка в мілісекундах при перезапуску супутньої програми"
+  },
+  "weh_prefs_description_coappUseProxy": {
+    "message": "CoApp використовує проксі відповідний оригінальному запиту"
+  },
+  "weh_prefs_description_contentRedirectEnabled": {
+    "message": "Деякі сайти можуть повернути нову URL-адресу замість медіа-вмісту"
+  },
+  "weh_prefs_description_contextMenuEnabled": {
+    "message": "Доступ до команд через клік правою кнопкою миші на сторінці"
+  },
+  "weh_prefs_description_convertControlledMax": {
+    "message": "Максимальна кількість задач одночасного агрегування або конвартації"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Форсувати H264 настроєння у збиранні"
+  },
+  "weh_prefs_description_converterKeepTmpFiles": {
+    "message": "Не видаляйте тимчасові файли після обробки"
+  },
+  "weh_prefs_description_converterThreads": {
+    "message": "Кількість потоків, які будуть використані під час конвертації"
+  },
+  "weh_prefs_description_dashEnabled": {
+    "message": "Увімкнено потокове передавання DASH "
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "Не показувати .m4s записи в списку завантаження"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Коли DASH вміщує разом аудіо та відео"
+  },
+  "weh_prefs_description_dialogAutoClose": {
+    "message": "Діалоги закриваються при втраті фокусу"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Управління кількістю завантажень, створених додатком, що працюють одночасно, щоб зберегти деяку смугу пропускання."
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Кількість повторів завантаження"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Затримка між повтореннями завантаження (мс)"
+  },
+  "weh_prefs_description_downloadStreamControlledMax": {
+    "message": "Керує кількістю завантажених потоків для одного елемента"
+  },
+  "weh_prefs_description_fileDialogType": {
+    "message": "Як відображаються діалогові вікна файлів"
+  },
+  "weh_prefs_description_galleryNaming": {
+    "message": "Як назвати файли з завантаження галереї"
+  },
+  "weh_prefs_description_hitsGotoTab": {
+    "message": "Показати посилання в описі запису, щоб перейти на вкладку відео"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "Завантажити HLS потоки як M2TS"
+  },
+  "weh_prefs_description_hlsEnabled": {
+    "message": "Увімкнено потокове передавання HLS"
+  },
+  "weh_prefs_description_hlsEndTimeout": {
+    "message": "Тайм-аут в секундах, до припинення очікування нових блоків HLS"
+  },
+  "weh_prefs_description_hlsRememberPrevLiveChunks": {
+    "message": "Нагадати попередні HLS live потоки"
+  },
+  "weh_prefs_description_iconActivation": {
+    "message": "Коли активувати значок панелі інструментів"
+  },
+  "weh_prefs_description_iconBadge": {
+    "message": "Відображення значка панелі інструментів"
+  },
+  "weh_prefs_description_ignoreProtectedVariants": {
+    "message": "Не показуйте захищені варіанти."
+  },
+  "weh_prefs_description_lastDownloadDirectory": {
+    "message": "Використовується лише для завантаження серез супутню програму"
+  },
+  "weh_prefs_description_mediaExtensions": {
+    "message": "Розширення, які слід розглядати як медіа"
+  },
+  "weh_prefs_description_medialinkAutoDetect": {
+    "message": "Виконувати на кожному завантаженні сторінки (це може вплинути на продуктивність)"
+  },
+  "weh_prefs_description_medialinkExtensions": {
+    "message": "Розширення файлів, які слід врахувати для зйомки галереї"
+  },
+  "weh_prefs_description_medialinkMaxHits": {
+    "message": "Обмежте кількість записів, виявлених як галерея"
+  },
+  "weh_prefs_description_medialinkMinFilesPerGroup": {
+    "message": "Мінімальні записи, які повинні бути виявлені як галерея"
+  },
+  "weh_prefs_description_medialinkMinImgSize": {
+    "message": "Мінімальний розмір зображення, який слід розглядати як галерею зображень"
+  },
+  "weh_prefs_description_medialinkScanImages": {
+    "message": "Виявлення зображень на сторінці"
+  },
+  "weh_prefs_description_medialinkScanLinks": {
+    "message": "Виявити медіа, безпосередньо пов’язані зі сторінкою"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Ігнорувати елементи нижче цього розміру."
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Форсувати виявлення медіа більше цього розміру."
+  },
+  "weh_prefs_description_monitorNetworkRequests": {
+    "message": "Завантажте за допомогою тих же заголовків, що й вихідний запит"
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": "Не показувати .ts записи в списку завантаження"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Регулярне вираження, щоб ігнорувати деякі медіа адреси."
+  },
+  "weh_prefs_description_networkProbe": {
+    "message": "Сканувати мережевий трафік, щоб виявити звернення"
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Без повідомлення для приватних елементів"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Повідомити, коли буде оброблено"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Таймаут в секундах перед видаленням завислих елементів."
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Максимальне число варіантів відображення для одного відео."
+  },
+  "weh_prefs_description_rememberLastDir": {
+    "message": "Використовуйте каталог останніх завантажень як місце за замовчуванням"
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "Забезпечує те, що створена назва файлу не перевищить цей розмір."
+  },
+  "weh_prefs_description_smartnamerFnameSpaces": {
+    "message": "Як поводитися з пробілами у назвах відео"
+  },
+  "weh_prefs_description_tbsnEnabled": {
+    "message": "Дозволити виявлення та завантаження відео на Facebook"
+  },
+  "weh_prefs_description_titleMode": {
+    "message": "Як довго повинні відображатися заголовки відео на головній панелі"
+  },
+  "weh_prefs_description_toolsMenuEnabled": {
+    "message": "Доступ до команд з меню Інструменти"
+  },
+  "weh_prefs_description_use_native_filepicker": {
+    "message": "Використати вибір файлів ОС"
+  },
+  "weh_prefs_fileDialogType_option_panel": {
+    "message": "Вікно"
+  },
+  "weh_prefs_fileDialogType_option_tab": {
+    "message": "Вкладка"
+  },
+  "weh_prefs_galleryNaming_option_index_url": {
+    "message": "Індекс - URL "
+  },
+  "weh_prefs_galleryNaming_option_type_index": {
+    "message": "Тип - Індекс"
+  },
+  "weh_prefs_galleryNaming_option_url": {
+    "message": "URL-адреса"
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Елемент з будь-якої вкладки"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Елемент з поточної вкладки"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Медіа з активної вкладки"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Медіа з будь-якої вкладки"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Змішане"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Немає"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Прикріплені елементи"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Запущені завдання"
+  },
+  "weh_prefs_label_adpHide": {
+    "message": "Приховати варіанти ADP "
+  },
+  "weh_prefs_label_alertDialogType": {
+    "message": "Діалогове вікно сповіщення"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Автоприкріплення"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Плеєр увімкнено"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Увімкнути чорний список"
+  },
+  "weh_prefs_label_bulkEnabled": {
+    "message": "Увімкнути масове завантаження"
+  },
+  "weh_prefs_label_checkCoappOnStartup": {
+    "message": "Перевірте CoApp під час запуску "
+  },
+  "weh_prefs_label_chunkedCoappDataRequests": {
+    "message": "Запити CoApp на скопійовані дані"
+  },
+  "weh_prefs_label_chunkedCoappManifestsRequests": {
+    "message": "Запити CoApp на скопійовані маніфести"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Одночасне завантаження частин"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Потік частинами"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Підрахунок вибірки частин"
+  },
+  "weh_prefs_label_coappDownloads": {
+    "message": "Завантажувач"
+  },
+  "weh_prefs_label_coappIdleExit": {
+    "message": "Таймер виходу з режиму очікування CoApp "
+  },
+  "weh_prefs_label_coappRestartDelay": {
+    "message": "Затримка перезапуску CoApp "
+  },
+  "weh_prefs_label_coappUseProxy": {
+    "message": "CoApp проксі"
+  },
+  "weh_prefs_label_contentRedirectEnabled": {
+    "message": "Увімкнено переадресацію вмісту"
+  },
+  "weh_prefs_label_contextMenuEnabled": {
+    "message": "Контекстне меню"
+  },
+  "weh_prefs_label_convertControlledMax": {
+    "message": "Одночасні операції конвертації"
+  },
+  "weh_prefs_label_converterAggregTuneH264": {
+    "message": "Налаштування H264 "
+  },
+  "weh_prefs_label_converterKeepTmpFiles": {
+    "message": "Зберігати тимчасові файли"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Зв’язки перетворення"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH увімкнено"
+  },
+  "weh_prefs_label_dashHideM4s": {
+    "message": "Приховати .m4s"
+  },
+  "weh_prefs_label_dashOnAdp": {
+    "message": "DASH потоки "
+  },
+  "weh_prefs_label_dialogAutoClose": {
+    "message": "Автоматичне закриття діалогових вікон"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Максимальне число одночасних завантажень"
+  },
+  "weh_prefs_label_downloadRetries": {
+    "message": "Спроб завантаження"
+  },
+  "weh_prefs_label_downloadRetryDelay": {
+    "message": "Затримка повтору"
+  },
+  "weh_prefs_label_downloadStreamControlledMax": {
+    "message": "Максимальне завантаження потокового потоку"
+  },
+  "weh_prefs_label_fileDialogType": {
+    "message": "Діалогове вікно файлу"
+  },
+  "weh_prefs_label_galleryNaming": {
+    "message": "Ім'я файлів галереї"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "Відобразити перемикач Перейти-до-вкладки"
+  },
+  "weh_prefs_label_hlsDownloadAsM2ts": {
+    "message": "HLS як M2TS"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS увімкнено"
+  },
+  "weh_prefs_label_hlsEndTimeout": {
+    "message": "Тайм-аут завершення HLS"
+  },
+  "weh_prefs_label_hlsRememberPrevLiveChunks": {
+    "message": "Історія HLS live"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Активація іконок"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Емблема іконки"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Ігнорувати захищені варіанти"
+  },
+  "weh_prefs_label_lastDownloadDirectory": {
+    "message": "Тека за замовчуванням для завантажування"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Виявлення розширень"
+  },
+  "weh_prefs_label_medialinkAutoDetect": {
+    "message": "Автоматичне виявлення галереї"
+  },
+  "weh_prefs_label_medialinkExtensions": {
+    "message": "Розширення медіа-посилань"
+  },
+  "weh_prefs_label_medialinkMaxHits": {
+    "message": "Максимальна кількість записів"
+  },
+  "weh_prefs_label_medialinkMinFilesPerGroup": {
+    "message": "Мінімальна кількість записів"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Мінімум розміру зображення"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Виявити вбудовані зображення"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Виявити посилання на медіа"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Мінімальний розмір"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Поріг розміру"
+  },
+  "weh_prefs_label_monitorNetworkRequests": {
+    "message": "Заголовки запиту"
+  },
+  "weh_prefs_label_mpegtsHideTs": {
+    "message": "Приховати .ts"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Вихід мережевого фільтра"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Зондування мережі"
+  },
+  "weh_prefs_label_noPrivateNotification": {
+    "message": "Персональні сповіщення"
+  },
+  "weh_prefs_label_notifyReady": {
+    "message": "Сповіщення"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Таймаут закінчення дії зависання"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Максимум варіантів"
+  },
+  "weh_prefs_label_rememberLastDir": {
+    "message": "Запам'ятати останню теку"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Максимальна довжина імені файлу"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Довгі назви основної панелі"
+  },
+  "weh_prefs_label_tbsnEnabled": {
+    "message": "Підтримка Facebook"
+  },
+  "weh_prefs_label_tbvwsExtractionMethod": {
+    "message": "Метод виділення"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Довгі назви основної панелі"
+  },
+  "weh_prefs_label_toolsMenuEnabled": {
+    "message": "Меню інструментів"
+  },
+  "weh_prefs_label_use_native_filepicker": {
+    "message": "Використати власний вибір файлів"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Перекласти з дефісами"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Тримати"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Прибрати"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Перекласти з підкресленнями"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "Еліпсис зліва"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "В кілька рядків"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "Еліпсис зправа"
+  },
+  "yes": {
+    "message": "Так"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Ви тільки що успішно завантажили ваш $1й файл з Video DownloadHelper."
+  }
+}

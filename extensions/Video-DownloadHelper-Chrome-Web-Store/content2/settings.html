@@ -1,0 +1,169 @@
+<sl-drawer data-i18n="v9_settings" data-i18n-attr="label" placement="bottom" class="drawer-placement-bottom drawer-header-actions" id="drawer-settings">
+
+  <sl-button slot="header-actions" id="button-copy-settings" align="center" size="small" style="display:flex">
+    <sl-icon slot="prefix" name="copy"></sl-icon><span data-i18n="v9_copy_settings_info_to_clipboard"></span>
+  </sl-button>
+
+  <vbox>
+    <!-- I believe i18n is not necessary here -->
+    <p><hh>Version</hh> <span id="settings-version"></span> (<span id="settings-channel"></span>),
+    <hh>target</hh> <span id="settings-target"></span>,
+    <hh>locale</hh> <span id="settings-locale"></span>.</p>
+  </vbox>
+
+  <vbox id="drawer-settings-coapp">
+
+    <sl-divider></sl-divider>
+
+    <hbox id="settings-coapp-checking" align="start">
+      <p>
+        <span data-i18n="v9_coapp_unchecked"></span><sl-spinner></sl-spiner>
+      </p>
+    </hbox>
+
+    <vbox id="settings-coapp-found">
+      <hbox flex="1" align="center" id="coapp-up-to-date">
+        <p>
+          <span class="settings-success" data-i18n="v9_coapp_installed"></span> (v<span class="coapp-version"></span>)
+          <span class="inline-button button-coapp-check" data-i18n="v9_coapp_recheck"></span>
+        </p>
+      </hbox>
+      <hbox flex="1" align="center" id="coapp-outdated">
+        <p class="settings-warning">
+          <span data-i18n="v9_coapp_outdated"></span> (<span class="coapp-version"></span> &lt; <span id="coapp-new-version"></span>)
+        </p>
+        <p>
+          <span class="inline-button button-coapp-install" data-i18n="v9_coapp_update"></span> <span class="inline-button button-coapp-check" data-i18n="v9_coapp_recheck"></span>
+        </p>
+      </hbox>
+      <p>
+        <code class="coapp-path"></code>
+      </p>
+    </vbox>
+
+    <vbox id="settings-coapp-not-found">
+      <p class="settings-warning" data-i18n="v9_coapp_not_installed"></p>
+      <p><i id="coapp-error"></i></p>
+      <p>
+        <span class="inline-button button-coapp-install" data-i18n="v9_coapp_install"></span>
+        <span class="inline-button button-coapp-check" data-i18n="v9_coapp_recheck"></span>
+        <span class="inline-button button-coapp-help" data-i18n="v9_short_help"></span>
+      </p>
+    </vbox>
+
+  <sl-divider></sl-divider>
+
+  <vbox id="drawer-settings-license">
+    <!-- No coapp -->
+    <p id="settings-license-nocoapp">
+      <span data-i18n="v9_no_validate_without_coapp"></span>
+    </p>
+
+    <!-- Checking -->
+    <p id="settings-license-checking">
+      <span data-i18n="v9_lic_status_verifying"></span><sl-spinner></sl-spiner>
+    </p>
+
+    <!-- Checked -->
+    <vbox id="settings-license-checked">
+      <p id="settings-license-checked-msg"></p>
+      <p>
+        <sl-input id="input-license-number" flex="1" type="text" data-i18n="v9_settings_license_placeholder" data-i18n-attr="placeholder" clearable></sl-input>
+      </p>
+      <p>
+        <span class="inline-button button-license-check" data-i18n="v9_settings_license_check"></span>
+        <span class="inline-button button-license-get" data-i18n="v9_settings_license_get"></span>
+        <span class="inline-button button-license-help" data-i18n="v9_short_help"></span>
+      </p>
+    </vbox>
+
+  </vbox>
+
+  <sl-divider></sl-divider>
+
+  <p>
+    <hh data-i18n="v9_settings_theme_title"></hh>
+    <sl-radio-group id="radio-theme" value="system" class="input-inline" size="small">
+      <sl-radio-button value="system" data-i18n="v9_settings_theme_system"></sl-radio-button>
+      <sl-radio-button value="light" data-i18n="v9_settings_theme_light"></sl-radio-button>
+      <sl-radio-button value="dark" data-i18n="v9_settings_theme_dark"></sl-radio-button>
+    </sl-radio-group>
+  </p>
+
+
+  <vbox id="settings-incognito-mode">
+    <sl-divider></sl-divider>
+    <sl-icon name="incognito"></sl-icon>
+    <p>
+      <hh data-i18n="v9_user_message_no_incognito_title"></hh>
+      <span data-i18n="v9_user_message_no_incognito_body"></span>
+    </p>
+    <hbox pack="end">
+      <sl-button class="button-open-browser-settings" size="small" data-i18n="v9_user_message_no_incognito_open_settings"></sl-button>
+    </hbox>
+  </vbox>
+
+
+  <sl-divider></sl-divider>
+
+  <p id="settings-concurrent-downloads">
+    <hh data-i18n="v9_weh_prefs_label_downloadControlledMax"></hh>
+    <sl-input type="number" min="1" max="128" class="input-inline"></sl-input>
+  </p>
+
+  <p id="settings-download-directory">
+    <hh data-i18n="v9_settings_download_directory"></hh>
+    <i></i>
+    <span class="inline-button" data-i18n="v9_settings_download_directory_change" id="button-download-directory-change"></span>
+  </p>
+
+  <p id="settings-history-limit">
+    <hh data-i18n="v9_settings_history_limit"></hh>
+    <sl-input type="number" min="0" max="99" class="input-inline"></sl-input>
+  </p>
+
+  <sl-divider></sl-divider>
+
+  <p id="settings-max-variants">
+    <hh data-i18n="v9_mup_max_variants"></hh>
+    <sl-input type="number" min="1" max="10" class="input-inline"></sl-input>
+  </p>
+
+  <p id="settings-variants">
+    <hh data-i18n="v9_settings_variants_title"></hh>
+    <span class="variant-container"></span>
+    <span class="variant-quality"></span> <!-- be vareful, that class gets overwritten in JS -->
+    <span data-i18n="v9_settings_variants_clear" id="button-variants-clear" class="inline-button"></span>
+  </p>
+
+  <sl-divider></sl-divider>
+
+  <p id="settings-browser-download"><sl-checkbox indeterminate slot="suffix" data-i18n="v9_settings_checkbox_force_inbrowser"></sl-checkbox></p>
+  <p id="settings-show-notification"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_notification" slot="suffix"></sl-checkbox></p>
+  <p id="settings-show-notification-for-incognito"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_notification_incognito" slot="suffix"></sl-checkbox></p>
+  <p id="settings-show-tb-in-notification"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_thumbnail_in_notification" slot="suffix"></sl-checkbox></p>
+  <p id="settings-context-menu"><sl-checkbox indeterminate data-i18n="v9_weh_prefs_description_contextMenuEnabled" slot="suffix"></sl-checkbox></p>
+  <p id="settings-forget-on-close"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_forget_on_close" slot="suffix"></sl-checkbox></p>
+  <p id="settings-view-convert-local"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_view_convert_local" slot="suffix"></sl-checkbox></p>
+  <p id="settings-use-wide-ui"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_use_wide_ui" slot="suffix"></sl-checkbox></p>
+  <p id="settings-use-legacy-ui"><sl-checkbox indeterminate data-i18n="v9_settings_checkbox_use_legacy_ui" slot="suffix"></sl-checkbox></p>
+
+  <sl-divider></sl-divider>
+
+  <p id="settings-locales">
+    There are <span id="settings-locales-missing-strings-count"></span> strings not translated in your language
+    (<span id="settings-locales-locale-name"></span>). You can help us by translating or improving the strings:
+    <span class="inline-button" id="button-translate">open translation panel</span>.
+  </p>
+
+  <sl-divider></sl-divider>
+
+  <hbox id="settings-bottom-buttons" wrap>
+    <sl-button id="button-reset-settings" size="small" data-i18n="v9_settings_button_reset"></sl-button>
+    <sl-button id="button-export-settings" size="small" data-i18n="v9_settings_button_export"></sl-button>
+    <sl-button id="button-import-settings" size="small" data-i18n="v9_settings_button_import"></sl-button>
+    <input id="button-import-settings-input" type="file" accept="text/json" hidden/>
+    <sl-button id="button-reload-addon" size="small" data-i18n="v9_settings_button_reload"></sl-button>
+  </hbox>
+
+</sl-drawer>

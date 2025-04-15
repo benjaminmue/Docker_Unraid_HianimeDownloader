@@ -1,0 +1,755 @@
+{
+  "Bytes": {
+    "message": "$1 bæti"
+  },
+  "KB": {
+    "message": "$1 KB"
+  },
+  "MB": {
+    "message": "$1 MB"
+  },
+  "about": {
+    "message": "Um hugbúnaðinn"
+  },
+  "about_alpha_intro": {
+    "message": "Þetta er alfa-útgáfa."
+  },
+  "about_beta_intro": {
+    "message": "Þetta er beta-útgáfa."
+  },
+  "about_qr": {
+    "message": "Skrá útbúin"
+  },
+  "about_vdh": {
+    "message": "Um Video DownloadHelper niðurhalshjálpina"
+  },
+  "action_abort_description": {
+    "message": "Hætta við aðgerðina sem er í gangi"
+  },
+  "action_abort_title": {
+    "message": "Hætta við"
+  },
+  "action_as_default": {
+    "message": "Nota sjálfgefið þessa aðgerð"
+  },
+  "action_avplay_description": {
+    "message": "Spila myndskeiðið í innbyggðum skoðara umbreytiforritsins"
+  },
+  "action_avplay_title": {
+    "message": "Afspilun"
+  },
+  "action_blacklist_description": {
+    "message": "Myndskeið sem koma frá eða er miðlað af völdum lénum verða hunsuð"
+  },
+  "action_blacklist_title": {
+    "message": "Bæta á bannlista"
+  },
+  "action_copyurl_description": {
+    "message": "Afrita slóð margmiðlunargagnanna á klippispjaldið"
+  },
+  "action_copyurl_title": {
+    "message": "Afrita slóð"
+  },
+  "action_deletehit_description": {
+    "message": "Eyða samsvörun af núverandi lista"
+  },
+  "action_deletehit_title": {
+    "message": "Eyða"
+  },
+  "action_details_description": {
+    "message": "Birta nánari upplýsingar um samsvörunina"
+  },
+  "action_details_title": {
+    "message": "Nánar"
+  },
+  "action_download_description": {
+    "message": "Sækja og vista skrána á harða diskinn þinn"
+  },
+  "action_download_title": {
+    "message": "Niðurhal"
+  },
+  "action_downloadconvert_description": {
+    "message": "Sækja margmiðlunargögn og umbreyta á annað snið"
+  },
+  "action_downloadconvert_title": {
+    "message": "Sækja og umbreyta"
+  },
+  "action_openlocalfile_description": {
+    "message": "Opna margmiðlunargögn af þessari tölvu"
+  },
+  "action_openlocalfile_title": {
+    "message": "Opna margmiðlunargögn"
+  },
+  "action_pin_description": {
+    "message": "Gera samsvörun fasta"
+  },
+  "action_pin_title": {
+    "message": "Festa"
+  },
+  "action_quickdownload_description": {
+    "message": "Sækja án þess að spyrja um úttaksmöppu"
+  },
+  "action_quickdownload_title": {
+    "message": "Skyndiniðurhal"
+  },
+  "adaptative": {
+    "message": "Aðlaganlegt $1"
+  },
+  "add_to_blacklist": {
+    "message": "Bæta á bannlista"
+  },
+  "add_to_blacklist_help": {
+    "message": "Myndskeið sem koma frá eða er miðlað af völdum lénum verða hunsuð"
+  },
+  "advanced": {
+    "message": "Nánar"
+  },
+  "aggregating": {
+    "message": "Safna saman..."
+  },
+  "analyze_page": {
+    "message": "Greina síðu"
+  },
+  "appDesc": {
+    "message": "Download Videos from the Web"
+  },
+  "appName": {
+    "message": "Video DownloadHelper"
+  },
+  "appearance": {
+    "message": "Útlit"
+  },
+  "audio_only": {
+    "message": "Einungis hljóð"
+  },
+  "behavior": {
+    "message": "Hegðun"
+  },
+  "blacklist": {
+    "message": "Bannlisti"
+  },
+  "cancel": {
+    "message": "Hætta við"
+  },
+  "chrome_install_firefox": {
+    "message": "Setja upp Firefox"
+  },
+  "chrome_install_fx_vdh": {
+    "message": "Video DownloadHelper fyrir Firefox"
+  },
+  "chrome_noyt_text": {
+    "message": "Því miður, leyfir Chrome Web Store ekki viðbætur sem sækja YouTube-myndskeið, þannig að við þurftum að fjarlægja þennan eiginleika."
+  },
+  "chrome_noyt_text2": {
+    "message": "Þú getur notað VDH-niðurhalshjálpina til að sækja YouTube-myndskeið með Firefox-útgáfunni."
+  },
+  "chrome_warning_yt": {
+    "message": "Aðvörun vegna Chrome-viðbóta og YouTube"
+  },
+  "clear_hits": {
+    "message": "Hreinsa samsvaranir"
+  },
+  "clear_logs": {
+    "message": "Hreinsa annála"
+  },
+  "congratulations": {
+    "message": "Til hamingju!"
+  },
+  "continue": {
+    "message": "Halda áfram"
+  },
+  "convconf_2passes": {
+    "message": "2 umferðir"
+  },
+  "convconf_ac": {
+    "message": "Hljóðrásir"
+  },
+  "convconf_acnone": {
+    "message": "Ekkert"
+  },
+  "convconf_acodec": {
+    "message": "Hljóðkóðunarlykill"
+  },
+  "convconf_aspect": {
+    "message": "Stærðarhlutföll"
+  },
+  "convconf_audiobitrate": {
+    "message": "Hljóð-bitahraði:"
+  },
+  "convconf_audiofreq": {
+    "message": "Hljóðtíðni"
+  },
+  "convconf_audioonly": {
+    "message": "Einungis hljóð"
+  },
+  "convconf_bitrate": {
+    "message": "Bitahraði"
+  },
+  "convconf_container": {
+    "message": "Skráasnið"
+  },
+  "convconf_duplicate": {
+    "message": "Tvítaka"
+  },
+  "convconf_ext": {
+    "message": "Skráarending frálagsskrár"
+  },
+  "convconf_extra": {
+    "message": "Aukabreytur"
+  },
+  "convconf_level": {
+    "message": "Stig"
+  },
+  "convconf_mono": {
+    "message": "Einóma"
+  },
+  "convconf_new": {
+    "message": "Nýtt"
+  },
+  "convconf_preset": {
+    "message": "Forstilling"
+  },
+  "convconf_profilev": {
+    "message": "Sniðskrá myndskeiðs"
+  },
+  "convconf_rate": {
+    "message": "Rammatíðni"
+  },
+  "convconf_readonly": {
+    "message": "Sjálfgefna uppsetningin er skrifvarin. Gerðu afrit af henni til að gera breytingar."
+  },
+  "convconf_remove": {
+    "message": "Fjarlægja"
+  },
+  "convconf_reset": {
+    "message": "Frumstilla allt"
+  },
+  "convconf_reset_confirm": {
+    "message": "Þetta mun fjarlægja allar sérsniðnar uppsetningar þínar"
+  },
+  "convconf_save": {
+    "message": "Vista"
+  },
+  "convconf_size": {
+    "message": "Rammastærð"
+  },
+  "convconf_stereo": {
+    "message": "Víðóma"
+  },
+  "convconf_target": {
+    "message": "Útkoma"
+  },
+  "convconf_tune": {
+    "message": "Fínstilling"
+  },
+  "convconf_vcodec": {
+    "message": "Myndkóðunarlykill"
+  },
+  "convconf_videobitrate": {
+    "message": "Bitahraði myndmerkis"
+  },
+  "conversion_outputs": {
+    "message": "Frálög umbreytinga"
+  },
+  "convert": {
+    "message": "Umbreyta"
+  },
+  "convert_local_files": {
+    "message": "Umbreyta staðværum skrám"
+  },
+  "converter_needed_aggregate": {
+    "message": "Þessi aðgerð krefst þess að umbreytiforrit sé uppsett á kerfinu þínu til að setja saman hljóð- og myndstreymi."
+  },
+  "converter_needed_aggregate_why": {
+    "message": "Hvers vegna þarf ég umbreytiforrit ?"
+  },
+  "converter_needs_reg": {
+    "message": "Skráningar er krafist"
+  },
+  "converter_reg_audio": {
+    "message": "Þú baðst, annað hvort sérstaklega eða með reglum fyrir sjálfvirka umbreytingu, um að útbúin væri margmiðlunarskrá sem inniheldur eingöngu hljóð. Þetta krefst skráðs umbreytiforrits."
+  },
+  "converting": {
+    "message": "Umbreyti..."
+  },
+  "convrule_convert": {
+    "message": "Umbreyta"
+  },
+  "convrule_domain": {
+    "message": "Lén"
+  },
+  "convrule_extension": {
+    "message": "Skráarending"
+  },
+  "copy_of": {
+    "message": "Afrit af $1"
+  },
+  "custom_output": {
+    "message": "Sérsniðin úttakssnið"
+  },
+  "dash_streaming": {
+    "message": "DASH streymi"
+  },
+  "details_parenthesis": {
+    "message": "(nánar)"
+  },
+  "dlconv_download_and_convert": {
+    "message": "Sækja og umbreyta"
+  },
+  "dlconv_output_details": {
+    "message": "Stilla frálag nánar"
+  },
+  "donate": {
+    "message": "Styrkja"
+  },
+  "donate_vdh": {
+    "message": "Hjálpa Video DownloadHelper"
+  },
+  "downloading": {
+    "message": "Sæki..."
+  },
+  "errors": {
+    "message": "Villur"
+  },
+  "explain_qr1": {
+    "message": "Þú munt taka eftir því að myndskeiðið mun innifela vatnsmerki í horninu."
+  },
+  "explain_qr2": {
+    "message": "Þetta er af því þú valdir ADP-tilbrigði og umbreytingarforritið hefur ekki verið skráð."
+  },
+  "failed_aggregating": {
+    "message": "Mistókst að safna saman \"$1\""
+  },
+  "failed_converting": {
+    "message": "Mistókst að umbreyta \"$1\""
+  },
+  "failed_getting_info": {
+    "message": "Mistókst að ná í upplýsingar frá \"$1\""
+  },
+  "file_dialog_name": {
+    "message": "Heiti"
+  },
+  "file_generated": {
+    "message": "Skráin \"$1\" hefur verið útbúin."
+  },
+  "file_ready": {
+    "message": "\"$1\" er núna tilbúið"
+  },
+  "finalizing": {
+    "message": "Geng frá..."
+  },
+  "from_domain": {
+    "message": "Frá $1"
+  },
+  "gallery": {
+    "message": "Myndasafn"
+  },
+  "gallery_files_types": {
+    "message": "$1 skrár"
+  },
+  "gallery_from_domain": {
+    "message": "Myndasafn frá $1"
+  },
+  "gallery_links_from_domain": {
+    "message": "Tenglar frá $1"
+  },
+  "general": {
+    "message": "Almennt"
+  },
+  "get_conversion_license": {
+    "message": "Fáðu notkunarleyfi fyrir umbreytiforrit"
+  },
+  "hit_details": {
+    "message": "Nánar um samsvörun"
+  },
+  "hit_go_to_tab": {
+    "message": "Fara á flipa"
+  },
+  "hls_streaming": {
+    "message": "HLS streymi"
+  },
+  "in_current_tab": {
+    "message": "Á þessum flipa"
+  },
+  "in_other_tab": {
+    "message": "Í öðrum flipum"
+  },
+  "license_key": {
+    "message": "Lykill notkunarleyfis"
+  },
+  "logs": {
+    "message": "Annálar"
+  },
+  "media": {
+    "message": "Margmiðlunargögn"
+  },
+  "more": {
+    "message": "Meira..."
+  },
+  "no_media_current_tab": {
+    "message": "Engin margmiðlunargögn til að vinna með í núverandi flipa"
+  },
+  "no_media_to_process": {
+    "message": "Engin margmiðlunargögn til að vinna með"
+  },
+  "no_media_to_process_descr": {
+    "message": "Smelltu á afspilun á myndskeiði til að hjálpa við að finna skrár…"
+  },
+  "not_again_3months": {
+    "message": "Ekki ónáða mig aftur með þetta næstu 3 mánuðina"
+  },
+  "not_see_again": {
+    "message": "Ekki sýna þessi skilaboð aftur"
+  },
+  "number_type": {
+    "message": "$1 $2"
+  },
+  "orphan": {
+    "message": "Einstæðingar"
+  },
+  "pinned": {
+    "message": "Fest"
+  },
+  "quality_medium": {
+    "message": "Miðlungs"
+  },
+  "quality_small": {
+    "message": "Lág"
+  },
+  "queued": {
+    "message": "Í biðröð..."
+  },
+  "register_converter": {
+    "message": "Skrá umbreytiforrit"
+  },
+  "register_existing_license": {
+    "message": "Skrá notkunarleyfi sem þegar er til staðar"
+  },
+  "registered_email": {
+    "message": "Tölvupóstfang"
+  },
+  "registered_key": {
+    "message": "Lykill"
+  },
+  "req_donate": {
+    "message": "Myndirðu íhuga að styðja við verkefnið og gefa einhverja smáupphæð ?"
+  },
+  "req_review": {
+    "message": "Nú, eða kannski skrifa skemmtilega umsögn á vefsvæðinu fyrir Mozilla viðbæturnar ?"
+  },
+  "req_review_link": {
+    "message": "Skrifa umsögn um VDH-niðurhalshjálpina"
+  },
+  "running": {
+    "message": "Í gangi"
+  },
+  "save": {
+    "message": "Vista"
+  },
+  "select_files_to_convert": {
+    "message": "Umbreyta staðværum skrám"
+  },
+  "settings": {
+    "message": "Stillingar"
+  },
+  "smartnamer_delay": {
+    "message": "Töf á nafnagripi (msek)"
+  },
+  "smartnamer_domain": {
+    "message": "Lén"
+  },
+  "smartnamer_get_name_from_header_url": {
+    "message": "Ná í heiti úr haus skjals/URL-slóð"
+  },
+  "smartnamer_get_name_from_page_content": {
+    "message": "Ná í heiti úr innihaldi síðu"
+  },
+  "smartnamer_get_name_from_page_title": {
+    "message": "Ná í heiti úr titli síðu"
+  },
+  "smartnamer_get_obfuscated_name": {
+    "message": "Nota óskírt heiti"
+  },
+  "smartnamer_regexp": {
+    "message": "Regluleg segð"
+  },
+  "smartnamer_selected_text": {
+    "message": "Valinn texti"
+  },
+  "smartnamer_xpath_expr": {
+    "message": "XPath-segð"
+  },
+  "supported_sites": {
+    "message": "Studd vefsvæði"
+  },
+  "tell_me_more": {
+    "message": "Segðu mér meira um þetta"
+  },
+  "title": {
+    "message": "Video DownloadHelper"
+  },
+  "validate_license": {
+    "message": "Skrá notkunarleyfi"
+  },
+  "variants_list_adp": {
+    "message": "Aðlaganleg tilbrigði (ADP)"
+  },
+  "variants_list_full": {
+    "message": "Tilbrigði"
+  },
+  "vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "version": {
+    "message": "Útgáfa $1"
+  },
+  "video_only": {
+    "message": "Einungis myndskeið"
+  },
+  "video_qualities": {
+    "message": "Gæði myndskeiða"
+  },
+  "weh_prefs_dashOnAdp_option_audio": {
+    "message": "Sækja hljóðskrá"
+  },
+  "weh_prefs_dashOnAdp_option_audio_video": {
+    "message": "Safna saman hljóði og myndskeiði"
+  },
+  "weh_prefs_dashOnAdp_option_video": {
+    "message": "Sækja myndskeið"
+  },
+  "weh_prefs_description_adpHide": {
+    "message": "Ekki birta ADP-tilbrigði í niðurhalslista"
+  },
+  "weh_prefs_description_autoPin": {
+    "message": "Festa samsvörun eftir niðurhal."
+  },
+  "weh_prefs_description_blacklistEnabled": {
+    "message": "Koma í veg fyrir að sum vefsvæði virkji greiningu á margmiðlunargögnum."
+  },
+  "weh_prefs_description_chunksEnabled": {
+    "message": "Streymi í knippum virkt"
+  },
+  "weh_prefs_description_converterAggregTuneH264": {
+    "message": "Þvinga fínstillingu H264 við samsöfnun"
+  },
+  "weh_prefs_description_dashHideM4s": {
+    "message": "Ekki birta .m4s færslur í niðurhalslista"
+  },
+  "weh_prefs_description_dashOnAdp": {
+    "message": "Þegar DASH inniheldur bæði hljóð og myndskeið"
+  },
+  "weh_prefs_description_downloadControlledMax": {
+    "message": "Stýrir fjölda þeirra niðurhala sem viðbótin útbýr og keyrir samhliða, til að spara bandbreidd."
+  },
+  "weh_prefs_description_downloadRetries": {
+    "message": "Fjöldi tilrauna við niðurhal"
+  },
+  "weh_prefs_description_downloadRetryDelay": {
+    "message": "Tími sem líður milli endurtekinna tilrauna til niðurhals (ms)"
+  },
+  "weh_prefs_description_hlsDownloadAsM2ts": {
+    "message": "Sækja HLS streymi sem M2TS"
+  },
+  "weh_prefs_description_mediaweightMinSize": {
+    "message": "Hunsa samsvaranir undir þessari stærð."
+  },
+  "weh_prefs_description_mediaweightThreshold": {
+    "message": "Þvinga fram leit að skrám sem eru stærri en þetta."
+  },
+  "weh_prefs_description_mpegtsHideTs": {
+    "message": "Ekki birta .ts færslur í niðurhalslista"
+  },
+  "weh_prefs_description_networkFilterOut": {
+    "message": "Regluleg segð sem hunsar ákveðnar slóðir á margmiðlunargögn."
+  },
+  "weh_prefs_description_noPrivateNotification": {
+    "message": "Engar tilkynningar fyrir einkasamsvaranir"
+  },
+  "weh_prefs_description_notifyReady": {
+    "message": "Láta vita þegar vinnslu lýkur"
+  },
+  "weh_prefs_description_orphanExpiration": {
+    "message": "Biðtími í sekúndum áður en stakar samsvaranir eru fjarlægðar."
+  },
+  "weh_prefs_description_qualitiesMaxVariants": {
+    "message": "Hámarksfjöldi tilbrigða sem sýndar eru fyrir eitt og sama myndskeiðið."
+  },
+  "weh_prefs_description_smartnamerFnameMaxlen": {
+    "message": "Tryggir að útbúin skráaheiti fari ekki yfir þessa lengd."
+  },
+  "weh_prefs_iconActivation_option_anytab": {
+    "message": "Samsvörun af hvaða flipa sem er"
+  },
+  "weh_prefs_iconActivation_option_currenttab": {
+    "message": "Samsvörun af þessum flipa"
+  },
+  "weh_prefs_iconBadge_option_activetab": {
+    "message": "Margmiðlunargögn af virkum flipa"
+  },
+  "weh_prefs_iconBadge_option_anytab": {
+    "message": "Margmiðlunargögn af hvaða flipa sem er"
+  },
+  "weh_prefs_iconBadge_option_mixed": {
+    "message": "Blandað"
+  },
+  "weh_prefs_iconBadge_option_none": {
+    "message": "Ekkert"
+  },
+  "weh_prefs_iconBadge_option_pinned": {
+    "message": "Festar samsvaranir"
+  },
+  "weh_prefs_iconBadge_option_tasks": {
+    "message": "Keyrandi verk"
+  },
+  "weh_prefs_label_autoPin": {
+    "message": "Sjálfvirk festing"
+  },
+  "weh_prefs_label_avplayEnabled": {
+    "message": "Spilari virkur"
+  },
+  "weh_prefs_label_blacklistEnabled": {
+    "message": "Virkja bannlista"
+  },
+  "weh_prefs_label_chunksConcurrentDownloads": {
+    "message": "Samtímis niðurhöluð knippi"
+  },
+  "weh_prefs_label_chunksEnabled": {
+    "message": "Streymi í knippum (chunked)"
+  },
+  "weh_prefs_label_chunksPrefetchCount": {
+    "message": "Fjöldi forsóttra knippa"
+  },
+  "weh_prefs_label_converterThreads": {
+    "message": "Umbreytingarþræðir"
+  },
+  "weh_prefs_label_dashEnabled": {
+    "message": "DASH virkt"
+  },
+  "weh_prefs_label_downloadControlledMax": {
+    "message": "Hámarksfjöldi samtímis niðurhala"
+  },
+  "weh_prefs_label_hitsGotoTab": {
+    "message": "Birta Fara-á-flipa haldfang"
+  },
+  "weh_prefs_label_hlsEnabled": {
+    "message": "HLS virkt"
+  },
+  "weh_prefs_label_iconActivation": {
+    "message": "Virkjun táknmyndar"
+  },
+  "weh_prefs_label_iconBadge": {
+    "message": "Bakgrunnur táknmynda"
+  },
+  "weh_prefs_label_ignoreProtectedVariants": {
+    "message": "Hunsa varin tilbrigði"
+  },
+  "weh_prefs_label_mediaExtensions": {
+    "message": "Skynja skráarendingar"
+  },
+  "weh_prefs_label_medialinkMinImgSize": {
+    "message": "Lágmarksstærð mynda"
+  },
+  "weh_prefs_label_medialinkScanImages": {
+    "message": "Finna ígræddar myndir"
+  },
+  "weh_prefs_label_medialinkScanLinks": {
+    "message": "Finna tengla á margmiðlunargögn"
+  },
+  "weh_prefs_label_mediaweightMinSize": {
+    "message": "Lágmarksstærð"
+  },
+  "weh_prefs_label_mediaweightThreshold": {
+    "message": "Stærðarmörk"
+  },
+  "weh_prefs_label_networkFilterOut": {
+    "message": "Netkerfissía út"
+  },
+  "weh_prefs_label_networkProbe": {
+    "message": "Skönnun netkerfis"
+  },
+  "weh_prefs_label_orphanExpiration": {
+    "message": "Tímamörk gildistíma einstæðinga"
+  },
+  "weh_prefs_label_qualitiesMaxVariants": {
+    "message": "Hámarksfjöldi tilbrigða"
+  },
+  "weh_prefs_label_smartnamerFnameMaxlen": {
+    "message": "Hámarkslengd skráaheita"
+  },
+  "weh_prefs_label_smartnamerFnameSpaces": {
+    "message": "Langir titlar á aðalspjaldi"
+  },
+  "weh_prefs_label_titleMode": {
+    "message": "Langir titlar á aðalspjaldi"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_hyphen": {
+    "message": "Skipta út fyrir bandstrik"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_keep": {
+    "message": "Halda"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_remove": {
+    "message": "Fjarlægja"
+  },
+  "weh_prefs_smartnamerFnameSpaces_option_underscore": {
+    "message": "Skipta út fyrir lágstrik"
+  },
+  "weh_prefs_titleMode_option_left": {
+    "message": "Úrfellingarmerki til vinstri"
+  },
+  "weh_prefs_titleMode_option_multiline": {
+    "message": "Yfir margar línur"
+  },
+  "weh_prefs_titleMode_option_right": {
+    "message": "Úrfellingarmerki til hægri"
+  },
+  "you_downloaded_n_videos": {
+    "message": "Þú varst að sækja skrá númer $1th með VDH-niðurhalshjálpinni."
+  },
+  "v9_no_media_current_tab": {
+    "message": "Engin margmiðlunargögn til að vinna með í núverandi flipa"
+  },
+  "v9_no_media_to_process_descr": {
+    "message": "Smelltu á afspilun á myndskeiði til að hjálpa við að finna skrár…"
+  },
+  "v9_converter_needs_reg": {
+    "message": "Skráningar er krafist"
+  },
+  "v9_get_conversion_license": {
+    "message": "Fáðu notkunarleyfi fyrir umbreytiforrit"
+  },
+  "v9_converter_reg_audio": {
+    "message": "Þú baðst, annað hvort sérstaklega eða með reglum fyrir sjálfvirka umbreytingu, um að útbúin væri margmiðlunarskrá sem inniheldur eingöngu hljóð. Þetta krefst skráðs umbreytiforrits."
+  },
+  "v9_chrome_warning_yt": {
+    "message": "Aðvörun vegna Chrome-viðbóta og YouTube"
+  },
+  "v9_chrome_noyt_text2": {
+    "message": "Þú getur notað VDH-niðurhalshjálpina til að sækja YouTube-myndskeið með Firefox-útgáfunni."
+  },
+  "v9_about_qr": {
+    "message": "Skrá útbúin"
+  },
+  "v9_explain_qr1": {
+    "message": "Þú munt taka eftir því að myndskeiðið mun innifela vatnsmerki í horninu."
+  },
+  "v9_not_see_again": {
+    "message": "Ekki sýna þessi skilaboð aftur"
+  },
+  "v9_tell_me_more": {
+    "message": "Segðu mér meira um þetta"
+  },
+  "v9_settings": {
+    "message": "Stillingar"
+  },
+  "v9_weh_prefs_label_downloadControlledMax": {
+    "message": "Hámarksfjöldi samtímis niðurhala"
+  },
+  "v9_vdh_notification": {
+    "message": "Video DownloadHelper"
+  },
+  "v9_file_ready": {
+    "message": "\"$1\" er núna tilbúið"
+  }
+}

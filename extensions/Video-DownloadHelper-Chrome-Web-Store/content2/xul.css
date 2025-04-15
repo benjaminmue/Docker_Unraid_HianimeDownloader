@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+box, hbox, vbox, spacer {
+  display: flex;
+  min-width: 0;
+}
+
+[hidden="true"] {
+  display: none!important;
+}
+
+hbox {
+  flex-flow: row;
+  text-overflow: ellipsis;
+}
+
+vbox {
+  flex-flow: column;
+}
+
+[wrap] { flex-wrap: wrap }
+[hidden]:not([hidden="false"]) { display: none }
+
+[flex="1"] { flex-grow: 1 }
+[flex="2"] { flex-grow: 2 }
+[flex="3"] { flex-grow: 3 }
+[flex="4"] { flex-grow: 4 }
+[flex="5"] { flex-grow: 5 }
+[flex="6"] { flex-grow: 6 }
+[flex="7"] { flex-grow: 7 }
+[flex="8"] { flex-grow: 8 }
+[flex="9"] { flex-grow: 9 }
+
+[align="start"] { align-items: flex-start }
+[align="center"] { align-items: center }
+[align="end"] { align-items: flex-end }
+[align="baseline"] { align-items: flex-baseline }
+[align="stretch"] { align-items: flex-stretch }
+
+[pack="start"] { justify-content: flex-start }
+[pack="center"] { justify-content: center }
+[pack="end"] { justify-content: flex-end }
+
+/* DEBUG */
+
+.debug hbox,
+.debug vbox,
+.debug box,
+.debug spacer {
+  margin: 10px;
+  padding: 10px;
+  outline: 1px dashed black;
+  position: relative;
+}
+.debug hbox {
+  background: red;
+}
+.debug vbox {
+  background: blue;
+}
+.debug spacer,
+.debug box {
+  background: yellow;
+}
+.debug hbox:before,
+.debug vbox:before,
+.debug box:before {
+  position: absolute;
+  font-size: 10px;
+  top: 0; left: 0;
+  display: block;
+  content: attr(class);
+}
+
