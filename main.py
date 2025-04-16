@@ -1,53 +1,49 @@
+from seleniumwire import webdriver
+import undetected_chromedriver as uc
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
-
-
-import undetected_chromedriver as uc
-from seleniumwire.undetected_chromedriver.v2 import Chrome, ChromeOptions
-
-
 
 
 class Main:
     def __init__(self):
         mobile_emulation = {
-            "deviceName": "iPhone X"  # You can also use: Pixel 2, Galaxy S5, etc.
+            "deviceName": "iPhone X"
         }
 
-        # Set up Selenium Wire options (e.g., to capture headers, set proxies, etc.)
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option("mobileEmulation", mobile_emulation)
+        options.add_argument('--disable-blink-features=AutomationControlled')
+        options.add_argument("window-size=600,1000")
+
         seleniumwire_options = {
             'verify_ssl': False,
             'disable_encoding': True,
         }
 
-        # Set up UC options as usual
-        options = ChromeOptions()
-        options.add_argument('--disable-blink-features=AutomationControlled')
-        # You can add more UC options here
+        # Create driver with Selenium Wire's Chrome
+        self.driver = webdriver.Chrome(
+            options=options,
+            seleniumwire_options=seleniumwire_options
+        )
 
-        options.add_experimental_option("mobileEmulation", mobile_emulation)
-        options.add_argument("window-size=600,1000")
+        # Apply UC stealth (manually patching UC’s evasion JS)
+        uc.install()
 
-        self.driver = Chrome(options=options, seleniumwire_options=seleniumwire_options)
-
-
-        # Go to anime page
-        self.driver.get("https://hianimez.to/watch/solo-leveling-18718?ep=114721")
+        # Go to the anime page
+        self.driver.get("https://hianime.to/watch/solo-leveling-18718?ep=114721")
 
         self.driver.implicitly_wait(10)
-        self.driver.sleep(2)
+        time.sleep(2)
 
-        # Wait for the server button and click it
         server_element = self.find_server(download_type="sub")
         server_element.click()
 
         print("Waiting for video to load and requests to be made...")
-
         self.capture_media_requests()
 
-        # Keep browser open if needed
         while True:
             time.sleep(1)
 
@@ -68,6 +64,7 @@ class Main:
 
         if not found_any:
             print("No .m3u8 or .mp4 streams found. Try increasing the wait time.")
+
 
 if __name__ == "__main__":
     Main()
