@@ -29,6 +29,8 @@ def configure_driver():
     options.add_experimental_option("mobileEmulation", mobile_emulation)
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("window-size=600,1000")
+    #options.add_extension("extensions" + os.sep + "AdBlock.crx")
+    #Unable to find good ad blocker without pop up 
 
     seleniumwire_options = {
         'verify_ssl': False,
@@ -37,7 +39,7 @@ def configure_driver():
 
     driver = webdriver.Chrome(
         options=options,
-        seleniumwire_options=seleniumwire_options
+        seleniumwire_options=seleniumwire_options,
     )
 
     stealth(driver,
