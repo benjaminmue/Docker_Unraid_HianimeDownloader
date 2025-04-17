@@ -7,46 +7,52 @@ from selenium_stealth import stealth
 import yt_dlp
 import os
 import subprocess
+import requests
+from urllib.parse import urljoin
 
+
+def configure_driver():
+    mobile_emulation = {
+        "deviceName": "iPhone X"
+    }
+
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+    options.add_argument('--disable-blink-features=AutomationControlled')
+    options.add_argument("window-size=600,1000")
+
+    seleniumwire_options = {
+        'verify_ssl': False,
+        'disable_encoding': True,
+    }
+
+    driver = webdriver.Chrome(
+        options=options,
+        seleniumwire_options=seleniumwire_options
+    )
+
+    stealth(driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+            )
+
+    driver.implicitly_wait(10)
+    return driver
 
 
 class Main:
     def __init__(self):
-        mobile_emulation = {
-            "deviceName": "iPhone X"
-        }
-
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("mobileEmulation", mobile_emulation)
-        options.add_argument('--disable-blink-features=AutomationControlled')
-        options.add_argument("window-size=600,1000")
-
-        seleniumwire_options = {
-            'verify_ssl': False,
-            'disable_encoding': True,
-        }
-
-        self.driver = webdriver.Chrome(
-            options=options,
-            seleniumwire_options=seleniumwire_options
-        )
-
-
-        stealth(self.driver,
-                languages=["en-US", "en"],
-                vendor="Google Inc.",
-                platform="Win32",
-                webgl_vendor="Intel Inc.",
-                renderer="Intel Iris OpenGL Engine",
-                fix_hairline=True,
-                )
-
-        self.driver.implicitly_wait(10)
+        url = input("Enter URL: ")
+        self.driver = configure_driver()
 
         print("Completed Setup")
 
         # Go to the anime page
-        self.driver.get(input("Enter URL: "))
+        self.driver.get(url)
 
         print("Finding Element")
         server_element = self.find_server(download_type="sub")
@@ -56,37 +62,10 @@ class Main:
         urls = self.capture_media_requests()
         print(f"Resulting URLs: \n\n{urls}")
 
-        print("Using YT-DLP to get video: \n\n\n")
-
-        resolution_height = 1080
+        print("\nAttempting to download: \n\n")
 
         for i in range(len(urls["m3u8"])):
             self.download_video(urls["m3u8"][i], urls["m3u8-headers"][i])
-
-        '''
-        ydl_opts = {
-            'no_warnings': False,
-            'quiet': False,
-            'outtmpl': os.path.join(output_folder, f"{folder_name} - Episode {number} - {title}.mp4"),
-            'format': f'bestvideo[height<={resolution_height}]+bestaudio/best[height<={resolution_height}]',
-            'http_headers': {
-                'Referer': referer,
-                'User-Agent': user_agent,
-                'Cookie': cookie_header,  # ✅ this is the key
-            }
-        }
-
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            ydl.download([url]) 
-        '''
-
-
-    def apply_stealth(self):
-        with open("stealth.min.js", "r") as f:
-            stealth_js = f.read()
-        self.driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-            "source": stealth_js
-        })
 
     def find_server(self, download_type):
         WebDriverWait(self.driver, 10).until(
@@ -96,7 +75,7 @@ class Main:
         return servers[0] if len(servers) == 1 or (download_type == "sub" or download_type == "s") else servers[1]
 
     def capture_media_requests(self):
-        print("\n🎯 Media URLs Detected:\n")
+        print("\nLooking for URLs:\n")
         found_any = False
         attempt_cap = 100
         attempt = 0
@@ -107,8 +86,7 @@ class Main:
                     if request.url.endswith(".m3u8"):
                         print(".m3u8 👉", request.url)
                         urls["m3u8"].append(request.url)
-                        urls["m3u8-headers"].append(request.headers)
-                        print(request.headers)
+                        urls["m3u8-headers"].append(dict(request.headers))
                         found_any = True
                         continue
                     if ".mp4" in request.url:
@@ -135,6 +113,7 @@ class Main:
         return urls
 
     def download_video(self, url, m3u8_headers):
+        print(f"📲Attempting to download from: {url}")
         folder_name = "output"
         output_folder = os.path.join('./mp4_out', folder_name)
         os.makedirs(output_folder, exist_ok=True)
@@ -142,20 +121,39 @@ class Main:
         number = 1
         title = "test"
 
-        # Extract headers from Selenium
-        referer = self.driver.current_url
-        user_agent = self.driver.execute_script("return navigator.userAgent")
+        output_path = os.path.join(output_folder, f"{folder_name} - Episode {number} - {title}.mp4")
 
         # Extract cookies from Selenium
         selenium_cookies = self.driver.get_cookies()
-        cookie_header = "; ".join([f"{c['name']}={c['value']}" for c in selenium_cookies])
+        m3u8_headers["Cookie"] = "; ".join([f"{c['name']}={c['value']}" for c in selenium_cookies])
+        headers = "".join(f"{k}: {v}\r\n" for k, v in m3u8_headers.items())
+        with open("headers.txt", "w") as file:
+            file.write(headers)
 
-        output_path = os.path.join(output_folder, f"{folder_name} - Episode {number} - {title}.mp4")
+        # 1. Fetch master.m3u8 content
+        try:
+            response = requests.get(url, headers=m3u8_headers, timeout=10)
+            response.raise_for_status()
+        except Exception as e:
+            print("❌ Failed to fetch master.m3u8:", e)
+            return
 
-        header_dict = m3u8_headers
-        headers = ""
-        for k, v in header_dict.items():
-            headers += f"{k}: {v}\r\n"
+        # 2. Look for first variant .m3u8 entry
+        lines = response.text.splitlines()
+        variant_url = None
+        for line in lines:
+            print(f"Line: {line}")
+            if line.strip().endswith(".m3u8") and "iframe" not in line:
+                variant_url = urljoin(url, line.strip())
+                print("📺 Found variant playlist:", variant_url)
+                break
+
+        if not variant_url:
+            print("❌ No valid video variant found in master.m3u8")
+            return
+
+        # 3. Use the variant URL instead of the master
+        url = variant_url
 
         # Safely build and run the command as a shell string
         quoted_url = f'"{url}"'
