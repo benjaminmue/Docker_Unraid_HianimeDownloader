@@ -1,0 +1,5 @@
+_ga_R34F2GCSBW	GS1.1.1744910056.1.1.1744910058.0.0.0
+userSettings	{%22auto_play%22:1%2C%22auto_next%22:1%2C%22auto_skip_intro%22:1%2C%22show_comments_at_home%22:1%2C%22public_watch_list%22:0%2C%22enable_dub%22:0%2C%22anime_name%22:%22en%22%2C%22play_original_audio%22:0}
+_gid	GA1.2.1584070187.1744910058
+_gat_gtag_UA_304498478_1	1
+_ga	GA1.2.369464641.1744910057

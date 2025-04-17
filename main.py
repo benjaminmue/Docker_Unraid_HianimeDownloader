@@ -6,7 +6,6 @@ import time
 from selenium_stealth import stealth
 import yt_dlp
 import os
-import subprocess
 import requests
 from urllib.parse import urljoin
 
@@ -65,7 +64,7 @@ class Main:
         print("\nAttempting to download: \n\n")
 
         for i in range(len(urls["m3u8"])):
-            self.download_video(urls["m3u8"][i], urls["m3u8-headers"][i])
+            self.download_video(urls["m3u8"][i], urls["m3u8-headers"][i], resolution_height=1080)
 
     def find_server(self, download_type):
         WebDriverWait(self.driver, 10).until(
@@ -75,7 +74,7 @@ class Main:
         return servers[0] if len(servers) == 1 or (download_type == "sub" or download_type == "s") else servers[1]
 
     def capture_media_requests(self):
-        print("\nLooking for URLs:\n")
+        #print("\nLooking for URLs:\n")
         found_any = False
         attempt_cap = 100
         attempt = 0
@@ -83,7 +82,7 @@ class Main:
         while not found_any and attempt_cap >= attempt:
             for request in self.driver.requests:
                 if request.response:
-                    if request.url.endswith(".m3u8"):
+                    if request.url.endswith(".m3u8") and "master" in request.url:
                         print(".m3u8 👉", request.url)
                         urls["m3u8"].append(request.url)
                         urls["m3u8-headers"].append(dict(request.headers))
@@ -108,11 +107,11 @@ class Main:
         if not found_any:
             print("No .m3u8 or .mp4 streams found. Try increasing the wait time.")
         else:
-            print("Done!")
+            print("Found URLs")
 
         return urls
 
-    def download_video(self, url, m3u8_headers):
+    '''def download_video(self, url, m3u8_headers):
         print(f"📲Attempting to download from: {url}")
         folder_name = "output"
         output_folder = os.path.join('./mp4_out', folder_name)
@@ -171,7 +170,35 @@ class Main:
             print("❌ ffmpeg failed:")
             print(result.stderr)
         else:
-            print(f"✅ Download complete: {output_path}")
+            print(f"✅ Download complete: {output_path}")'''
+
+    def download_video(self, m3u8_url, m3u8_headers, resolution_height):
+        print(f"📲Attempting to download from: {m3u8_url}")
+
+        response = requests.get(m3u8_url, headers=m3u8_headers, timeout=10)
+
+        lines = response.text.splitlines()
+        url = None
+        for line in lines:
+            if line.strip().endswith(".m3u8") and "iframe" not in line:
+                url = urljoin(m3u8_url, line.strip())
+                print("📺 Found variant playlist:", url)
+                break
+
+        if not url:
+            print("❌ No valid video variant found in master.m3u8")
+            return
+
+        yt_dlp_options = {
+            'no_warnings': False,
+            'quiet': False,
+            'outtmpl': "output.mp4",
+            'format': 'best',
+            'http_headers': m3u8_headers,
+        }
+
+        with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
+            ydl.download([url])
 
 if __name__ == "__main__":
     Main()

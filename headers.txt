@@ -12,3 +12,13 @@ accept-encoding: gzip, deflate, br, zstd
 accept-language: en-US,en;q=0.9
 priority: u=1, i
 Cookie: _ga_R34F2GCSBW=GS1.1.1744906465.1.1.1744906467.0.0.0; userSettings={%22auto_play%22:1%2C%22auto_next%22:1%2C%22auto_skip_intro%22:1%2C%22show_comments_at_home%22:1%2C%22public_watch_list%22:0%2C%22enable_dub%22:0%2C%22anime_name%22:%22en%22%2C%22play_original_audio%22:0}; _gid=GA1.2.1073993459.1744906466; _gat_gtag_UA_304498478_1=1; _ga=GA1.2.1293033997.1744906465
+
+
+dict_items([('no_warnings', False),
+('quiet', False),
+('outtmpl', {'default': 'output', 'chapter': '%(title)s - %(section_number)03d %(section_title)s [%(id)s].%(ext)s'}),
+('format', 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'), ('compat_opts', set()),
+('http_headers', {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.70 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'Accept-Language': 'en-us,en;q=0.5', 'Sec-Fetch-Mode': 'navigate'}),
+('forceprint', {}), ('print_to_file', {})])
+
+'sec-ch-ua-platform': '"macOS"', 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'https://megacloud.blog', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'https://megacloud.blog/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-US,en;q=0.9', 'priority': 'u=1, i', 'Cookie': '_ga_R34F2GCSBW=GS1.1.1744907798.1.1.1744907801.0.0.0; userSettings={%22auto_play%22:1%2C%22auto_next%22:1%2C%22auto_skip_intro%22:1%2C%22show_comments_at_home%22:1%2C%22public_watch_list%22:0%2C%22enable_dub%22:0%2C%22anime_name%22:%22en%22%2C%22play_original_audio%22:0}; _gid=GA1.2.1118930355.1744907800; _gat_gtag_UA_304498478_1=1; _ga=GA1.2.1636423211.1744907799'}
