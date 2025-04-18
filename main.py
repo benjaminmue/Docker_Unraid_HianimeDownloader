@@ -7,6 +7,7 @@ from selenium_stealth import stealth
 import yt_dlp
 from colorama import Fore
 import os
+import sys
 import requests
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
@@ -19,6 +20,8 @@ HEADERS = {
     'Accept-Language': 'en-US,en;q=0.8',
     'Connection': 'keep-alive'
 }
+
+SUBTITLE_LANGS = ["eng"]
 
 def configure_driver():
     mobile_emulation = {
@@ -91,6 +94,29 @@ def get_urls_to_animes_from_html(html_of_page, start_episode, end_episode):
             episode_info_list.append(episode_info)
 
     return episode_info_list
+
+class YTDLogger:
+    def debug(self, msg: str):
+        if not msg.startswith("[download]"):
+            return
+        new_msg = f"{Fore.LIGHTRED_EX if "fragment not found" in msg else Fore.LIGHTCYAN_EX}[YT-DLP] {msg[11:]}"
+        if "ETA" in msg:
+            sys.stdout.write(f"\r{new_msg}")
+            sys.stdout.flush()
+            return
+        elif "100% of" in msg:
+            sys.stdout.write(f"\r{new_msg}\n")
+            sys.stdout.flush()
+        print(new_msg)
+
+    def info(self, msg):
+        print(f"[Logger Info] {msg}")
+
+    def warning(self, msg):
+        pass
+
+    def error(self, msg):
+        print(f"[Logger Error] {msg}")
 
 class Main:
     def __init__(self):
@@ -183,6 +209,8 @@ class Main:
             start_episode = 1
             end_episode = 1
 
+        season_number = int(input("Enter the season number for series: "))
+
         self.driver = configure_driver()
 
         self.driver.get(chosen_anime_dict['url'])
@@ -191,8 +219,10 @@ class Main:
 
         episode_info_list = get_urls_to_animes_from_html(self.driver.page_source, start_episode, end_episode)
 
-        folder = "output" + os.sep + chosen_anime_dict['name']
-        os.makedirs(folder + (f"{os.sep}Subtitles" if download_type=="sub" else ""), exist_ok=True)
+        folder = "output" + os.sep + chosen_anime_dict['name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
+        os.makedirs(folder, exist_ok=True)
+
+        print()
 
         for episode in episode_info_list:
             url = episode['url']
@@ -200,21 +230,24 @@ class Main:
             title = episode['title']
 
             print(
-                Fore.LIGHTGREEN_EX + f"Get" + Fore.LIGHTWHITE_EX + f" {title} (Episode {number}) from {url}" + Fore.LIGHTWHITE_EX)
+                Fore.LIGHTGREEN_EX + f"Getting" + Fore.LIGHTWHITE_EX + f" Episode {number} - {title} from {url}" + Fore.LIGHTWHITE_EX)
 
+            self.driver.requests.clear()
             self.driver.get(url)
-            urls = self.capture_media_requests()
+            urls = self.capture_media_requests(episode_info_list)
             episode.update(urls)
+
 
         self.driver.quit()
 
         for episode in episode_info_list:
-            name = f"Episode {episode['number']} - {episode['title']}"
+            print()
+            name = f"{chosen_anime_dict['name']} ({download_type[0].upper()}{download_type[1:].lower()}) - s{season_number:02}e{episode['number']:02} - {episode['title']}"
             self.download_video(episode["m3u8"], episode["m3u8-headers"],
                                 f"{folder}{os.sep}{name}.mp4")
-            if episode["vtt"]:
+            if "vtt" in episode.keys() and episode["vtt"]:
                 self.download_subtitles(episode["vtt"], episode["m3u8-headers"],
-                                        f"{folder}{os.sep}Subtitles{os.sep}{name}.vtt")
+                                        f"{folder}{os.sep}{name}.vtt")
 
 
     def find_server(self, download_type):
@@ -224,42 +257,49 @@ class Main:
         servers = self.driver.find_elements(By.LINK_TEXT, "HD-1")
         return servers[0] if len(servers) == 1 or (download_type == "sub" or download_type == "s") else servers[1]
 
-    def capture_media_requests(self):
+    def capture_media_requests(self, found_episodes: list[dict]):
         #print("\nLooking for URLs:\n")
-        found_any = False
-        attempt_cap = 100
+        found_m3u8 = False
+        found_vtt = False
+        attempt_cap = 30
         attempt = 0
-        urls = {}
-        while not found_any and attempt_cap >= attempt:
+        urls = {"vtt": []}
+        while (not found_m3u8 or not found_vtt) and attempt_cap >= attempt:
             for request in self.driver.requests:
                 if request.response:
-                    if request.url.endswith(".m3u8") and "master" in request.url:
-                        print(".m3u8 👉", request.url)
+                    if request.url.endswith(".m3u8") and "master" in request.url and request.url not in [e["m3u8"] for e in found_episodes if "m3u8" in e.keys()]:
+                        #print(".m3u8 👉", request.url)
                         urls["m3u8"] = request.url
                         urls["m3u8-headers"] = dict(request.headers)
-                        found_any = True
+                        found_m3u8 = True
                         continue
                     if ".vtt" in request.url:
                         if "thumbnail" in request.url:
-                            print("thumbnail 👉", request.url)
+                            #print("thumbnail 👉", request.url)
                             urls["thumbnail"] = request.url
                             continue
-                        if "eng" in request.url:
-                            print(".vtt 👉", request.url)
-                            urls["vtt"] = request.url
+                        #print(".vtt 👉", request.url)
+                        if request.url not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()]:
+                            urls["vtt"].append(request.url)
+                            found_vtt = True
 
             attempt += 1
             time.sleep(1)
 
-        if not found_any:
-            print("No .m3u8 or .mp4 streams found. Try increasing the wait time.")
+        if not found_m3u8:
+            print("No .m3u8 streams found. Try increasing the wait time.")
+        if not found_vtt:
+            print("No .vtt streams found. Try increasing the wait time.")
         else:
-            print("Found URLs")
+            if len(urls["vtt"]) > 1:
+                print(urls["vtt"])
+                urls["vtt"] = [url for url in urls["vtt"] if any(lang in url for lang in SUBTITLE_LANGS)][0]
+            else:
+                urls["vtt"] = urls["vtt"][0]
 
         return urls
 
     def download_video(self, m3u8_url, m3u8_headers, location):
-        print(f"📲Attempting to download from: {m3u8_url}")
 
         response = requests.get(m3u8_url, headers=m3u8_headers, timeout=10)
 
@@ -268,11 +308,10 @@ class Main:
         for line in lines:
             if line.strip().endswith(".m3u8") and "iframe" not in line:
                 url = urljoin(m3u8_url, line.strip())
-                print("📺 Found variant playlist:", url)
                 break
 
         if not url:
-            print("❌ No valid video variant found in master.m3u8")
+            print("No valid video variant found in master.m3u8")
             return
 
         yt_dlp_options = {
@@ -281,6 +320,7 @@ class Main:
             'outtmpl': location,
             'format': 'best',
             'http_headers': m3u8_headers,
+            'logger': YTDLogger(),
         }
 
         with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
@@ -293,10 +333,14 @@ class Main:
             'outtmpl': location,
             'format': 'best',
             'http_headers': headers,
+            'logger': YTDLogger(),
         }
 
         with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
             ydl.download([url])
 
 if __name__ == "__main__":
+    start = time.time()
     Main()
+    elapsed = time.time() - start
+    print(f"Took {int(elapsed/60)}:{int((elapsed%60))} to finish")
