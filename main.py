@@ -29,8 +29,7 @@ def configure_driver():
     options.add_experimental_option("mobileEmulation", mobile_emulation)
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("window-size=600,1000")
-    #options.add_extension("extensions" + os.sep + "AdBlock.crx")
-    #Unable to find good ad blocker without pop up 
+    #options.add_argument("--load-extension=extensions" + os.sep + "Ghostery")
 
     seleniumwire_options = {
         'verify_ssl': False,
@@ -185,6 +184,7 @@ class Main:
             end_episode = 1
 
         self.driver = configure_driver()
+
         self.driver.get(chosen_anime_dict['url'])
         server_element = self.find_server(download_type=download_type)
         server_element.click()
@@ -192,7 +192,7 @@ class Main:
         episode_info_list = get_urls_to_animes_from_html(self.driver.page_source, start_episode, end_episode)
 
         folder = "output" + os.sep + chosen_anime_dict['name']
-        os.makedirs(folder, exist_ok=True)
+        os.makedirs(folder + (f"{os.sep}Subtitles" if download_type=="sub" else ""), exist_ok=True)
 
         for episode in episode_info_list:
             url = episode['url']
@@ -209,8 +209,12 @@ class Main:
         self.driver.quit()
 
         for episode in episode_info_list:
+            name = f"Episode {episode['number']} - {episode['title']}"
             self.download_video(episode["m3u8"], episode["m3u8-headers"],
-                                f"{folder}{os.sep}Episode {episode['number']} - {episode['title']}.mp4")
+                                f"{folder}{os.sep}{name}.mp4")
+            if episode["vtt"]:
+                self.download_subtitles(episode["vtt"], episode["m3u8-headers"],
+                                        f"{folder}{os.sep}Subtitles{os.sep}{name}.vtt")
 
 
     def find_server(self, download_type):
@@ -225,7 +229,7 @@ class Main:
         found_any = False
         attempt_cap = 100
         attempt = 0
-        urls = {"vtt": [], "m3u8": None, "m3u8-headers": None}
+        urls = {}
         while not found_any and attempt_cap >= attempt:
             for request in self.driver.requests:
                 if request.response:
@@ -240,8 +244,9 @@ class Main:
                             print("thumbnail 👉", request.url)
                             urls["thumbnail"] = request.url
                             continue
-                        print(".vtt 👉", request.url)
-                        urls["vtt"].append(request.url)
+                        if "eng" in request.url:
+                            print(".vtt 👉", request.url)
+                            urls["vtt"] = request.url
 
             attempt += 1
             time.sleep(1)
@@ -276,6 +281,18 @@ class Main:
             'outtmpl': location,
             'format': 'best',
             'http_headers': m3u8_headers,
+        }
+
+        with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
+            ydl.download([url])
+
+    def download_subtitles(self, url, headers, location):
+        yt_dlp_options = {
+            'no_warnings': False,
+            'quiet': False,
+            'outtmpl': location,
+            'format': 'best',
+            'http_headers': headers,
         }
 
         with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
