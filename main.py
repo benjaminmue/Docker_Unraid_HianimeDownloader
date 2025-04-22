@@ -1,10 +1,10 @@
 import os
 import sys
 import time
+from glob import glob
 from urllib.parse import urljoin
 
 import requests
-from glob import glob
 from bs4 import BeautifulSoup
 from colorama import Fore
 from selenium.webdriver.common.by import By
@@ -24,9 +24,12 @@ HEADERS = {
 }
 
 WEBSITE_URL = "https://hianimez.to"
-SUBTITLE_LANGS = "eng"
-OTHER_LANGS = ('ita', 'jpn', 'pol', 'por', 'ara', 'chi', 'cze', 'dan', 'dut', 'fin', 'fre', 'ger', 'gre', 'heb', 'hun',
-               'ind', 'kor', 'nob', 'pol', 'rum', 'rus', 'tha', 'vie', 'swe', 'spa', 'tur')
+SUBTITLE_LANGS = ["eng"]
+# OTHER_LANGS = ('ita', 'jpn', 'pol', 'por', 'ara', 'chi', 'cze', 'dan', 'dut', 'fin', 'fre', 'ger', 'gre', 'heb', 'hun',
+#                'ind', 'kor', 'nob', 'pol', 'rum', 'rus', 'tha', 'vie', 'swe', 'spa', 'tur', 'ces')
+OTHER_LANGS = ['ita', 'jpn', 'pol', 'por', 'ara', 'chi', 'cze', 'dan', 'dut', 'fin', 'fre', 'ger', 'gre', 'heb', 'hun',
+               'ind', 'kor', 'nob', 'pol', 'rum', 'rus', 'tha', 'vie', 'swe', 'spa', 'tur', 'ces', 'bul', 'zho', 'nld',
+               'fra', 'deu', 'ell', 'hin', 'hrv', 'msa', 'may', 'ron', 'slk', 'slo', 'ukr']
 DOWNLOAD_ATTEMPT_CAP = 45
 
 
@@ -270,7 +273,7 @@ class Main:
 
         for episode in episode_info_list:
             print()
-            name = f"{chosen_anime_dict['name']} ({download_type[0].upper()}{download_type[1:].lower()}) - s{season_number:02}e{episode['number']:02} - {episode['title']}"
+            name = f"{chosen_anime_dict['name']} - s{season_number:02}e{episode['number']:02} - {episode['title']}"
             try:
                 if "m3u8" in episode.keys() and episode["m3u8"]:
                     self.yt_dlp_download(self.look_for_variants(episode["m3u8"], episode["m3u8-headers"]),
@@ -307,30 +310,30 @@ class Main:
             sys.stdout.flush()
             for request in self.driver.requests:
                 if request.response:
-                    if (request.url.endswith(".m3u8") and "master" in request.url and
-                            request.url not in [e["m3u8"] for e in found_episodes if "m3u8" in e.keys()]):
-                        # print(".m3u8 👉", request.url)
-                        urls["m3u8"] = request.url
+                    uri = request.url.lower()
+                    if (uri.endswith(".m3u8") and "master" in uri and
+                            uri not in [e["m3u8"] for e in found_episodes if "m3u8" in e.keys()]):
+                        # print(".m3u8 👉", uri)
+                        urls["m3u8"] = uri
                         urls["m3u8-headers"] = dict(request.headers)
                         found_m3u8 = True
                         continue
-                    if ".vtt" in request.url:
-                        if "thumbnail" in request.url:
-                            # print("thumbnail 👉", request.url)
-                            urls["thumbnail"] = request.url
+                    if ".vtt" in uri:
+                        if "thumbnail" in uri:
+                            # print("thumbnail 👉", uri)
+                            urls["thumbnail"] = uri
                             continue
-                        # print(".vtt 👉", request.url)
-                        if (request.url not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()] and
-                                (not any(lang in request.url for lang in OTHER_LANGS)) or
-                                any(lang in request.url for lang in SUBTITLE_LANGS)):
-                            urls["vtt"].append(request.url)
+                        # print(".vtt 👉", uri)
+                        if uri not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()] and (
+                                not any(lang in uri for lang in OTHER_LANGS) or any(
+                            lang in uri for lang in SUBTITLE_LANGS)):
+                            urls["vtt"].append(uri)
                             found_vtt = True
 
             attempt += 1
-            if attempt == 30:
+            if attempt == 15 or attempt == 30:
                 self.driver.refresh()
             time.sleep(1)
-
 
         print()
         if not found_m3u8:
@@ -388,7 +391,7 @@ class Main:
             'force_keyframes_at_cuts': True,
             'allow_unplayable_formats': True,
             # 'downloader': 'aria2c', # External downloader to use with yt-dlp, which is supposed to be better for not
-            # losing fragments (untested)
+            # losing fragments (untested - pip install aria2c)
             # 'external_downloader': 'aria2c',
             # 'external_downloader_args': ['-x', '16', '-k', '1M', '--timeout=60', '--retry-wait=5'],
         }
