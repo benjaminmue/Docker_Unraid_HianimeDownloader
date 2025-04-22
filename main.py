@@ -4,7 +4,7 @@ import time
 from urllib.parse import urljoin
 
 import requests
-import yt_dlp
+from glob import glob
 from bs4 import BeautifulSoup
 from colorama import Fore
 from selenium.webdriver.common.by import By
@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium_stealth import stealth
 from seleniumwire import webdriver
+from yt_dlp import YoutubeDL
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -23,8 +24,10 @@ HEADERS = {
 }
 
 WEBSITE_URL = "https://hianimez.to"
-
-SUBTITLE_LANGS = ["eng"]
+SUBTITLE_LANGS = "eng"
+OTHER_LANGS = ('ita', 'jpn', 'pol', 'por', 'ara', 'chi', 'cze', 'dan', 'dut', 'fin', 'fre', 'ger', 'gre', 'heb', 'hun',
+               'ind', 'kor', 'nob', 'pol', 'rum', 'rus', 'tha', 'vie', 'swe', 'spa', 'tur')
+DOWNLOAD_ATTEMPT_CAP = 45
 
 
 def configure_driver():
@@ -36,7 +39,7 @@ def configure_driver():
     options.add_experimental_option("mobileEmulation", mobile_emulation)
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("window-size=600,1000")
-    # options.add_argument("--load-extension=extensions" + os.sep + "Ghostery")
+    # options.add_argument("--load-extension=extensions" + os.sep + )
 
     seleniumwire_options = {
         'verify_ssl': False,
@@ -80,7 +83,7 @@ def get_episode_input(prompt, min_value, max_value):
             print("Invalid input. Please enter a valid number.")
 
 
-def get_urls_to_animes_from_html(html_of_page, start_episode, end_episode):
+def get_urls_to_anime_from_html(html_of_page, start_episode, end_episode):
     episode_info_list = []
     soup = BeautifulSoup(html_of_page, 'html.parser')
 
@@ -104,10 +107,11 @@ def get_urls_to_animes_from_html(html_of_page, start_episode, end_episode):
 
 
 class YTDLogger:
-    def debug(self, msg: str):
+    @staticmethod
+    def debug(msg: str):
         if not msg.startswith("[download]"):
             return
-        new_msg = f"{Fore.LIGHTRED_EX if "fragment not found" in msg else Fore.LIGHTCYAN_EX}[YT-DLP] {msg[11:]}"
+        new_msg = f"{Fore.LIGHTRED_EX if "fragment not found" in msg else Fore.LIGHTCYAN_EX}{Fore.YELLOW + "\n" if "error" in msg else ""}[YT-DLP] {msg[11:]}"
         if "ETA" in msg:
             sys.stdout.write(f"\r{new_msg}")
             sys.stdout.flush()
@@ -115,15 +119,19 @@ class YTDLogger:
         elif "100% of" in msg:
             sys.stdout.write(f"\r{new_msg}\n")
             sys.stdout.flush()
+            return
         print(new_msg)
 
-    def info(self, msg):
+    @staticmethod
+    def info(msg):
         print(f"[Logger Info] {msg}")
 
-    def warning(self, msg):
+    @staticmethod
+    def warning(msg):
         pass
 
-    def error(self, msg):
+    @staticmethod
+    def error(msg):
         print(f"[Logger Error] {msg}")
 
 
@@ -226,7 +234,7 @@ class Main:
         server_element = self.find_server(download_type=download_type)
         server_element.click()
 
-        episode_info_list = get_urls_to_animes_from_html(self.driver.page_source, start_episode, end_episode)
+        episode_info_list = get_urls_to_anime_from_html(self.driver.page_source, start_episode, end_episode)
 
         folder = "output" + os.sep + chosen_anime_dict[
             'name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
@@ -242,26 +250,44 @@ class Main:
             print(
                 Fore.LIGHTGREEN_EX + f"Getting" + Fore.LIGHTWHITE_EX + f" Episode {number} - {title} from {url}" + Fore.LIGHTWHITE_EX)
 
-            self.driver.requests.clear()
-            self.driver.get(url)
-            urls = self.capture_media_requests(episode_info_list)
-            episode.update(urls)
+            try:
+                self.driver.requests.clear()
+                self.driver.get(url)
+                urls = self.capture_media_requests(episode_info_list)
+                episode.update(urls)
+            except KeyboardInterrupt:
+                print("\n\nCanceling media capture...")
+                ans = 0
+                while ans != "y" and ans != "n" and ans != "yes" and ans != "no":
+                    if not type(ans) == int:
+                        print("Please enter a valid response")
+                    ans = input("Would you like to download link capture up to now? (y/n): ").lower()
+                if ans == "n" or ans == "no":
+                    self.driver.quit()
+                    return
 
         self.driver.quit()
 
         for episode in episode_info_list:
             print()
             name = f"{chosen_anime_dict['name']} ({download_type[0].upper()}{download_type[1:].lower()}) - s{season_number:02}e{episode['number']:02} - {episode['title']}"
-            if "m3u8" in episode.keys() and episode["m3u8"]:
-                self.download_video(episode["m3u8"], episode["m3u8-headers"],
-                                    f"{folder}{os.sep}{name}.mp4")
-            else:
-                print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
-            if "vtt" in episode.keys() and episode["vtt"]:
-                self.download_subtitles(episode["vtt"], episode["m3u8-headers"],
-                                        f"{folder}{os.sep}{name}.vtt")
-            else:
-                print(f"Skipping {name}.vtt (No VTT Stream Found)")
+            try:
+                if "m3u8" in episode.keys() and episode["m3u8"]:
+                    self.yt_dlp_download(self.look_for_variants(episode["m3u8"], episode["m3u8-headers"]),
+                                         episode["m3u8-headers"], f"{folder}{os.sep}{name}.mp4")
+                else:
+                    print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
+                if "vtt" in episode.keys() and episode["vtt"]:
+                    self.yt_dlp_download(episode["vtt"], episode["m3u8-headers"], f"{folder}{os.sep}{name}.vtt")
+                else:
+                    print(f"Skipping {name}.vtt (No VTT Stream Found)")
+            except KeyboardInterrupt:
+                print(f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {name}")
+                for file in glob(os.path.join(folder, f"{name}.*")):
+                    os.remove(file)
+                break
+            except Exception as e:
+                print(f"\n\nError while downloading {name}: \n{e}")
 
     def find_server(self, download_type):
         WebDriverWait(self.driver, 10).until(
@@ -274,17 +300,15 @@ class Main:
         # print("\nLooking for URLs:\n")
         found_m3u8 = False
         found_vtt = False
-        attempt_cap = 30
         attempt = 0
         urls = {"vtt": []}
-        while (not found_m3u8 or not found_vtt) and attempt_cap >= attempt:
+        while (not found_m3u8 or not found_vtt) and DOWNLOAD_ATTEMPT_CAP >= attempt:
+            sys.stdout.write(f"\rAttempt #{attempt} - {DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining")
+            sys.stdout.flush()
             for request in self.driver.requests:
                 if request.response:
-                    if request.url.endswith(".m3u8") and "master" in request.url and request.url not in [e["m3u8"] for e
-                                                                                                         in
-                                                                                                         found_episodes
-                                                                                                         if
-                                                                                                         "m3u8" in e.keys()]:
+                    if (request.url.endswith(".m3u8") and "master" in request.url and
+                            request.url not in [e["m3u8"] for e in found_episodes if "m3u8" in e.keys()]):
                         # print(".m3u8 👉", request.url)
                         urls["m3u8"] = request.url
                         urls["m3u8-headers"] = dict(request.headers)
@@ -296,13 +320,19 @@ class Main:
                             urls["thumbnail"] = request.url
                             continue
                         # print(".vtt 👉", request.url)
-                        if request.url not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()]:
+                        if (request.url not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()] and
+                                (not any(lang in request.url for lang in OTHER_LANGS)) or
+                                any(lang in request.url for lang in SUBTITLE_LANGS)):
                             urls["vtt"].append(request.url)
                             found_vtt = True
 
             attempt += 1
+            if attempt == 30:
+                self.driver.refresh()
             time.sleep(1)
 
+
+        print()
         if not found_m3u8:
             print("No .m3u8 streams found. Try increasing the wait time.")
         if not found_vtt:
@@ -314,14 +344,18 @@ class Main:
                 if len(eng_urls) > 0:
                     urls["vtt"] = eng_urls[0]
                 else:
-                    urls["vtt"] = urls["vtt"][0]
+                    print("Available Subtitles: ")
+                    for i in range(len(urls["vtt"])):
+                        print(f"{i}: {urls["vtt"][i]}")
+
+                    urls["vtt"] = urls["vtt"][input("Selection: ")]
             else:
                 urls["vtt"] = urls["vtt"][0]
 
         return urls
 
-    def download_video(self, m3u8_url, m3u8_headers, location):
-
+    @staticmethod
+    def look_for_variants(m3u8_url, m3u8_headers):
         response = requests.get(m3u8_url, headers=m3u8_headers, timeout=10)
 
         lines = response.text.splitlines()
@@ -335,21 +369,11 @@ class Main:
             print("No valid video variant found in master.m3u8")
             return
 
-        yt_dlp_options = {
-            'no_warnings': False,
-            'quiet': False,
-            'outtmpl': location,
-            'format': 'best',
-            'http_headers': m3u8_headers,
-            'logger': YTDLogger(),
-            'fragment_retries': 10,  # Retry up to 10 times for failed fragments
-            'retries': 10,
-        }
+        return url
 
-        with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
-            ydl.download([url])
+    @staticmethod
+    def yt_dlp_download(url, headers, location):
 
-    def download_subtitles(self, url, headers, location):
         yt_dlp_options = {
             'no_warnings': False,
             'quiet': False,
@@ -359,9 +383,17 @@ class Main:
             'logger': YTDLogger(),
             'fragment_retries': 10,  # Retry up to 10 times for failed fragments
             'retries': 10,
+            'socket_timeout': 60,
+            'sleep_interval_requests': 1,
+            'force_keyframes_at_cuts': True,
+            'allow_unplayable_formats': True,
+            # 'downloader': 'aria2c', # External downloader to use with yt-dlp, which is supposed to be better for not
+            # losing fragments (untested)
+            # 'external_downloader': 'aria2c',
+            # 'external_downloader_args': ['-x', '16', '-k', '1M', '--timeout=60', '--retry-wait=5'],
         }
 
-        with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
+        with YoutubeDL(yt_dlp_options) as ydl:
             ydl.download([url])
 
 
