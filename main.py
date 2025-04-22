@@ -1,16 +1,17 @@
-from seleniumwire import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-from selenium_stealth import stealth
-import yt_dlp
-from colorama import Fore
 import os
 import sys
-import requests
+import time
 from urllib.parse import urljoin
+
+import requests
+import yt_dlp
 from bs4 import BeautifulSoup
+from colorama import Fore
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium_stealth import stealth
+from seleniumwire import webdriver
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -21,7 +22,10 @@ HEADERS = {
     'Connection': 'keep-alive'
 }
 
+WEBSITE_URL = "https://hianimez.to"
+
 SUBTITLE_LANGS = ["eng"]
+
 
 def configure_driver():
     mobile_emulation = {
@@ -32,7 +36,7 @@ def configure_driver():
     options.add_experimental_option("mobileEmulation", mobile_emulation)
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("window-size=600,1000")
-    #options.add_argument("--load-extension=extensions" + os.sep + "Ghostery")
+    # options.add_argument("--load-extension=extensions" + os.sep + "Ghostery")
 
     seleniumwire_options = {
         'verify_ssl': False,
@@ -56,11 +60,13 @@ def configure_driver():
     driver.implicitly_wait(10)
     return driver
 
+
 def get_rid_of_bad_chars(word):
     bad_chars = ['-', '.', '/', '\\', '?', '%', '*', '<', '>', '|', '"', "[", "]", ":"]
     for char in bad_chars:
         word = word.replace(char, '')
     return word
+
 
 def get_episode_input(prompt, min_value, max_value):
     while True:
@@ -73,6 +79,7 @@ def get_episode_input(prompt, min_value, max_value):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 def get_urls_to_animes_from_html(html_of_page, start_episode, end_episode):
     episode_info_list = []
     soup = BeautifulSoup(html_of_page, 'html.parser')
@@ -83,7 +90,7 @@ def get_urls_to_animes_from_html(html_of_page, start_episode, end_episode):
     for link in links:
         episode_number = int(link.get('data-number'))
         if start_episode <= episode_number <= end_episode:
-            url = "https://hianime.to" + link['href']
+            url = WEBSITE_URL + link['href']
             episode_title = link.get('title')
             episode_info = {
                 'url': url,
@@ -94,6 +101,7 @@ def get_urls_to_animes_from_html(html_of_page, start_episode, end_episode):
             episode_info_list.append(episode_info)
 
     return episode_info_list
+
 
 class YTDLogger:
     def debug(self, msg: str):
@@ -118,6 +126,7 @@ class YTDLogger:
     def error(self, msg):
         print(f"[Logger Error] {msg}")
 
+
 class Main:
     def __init__(self):
         print(Fore.LIGHTGREEN_EX + "HiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
@@ -125,7 +134,7 @@ class Main:
         name_of_anime = input("Enter Name of Anime: ")
 
         # GET ANIME ELEMENTS FROM PAGE
-        url = "https://hianime.to/search?keyword=" + name_of_anime
+        url = WEBSITE_URL + "/search?keyword=" + name_of_anime
         search_page_response = requests.get(url, headers=HEADERS)
         search_page_soup = BeautifulSoup(search_page_response.content, 'html.parser')
 
@@ -140,7 +149,7 @@ class Main:
         dict_with_anime_elements = {}
         for i, element in enumerate(anime_elements, 1):
             name_of_anime = get_rid_of_bad_chars(element.find('h3', class_='film-name').text)
-            url_of_anime = "https://hianime.to" + element.find('a', class_='film-poster-ahref item-qtip')['href']
+            url_of_anime = WEBSITE_URL + element.find('a', class_='film-poster-ahref item-qtip')['href']
             try:
                 # Some anime have no subs
                 sub_episodes_available = element.find('div', class_="tick-item tick-sub").text
@@ -219,7 +228,8 @@ class Main:
 
         episode_info_list = get_urls_to_animes_from_html(self.driver.page_source, start_episode, end_episode)
 
-        folder = "output" + os.sep + chosen_anime_dict['name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
+        folder = "output" + os.sep + chosen_anime_dict[
+            'name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
         os.makedirs(folder, exist_ok=True)
 
         print()
@@ -237,18 +247,21 @@ class Main:
             urls = self.capture_media_requests(episode_info_list)
             episode.update(urls)
 
-
         self.driver.quit()
 
         for episode in episode_info_list:
             print()
             name = f"{chosen_anime_dict['name']} ({download_type[0].upper()}{download_type[1:].lower()}) - s{season_number:02}e{episode['number']:02} - {episode['title']}"
-            self.download_video(episode["m3u8"], episode["m3u8-headers"],
-                                f"{folder}{os.sep}{name}.mp4")
+            if "m3u8" in episode.keys() and episode["m3u8"]:
+                self.download_video(episode["m3u8"], episode["m3u8-headers"],
+                                    f"{folder}{os.sep}{name}.mp4")
+            else:
+                print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
             if "vtt" in episode.keys() and episode["vtt"]:
                 self.download_subtitles(episode["vtt"], episode["m3u8-headers"],
                                         f"{folder}{os.sep}{name}.vtt")
-
+            else:
+                print(f"Skipping {name}.vtt (No VTT Stream Found)")
 
     def find_server(self, download_type):
         WebDriverWait(self.driver, 10).until(
@@ -258,7 +271,7 @@ class Main:
         return servers[0] if len(servers) == 1 or (download_type == "sub" or download_type == "s") else servers[1]
 
     def capture_media_requests(self, found_episodes: list[dict]):
-        #print("\nLooking for URLs:\n")
+        # print("\nLooking for URLs:\n")
         found_m3u8 = False
         found_vtt = False
         attempt_cap = 30
@@ -267,18 +280,22 @@ class Main:
         while (not found_m3u8 or not found_vtt) and attempt_cap >= attempt:
             for request in self.driver.requests:
                 if request.response:
-                    if request.url.endswith(".m3u8") and "master" in request.url and request.url not in [e["m3u8"] for e in found_episodes if "m3u8" in e.keys()]:
-                        #print(".m3u8 👉", request.url)
+                    if request.url.endswith(".m3u8") and "master" in request.url and request.url not in [e["m3u8"] for e
+                                                                                                         in
+                                                                                                         found_episodes
+                                                                                                         if
+                                                                                                         "m3u8" in e.keys()]:
+                        # print(".m3u8 👉", request.url)
                         urls["m3u8"] = request.url
                         urls["m3u8-headers"] = dict(request.headers)
                         found_m3u8 = True
                         continue
                     if ".vtt" in request.url:
                         if "thumbnail" in request.url:
-                            #print("thumbnail 👉", request.url)
+                            # print("thumbnail 👉", request.url)
                             urls["thumbnail"] = request.url
                             continue
-                        #print(".vtt 👉", request.url)
+                        # print(".vtt 👉", request.url)
                         if request.url not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()]:
                             urls["vtt"].append(request.url)
                             found_vtt = True
@@ -292,8 +309,12 @@ class Main:
             print("No .vtt streams found. Try increasing the wait time.")
         else:
             if len(urls["vtt"]) > 1:
-                print(urls["vtt"])
-                urls["vtt"] = [url for url in urls["vtt"] if any(lang in url for lang in SUBTITLE_LANGS)][0]
+                # print(urls["vtt"])
+                eng_urls = [url for url in urls["vtt"] if any(lang in url for lang in SUBTITLE_LANGS)]
+                if len(eng_urls) > 0:
+                    urls["vtt"] = eng_urls[0]
+                else:
+                    urls["vtt"] = urls["vtt"][0]
             else:
                 urls["vtt"] = urls["vtt"][0]
 
@@ -321,6 +342,8 @@ class Main:
             'format': 'best',
             'http_headers': m3u8_headers,
             'logger': YTDLogger(),
+            'fragment_retries': 10,  # Retry up to 10 times for failed fragments
+            'retries': 10,
         }
 
         with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
@@ -334,13 +357,16 @@ class Main:
             'format': 'best',
             'http_headers': headers,
             'logger': YTDLogger(),
+            'fragment_retries': 10,  # Retry up to 10 times for failed fragments
+            'retries': 10,
         }
 
         with yt_dlp.YoutubeDL(yt_dlp_options) as ydl:
             ydl.download([url])
 
+
 if __name__ == "__main__":
     start = time.time()
     Main()
     elapsed = time.time() - start
-    print(f"Took {int(elapsed/60)}:{int((elapsed%60))} to finish")
+    print(f"Took {int(elapsed / 60)}:{int((elapsed % 60))} to finish")
