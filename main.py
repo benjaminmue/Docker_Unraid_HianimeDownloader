@@ -304,7 +304,7 @@ class Main:
         found_m3u8 = False
         found_vtt = False
         attempt = 0
-        urls = {"vtt": []}
+        urls = {}
         while (not found_m3u8 or not found_vtt) and DOWNLOAD_ATTEMPT_CAP >= attempt:
             sys.stdout.write(f"\rAttempt #{attempt} - {DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining")
             sys.stdout.flush()
@@ -327,7 +327,7 @@ class Main:
                         if uri not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()] and (
                                 not any(lang in uri for lang in OTHER_LANGS) or any(
                             lang in uri for lang in SUBTITLE_LANGS)):
-                            urls["vtt"].append(uri)
+                            urls["vtt"] = uri
                             found_vtt = True
 
             attempt += 1
@@ -337,23 +337,9 @@ class Main:
 
         print()
         if not found_m3u8:
-            print("No .m3u8 streams found. Try increasing the wait time.")
+            print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
         if not found_vtt:
-            print("No .vtt streams found. Try increasing the wait time.")
-        else:
-            if len(urls["vtt"]) > 1:
-                # print(urls["vtt"])
-                eng_urls = [url for url in urls["vtt"] if any(lang in url for lang in SUBTITLE_LANGS)]
-                if len(eng_urls) > 0:
-                    urls["vtt"] = eng_urls[0]
-                else:
-                    print("Available Subtitles: ")
-                    for i in range(len(urls["vtt"])):
-                        print(f"{i}: {urls["vtt"][i]}")
-
-                    urls["vtt"] = urls["vtt"][input("Selection: ")]
-            else:
-                urls["vtt"] = urls["vtt"][0]
+            print(f"{Fore.LIGHTRED_EX}No .vtt streams found.")
 
         return urls
 
