@@ -42,6 +42,17 @@ def configure_driver():
     options.add_experimental_option("mobileEmulation", mobile_emulation)
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("window-size=600,1000")
+
+    # options.add_argument("--disable-popup-blocking")
+    options.add_experimental_option("prefs", {
+        "profile.default_content_setting_values.notifications": 2,  # Block notifications
+        "profile.default_content_setting_values.popups": 2,  # Block pop-ups
+        "profile.managed_default_content_settings.ads": 2,  # Block ads
+    })
+    options.add_argument("--disable-features=PopupBlocking")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-notifications")
+    options.add_argument("--disable-backgrounding-occluded-windows")
     # options.add_argument("--load-extension=extensions" + os.sep + )
 
     seleniumwire_options = {
@@ -64,6 +75,16 @@ def configure_driver():
             )
 
     driver.implicitly_wait(10)
+
+    driver.execute_script("""
+        window.alert = function() {};
+        window.confirm = function() { return true; };
+        window.prompt = function() { return null; };
+        window.open = function() {
+            console.log("Blocked a popup attempt.");
+            return null;
+        };
+    """)
     return driver
 
 
