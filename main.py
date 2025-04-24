@@ -161,7 +161,8 @@ class YTDLogger:
 
 class Main:
     def __init__(self):
-        print(Fore.LIGHTGREEN_EX + "HiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
 
         name_of_anime = input("Enter Name of Anime: ")
 
