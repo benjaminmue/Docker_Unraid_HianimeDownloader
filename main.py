@@ -1,3 +1,4 @@
+import argparse
 import os
 import sys
 import time
@@ -160,7 +161,9 @@ class YTDLogger:
 
 
 class Main:
-    def __init__(self):
+    def __init__(self, args):
+        self.args = args
+
         os.system('cls' if os.name == 'nt' else 'clear')
         print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
 
@@ -260,9 +263,9 @@ class Main:
         server_element.click()
 
         episode_info_list = get_urls_to_anime_from_html(self.driver.page_source, start_episode, end_episode)
-
-        folder = "output" + os.sep + chosen_anime_dict[
-            'name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
+        folder = os.path.abspath(self.args.output_dir) if self.args.output_dir else ("output" + os.sep) + \
+                                                                                    chosen_anime_dict[
+                                                                                        'name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
         os.makedirs(folder, exist_ok=True)
 
         print()
@@ -278,8 +281,8 @@ class Main:
             try:
                 self.driver.requests.clear()
                 self.driver.get(url)
-                main_tab = self.driver.current_window_handle
-                urls = self.capture_media_requests(episode_info_list, main_tab)
+                self.driver.execute_script("window.focus();")
+                urls = self.capture_media_requests(episode_info_list)
                 episode.update(urls)
             except KeyboardInterrupt:
                 print("\n\nCanceling media capture...")
@@ -305,7 +308,7 @@ class Main:
                     print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
                 if "vtt" in episode.keys() and episode["vtt"]:
                     self.yt_dlp_download(episode["vtt"], episode["m3u8-headers"], f"{folder}{os.sep}{name}.vtt")
-                else:
+                elif not self.args.no_subtitles:
                     print(f"Skipping {name}.vtt (No VTT Stream Found)")
             except KeyboardInterrupt:
                 print(f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {name}")
@@ -322,23 +325,16 @@ class Main:
         servers = self.driver.find_elements(By.LINK_TEXT, "HD-1")
         return servers[0] if len(servers) == 1 or (download_type == "sub" or download_type == "s") else servers[1]
 
-    def capture_media_requests(self, found_episodes: list[dict], main_tab):
+    def capture_media_requests(self, found_episodes: list[dict]):
         # print("\nLooking for URLs:\n")
         found_m3u8 = False
         found_vtt = False
         attempt = 0
         urls = {}
-        while (not found_m3u8 or not found_vtt) and DOWNLOAD_ATTEMPT_CAP >= attempt:
+        while (not found_m3u8 or (not found_vtt and not self.args.no_subtitles)) and DOWNLOAD_ATTEMPT_CAP >= attempt:
             sys.stdout.write(f"\rAttempt #{attempt} - {DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining")
             sys.stdout.flush()
 
-            if self.driver.current_window_handle != main_tab:
-                for handle in self.driver.window_handles:
-                    if handle != main_tab:
-                        self.driver.switch_to.window(handle)
-                        self.driver.close()
-                self.driver.switch_to.window(main_tab)
-            
             for request in self.driver.requests:
                 if request.response:
                     uri = request.url.lower()
@@ -355,7 +351,8 @@ class Main:
                             urls["thumbnail"] = uri
                             continue
                         # print(".vtt 👉", uri)
-                        if uri not in [e["vtt"] for e in found_episodes if "vtt" in e.keys()] and (
+                        if not self.args.no_subtitles and uri not in [e["vtt"] for e in found_episodes if
+                                                                      "vtt" in e.keys()] and (
                                 not any(lang in uri for lang in OTHER_LANGS) or any(
                             lang in uri for lang in SUBTITLE_LANGS)):
                             urls["vtt"] = uri
@@ -369,7 +366,7 @@ class Main:
         print()
         if not found_m3u8:
             print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
-        if not found_vtt:
+        if not found_vtt and not self.args.no_subtitles:
             print(f"{Fore.LIGHTRED_EX}No .vtt streams found.")
 
         return urls
@@ -418,7 +415,17 @@ class Main:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Anime downloader options")
+
+    parser.add_argument("--no-subtitles", action="store_true",
+                        help="Skip downloading subtitle files (.vtt)")
+
+    parser.add_argument("-o", "--output-dir", type=str, default="downloads",
+                        help="Directory to save downloaded files")
+
+    args = parser.parse_args()
+
     start = time.time()
-    Main()
+    Main(args)
     elapsed = time.time() - start
     print(f"Took {int(elapsed / 60)}:{int((elapsed % 60))} to finish")
