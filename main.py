@@ -184,7 +184,7 @@ class Main:
             name_of_anime = get_rid_of_bad_chars(element.find('h3', class_='film-name').text)
             url_of_anime = WEBSITE_URL + element.find('a', class_='film-poster-ahref item-qtip')['href']
             try:
-                # Some anime have no subs
+                # Some anime has no subs
                 sub_episodes_available = element.find('div', class_="tick-item tick-sub").text
             except AttributeError:
                 sub_episodes_available = 0
@@ -278,7 +278,8 @@ class Main:
             try:
                 self.driver.requests.clear()
                 self.driver.get(url)
-                urls = self.capture_media_requests(episode_info_list)
+                main_tab = self.driver.current_window_handle
+                urls = self.capture_media_requests(episode_info_list, main_tab)
                 episode.update(urls)
             except KeyboardInterrupt:
                 print("\n\nCanceling media capture...")
@@ -321,7 +322,7 @@ class Main:
         servers = self.driver.find_elements(By.LINK_TEXT, "HD-1")
         return servers[0] if len(servers) == 1 or (download_type == "sub" or download_type == "s") else servers[1]
 
-    def capture_media_requests(self, found_episodes: list[dict]):
+    def capture_media_requests(self, found_episodes: list[dict], main_tab):
         # print("\nLooking for URLs:\n")
         found_m3u8 = False
         found_vtt = False
@@ -330,6 +331,14 @@ class Main:
         while (not found_m3u8 or not found_vtt) and DOWNLOAD_ATTEMPT_CAP >= attempt:
             sys.stdout.write(f"\rAttempt #{attempt} - {DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining")
             sys.stdout.flush()
+
+            if self.driver.current_window_handle != main_tab:
+                for handle in self.driver.window_handles:
+                    if handle != main_tab:
+                        self.driver.switch_to.window(handle)
+                        self.driver.close()
+                self.driver.switch_to.window(main_tab)
+            
             for request in self.driver.requests:
                 if request.response:
                     uri = request.url.lower()
@@ -378,7 +387,7 @@ class Main:
 
         if not url:
             print("No valid video variant found in master.m3u8")
-            return
+            return None
 
         return url
 
