@@ -263,7 +263,7 @@ class Main:
         server_element.click()
 
         episode_info_list = get_urls_to_anime_from_html(self.driver.page_source, start_episode, end_episode)
-        folder = (os.path.abspath(self.args.output_dir) if self.args.output_dir else ("output" + os.sep)) + \
+        folder = (os.path.abspath(self.args.output_dir) if self.args.output_dir else "output") + os.sep + \
                  chosen_anime_dict['name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
         os.makedirs(folder, exist_ok=True)
 
