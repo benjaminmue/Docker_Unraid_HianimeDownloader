@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import tempfile
 import time
 from glob import glob
 from urllib.parse import urljoin
@@ -40,6 +41,11 @@ def configure_driver():
     }
 
     options = webdriver.ChromeOptions()
+
+    # Create a temporary user data dir
+    user_data_dir = tempfile.mkdtemp()
+    options.add_argument(f"--user-data-dir={user_data_dir}")
+
     options.add_experimental_option("mobileEmulation", mobile_emulation)
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("window-size=600,1000")
@@ -366,7 +372,8 @@ class Main:
         if not found_m3u8:
             print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
         if not found_vtt and not self.args.no_subtitles:
-            print(f"{Fore.LIGHTRED_EX}No .vtt streams found.")
+            print(
+                f"{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file, option '--no-subtitles' can be used to skip downloading subtitles.")
 
         return urls
 
