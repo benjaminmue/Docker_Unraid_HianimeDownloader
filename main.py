@@ -27,8 +27,7 @@ HEADERS = {
 
 WEBSITE_URL = "https://hianimez.to"
 SUBTITLE_LANGS = ["eng"]
-# OTHER_LANGS = ('ita', 'jpn', 'pol', 'por', 'ara', 'chi', 'cze', 'dan', 'dut', 'fin', 'fre', 'ger', 'gre', 'heb', 'hun',
-#                'ind', 'kor', 'nob', 'pol', 'rum', 'rus', 'tha', 'vie', 'swe', 'spa', 'tur', 'ces')
+
 OTHER_LANGS = ['ita', 'jpn', 'pol', 'por', 'ara', 'chi', 'cze', 'dan', 'dut', 'fin', 'fre', 'ger', 'gre', 'heb', 'hun',
                'ind', 'kor', 'nob', 'pol', 'rum', 'rus', 'tha', 'vie', 'swe', 'spa', 'tur', 'ces', 'bul', 'zho', 'nld',
                'fra', 'deu', 'ell', 'hin', 'hrv', 'msa', 'may', 'ron', 'slk', 'slo', 'ukr']
@@ -269,8 +268,8 @@ class Main:
         server_element.click()
 
         episode_info_list = get_urls_to_anime_from_html(self.driver.page_source, start_episode, end_episode)
-        folder = (os.path.abspath(self.args.output_dir) if self.args.output_dir else "output") + os.sep + \
-                 chosen_anime_dict['name'] + f" ({download_type[0].upper()}{download_type[1:].lower()})"
+        folder = os.path.abspath(self.args.output_dir) + os.sep + chosen_anime_dict['name'] + \
+                 f" ({download_type[0].upper()}{download_type[1:].lower()}){os.sep}"
         os.makedirs(folder, exist_ok=True)
 
         print()
@@ -308,11 +307,11 @@ class Main:
             try:
                 if "m3u8" in episode.keys() and episode["m3u8"]:
                     self.yt_dlp_download(self.look_for_variants(episode["m3u8"], episode["m3u8-headers"]),
-                                         episode["m3u8-headers"], f"{folder}{os.sep}{name}.mp4")
+                                         episode["m3u8-headers"], f"{folder}{name}.mp4")
                 else:
                     print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
                 if "vtt" in episode.keys() and episode["vtt"]:
-                    self.yt_dlp_download(episode["vtt"], episode["m3u8-headers"], f"{folder}{os.sep}{name}.vtt")
+                    self.yt_dlp_download(episode["vtt"], episode["m3u8-headers"], f"{folder}{name}.vtt")
                 elif not self.args.no_subtitles:
                     print(f"Skipping {name}.vtt (No VTT Stream Found)")
             except KeyboardInterrupt:
@@ -394,8 +393,7 @@ class Main:
 
         return url
 
-    @staticmethod
-    def yt_dlp_download(url, headers, location):
+    def yt_dlp_download(self, url, headers, location):
 
         yt_dlp_options = {
             'no_warnings': False,
@@ -410,11 +408,16 @@ class Main:
             'sleep_interval_requests': 1,
             'force_keyframes_at_cuts': True,
             'allow_unplayable_formats': True,
-            # 'downloader': 'aria2c', # External downloader to use with yt-dlp, which is supposed to be better for not
-            # losing fragments (untested - pip install aria2c)
-            # 'external_downloader': 'aria2c',
-            # 'external_downloader_args': ['-x', '16', '-k', '1M', '--timeout=60', '--retry-wait=5'],
         }
+
+        if self.args.aria:
+            # External downloader to use with yt-dlp, which is supposed to be better for not (untested - pip install aria2c)
+            yt_dlp_options.update({
+                'downloader': 'aria2c',
+                'losing fragments'
+                'external_downloader': 'aria2c',
+                'external_downloader_args': ['-x', '16', '-k', '1M', '--timeout=60', '--retry-wait=5'],
+            })
 
         with YoutubeDL(yt_dlp_options) as ydl:
             ydl.download([url])
@@ -426,8 +429,10 @@ if __name__ == "__main__":
     parser.add_argument("--no-subtitles", action="store_true",
                         help="Skip downloading subtitle files (.vtt)")
 
-    parser.add_argument("-o", "--output-dir", type=str, default="downloads",
+    parser.add_argument("-o", "--output-dir", type=str, default="output",
                         help="Directory to save downloaded files")
+
+    parser.add_argument("--aria", action="store_true", default=False, help="Use aria2c as external downloader")
 
     args = parser.parse_args()
 
