@@ -336,7 +336,7 @@ class Main:
         attempt = 0
         urls = {}
         while (not found_m3u8 or (not found_vtt and not self.args.no_subtitles)) and DOWNLOAD_ATTEMPT_CAP >= attempt:
-            sys.stdout.write(f"\rAttempt #{attempt} - {DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining")
+            sys.stdout.write(f"\{Fore.CYAN}rAttempt #{attempt} - {DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining")
             sys.stdout.flush()
 
             for request in self.driver.requests:
