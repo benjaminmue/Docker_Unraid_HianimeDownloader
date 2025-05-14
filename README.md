@@ -11,20 +11,23 @@ blocker working with the chrome session.
 
 ## Setup
 
-1. Download the files from the repository
-2. Navigate into the directory it was downloaded to
+1. Download the files from the repository.
+   ```bash
+   git fetch https://github.com/gheatherington/HianimeDownloader
+    ```
+2. Navigate into the directory it was downloaded to in your terminal.
 3. Using pip install all the requirement from the ```requirements.txt``` file.
     + For Windows
       ```bash
        pip install -r requirements.txt
       ```
-    + For Linux/macOS you may have to first create a virtual environment, so use the following commands
+    + For Linux/macOS you may have to first create a virtual environment, so use the following commands.
         ```bash
        python3 -m venv venv
        source venv/bin/activate
        python3 -m pip install -r requirements.txt
         ```
-4. You are now ready to run the program with the following command
+4. You are now ready to run the program with the following command.
     + Windows
       ```bash 
        python main.py
@@ -36,6 +39,10 @@ blocker working with the chrome session.
 
 ## Usage
 
++ Update the repository before running (as it is still being worked on)
+  ```bash
+  git pull https://github.com/gheatherington/HianimeDownloader
+    ```
 + After running the ```main.py``` file, enter the name of the anime you would like to search for
   from [hianime.to](hianime.to)
 + This will bring up a selection of options from the site, select the desired one with the corresponding number.
