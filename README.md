@@ -51,6 +51,8 @@ blocker working with the chrome session.
 + The next two prompts ask which episodes you want to download. You first provide the first episode, then the last
   episode you would like to download (both values are inclusive)
 + The final prompt asks what season in the series this content is as an integer.
++ __Note__ if a redirect ad to a second tab is created, close the second tab manually and refresh the original site to
+  continue download. (This will hopefully be patched eventually)
 
 ## Options
 
