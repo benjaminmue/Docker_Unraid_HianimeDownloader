@@ -2,6 +2,7 @@ import argparse
 import os
 import sys
 import time
+import aria2p
 from glob import glob
 from urllib.parse import urljoin
 
