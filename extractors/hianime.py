@@ -1,0 +1,556 @@
+from yt_dlp import YoutubeDL
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from tools.YTDLogger import YTDLogger
+from selenium_stealth import stealth
+from seleniumwire import webdriver
+from argparse import Namespace
+from colorama import Fore
+import os
+import sys
+import requests
+from bs4 import BeautifulSoup
+from dataclasses import dataclass
+from selenium.webdriver.remote.webelement import WebElement
+import time
+from glob import glob
+from urllib.parse import urljoin
+import aria2p
+
+from tools.functions import get_int_in_range, get_conformation
+
+
+@dataclass
+class Anime:
+    name: str
+    url: str
+    sub_episodes: int
+    dub_episodes: int
+    download_type: str | None = None
+    season_number: int | None = None
+
+
+class HianimeExtractor:
+    def __init__(self, args: Namespace, name: str = None) -> None:
+        self.args: Namespace = args
+
+        self.link = self.args.link
+        self.name = name
+
+        self.HEADERS: dict[str, str] = {
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3",
+            "Accept-Encoding": "none",
+            "Accept-Language": "en-US,en;q=0.8",
+            "Connection": "keep-alive",
+        }
+        self.URL: str = "https://hianimez.to"
+        self.SUBTITLE_LANGS: list[str] = ["eng"]
+        self.OTHER_LANGS: list[str] = [
+            "ita",
+            "jpn",
+            "pol",
+            "por",
+            "ara",
+            "chi",
+            "cze",
+            "dan",
+            "dut",
+            "fin",
+            "fre",
+            "ger",
+            "gre",
+            "heb",
+            "hun",
+            "ind",
+            "kor",
+            "nob",
+            "pol",
+            "rum",
+            "rus",
+            "tha",
+            "vie",
+            "swe",
+            "spa",
+            "tur",
+            "ces",
+            "bul",
+            "zho",
+            "nld",
+            "fra",
+            "deu",
+            "ell",
+            "hin",
+            "hrv",
+            "msa",
+            "may",
+            "ron",
+            "slk",
+            "slo",
+            "ukr",
+        ]
+        self.DOWNLOAD_ATTEMPT_CAP: int = 45
+        self.DOWNLOAD_REFRESH: tuple[int] = (15, 30)
+        self.BAD_TITLE_CHARS: list[str] = [
+            "-",
+            ".",
+            "/",
+            "\\",
+            "?",
+            "%",
+            "*",
+            "<",
+            ">",
+            "|",
+            '"',
+            "[",
+            "]",
+            ":",
+        ]
+        self.TITLE_TRANS: dict[int, any] = str.maketrans(
+            "", "", "".join(self.BAD_TITLE_CHARS)
+        )
+
+    def run(self):
+        anime: Anime = (
+            self.get_anime_from_link(self.link)
+            if self.link
+            else (self.get_anime(self.name) if self.name else self.get_anime())
+        )
+
+        # Display chosen anime details
+        print(
+            "\nYou have chosen " + Fore.LIGHTCYAN_EX + anime.name + Fore.LIGHTWHITE_EX
+        )
+        print(f"URL: {anime.url}")
+        print(
+            "Sub Episodes: "
+            + Fore.LIGHTYELLOW_EX
+            + str(anime.sub_episodes)
+            + Fore.LIGHTWHITE_EX
+        )
+        print(
+            "Dub Episodes: "
+            + Fore.LIGHTYELLOW_EX
+            + str(anime.dub_episodes)
+            + Fore.LIGHTWHITE_EX
+        )
+
+        if anime.sub_episodes != 0 and anime.dub_episodes != 0:
+            anime.download_type = self.get_download_type()
+        elif anime.dub_episodes == 0:
+            print("Dub episodes are not available. Defaulting to sub.")
+            anime.download_type = "sub"
+        else:
+            print("Sub episodes are not available. Defaulting to dub.")
+            anime.download_type = "dub"
+
+        number_of_episodes = getattr(anime, f"{anime.download_type}_episodes")
+        if number_of_episodes != 1:
+            start_ep = get_int_in_range(
+                "Enter the starting episode number: ", 1, number_of_episodes
+            )
+            end_ep = get_int_in_range(
+                "Enter the ending episode number: ", 1, number_of_episodes
+            )
+        else:
+            start_ep = 1
+            end_ep = 1
+
+        anime.season_number = get_int_in_range(
+            "Enter the season number for this anime: "
+        )
+
+        self.configure_driver()
+
+        self.driver.get(anime.url)
+        server_element: WebElement = self.find_server_button(anime.download_type)
+        server_element.click()
+
+        episode_list = self.get_episode_urls(self.driver.page_source, start_ep, end_ep)
+
+        print()
+
+        self.captured_video_urls = []
+        self.captured_subtitle_urls = []
+        for episode in episode_list:
+            url = episode["url"]
+            number = episode["number"]
+            title = episode["title"]
+
+            print(
+                Fore.LIGHTGREEN_EX
+                + f"Getting"
+                + Fore.LIGHTWHITE_EX
+                + f" Episode {number} - {title} from {url}"
+                + Fore.LIGHTWHITE_EX
+            )
+
+            try:
+                self.driver.requests.clear()
+                self.driver.get(url)
+                self.driver.execute_script("window.focus();")
+                media_requests = self.capture_media_requests()
+                episode.update(media_requests)
+                self.captured_video_urls.append(media_requests["m3u8"])
+                if not self.args.no_subtitles:
+                    self.captured_subtitle_urls.append(media_requests["vtt"])
+            except KeyboardInterrupt:
+                print("\n\nCanceling media capture...")
+                if not get_conformation(
+                    "Would you like to download link capture up to now? (y/n): "
+                ):
+                    self.driver.quit()
+                    return
+
+        self.driver.quit()
+        print()
+        self.download_streams(anime, episode_list)
+
+    def download_streams(self, anime: Anime, episodes: dict[str, any]):
+        folder = (
+            os.path.abspath(self.args.output_dir)
+            + os.sep
+            + anime.name
+            + f" ({anime.download_type[0].upper()}{anime.download_type[1:].lower()}){os.sep}"
+        )
+        os.makedirs(folder, exist_ok=True)
+
+        for episode in episodes:
+            name = f"{anime.name} - s{anime.season_number:02}e{episode['number']:02} - {episode['title']}"
+            try:
+                if "m3u8" in episode.keys() and episode["m3u8"]:
+                    self.yt_dlp_download(
+                        self.look_for_variants(episode["m3u8"], episode["headers"]),
+                        episode["headers"],
+                        f"{folder}{name}.mp4",
+                    )
+                else:
+                    print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
+                if "vtt" in episode.keys() and episode["vtt"]:
+                    self.yt_dlp_download(
+                        episode["vtt"], episode["headers"], f"{folder}{name}.vtt"
+                    )
+                elif not self.args.no_subtitles:
+                    print(f"Skipping {name}.vtt (No VTT Stream Found)")
+            except KeyboardInterrupt:
+                print(
+                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {name}"
+                )
+                for file in glob(os.path.join(folder, f"{name}.*")):
+                    os.remove(file)
+                break
+            # except Exception as e:
+            #     print(f"\n\nError while downloading {name}: \n\n{e}")
+
+    @staticmethod
+    def get_download_type():
+        ans = (
+            input(
+                "\nBoth sub and dub episodes are available. Do you want to download sub or dub? (Enter 'sub' or 'dub'): "
+            )
+            .strip()
+            .lower()
+        )
+        if ans == "sub" or ans == "s":
+            return "sub"
+        elif ans == "dub" or ans == "d":
+            return "dub"
+        print("Invalid response, please respond with either 'sub' or 'dub'.")
+        return HianimeExtractor.get_download_type()
+
+    def configure_driver(self) -> None:
+        mobile_emulation: dict[str, str] = {"deviceName": "iPhone X"}
+
+        options: webdriver.ChromeOptions = webdriver.ChromeOptions()
+
+        # Create a temporary user data dir
+        # user_data_dir = tempfile.mkdtemp()
+        # options.add_argument(f"--user-data-dir={user_data_dir}")
+
+        options.add_experimental_option("mobileEmulation", mobile_emulation)
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("window-size=600,1000")
+
+        # options.add_argument("--disable-popup-blocking")
+        options.add_experimental_option(
+            "prefs",
+            {
+                "profile.default_content_setting_values.notifications": 2,  # Block notifications
+                "profile.default_content_setting_values.popups": 2,  # Block pop-ups
+                "profile.managed_default_content_settings.ads": 2,  # Block ads
+            },
+        )
+        options.add_argument("--disable-features=PopupBlocking")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-notifications")
+        options.add_argument("--disable-backgrounding-occluded-windows")
+        # options.add_argument("--load-extension=extensions" + os.sep + )
+
+        seleniumwire_options: dict[str, bool] = {
+            "verify_ssl": False,
+            "disable_encoding": True,
+        }
+
+        self.driver: webdriver.Chrome = webdriver.Chrome(
+            options=options,
+            seleniumwire_options=seleniumwire_options,
+        )
+
+        stealth(
+            self.driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+        )
+
+        self.driver.implicitly_wait(10)
+
+        self.driver.execute_script(
+            """
+        window.alert = function() {};
+        window.confirm = function() { return true; };
+        window.prompt = function() { return null; };
+        window.open = function() {
+            console.log("Blocked a popup attempt.");
+            return null;
+        };
+    """
+        )
+
+    def find_server_button(self, download_type: str) -> WebElement:
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.LINK_TEXT, "HD-1"))
+        )
+        servers: list[WebElement] = self.driver.find_elements(By.LINK_TEXT, "HD-1")
+        return (
+            servers[0]
+            if len(servers) == 1 or (download_type == "sub" or download_type == "s")
+            else servers[1]
+        )
+
+    def get_episode_urls(self, page: str, start_episode: int, end_episode: int):
+        episodes = []
+        soup = BeautifulSoup(page, "html.parser")
+
+        links = soup.find_all("a", attrs={"data-number": True})
+
+        for link in links:
+            episode_number = int(link.get("data-number"))
+            if start_episode <= episode_number <= end_episode:
+                url = urljoin(self.URL, link["href"])
+                episode_title = link.get("title")
+                episode_info = {
+                    "url": url,
+                    "number": int(episode_number),
+                    "title": episode_title,
+                }
+                episodes.append(episode_info)
+        return episodes
+
+    def capture_media_requests(self) -> dict[str, str]:
+        found_m3u8: bool = False
+        found_vtt: bool = self.args.no_subtitles
+        attempt: int = 0
+        urls: dict[str, str] = {}
+
+        while (
+            not found_m3u8 or not found_vtt
+        ) and self.DOWNLOAD_ATTEMPT_CAP >= attempt:
+            sys.stdout.write(
+                f"\r{Fore.CYAN}Attempt #{attempt} - {self.DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining"
+            )
+            sys.stdout.flush()
+
+            for request in self.driver.requests:
+                if request.response:
+                    uri = request.url.lower()
+                    if (
+                        not found_m3u8
+                        and uri.endswith(".m3u8")
+                        and "master" in uri
+                        and uri not in self.captured_video_urls
+                    ):
+                        urls["m3u8"] = uri
+                        urls["headers"] = dict(request.headers)
+                        found_m3u8 = True
+                        continue
+                    if (
+                        not found_vtt
+                        and ".vtt" in uri
+                        and "thumbnail" not in uri
+                        and uri not in self.captured_subtitle_urls
+                        and (
+                            any(lang in uri for lang in self.SUBTITLE_LANGS)
+                            or not any(lang in uri for lang in self.OTHER_LANGS)
+                        )
+                    ):
+                        urls["vtt"] = uri
+                        found_vtt = True
+            attempt += 1
+            if attempt in self.DOWNLOAD_REFRESH:
+                self.driver.refresh()
+            time.sleep(1)
+
+        print()
+        if not found_m3u8:
+            print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
+        if not found_vtt:
+            print(
+                f"{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file, option '--no-subtitles' can be used to skip downloading subtitles."
+            )
+
+        return urls
+
+    @staticmethod
+    def look_for_variants(m3u8_url: str, m3u8_headers: dict[str, any]):
+        response = requests.get(m3u8_url, headers=m3u8_headers)
+        lines = response.text.splitlines()
+        url = None
+        for line in lines:
+            if line.strip().endswith(".m3u8") and "iframe" not in line:
+                url = urljoin(m3u8_url, line.strip())
+                break
+        if not url:
+            print("No valid video variant found in master.m3u8")
+
+        return url
+
+    def yt_dlp_download(self, url: str, headers: dict[str, str], location: str):
+        yt_dlp_options: dict[str, any] = {
+            "no_warnings": False,
+            "quiet": False,
+            "outtmpl": location,
+            "format": "best",
+            "http_headers": headers,
+            "logger": YTDLogger(),
+            "fragment_retries": 10,  # Retry up to 10 times for failed fragments
+            "retries": 10,
+            "socket_timeout": 60,
+            "sleep_interval_requests": 1,
+            "force_keyframes_at_cuts": True,
+            "allow_unplayable_formats": True,
+        }
+
+        with YoutubeDL(yt_dlp_options) as ydl:
+            ydl.download([url])
+
+    def get_anime(self, name_of_anime: str | None = None) -> Anime:
+        os.system("cls" if os.name == "nt" else "clear")
+        print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
+
+        if not name_of_anime:
+            name_of_anime: str = input("Enter Name of Anime: ")
+
+        # GET ANIME ELEMENTS FROM PAGE
+        url: str = urljoin(self.URL, "/search?keyword=" + name_of_anime)
+        search_page_response: requests.Response = requests.get(
+            url, headers=self.HEADERS
+        )
+        search_page_soup: BeautifulSoup = BeautifulSoup(
+            search_page_response.content, "html.parser"
+        )
+
+        main_content = search_page_soup.find("div", id="main-content")
+        anime_elements: list = main_content.find_all("div", class_="flw-item")
+
+        if not anime_elements:
+            print("No anime found")
+            return  # Exit if no anime is found
+
+        # MAKE DICT WITH ANIME TITLES
+        anime_list: list[Anime] = []
+        for i, element in enumerate(anime_elements, 1):
+            raw_name: str = element.find("h3", class_="film-name").text
+            name_of_anime: str = raw_name.translate(self.TITLE_TRANS)
+            url_of_anime: str = urljoin(
+                self.URL,
+                element.find("a", class_="film-poster-ahref item-qtip")["href"],
+            )
+
+            try:
+                # Some anime has no subs
+                sub_episodes_available: int = element.find(
+                    "div", class_="tick-item tick-sub"
+                ).text
+            except AttributeError:
+                sub_episodes_available: int = 0
+            try:
+                dub_episodes_available: int = element.find(
+                    "div", class_="tick-item tick-dub"
+                ).text
+            except AttributeError:
+                dub_episodes_available: int = 0
+
+            anime_list.append(
+                Anime(
+                    name_of_anime,
+                    url_of_anime,
+                    int(sub_episodes_available),
+                    int(dub_episodes_available),
+                )
+            )
+
+        # PRINT ANIME TITLES TO THE CONSOLE
+        for i, anime in enumerate(anime_list, start=1):
+            print(
+                Fore.LIGHTRED_EX
+                + str(i)
+                + ": "
+                + Fore.LIGHTCYAN_EX
+                + anime.name
+                + Fore.WHITE
+                + " | "
+                + "Episodes: "
+                + Fore.LIGHTYELLOW_EX
+                + str(anime.sub_episodes)
+                + Fore.LIGHTWHITE_EX
+                + " sub"
+                + Fore.LIGHTGREEN_EX
+                + " / "
+                + Fore.LIGHTYELLOW_EX
+                + str(anime.dub_episodes)
+                + Fore.LIGHTWHITE_EX
+                + " dub"
+            )
+
+        # USER SELECTS ANIME
+        return anime_list[
+            get_int_in_range(
+                "\nSelect an anime you want to download: ", 1, len(anime_list) + 1
+            )
+            - 1
+        ]
+
+    def get_anime_from_link(self, link: str) -> Anime:
+        link_page: requests.Response = requests.get(link, headers=self.HEADERS)
+        link_page_soup = BeautifulSoup(link_page.content, "html.parser")
+        main_div = link_page_soup.find("div", "anisc-detail")
+        anime_stats = main_div.find("div", "film-stats")
+
+        try:
+            # Some anime has no subs
+            sub_episodes_available: int = int(
+                anime_stats.find("div", class_="tick-item tick-sub").text
+            )
+        except AttributeError:
+            sub_episodes_available: int = 0
+        try:
+            dub_episodes_available: int = int(
+                anime_stats.find("div", class_="tick-item tick-dub").text
+            )
+        except AttributeError:
+            dub_episodes_available: int = 0
+
+        a_tag = main_div.find("h2", "film-name").find("a")
+        return Anime(
+            str(a_tag.text).translate(self.TITLE_TRANS),
+            urljoin(self.URL, "/watch" + a_tag["href"]),
+            sub_episodes_available,
+            dub_episodes_available,
+        )
