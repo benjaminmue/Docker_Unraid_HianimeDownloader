@@ -66,9 +66,9 @@ class InstagramExtractor:
             job.DownloadJob(self.link).run()
             return
 
-        title = self.get_post_title()
+        title = self.args.filename if self.args.filename else self.get_post_title()
         yt_dlp_download(
             self.link,
             f"{self.args.output_dir}{os.sep}{title}",
-            self.args.filename if self.args.filename else title,
+            title,
         )

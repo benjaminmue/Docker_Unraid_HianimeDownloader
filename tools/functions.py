@@ -28,7 +28,7 @@ def get_int_in_range(prompt: str, _min: int = 0, _max: int = float("inf")) -> in
     return get_int_in_range(prompt, _min, _max)
 
 
-def yt_dlp_download(self, url: str, location: str, name: str):
+def yt_dlp_download(url: str, location: str, name: str):
     os.makedirs(location, exist_ok=True)
     yt_dlp_options = {
         "no_warnings": False,
