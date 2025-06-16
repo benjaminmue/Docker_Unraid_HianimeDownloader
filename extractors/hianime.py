@@ -1,24 +1,26 @@
-from yt_dlp import YoutubeDL
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from tools.YTDLogger import YTDLogger
-from selenium_stealth import stealth
-from seleniumwire import webdriver
-from argparse import Namespace
-from colorama import Fore
+import json
 import os
 import sys
-import requests
-from bs4 import BeautifulSoup
-from dataclasses import dataclass
-from selenium.webdriver.remote.webelement import WebElement
 import time
+from argparse import Namespace
+from dataclasses import asdict, dataclass
 from glob import glob
+from typing import Any
 from urllib.parse import urljoin
-import aria2p
 
-from tools.functions import get_int_in_range, get_conformation
+import requests
+from bs4 import BeautifulSoup, Tag
+from colorama import Fore
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium_stealth import stealth
+from seleniumwire import webdriver
+from yt_dlp import YoutubeDL
+
+from tools.functions import get_conformation, get_int_in_range
+from tools.YTDLogger import YTDLogger
 
 
 @dataclass
@@ -27,12 +29,12 @@ class Anime:
     url: str
     sub_episodes: int
     dub_episodes: int
-    download_type: str | None = None
-    season_number: int | None = None
+    download_type: str = ""
+    season_number: int = -1
 
 
 class HianimeExtractor:
-    def __init__(self, args: Namespace, name: str = None) -> None:
+    def __init__(self, args: Namespace, name: str | None = None) -> None:
         self.args: Namespace = args
 
         self.link = self.args.link
@@ -92,7 +94,7 @@ class HianimeExtractor:
             "ukr",
         ]
         self.DOWNLOAD_ATTEMPT_CAP: int = 45
-        self.DOWNLOAD_REFRESH: tuple[int] = (15, 30)
+        self.DOWNLOAD_REFRESH: tuple[int, int] = (15, 30)
         self.BAD_TITLE_CHARS: list[str] = [
             "-",
             ".",
@@ -109,30 +111,32 @@ class HianimeExtractor:
             "]",
             ":",
         ]
-        self.TITLE_TRANS: dict[int, any] = str.maketrans(
+        self.TITLE_TRANS: dict[int, Any] = str.maketrans(
             "", "", "".join(self.BAD_TITLE_CHARS)
         )
 
     def run(self):
-        anime: Anime = (
+        anime: Anime | None = (  # type: ignore
             self.get_anime_from_link(self.link)
             if self.link
             else (self.get_anime(self.name) if self.name else self.get_anime())
         )
 
+        if not anime:
+            return
+
         # Display chosen anime details
         print(
-            "\nYou have chosen " + Fore.LIGHTCYAN_EX + anime.name + Fore.LIGHTWHITE_EX
-        )
-        print(f"URL: {anime.url}")
-        print(
-            "Sub Episodes: "
+            "\nYou have chosen "
+            + Fore.LIGHTCYAN_EX
+            + anime.name
+            + Fore.LIGHTWHITE_EX
+            + f"\nURL: {anime.url}"
+            + "\nSub Episodes: "
             + Fore.LIGHTYELLOW_EX
             + str(anime.sub_episodes)
             + Fore.LIGHTWHITE_EX
-        )
-        print(
-            "Dub Episodes: "
+            + "\nDub Episodes: "
             + Fore.LIGHTYELLOW_EX
             + str(anime.dub_episodes)
             + Fore.LIGHTWHITE_EX
@@ -166,8 +170,7 @@ class HianimeExtractor:
         self.configure_driver()
 
         self.driver.get(anime.url)
-        server_element: WebElement = self.find_server_button(anime.download_type)
-        server_element.click()
+        self.find_server_button(anime.download_type).click()
 
         episode_list = self.get_episode_urls(self.driver.page_source, start_ep, end_ep)
 
@@ -182,7 +185,7 @@ class HianimeExtractor:
 
             print(
                 Fore.LIGHTGREEN_EX
-                + f"Getting"
+                + "Getting"
                 + Fore.LIGHTWHITE_EX
                 + f" Episode {number} - {title} from {url}"
                 + Fore.LIGHTWHITE_EX
@@ -209,14 +212,20 @@ class HianimeExtractor:
         print()
         self.download_streams(anime, episode_list)
 
-    def download_streams(self, anime: Anime, episodes: dict[str, any]):
+    def download_streams(self, anime: Anime, episodes: list[dict[str, Any]]):
         folder = (
             os.path.abspath(self.args.output_dir)
             + os.sep
             + anime.name
-            + f" ({anime.download_type[0].upper()}{anime.download_type[1:].lower()}){os.sep}"
+            + f" ({anime.download_type[0].upper()}{anime.download_type[1:]}){os.sep}"
         )
         os.makedirs(folder, exist_ok=True)
+
+        # Write to JSON file
+        with open(
+            f"{folder}{anime.name} (Season {anime.season_number}).json", "w"
+        ) as json_file:
+            json.dump({**asdict(anime), "episodes": episodes}, json_file, indent=4)
 
         for episode in episodes:
             name = f"{anime.name} - s{anime.season_number:02}e{episode['number']:02} - {episode['title']}"
@@ -334,16 +343,18 @@ class HianimeExtractor:
             else servers[1]
         )
 
-    def get_episode_urls(self, page: str, start_episode: int, end_episode: int):
-        episodes = []
+    def get_episode_urls(
+        self, page: str, start_episode: int, end_episode: int
+    ) -> list[dict[str, Any]]:
+        episodes: list[dict[str, Any]] = []
         soup = BeautifulSoup(page, "html.parser")
 
-        links = soup.find_all("a", attrs={"data-number": True})
+        links: list[Tag] = soup.find_all("a", attrs={"data-number": True})  # type: ignore
 
         for link in links:
-            episode_number = int(link.get("data-number"))
+            episode_number: int = int(str(link.get("data-number")))
             if start_episode <= episode_number <= end_episode:
-                url = urljoin(self.URL, link["href"])
+                url = urljoin(self.URL, str(link["href"]))
                 episode_title = link.get("title")
                 episode_info = {
                     "url": url,
@@ -357,7 +368,7 @@ class HianimeExtractor:
         found_m3u8: bool = False
         found_vtt: bool = self.args.no_subtitles
         attempt: int = 0
-        urls: dict[str, str] = {}
+        urls: dict[str, Any] = {}
 
         while (
             not found_m3u8 or not found_vtt
@@ -408,7 +419,7 @@ class HianimeExtractor:
         return urls
 
     @staticmethod
-    def look_for_variants(m3u8_url: str, m3u8_headers: dict[str, any]):
+    def look_for_variants(m3u8_url: str, m3u8_headers: dict[str, Any]) -> str:
         response = requests.get(m3u8_url, headers=m3u8_headers)
         lines = response.text.splitlines()
         url = None
@@ -418,11 +429,12 @@ class HianimeExtractor:
                 break
         if not url:
             print("No valid video variant found in master.m3u8")
+            return ""
 
         return url
 
     def yt_dlp_download(self, url: str, headers: dict[str, str], location: str):
-        yt_dlp_options: dict[str, any] = {
+        yt_dlp_options: dict[str, Any] = {
             "no_warnings": False,
             "quiet": False,
             "outtmpl": location,
@@ -440,15 +452,14 @@ class HianimeExtractor:
         with YoutubeDL(yt_dlp_options) as ydl:
             ydl.download([url])
 
-    def get_anime(self, name_of_anime: str | None = None) -> Anime:
+    def get_anime(self, name: str | None = None) -> Anime | None:
         os.system("cls" if os.name == "nt" else "clear")
         print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
 
-        if not name_of_anime:
-            name_of_anime: str = input("Enter Name of Anime: ")
+        search_name: str = name if name else input("Enter Name of Anime: ")
 
         # GET ANIME ELEMENTS FROM PAGE
-        url: str = urljoin(self.URL, "/search?keyword=" + name_of_anime)
+        url: str = urljoin(self.URL, "/search?keyword=" + search_name)
         search_page_response: requests.Response = requests.get(
             url, headers=self.HEADERS
         )
@@ -456,8 +467,8 @@ class HianimeExtractor:
             search_page_response.content, "html.parser"
         )
 
-        main_content = search_page_soup.find("div", id="main-content")
-        anime_elements: list = main_content.find_all("div", class_="flw-item")
+        main_content: Tag = search_page_soup.find("div", id="main-content")  # type: ignore
+        anime_elements: list[Tag] = main_content.find_all("div", class_="flw-item")  # type: ignore
 
         if not anime_elements:
             print("No anime found")
@@ -466,24 +477,24 @@ class HianimeExtractor:
         # MAKE DICT WITH ANIME TITLES
         anime_list: list[Anime] = []
         for i, element in enumerate(anime_elements, 1):
-            raw_name: str = element.find("h3", class_="film-name").text
+            raw_name: str = element.find("h3", class_="film-name").text  # type: ignore
             name_of_anime: str = raw_name.translate(self.TITLE_TRANS)
             url_of_anime: str = urljoin(
                 self.URL,
-                element.find("a", class_="film-poster-ahref item-qtip")["href"],
+                str(element.find("a", class_="film-poster-ahref item-qtip")["href"]),  # type: ignore
             )
 
             try:
                 # Some anime has no subs
                 sub_episodes_available: int = element.find(
                     "div", class_="tick-item tick-sub"
-                ).text
+                ).text  # type: ignore
             except AttributeError:
                 sub_episodes_available: int = 0
             try:
                 dub_episodes_available: int = element.find(
                     "div", class_="tick-item tick-dub"
-                ).text
+                ).text  # type: ignore
             except AttributeError:
                 dub_episodes_available: int = 0
 
@@ -530,27 +541,27 @@ class HianimeExtractor:
     def get_anime_from_link(self, link: str) -> Anime:
         link_page: requests.Response = requests.get(link, headers=self.HEADERS)
         link_page_soup = BeautifulSoup(link_page.content, "html.parser")
-        main_div = link_page_soup.find("div", "anisc-detail")
-        anime_stats = main_div.find("div", "film-stats")
+        main_div: Tag = link_page_soup.find("div", "anisc-detail")  # type: ignore
+        anime_stats: Tag = main_div.find("div", "film-stats")  # type: ignore
 
         try:
             # Some anime has no subs
             sub_episodes_available: int = int(
-                anime_stats.find("div", class_="tick-item tick-sub").text
+                anime_stats.find("div", class_="tick-item tick-sub").text  # type: ignore
             )
         except AttributeError:
             sub_episodes_available: int = 0
         try:
             dub_episodes_available: int = int(
-                anime_stats.find("div", class_="tick-item tick-dub").text
+                anime_stats.find("div", class_="tick-item tick-dub").text  # type: ignore
             )
         except AttributeError:
             dub_episodes_available: int = 0
 
-        a_tag = main_div.find("h2", "film-name").find("a")
+        a_tag: Tag = main_div.find("h2", "film-name").find("a")  # type: ignore
         return Anime(
             str(a_tag.text).translate(self.TITLE_TRANS),
-            urljoin(self.URL, "/watch" + a_tag["href"]),
+            urljoin(self.URL, "/watch" + str(a_tag["href"])),
             sub_episodes_available,
             dub_episodes_available,
         )

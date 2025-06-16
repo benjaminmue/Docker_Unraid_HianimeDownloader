@@ -1,5 +1,4 @@
 import argparse
-import os
 import time
 
 from extractors.general import GeneralExtractor
@@ -14,7 +13,7 @@ class Main:
         extractor.run()
 
     def get_extractor(self):
-        if not self.args.link:
+        if not self.args.link and not self.args.filename:
             ans = input(
                 "Provide a link to the content you are trying to download or the name of the anime\n=>"
             )
@@ -22,6 +21,9 @@ class Main:
                 self.args.link = ans
             else:
                 return HianimeExtractor(args=self.args, name=ans)
+
+        if not self.args.link and self.args.filename:
+            return HianimeExtractor(args=self.args, name=self.args.filename)
 
         if "hianime" in self.args.link:
             return HianimeExtractor(args=self.args)

@@ -1,15 +1,14 @@
 from gallery_dl import config, job
-from yt_dlp import YoutubeDL
 import os
 import requests
 from bs4 import BeautifulSoup
 
-from tools.functions import yt_dlp_download
+from extractors.general import GeneralExtractor
 
 
-class InstagramExtractor:
+class InstagramExtractor(GeneralExtractor):
     def __init__(self, args):
-        self.args = args
+        super().__init__(args)
         self.link: str = self.args.link
 
         self.HEADERS: dict[str, str] = {
@@ -67,7 +66,7 @@ class InstagramExtractor:
             return
 
         title = self.args.filename if self.args.filename else self.get_post_title()
-        yt_dlp_download(
+        self.yt_dlp_download(
             self.link,
             f"{self.args.output_dir}{os.sep}{title}",
             title,
