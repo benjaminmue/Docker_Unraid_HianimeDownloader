@@ -1,7 +1,3 @@
-import os
-from yt_dlp import YoutubeDL
-
-
 def get_conformation(prompt: str) -> bool:
     ans: str = input(prompt).lower()
     if ans == "y" or ans == "yes" or ans == "true":
@@ -13,7 +9,9 @@ def get_conformation(prompt: str) -> bool:
         return get_conformation(prompt)
 
 
-def get_int_in_range(prompt: str, _min: int = 0, _max: int = float("inf")) -> int:
+def get_int_in_range(
+    prompt: str, _min: int = 0, _max: int | float = float("inf")
+) -> int:
     ans: str = input(prompt)
     try:
         _int: int = int(ans)

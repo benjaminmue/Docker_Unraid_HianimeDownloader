@@ -19,7 +19,6 @@ blocker working with the chrome session.
 
 2. Navigate into the directory it was downloaded to in your terminal.
 3. Using pip install all the requirement from the `requirements.txt` file.
-
    - For Windows
 
      ```bash
@@ -29,13 +28,12 @@ blocker working with the chrome session.
    - For Linux/macOS you may have to first create a virtual environment, so use the following commands.
 
      ```bash
-     python3 -m venv venv
-     source venv/bin/activate
+     python3 -m venv .venv
+     source .venv/bin/activate
      python3 -m pip install -r requirements.txt
      ```
 
 4. You are now ready to run the program with the following command.
-
    - Windows
 
      ```bash
