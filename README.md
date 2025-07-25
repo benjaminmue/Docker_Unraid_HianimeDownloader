@@ -1,4 +1,4 @@
-# GDown
+# GDownloader
 
 A simple CLI tool for downloading content from the streaming platform [hianime.to](hianime.to) + [social media platfroms](#supported-platforms). \
 This tool works best if you have a VPN installed with Adblock support, as I have not been able to get a working ad
