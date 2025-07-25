@@ -1,7 +1,8 @@
-from gallery_dl import config, job
 import os
+
 import requests
 from bs4 import BeautifulSoup
+from gallery_dl import config, job
 
 from extractors.general import GeneralExtractor
 
@@ -56,7 +57,7 @@ class InstagramExtractor(GeneralExtractor):
     def get_post_title(self):
         response = requests.get(self.args.link, headers=self.HEADERS)
         page_soup = BeautifulSoup(response.content, "html.parser")
-        url = page_soup.find("meta", property="og:url").get("content")
+        url: str = page_soup.find("meta", property="og:url").get("content")  # type: ignore
         return url[url.find(self.URL) + len(self.URL) : -1].replace("/reel/", " - ")
 
     def run(self):

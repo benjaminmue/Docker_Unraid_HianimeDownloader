@@ -127,19 +127,20 @@ class HianimeExtractor:
 
         # Display chosen anime details
         print(
-            "\nYou have chosen "
-            + Fore.LIGHTCYAN_EX
+            Fore.LIGHTGREEN_EX
+            + "\nYou have chosen "
+            + Fore.LIGHTBLUE_EX
             + anime.name
-            + Fore.LIGHTWHITE_EX
-            + f"\nURL: {anime.url}"
+            + Fore.LIGHTGREEN_EX
+            + f"\nURL: {Fore.LIGHTBLUE_EX}{anime.url}{Fore.LIGHTGREEN_EX}"
             + "\nSub Episodes: "
             + Fore.LIGHTYELLOW_EX
             + str(anime.sub_episodes)
-            + Fore.LIGHTWHITE_EX
+            + Fore.LIGHTGREEN_EX
             + "\nDub Episodes: "
             + Fore.LIGHTYELLOW_EX
             + str(anime.dub_episodes)
-            + Fore.LIGHTWHITE_EX
+            + Fore.LIGHTCYAN_EX
         )
 
         if anime.sub_episodes != 0 and anime.dub_episodes != 0:
@@ -154,23 +155,27 @@ class HianimeExtractor:
         number_of_episodes = getattr(anime, f"{anime.download_type}_episodes")
         if number_of_episodes != 1:
             start_ep = get_int_in_range(
-                "Enter the starting episode number: ", 1, number_of_episodes
+                f"{Fore.LIGHTCYAN_EX}Enter the starting episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
+                1,
+                number_of_episodes,
             )
             end_ep = get_int_in_range(
-                "Enter the ending episode number: ", 1, number_of_episodes
+                f"{Fore.LIGHTCYAN_EX}Enter the ending episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
+                1,
+                number_of_episodes,
             )
         else:
             start_ep = 1
             end_ep = 1
 
         anime.season_number = get_int_in_range(
-            "Enter the season number for this anime: "
+            f"{Fore.LIGHTCYAN_EX}Enter the season number for this anime:{Fore.LIGHTYELLOW_EX} "
         )
 
         self.configure_driver()
-
         self.driver.get(anime.url)
-        self.find_server_button(anime.download_type).click()
+        button: WebElement = self.find_server_button(anime)  # type: ignore
+        button.click()
 
         episode_list = self.get_episode_urls(self.driver.page_source, start_ep, end_ep)
 
@@ -258,7 +263,7 @@ class HianimeExtractor:
     def get_download_type():
         ans = (
             input(
-                "\nBoth sub and dub episodes are available. Do you want to download sub or dub? (Enter 'sub' or 'dub'): "
+                f"\n{Fore.LIGHTCYAN_EX}Both sub and dub episodes are available. Do you want to download sub or dub? (Enter 'sub' or 'dub'):{Fore.LIGHTYELLOW_EX} "
             )
             .strip()
             .lower()
@@ -267,7 +272,9 @@ class HianimeExtractor:
             return "sub"
         elif ans == "dub" or ans == "d":
             return "dub"
-        print("Invalid response, please respond with either 'sub' or 'dub'.")
+        print(
+            f"{Fore.LIGHTRED_EX}Invalid response, please respond with either 'sub' or 'dub'."
+        )
         return HianimeExtractor.get_download_type()
 
     def configure_driver(self) -> None:
@@ -322,26 +329,87 @@ class HianimeExtractor:
 
         self.driver.execute_script(
             """
-        window.alert = function() {};
-        window.confirm = function() { return true; };
-        window.prompt = function() { return null; };
-        window.open = function() {
-            console.log("Blocked a popup attempt.");
-            return null;
-        };
-    """
+                window.alert = function() {};
+                window.confirm = function() { return true; };
+                window.prompt = function() { return null; };
+                window.open = function() {
+                    console.log("Blocked a popup attempt.");
+                    return null;
+                };
+            """
         )
 
-    def find_server_button(self, download_type: str) -> WebElement:
+    def get_server_options(self, download_type: str) -> list[WebElement]:
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.LINK_TEXT, "HD-1"))
+            EC.presence_of_element_located((By.ID, "servers-content"))
         )
-        servers: list[WebElement] = self.driver.find_elements(By.LINK_TEXT, "HD-1")
+
+        options = [
+            _type.find_element(By.CLASS_NAME, "ps__-list").find_elements(
+                By.TAG_NAME, "a"
+            )
+            for _type in self.driver.find_element(
+                By.ID, "servers-content"
+            ).find_elements(By.XPATH, "./div[contains(@class, 'ps_-block')]")
+        ]
+
         return (
-            servers[0]
-            if len(servers) == 1 or (download_type == "sub" or download_type == "s")
-            else servers[1]
+            options[0]
+            if len(options) == 1 or (download_type == "sub" or download_type == "s")
+            else options[1]
         )
+
+    def find_server_button(self, anime: Anime) -> WebElement | None:
+        options = self.get_server_options(anime.download_type)
+        selection = None
+
+        if self.args.server:
+            for option in options:
+                if option.text.lower().strip() == self.args.server.lower().strip():
+                    selection = option.text
+
+        if not selection:
+            if self.args.server:
+                print(
+                    f"{Fore.LIGHTGREEN_EX}The server name you provided does not exist\n"
+                )
+            print(
+                f"\n{Fore.LIGHTGREEN_EX}Select the server you want to download from: \n"
+            )
+
+            server_names = []
+            for i, option in enumerate(options):
+                server_names.append(option.text)
+                print(f"{Fore.LIGHTRED_EX} {i + 1}: {Fore.LIGHTCYAN_EX}{option.text}")
+
+            self.driver.requests.clear()
+            self.driver.quit()
+
+            selection = server_names[
+                get_int_in_range(
+                    f"\n{Fore.LIGHTCYAN_EX}Server:{Fore.LIGHTYELLOW_EX} ",
+                    1,
+                    len(options),
+                )
+                - 1
+            ]
+        else:
+            self.driver.requests.clear()
+            self.driver.quit()
+
+        print(f"\n{Fore.LIGHTGREEN_EX}You chose: {Fore.LIGHTCYAN_EX}{selection}")
+
+        self.configure_driver()
+        self.driver.get(anime.url)
+
+        options = self.get_server_options(anime.download_type)
+
+        for option in options:
+            if option.text == selection:
+                return option
+
+        print(f"{Fore.LIGHTRED_EX}No matching server button could be found")
+        return None
 
     def get_episode_urls(
         self, page: str, start_episode: int, end_episode: int
@@ -454,7 +522,7 @@ class HianimeExtractor:
 
     def get_anime(self, name: str | None = None) -> Anime | None:
         os.system("cls" if os.name == "nt" else "clear")
-        print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "Downloader")
+        print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "GDown\n")
 
         search_name: str = name if name else input("Enter Name of Anime: ")
 
@@ -510,7 +578,8 @@ class HianimeExtractor:
         # PRINT ANIME TITLES TO THE CONSOLE
         for i, anime in enumerate(anime_list, start=1):
             print(
-                Fore.LIGHTRED_EX
+                " "
+                + Fore.LIGHTRED_EX
                 + str(i)
                 + ": "
                 + Fore.LIGHTCYAN_EX
@@ -533,7 +602,9 @@ class HianimeExtractor:
         # USER SELECTS ANIME
         return anime_list[
             get_int_in_range(
-                "\nSelect an anime you want to download: ", 1, len(anime_list) + 1
+                f"\n{Fore.LIGHTCYAN_EX}Select an anime you want to download:{Fore.LIGHTYELLOW_EX} ",
+                1,
+                len(anime_list) + 1,
             )
             - 1
         ]

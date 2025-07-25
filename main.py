@@ -1,5 +1,8 @@
 import argparse
+import os
 import time
+
+from colorama import Fore
 
 from extractors.general import GeneralExtractor
 from extractors.hianime import HianimeExtractor
@@ -14,8 +17,9 @@ class Main:
 
     def get_extractor(self):
         if not self.args.link and not self.args.filename:
+            os.system("cls" if os.name == "nt" else "clear")
             ans = input(
-                "Provide a link to the content you are trying to download or the name of the anime\n=>"
+                f"{Fore.LIGHTGREEN_EX}GDown {Fore.LIGHTCYAN_EX}Downloader\n\nProvide a link or search for an anime:\n{Fore.LIGHTYELLOW_EX}"
             )
             if "http" in ans.lower():
                 self.args.link = ans
@@ -49,7 +53,11 @@ class Main:
         )
 
         parser.add_argument(
-            "-n", "--filename", type=str, default="", help="Name of the output file"
+            "-n",
+            "--filename",
+            type=str,
+            default="",
+            help="Used for name of anime, or name of output file when using other extractor",
         )
 
         parser.add_argument(
@@ -65,6 +73,10 @@ class Main:
             type=str,
             default=None,
             help="Provide link to desired content",
+        )
+
+        parser.add_argument(
+            "--server", type=str, default=None, help="Streaming Server to download from"
         )
 
         return parser.parse_args()
