@@ -11,6 +11,7 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup, Tag
 from colorama import Fore
+from langdetect import detect as detect_lang
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
@@ -49,7 +50,8 @@ class HianimeExtractor:
             "Connection": "keep-alive",
         }
         self.URL: str = "https://hianimez.to"
-        self.SUBTITLE_LANGS: list[str] = ["eng"]
+        self.ENCODING = "utf-8"
+        self.SUBTITLE_LANG: str = "en"
         self.OTHER_LANGS: list[str] = [
             "ita",
             "jpn",
@@ -175,9 +177,17 @@ class HianimeExtractor:
         self.configure_driver()
         self.driver.get(anime.url)
         button: WebElement = self.find_server_button(anime)  # type: ignore
-        button.click()
 
-        episode_list = self.get_episode_urls(self.driver.page_source, start_ep, end_ep)
+        try:
+            button.click()
+        except Exception as e:
+            print(
+                f"{Fore.LIGHTRED_EX}Error clicking server button:\n\n{Fore.LIGHTWHITE_EX}{e}"
+            )
+
+        episode_list: list[dict] = self.get_episode_urls(
+            self.driver.page_source, start_ep, end_ep
+        )
 
         print()
 
@@ -201,6 +211,10 @@ class HianimeExtractor:
                 self.driver.get(url)
                 self.driver.execute_script("window.focus();")
                 media_requests = self.capture_media_requests()
+                if not media_requests:
+                    print("No m3u8 file was found skipping download")
+                    continue
+
                 episode.update(media_requests)
                 self.captured_video_urls.append(media_requests["m3u8"])
                 if not self.args.no_subtitles:
@@ -432,12 +446,14 @@ class HianimeExtractor:
                 episodes.append(episode_info)
         return episodes
 
-    def capture_media_requests(self) -> dict[str, str]:
+    def capture_media_requests(self) -> dict[str, str] | None:
         found_m3u8: bool = False
         found_vtt: bool = self.args.no_subtitles
         attempt: int = 0
-        urls: dict[str, Any] = {}
+        urls: dict[str, Any] = {"all-vtt": []}
+        previously_found_vtt: int = 0
 
+        all_urls = []
         while (
             not found_m3u8 or not found_vtt
         ) and self.DOWNLOAD_ATTEMPT_CAP >= attempt:
@@ -447,42 +463,75 @@ class HianimeExtractor:
             sys.stdout.flush()
 
             for request in self.driver.requests:
-                if request.response:
-                    uri = request.url.lower()
-                    if (
-                        not found_m3u8
-                        and uri.endswith(".m3u8")
-                        and "master" in uri
-                        and uri not in self.captured_video_urls
-                    ):
-                        urls["m3u8"] = uri
-                        urls["headers"] = dict(request.headers)
-                        found_m3u8 = True
+                if not request.response:
+                    continue
+
+                uri = request.url.lower()
+                if uri not in all_urls:
+                    all_urls.append(uri)
+                if (
+                    not found_m3u8
+                    and uri.endswith(".m3u8")
+                    and "master" in uri
+                    and uri not in self.captured_video_urls
+                ):
+                    urls["m3u8"] = uri
+                    urls["headers"] = dict(request.headers)
+                    found_m3u8 = True
+                    continue
+                if (
+                    not found_vtt
+                    and ".vtt" in uri
+                    and "thumbnail" not in uri
+                    and uri not in self.captured_subtitle_urls
+                    and not any(lang in uri for lang in self.OTHER_LANGS)
+                    and detect_lang(requests.get(uri).content.decode(self.ENCODING))
+                    == self.SUBTITLE_LANG
+                ):
+                    if uri in urls["all-vtt"]:
+                        previously_found_vtt += 1
+                        if previously_found_vtt >= len(urls["all-vtt"]):
+                            found_vtt = True
                         continue
-                    if (
-                        not found_vtt
-                        and ".vtt" in uri
-                        and "thumbnail" not in uri
-                        and uri not in self.captured_subtitle_urls
-                        and (
-                            any(lang in uri for lang in self.SUBTITLE_LANGS)
-                            or not any(lang in uri for lang in self.OTHER_LANGS)
-                        )
-                    ):
-                        urls["vtt"] = uri
-                        found_vtt = True
+
+                    urls["all-vtt"].append(uri)
             attempt += 1
             if attempt in self.DOWNLOAD_REFRESH:
                 self.driver.refresh()
             time.sleep(1)
 
+        with open("log.txt", "w") as file:
+            for url in all_urls:
+                file.write(url + "\n")
+
         print()
         if not found_m3u8:
             print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
+            return None
         if not found_vtt:
             print(
                 f"{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file, option '--no-subtitles' can be used to skip downloading subtitles."
             )
+            self.args.no_subtitles = get_conformation(
+                f"\n{Fore.LIGHTCYAN_EX}Would you like to skip the collection of subtiles on the following episodes (y/n): "
+            )
+        elif not self.args.no_subtitles:
+            if len(urls["all-vtt"]) == 1:
+                urls["vtt"] = urls["all-vtt"][0]
+                return urls
+
+            print(
+                "\nMore than one subtitle file was found plesae select the on you would like to download:\n"
+            )
+            for i, vtt in enumerate(urls["all-vtt"]):
+                print(f" {i + 1} - {vtt}")
+
+            selection = get_int_in_range(
+                "\nSelected Subtitle: ", 1, len(urls["all-vtt"]) + 1
+            )
+            print()
+
+            urls["vtt"] = urls["all-vtt"][selection - 1]
 
         return urls
 
