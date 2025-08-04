@@ -1,12 +1,19 @@
-from colorama import Fore
 import sys
+
+from colorama import Fore
+
 
 class YTDLogger:
     @staticmethod
     def debug(msg: str):
         if not msg.startswith("[download]"):
             return
-        new_msg = f"{Fore.LIGHTRED_EX if "fragment not found" in msg else Fore.LIGHTCYAN_EX}{Fore.YELLOW + "\n" if "error" in msg else ""}[YT-DLP] {msg[11:]}"
+        color = (
+            Fore.LIGHTRED_EX
+            if "fragment not found" in msg
+            else (Fore.YELLOW + "\n" if "error" in msg else Fore.LIGHTCYAN_EX)
+        )
+        new_msg = f"{color}[YT-DLP] {msg[11:]}"
         if "ETA" in msg:
             sys.stdout.write(f"\r{new_msg}")
             sys.stdout.flush()
@@ -28,3 +35,4 @@ class YTDLogger:
     @staticmethod
     def error(msg):
         print(f"[Logger Error] {msg}")
+
