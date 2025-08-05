@@ -248,28 +248,20 @@ class HianimeExtractor:
 
         for episode in episodes:
             name = f"{anime.name} - s{anime.season_number:02}e{episode['number']:02} - {episode['title']}"
-            try:
-                if "m3u8" in episode.keys() and episode["m3u8"]:
-                    self.yt_dlp_download(
-                        self.look_for_variants(episode["m3u8"], episode["headers"]),
-                        episode["headers"],
-                        f"{folder}{name}.mp4",
-                    )
-                else:
-                    print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
-                if "vtt" in episode.keys() and episode["vtt"]:
-                    self.yt_dlp_download(
-                        episode["vtt"], episode["headers"], f"{folder}{name}.vtt"
-                    )
-                elif not self.args.no_subtitles:
-                    print(f"Skipping {name}.vtt (No VTT Stream Found)")
-            except KeyboardInterrupt:
-                print(
-                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {name}"
+            if "m3u8" in episode.keys() and episode["m3u8"]:
+                self.yt_dlp_download(
+                    self.look_for_variants(episode["m3u8"], episode["headers"]),
+                    episode["headers"],
+                    f"{folder}{name}.mp4",
                 )
-                for file in glob(os.path.join(folder, f"{name}.*")):
-                    os.remove(file)
-                break
+            else:
+                print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
+            if "vtt" in episode.keys() and episode["vtt"]:
+                self.yt_dlp_download(
+                    episode["vtt"], episode["headers"], f"{folder}{name}.vtt"
+                )
+            elif not self.args.no_subtitles:
+                print(f"Skipping {name}.vtt (No VTT Stream Found)")
             # except Exception as e:
             #     print(f"\n\nError while downloading {name}: \n\n{e}")
 
@@ -571,7 +563,19 @@ class HianimeExtractor:
         }
 
         with YoutubeDL(yt_dlp_options) as ydl:
-            ydl.download([url])
+            try:
+                ydl.download([url])
+            except KeyboardInterrupt:
+                print(
+                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind('/') + 1:-4]}"
+                )
+            finally:
+                for file in [
+                    f
+                    for f in glob(location[:-4] + ".*")
+                    if not f.endswith(".mp4") or not f.endswith(".vtt")
+                ]:
+                    os.remove(file)
 
     def get_anime(self, name: str | None = None) -> Anime | None:
         os.system("cls" if os.name == "nt" else "clear")
