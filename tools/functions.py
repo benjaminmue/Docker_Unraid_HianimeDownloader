@@ -1,3 +1,7 @@
+import os
+import time
+
+
 def get_conformation(prompt: str) -> bool:
     ans: str = input(prompt).lower()
     if ans == "y" or ans == "yes" or ans == "true":
@@ -24,3 +28,16 @@ def get_int_in_range(
 
     print("Invalid input. The provide input was not within the expected range.")
     return get_int_in_range(prompt, _min, _max)
+
+
+def safe_remove(file: str, retries: int = 5):
+    for _ in range(retries):
+        try:
+            if os.path.exists(file):
+                os.remove(file)
+                break
+            print("No file exists")
+            return
+        except PermissionError:
+            print("Retrying deletion of files")
+            time.sleep(1)

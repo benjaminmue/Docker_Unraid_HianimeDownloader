@@ -20,7 +20,7 @@ from selenium_stealth import stealth
 from seleniumwire import webdriver
 from yt_dlp import YoutubeDL
 
-from tools.functions import get_conformation, get_int_in_range
+from tools.functions import get_conformation, get_int_in_range, safe_remove
 from tools.YTDLogger import YTDLogger
 
 
@@ -314,6 +314,7 @@ class HianimeExtractor:
         options.add_argument("--disable-gpu")
         options.add_argument("--log-level=3")
         options.add_argument("--silent")
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
         seleniumwire_options: dict[str, bool] = {
             "verify_ssl": False,
@@ -546,7 +547,7 @@ class HianimeExtractor:
 
         return url
 
-    def yt_dlp_download(self, url: str, headers: dict[str, str], location: str):
+    def yt_dlp_download(self, url: str, headers: dict[str, str], location: str) -> bool:
         yt_dlp_options: dict[str, Any] = {
             "no_warnings": False,
             "quiet": False,
@@ -561,7 +562,7 @@ class HianimeExtractor:
             "force_keyframes_at_cuts": True,
             "allow_unplayable_formats": True,
         }
-
+        _return = True
         with YoutubeDL(yt_dlp_options) as ydl:
             try:
                 ydl.download([url])
@@ -569,13 +570,16 @@ class HianimeExtractor:
                 print(
                     f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind('/') + 1:-4]}"
                 )
+                _return = False
             finally:
-                for file in [
-                    f
-                    for f in glob(location[:-4] + ".*")
-                    if not f.endswith(".mp4") or not f.endswith(".vtt")
-                ]:
-                    os.remove(file)
+                if not _return:
+                    for file in [
+                        f
+                        for f in glob(location[:-4] + ".*")
+                        if not f.endswith((".mp4", ".vtt"))
+                    ]:
+                        safe_remove(file)
+            return _return
 
     def get_anime(self, name: str | None = None) -> Anime | None:
         os.system("cls" if os.name == "nt" else "clear")
