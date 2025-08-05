@@ -319,6 +319,10 @@ class HianimeExtractor:
         options.add_argument("--disable-backgrounding-occluded-windows")
         # options.add_argument("--load-extension=extensions" + os.sep + )
 
+        options.add_argument("--disable-gpu")
+        options.add_argument("--log-level=3")
+        options.add_argument("--silent")
+
         seleniumwire_options: dict[str, bool] = {
             "verify_ssl": False,
             "disable_encoding": True,
