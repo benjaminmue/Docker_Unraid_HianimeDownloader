@@ -49,7 +49,7 @@ class HianimeExtractor:
             "Accept-Language": "en-US,en;q=0.8",
             "Connection": "keep-alive",
         }
-        self.URL: str = "https://hianimez.to"
+        self.URL: str = "https://hianime.to"
         self.ENCODING = "utf-8"
         self.SUBTITLE_LANG: str = "en"
         self.OTHER_LANGS: list[str] = [
@@ -504,10 +504,6 @@ class HianimeExtractor:
             if attempt in self.DOWNLOAD_REFRESH:
                 self.driver.refresh()
             time.sleep(1)
-
-        with open("log.txt", "w") as file:
-            for url in all_urls:
-                file.write(url + "\n")
 
         print()
         if not found_m3u8:
