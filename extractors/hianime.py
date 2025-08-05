@@ -577,6 +577,7 @@ class HianimeExtractor:
                     f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind(os.sep) + 1:-4]}"
                 )
                 _return = False
+                ydl.close()
 
         if not _return:
             for file in [
