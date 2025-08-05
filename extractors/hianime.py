@@ -248,14 +248,18 @@ class HianimeExtractor:
 
         for episode in episodes:
             name = f"{anime.name} - s{anime.season_number:02}e{episode['number']:02} - {episode['title']}"
-            if "m3u8" in episode.keys() and episode["m3u8"]:
-                self.yt_dlp_download(
-                    self.look_for_variants(episode["m3u8"], episode["headers"]),
-                    episode["headers"],
-                    f"{folder}{name}.mp4",
-                )
-            else:
-                print(f"Skipping {name}.mp4 (No M3U8 Stream Found)")
+            if "m3u8" not in episode.keys() and not episode["m3u8"]:
+                print(f"Skipping {name} (No M3U8 Stream Found)")
+                continue
+
+            result = self.yt_dlp_download(
+                self.look_for_variants(episode["m3u8"], episode["headers"]),
+                episode["headers"],
+                f"{folder}{name}.mp4",
+            )
+            if not result:
+                break
+
             if "vtt" in episode.keys() and episode["vtt"]:
                 self.yt_dlp_download(
                     episode["vtt"], episode["headers"], f"{folder}{name}.vtt"
@@ -507,11 +511,12 @@ class HianimeExtractor:
             return None
         if not found_vtt:
             print(
-                f"{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file, option '--no-subtitles' can be used to skip downloading subtitles."
+                f"\n{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file, option '--no-subtitles' can be used to skip downloading subtitles."
             )
             self.args.no_subtitles = get_conformation(
                 f"\n{Fore.LIGHTCYAN_EX}Would you like to skip the collection of subtiles on the following episodes (y/n): "
             )
+            print()
         elif not self.args.no_subtitles:
             if len(urls["all-vtt"]) == 1:
                 urls["vtt"] = urls["all-vtt"][0]
@@ -562,13 +567,14 @@ class HianimeExtractor:
             "force_keyframes_at_cuts": True,
             "allow_unplayable_formats": True,
         }
+
         _return = True
         with YoutubeDL(yt_dlp_options) as ydl:
             try:
                 ydl.download([url])
             except KeyboardInterrupt:
                 print(
-                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind('/') + 1:-4]}"
+                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind(os.sep) + 1:-4]}"
                 )
                 _return = False
 
