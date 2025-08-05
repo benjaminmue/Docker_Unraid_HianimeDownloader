@@ -486,7 +486,11 @@ class HianimeExtractor:
                     and "thumbnail" not in uri
                     and uri not in self.captured_subtitle_urls
                     and not any(lang in uri for lang in self.OTHER_LANGS)
-                    and detect_lang(requests.get(uri).content.decode(self.ENCODING))
+                    and detect_lang(
+                        requests.get(uri, headers=dict(request.headers)).content.decode(
+                            self.ENCODING
+                        )
+                    )
                     == self.SUBTITLE_LANG
                 ):
                     if uri in urls["all-vtt"]:
