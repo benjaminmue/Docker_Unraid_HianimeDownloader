@@ -35,9 +35,10 @@ def safe_remove(file: str, retries: int = 5):
         try:
             if os.path.exists(file):
                 os.remove(file)
-                break
+                return
             print("No file exists")
             return
         except PermissionError:
             print("Retrying deletion of files")
             time.sleep(1)
+    print("failed to remove file")

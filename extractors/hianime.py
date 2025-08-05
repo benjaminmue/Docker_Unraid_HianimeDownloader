@@ -571,15 +571,16 @@ class HianimeExtractor:
                     f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind('/') + 1:-4]}"
                 )
                 _return = False
-            finally:
-                if not _return:
-                    for file in [
-                        f
-                        for f in glob(location[:-4] + ".*")
-                        if not f.endswith((".mp4", ".vtt"))
-                    ]:
-                        safe_remove(file)
-            return _return
+
+        if not _return:
+            for file in [
+                f
+                for f in glob(location[:-4] + ".*")
+                if not f.endswith((".mp4", ".vtt"))
+            ]:
+                safe_remove(file)
+
+        return _return
 
     def get_anime(self, name: str | None = None) -> Anime | None:
         os.system("cls" if os.name == "nt" else "clear")
