@@ -30,7 +30,7 @@ def get_int_in_range(
     return get_int_in_range(prompt, _min, _max)
 
 
-def safe_remove(file: str, retries: int = 5):
+def safe_remove(file: str, retries: int = 5, delay: int = 2):
     for _ in range(retries):
         try:
             if os.path.exists(file):
@@ -40,5 +40,5 @@ def safe_remove(file: str, retries: int = 5):
             return
         except PermissionError:
             print("Retrying deletion of files")
-            time.sleep(1)
+            time.sleep(delay)
     print("failed to remove file")
