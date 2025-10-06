@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# Clean stale Chrome locks so Selenium can start
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/config}"
+PROFILE_DIR="$XDG_CONFIG_HOME/google-chrome"
+mkdir -p "$PROFILE_DIR" || true
+rm -f "$PROFILE_DIR"/Singleton* 2>/dev/null || true
+
 set -euo pipefail
 if [[ -n "${UMASK:-}" ]]; then
   umask "${UMASK}"
