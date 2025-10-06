@@ -289,90 +289,92 @@ class HianimeExtractor:
         return HianimeExtractor.get_download_type()
 
     def configure_driver(self) -> None:
-    mobile_emulation: dict[str, str] = {"deviceName": "iPhone X"}
+        mobile_emulation: dict[str, str] = {"deviceName": "iPhone X"}
 
-    options: webdriver.ChromeOptions = webdriver.ChromeOptions()
-    options.add_experimental_option("mobileEmulation", mobile_emulation)
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("window-size=600,1000")
-    options.add_experimental_option(
-        "prefs",
-        {
-            "profile.default_content_setting_values.notifications": 2,
-            "profile.default_content_setting_values.popups": 2,
-            "profile.managed_default_content_settings.ads": 2,
-        },
-    )
-    options.add_argument("--disable-features=PopupBlocking")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-notifications")
-    options.add_argument("--disable-backgrounding-occluded-windows")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--log-level=3")
-    options.add_argument("--silent")
-    options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        options: webdriver.ChromeOptions = webdriver.ChromeOptions()
+        options.add_experimental_option("mobileEmulation", mobile_emulation)
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("window-size=600,1000")
+        options.add_experimental_option(
+            "prefs",
+            {
+                "profile.default_content_setting_values.notifications": 2,  # Block notifications
+                "profile.default_content_setting_values.popups": 2,          # Block pop-ups
+                "profile.managed_default_content_settings.ads": 2,           # Block ads
+            },
+        )
+        options.add_argument("--disable-features=PopupBlocking")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-notifications")
+        options.add_argument("--disable-backgrounding-occluded-windows")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--log-level=3")
+        options.add_argument("--silent")
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-    # ---------- NEW: merge CHROME_EXTRA_ARGS + ensure unique user-data-dir ----------
-    import shlex, time, os
+        # ---------- merge CHROME_EXTRA_ARGS + ensure unique user-data-dir ----------
+        extra = os.environ.get("CHROME_EXTRA_ARGS", "")
+        for token in shlex.split(extra):
+            options.add_argument(token)
 
-    extra = os.environ.get("CHROME_EXTRA_ARGS", "")
-    for token in shlex.split(extra):
-        options.add_argument(token)
+        has_ud = any(
+            str(a).startswith("--user-data-dir=")
+            for a in getattr(options, "arguments", [])
+        )
+        if not has_ud:
+            xdg = os.environ.get("XDG_CONFIG_HOME", "/tmp")
+            profile_dir = os.path.join(
+                xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}"
+            )
+            os.makedirs(profile_dir, exist_ok=True)
+            options.add_argument(f"--user-data-dir={profile_dir}")
 
-    has_ud = any(str(a).startswith("--user-data-dir=") for a in getattr(options, "arguments", []))
-    if not has_ud:
-        xdg = os.environ.get("XDG_CONFIG_HOME", "/tmp")
-        profile_dir = os.path.join(xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}")
-        os.makedirs(profile_dir, exist_ok=True)
-        options.add_argument(f"--user-data-dir={profile_dir}")
+        def ensure(arg: str):
+            if not any(arg in str(a) for a in getattr(options, "arguments", [])):
+                options.add_argument(arg)
 
-    def ensure(arg: str):
-        if not any(arg in str(a) for a in getattr(options, "arguments", [])):
-            options.add_argument(arg)
+        ensure("--no-first-run")
+        ensure("--no-default-browser-check")
+        ensure("--disable-dev-shm-usage")
+        ensure("--remote-debugging-port=0")
+        if not any("--headless" in str(a) for a in getattr(options, "arguments", [])):
+            options.add_argument("--headless=new")
+        # --------------------------------------------------------------------------
 
-    ensure("--no-first-run")
-    ensure("--no-default-browser-check")
-    ensure("--disable-dev-shm-usage")
-    ensure("--remote-debugging-port=0")
-    if not any("--headless" in str(a) for a in getattr(options, "arguments", [])):
-        options.add_argument("--headless=new")
-    # -------------------------------------------------------------------------------
+        seleniumwire_options: dict[str, bool] = {
+            "verify_ssl": False,
+            "disable_encoding": True,
+        }
 
-    seleniumwire_options: dict[str, bool] = {
-        "verify_ssl": False,
-        "disable_encoding": True,
-    }
+        self.driver: webdriver.Chrome = webdriver.Chrome(
+            options=options,
+            seleniumwire_options=seleniumwire_options,
+        )
 
-    self.driver: webdriver.Chrome = webdriver.Chrome(
-        options=options,
-        seleniumwire_options=seleniumwire_options,
-    )
+        stealth(
+            self.driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+        )
 
-    from selenium_stealth import stealth
-    stealth(
-        self.driver,
-        languages=["en-US", "en"],
-        vendor="Google Inc.",
-        platform="Win32",
-        webgl_vendor="Intel Inc.",
-        renderer="Intel Iris OpenGL Engine",
-        fix_hairline=True,
-    )
+        self.driver.implicitly_wait(10)
 
-    self.driver.implicitly_wait(10)
+        self.driver.execute_script(
+            """
+                window.alert = function() {};
+                window.confirm = function() { return true; };
+                window.prompt = function() { return null; };
+                window.open = function() {
+                    console.log("Blocked a popup attempt.");
+                    return null;
+                };
+            """
+        )
 
-    self.driver.execute_script(
-        """
-            window.alert = function() {};
-            window.confirm = function() { return true; };
-            window.prompt = function() { return null; };
-            window.open = function() {
-                console.log("Blocked a popup attempt.");
-                return null;
-            };
-        """
-    )
-    
     def get_server_options(self, download_type: str) -> list[WebElement]:
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.ID, "servers-content"))
