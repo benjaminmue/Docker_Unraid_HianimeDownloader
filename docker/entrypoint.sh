@@ -1,33 +1,28 @@
 #!/usr/bin/env bash
 
 # -------- Chrome profile handling --------
-# If you WANT persistence across runs, set CHROME_PERSIST_PROFILE=true in Unraid.
 if [[ "${CHROME_PERSIST_PROFILE:-false}" == "true" ]]; then
   export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/config}"
   PROFILE_DIR="$XDG_CONFIG_HOME/google-chrome"
 else
-  # Fresh profile per run avoids "user data dir in use" errors forever
   export XDG_CONFIG_HOME="/tmp/chrome-profile-$(date +%s)-$$"
   PROFILE_DIR="$XDG_CONFIG_HOME/google-chrome"
 fi
-
 mkdir -p "$PROFILE_DIR" || true
-# Remove any stale locks if present
 rm -f "$PROFILE_DIR"/Singleton* 2>/dev/null || true
 
 set -euo pipefail
-
-# Optional: honor UMASK if provided
-if [[ -n "${UMASK:-}" ]]; then
-  umask "${UMASK}"
-fi
-
+[[ -n "${UMASK:-}" ]] && umask "${UMASK}"
 cd /app
 
-# Chrome args (safe defaults)
+# ---- Chrome args (force our profile dir) ----
 EXTRA="${CHROME_EXTRA_ARGS:-}"
 case "$EXTRA" in *--no-first-run* ) :;; *) EXTRA="$EXTRA --no-first-run";; esac
 case "$EXTRA" in *--no-default-browser-check* ) :;; *) EXTRA="$EXTRA --no-default-browser-check";; esac
+# >>> add these three; the first is the key bit <<<
+case "$EXTRA" in *--user-data-dir=* ) :;; *) EXTRA="$EXTRA --user-data-dir=$PROFILE_DIR";; esac
+case "$EXTRA" in *--disable-dev-shm-usage* ) :;; *) EXTRA="$EXTRA --disable-dev-shm-usage";; esac
+case "$EXTRA" in *--headless=*|*--headless* ) :;; *) EXTRA="$EXTRA --headless=new";; esac
 export CHROME_EXTRA_ARGS="$EXTRA"
 
 # If container was started with arguments, pass them straight to the app
@@ -35,14 +30,14 @@ if [[ "$#" -gt 0 ]]; then
   exec python3 main.py "$@"
 fi
 
-# Auto-interactive when a TTY is present (i.e., you opened Console) and no LINK/NAME provided
+# Auto-interactive only if you didn't provide LINK/NAME
+# (see section 2 below to auto-run when opening Console)
 if [[ -z "${LINK:-}" && -z "${NAME:-}" ]]; then
   if [[ -t 0 && -t 1 ]]; then
     exec python3 /app/main.py
   fi
 fi
 
-# Build env-driven args for non-interactive runs
 ARGS=()
 [[ -n "${OUTPUT_DIR:-}" ]] && ARGS+=( -o "${OUTPUT_DIR}" )
 [[ -n "${LINK:-}"      ]] && ARGS+=( -l "${LINK}" )
