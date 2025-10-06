@@ -313,12 +313,12 @@ class HianimeExtractor:
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
     # ---------- NEW: merge CHROME_EXTRA_ARGS + ensure unique user-data-dir ----------
-    # Read extra flags from env (e.g. "--headless=new --no-sandbox --disable-dev-shm-usage")
+    import shlex, time, os
+
     extra = os.environ.get("CHROME_EXTRA_ARGS", "")
     for token in shlex.split(extra):
         options.add_argument(token)
 
-    # Force a user-data-dir if caller didn't set one (prevents "profile in use")
     has_ud = any(str(a).startswith("--user-data-dir=") for a in getattr(options, "arguments", []))
     if not has_ud:
         xdg = os.environ.get("XDG_CONFIG_HOME", "/tmp")
@@ -326,7 +326,6 @@ class HianimeExtractor:
         os.makedirs(profile_dir, exist_ok=True)
         options.add_argument(f"--user-data-dir={profile_dir}")
 
-    # Good stability defaults if not already present
     def ensure(arg: str):
         if not any(arg in str(a) for a in getattr(options, "arguments", [])):
             options.add_argument(arg)
@@ -335,7 +334,6 @@ class HianimeExtractor:
     ensure("--no-default-browser-check")
     ensure("--disable-dev-shm-usage")
     ensure("--remote-debugging-port=0")
-    # If headless not set by env, default to new headless (works in containers)
     if not any("--headless" in str(a) for a in getattr(options, "arguments", [])):
         options.add_argument("--headless=new")
     # -------------------------------------------------------------------------------
