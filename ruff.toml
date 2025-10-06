@@ -1,4 +1,37 @@
+# ruff.toml
+
+# Formatting
 line-length = 120
+indent-width = 4
+target-version = "py311"
 
 [lint]
-ignore = ["E501"]
+# Rules to enable
+select = ["E", "F", "W", "I"]
+# Ignore overly strict or redundant rules
+ignore = [
+    "E501",  # line length handled by formatter
+    "E402",  # imports not at top (common in entry scripts)
+    "F401",  # unused imports (okay for __init__.py)
+]
+
+# Exclude directories that shouldn't be linted
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    "__pycache__",
+    "output",
+    "build",
+    "dist",
+    "node_modules",
+    "tmp",
+]
+
+[format]
+# Optional if you let Ruff auto-format like Black
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
