@@ -1,44 +1,54 @@
 import os
 import time
+from typing import Union
 
 
 def get_conformation(prompt: str) -> bool:
-    ans: str = input(prompt).lower()
-    if ans == "y" or ans == "yes" or ans == "true":
-        return True
-    elif ans == "n" or ans == "no" or ans == "false":
-        return False
-    else:
-        print("Please provide a valid response")
-        return get_conformation(prompt)
+    """Prompt the user for a yes/no confirmation and return True or False."""
+    while True:
+        ans = input(prompt).strip().lower()
+        if ans in {"y", "yes", "true"}:
+            return True
+        if ans in {"n", "no", "false"}:
+            return False
+        print("Please provide a valid response (y/n).")
 
 
-def get_int_in_range(
-    prompt: str, _min: int = 0, _max: int | float = float("inf")
-) -> int:
-    ans: str = input(prompt)
-    try:
-        _int: int = int(ans)
-    except ValueError:
-        print("Invalid input. Please provide a valid number.")
-        return get_int_in_range(prompt, _min, _max)
+def get_int_in_range(prompt: str, _min: int = 0, _max: Union[int, float] = float("inf")) -> int:
+    """Prompt for an integer within a given range and keep retrying until valid."""
+    while True:
+        ans = input(prompt).strip()
+        try:
+            value = int(ans)
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+            continue
 
-    if _min <= _int <= _max:
-        return _int
+        if _min <= value <= _max:
+            return value
 
-    print("Invalid input. The provide input was not within the expected range.")
-    return get_int_in_range(prompt, _min, _max)
+        print(f"Invalid input. Please enter a number between {_min} and {_max}.")
 
 
-def safe_remove(file: str, retries: int = 5, delay: int = 2):
-    for _ in range(retries):
+def safe_remove(file: str, retries: int = 5, delay: int = 2) -> None:
+    """
+    Safely remove a file with retry logic.
+    Useful in Docker/Unraid environments where file locks may persist briefly.
+    """
+    for attempt in range(retries):
         try:
             if os.path.exists(file):
                 os.remove(file)
+                print(f"Removed file: {file}")
                 return
-            print("No file exists")
-            return
+            else:
+                # Not an error; file already gone
+                return
         except PermissionError:
-            print("Retrying deletion of files")
+            print(f"Retrying deletion of {file} (attempt {attempt + 1}/{retries})...")
             time.sleep(delay)
-    print("failed to remove file")
+        except Exception as e:
+            print(f"Unexpected error removing {file}: {e}")
+            time.sleep(delay)
+
+    print(f"⚠️ Failed to remove file after {retries} attempts: {file}")
