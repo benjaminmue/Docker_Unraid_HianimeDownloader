@@ -219,7 +219,7 @@ class HianimeExtractor:
                 episode.update(media_requests)
                 self.captured_video_urls.append(media_requests["m3u8"])
                 if not self.args.no_subtitles:
-                    self.captured_subtitle_urls.append(media_requests["vtt"])
+                    self.captured_subtitle_urls.append(media_requests.get("vtt"))
             except KeyboardInterrupt:
                 print("\n\nCanceling media capture...")
                 if not get_conformation(
@@ -249,22 +249,24 @@ class HianimeExtractor:
 
         for episode in episodes:
             name = f"{anime.name} - s{anime.season_number:02}e{episode['number']:02} - {episode['title']}"
-            if "m3u8" not in episode.keys() and not episode["m3u8"]:
+
+            m3u8_url = episode.get("m3u8")
+            headers = episode.get("headers") or {}
+            if not m3u8_url:
                 print(f"Skipping {name} (No M3U8 Stream Found)")
                 continue
 
             result = self.yt_dlp_download(
-                self.look_for_variants(episode["m3u8"], episode["headers"]),
-                episode["headers"],
+                self.look_for_variants(m3u8_url, headers),
+                headers,
                 f"{folder}{name}.mp4",
             )
             if not result:
                 break
 
-            if "vtt" in episode.keys() and episode["vtt"]:
-                self.yt_dlp_download(
-                    episode["vtt"], episode["headers"], f"{folder}{name}.vtt"
-                )
+            vtt_url = episode.get("vtt")
+            if vtt_url:
+                self.yt_dlp_download(vtt_url, headers, f"{folder}{name}.vtt")
             elif not self.args.no_subtitles:
                 print(f"Skipping {name}.vtt (No VTT Stream Found)")
             # except Exception as e:
@@ -317,6 +319,7 @@ class HianimeExtractor:
         for token in shlex.split(extra):
             options.add_argument(token)
 
+        # Ensure Chrome uses a writable, unique profile unless provided
         has_ud = any(
             str(a).startswith("--user-data-dir=")
             for a in getattr(options, "arguments", [])
@@ -326,7 +329,15 @@ class HianimeExtractor:
             profile_dir = os.path.join(
                 xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}"
             )
-            os.makedirs(profile_dir, exist_ok=True)
+            try:
+                os.makedirs(profile_dir, exist_ok=True)
+            except PermissionError:
+                # fallback to /tmp if /config is not writable
+                xdg = "/tmp"
+                profile_dir = os.path.join(
+                    xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}"
+                )
+                os.makedirs(profile_dir, exist_ok=True)
             options.add_argument(f"--user-data-dir={profile_dir}")
 
         def ensure(arg: str):
@@ -475,7 +486,9 @@ class HianimeExtractor:
         urls: dict[str, Any] = {"all-vtt": []}
         previously_found_vtt: int = 0
 
-        all_urls = []
+        candidate_m3u8: tuple[str, dict[str, str]] | None = None
+        all_urls: list[str] = []
+
         while (
             not found_m3u8 or not found_vtt
         ) and self.DOWNLOAD_ATTEMPT_CAP >= attempt:
@@ -491,36 +504,44 @@ class HianimeExtractor:
                 uri = request.url.lower()
                 if uri not in all_urls:
                     all_urls.append(uri)
-                if (
-                    not found_m3u8
-                    and uri.endswith(".m3u8")
-                    and "master" in uri
-                    and uri not in self.captured_video_urls
-                ):
-                    urls["m3u8"] = uri
-                    urls["headers"] = dict(request.headers)
-                    found_m3u8 = True
-                    continue
+
+                # m3u8 selection: prefer master, otherwise take first valid playlist
+                if uri.endswith(".m3u8") and "thumbnail" not in uri and "iframe" not in uri:
+                    if "master" in uri and uri not in self.captured_video_urls and not found_m3u8:
+                        urls["m3u8"] = uri
+                        urls["headers"] = dict(request.headers)
+                        found_m3u8 = True
+                        continue
+                    if candidate_m3u8 is None and uri not in self.captured_video_urls:
+                        candidate_m3u8 = (uri, dict(request.headers))
+
+                # vtt detection (language-filtered)
                 if (
                     not found_vtt
                     and ".vtt" in uri
                     and "thumbnail" not in uri
                     and uri not in self.captured_subtitle_urls
                     and not any(lang in uri for lang in self.OTHER_LANGS)
-                    and detect_lang(
-                        requests.get(uri, headers=dict(request.headers)).content.decode(
-                            self.ENCODING
-                        )
-                    )
-                    == self.SUBTITLE_LANG
                 ):
-                    if uri in urls["all-vtt"]:
-                        previously_found_vtt += 1
-                        if previously_found_vtt >= len(urls["all-vtt"]):
-                            found_vtt = True
-                        continue
+                    try:
+                        text = requests.get(uri, headers=dict(request.headers), timeout=10).content.decode(
+                            self.ENCODING, errors="ignore"
+                        )
+                        if detect_lang(text) == self.SUBTITLE_LANG:
+                            if uri in urls["all-vtt"]:
+                                previously_found_vtt += 1
+                                if previously_found_vtt >= len(urls["all-vtt"]):
+                                    found_vtt = True
+                            else:
+                                urls["all-vtt"].append(uri)
+                    except Exception:
+                        pass
 
-                    urls["all-vtt"].append(uri)
+            # if no master found yet, accept first candidate
+            if not found_m3u8 and candidate_m3u8:
+                urls["m3u8"], urls["headers"] = candidate_m3u8
+                found_m3u8 = True
+
             attempt += 1
             if attempt in self.DOWNLOAD_REFRESH:
                 self.driver.refresh()
@@ -560,18 +581,18 @@ class HianimeExtractor:
 
     @staticmethod
     def look_for_variants(m3u8_url: str, m3u8_headers: dict[str, Any]) -> str:
-        response = requests.get(m3u8_url, headers=m3u8_headers)
-        lines = response.text.splitlines()
-        url = None
-        for line in lines:
-            if line.strip().endswith(".m3u8") and "iframe" not in line:
-                url = urljoin(m3u8_url, line.strip())
-                break
-        if not url:
-            print("No valid video variant found in master.m3u8")
-            return ""
-
-        return url
+        try:
+            response = requests.get(m3u8_url, headers=m3u8_headers, timeout=15)
+            response.raise_for_status()
+            lines = response.text.splitlines()
+            for line in lines:
+                s = line.strip()
+                if s.endswith(".m3u8") and "iframe" not in s:
+                    return urljoin(m3u8_url, s)
+        except Exception:
+            pass
+        # fallback to original URL if no variant is listed or request fails
+        return m3u8_url
 
     def yt_dlp_download(self, url: str, headers: dict[str, str], location: str) -> bool:
         yt_dlp_options: dict[str, Any] = {
@@ -581,7 +602,7 @@ class HianimeExtractor:
             "format": "best",
             "http_headers": headers,
             "logger": YTDLogger(),
-            "fragment_retries": 10,  # Retry up to 10 times for failed fragments
+            "fragment_retries": 10,
             "retries": 10,
             "socket_timeout": 60,
             "sleep_interval_requests": 1,
