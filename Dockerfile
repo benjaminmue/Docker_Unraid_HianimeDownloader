@@ -1,18 +1,18 @@
 FROM python:3.11-slim
 ENV DEBIAN_FRONTEND=noninteractive PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 
-# Chrome + ffmpeg + runtime libs
+# --- system deps + Chrome + ffmpeg -------------------------------------------------
 RUN apt-get update \
- && apt-get install -y --no-install-recommends curl gnupg ca-certificates apt-transport-https \
-    ffmpeg fonts-liberation libasound2 libnspr4 libnss3 libx11-6 libxcomposite1 libxcursor1 \
-    libxdamage1 libxext6 libxi6 libxrandr2 libxrender1 libxtst6 libglib2.0-0 libdrm2 libgbm1 \
-    libu2f-udev xdg-utils \
- && mkdir -p /etc/apt/keyrings \
- && curl -fsSL https://dl.google.com/linux/linux-signing-key.pub | gpg --dearmor -o /etc/apt/keyrings/google.gpg \
- && echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
-    > /etc/apt/sources.list.d/google-chrome.list \
- && apt-get update && apt-get install -y --no-install-recommends google-chrome-stable \
- && apt-get purge -y curl gnupg && rm -rf /var/lib/apt/lists/*
+ && apt-get install -y --no-install-recommends \
+      wget ca-certificates apt-transport-https \
+      ffmpeg fonts-liberation \
+      libasound2 libnspr4 libnss3 libx11-6 libxcomposite1 libxcursor1 \
+      libxdamage1 libxext6 libxi6 libxrandr2 libxrender1 libxtst6 \
+      libglib2.0-0 libdrm2 libgbm1 libu2f-udev xdg-utils \
+ && wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+ && apt-get install -y /tmp/chrome.deb || apt-get -f install -y \
+ && rm -f /tmp/chrome.deb \
+ && rm -rf /var/lib/apt/lists/*
 
 # Non-root app user (PUID/PGID overridable at build)
 ARG PUID=1000
