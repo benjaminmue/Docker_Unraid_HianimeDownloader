@@ -1,10 +1,51 @@
-/.venv/
-/output/
-.idea
-/.pytest_cache/
-__pycache__
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.log
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build & test
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs / Editors
+.idea/
+.vscode/
 .DS_Store
+
+# Runtime output / downloads
+/output/
+downloads/
+*.mp4
+*.vtt
+*.json
+
+# Environment & config
 .env
-/**/__pycache__
+.env.*
 cookies.txt
-/.vscode/
+
+# System / temp
+tmp/
+temp/
+*.swp
+*.swo
+
+# Docker / Containers
+docker-compose.override.yml
+*.pid
+*.sock
+
+# Ignore cache and session data
+/**/__pycache__/
