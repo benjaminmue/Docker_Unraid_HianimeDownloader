@@ -17,6 +17,12 @@ if [[ "$#" -gt 0 ]]; then
   exec python3 main.py "$@"
 fi
 
+# If no LINK/NAME and we have a TTY (i.e., you opened Console), run interactive
+if [[ -z "${LINK:-}" && -z "${NAME:-}" ]]; then
+  if [[ -t 0 && -t 1 ]]; then
+    exec python3 /app/main.py
+  fi
+fi
 ARGS=()
 [[ -n "${OUTPUT_DIR:-}" ]] && ARGS+=( -o "${OUTPUT_DIR}" )
 [[ -n "${LINK:-}"      ]] && ARGS+=( -l "${LINK}" )
