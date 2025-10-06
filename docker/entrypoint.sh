@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+if [[ -n "${UMASK:-}" ]]; then
+  umask "${UMASK}"
+fi
 cd /app
 
 export CHROME_EXTRA_ARGS="${CHROME_EXTRA_ARGS:-}"
