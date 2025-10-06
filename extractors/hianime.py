@@ -43,10 +43,10 @@ class HianimeExtractor:
         self.name = name
 
         self.HEADERS: dict[str, str] = {
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/123 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3",
-            "Accept-Encoding": "none",
+            "Accept-Encoding": "identity",
             "Accept-Language": "en-US,en;q=0.8",
             "Connection": "keep-alive",
         }
@@ -54,81 +54,32 @@ class HianimeExtractor:
         self.ENCODING = "utf-8"
         self.SUBTITLE_LANG: str = "en"
         self.OTHER_LANGS: list[str] = [
-            "ita",
-            "jpn",
-            "pol",
-            "por",
-            "ara",
-            "chi",
-            "cze",
-            "dan",
-            "dut",
-            "fin",
-            "fre",
-            "ger",
-            "gre",
-            "heb",
-            "hun",
-            "ind",
-            "kor",
-            "nob",
-            "pol",
-            "rum",
-            "rus",
-            "tha",
-            "vie",
-            "swe",
-            "spa",
-            "tur",
-            "ces",
-            "bul",
-            "zho",
-            "nld",
-            "fra",
-            "deu",
-            "ell",
-            "hin",
-            "hrv",
-            "msa",
-            "may",
-            "ron",
-            "slk",
-            "slo",
-            "ukr",
+            "ita", "jpn", "pol", "por", "ara", "chi", "cze", "dan", "dut", "fin",
+            "fre", "ger", "gre", "heb", "hun", "ind", "kor", "nob", "rum", "rus",
+            "tha", "vie", "swe", "spa", "tur", "ces", "bul", "zho", "nld", "fra",
+            "deu", "ell", "hin", "hrv", "msa", "may", "ron", "slk", "slo", "ukr",
         ]
-        self.DOWNLOAD_ATTEMPT_CAP: int = 45
-        self.DOWNLOAD_REFRESH: tuple[int, int] = (15, 30)
+        # make it a little more patient
+        self.DOWNLOAD_ATTEMPT_CAP: int = 60
+        self.DOWNLOAD_REFRESH: tuple[int, int] = (20, 40)
         self.BAD_TITLE_CHARS: list[str] = [
-            "-",
-            ".",
-            "/",
-            "\\",
-            "?",
-            "%",
-            "*",
-            "<",
-            ">",
-            "|",
-            '"',
-            "[",
-            "]",
-            ":",
+            "-", ".", "/", "\\", "?", "%", "*", "<", ">", "|", '"', "[", "]", ":",
         ]
-        self.TITLE_TRANS: dict[int, Any] = str.maketrans(
-            "", "", "".join(self.BAD_TITLE_CHARS)
-        )
+        self.TITLE_TRANS: dict[int, Any] = str.maketrans("", "", "".join(self.BAD_TITLE_CHARS))
+
+        # holders
+        self.captured_video_urls: list[str] = []
+        self.captured_subtitle_urls: list[str] = []
 
     def run(self):
-        anime: Anime | None = (  # type: ignore
+        anime: Anime | None = (
             self.get_anime_from_link(self.link)
             if self.link
             else (self.get_anime(self.name) if self.name else self.get_anime())
         )
-
         if not anime:
             return
 
-        # Display chosen anime details
         print(
             Fore.LIGHTGREEN_EX
             + "\nYou have chosen "
@@ -159,13 +110,11 @@ class HianimeExtractor:
         if number_of_episodes != 1:
             start_ep = get_int_in_range(
                 f"{Fore.LIGHTCYAN_EX}Enter the starting episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
-                1,
-                number_of_episodes,
+                1, number_of_episodes,
             )
             end_ep = get_int_in_range(
                 f"{Fore.LIGHTCYAN_EX}Enter the ending episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
-                1,
-                number_of_episodes,
+                1, number_of_episodes,
             )
         else:
             start_ep = 1
@@ -182,18 +131,14 @@ class HianimeExtractor:
         try:
             button.click()
         except Exception as e:
-            print(
-                f"{Fore.LIGHTRED_EX}Error clicking server button:\n\n{Fore.LIGHTWHITE_EX}{e}"
-            )
+            print(f"{Fore.LIGHTRED_EX}Error clicking server button:\n\n{Fore.LIGHTWHITE_EX}{e}")
 
-        episode_list: list[dict] = self.get_episode_urls(
-            self.driver.page_source, start_ep, end_ep
-        )
-
+        episode_list: list[dict] = self.get_episode_urls(self.driver.page_source, start_ep, end_ep)
         print()
 
-        self.captured_video_urls = []
-        self.captured_subtitle_urls = []
+        self.captured_video_urls.clear()
+        self.captured_subtitle_urls.clear()
+
         for episode in episode_list:
             url = episode["url"]
             number = episode["number"]
@@ -211,6 +156,24 @@ class HianimeExtractor:
                 self.driver.requests.clear()
                 self.driver.get(url)
                 self.driver.execute_script("window.focus();")
+
+                # Try to kick playback so the HLS requests appear
+                time.sleep(1)
+                try:
+                    iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
+                    if iframes:
+                        self.driver.switch_to.frame(iframes[0])
+                    for sel in ("button.jw-icon-play", ".vjs-big-play-button", "video"):
+                        els = self.driver.find_elements(By.CSS_SELECTOR, sel)
+                        if els:
+                            try:
+                                els[0].click()
+                            except Exception:
+                                self.driver.execute_script("document.querySelector('video')?.play?.();")
+                            break
+                finally:
+                    self.driver.switch_to.default_content()
+
                 media_requests = self.capture_media_requests()
                 if not media_requests:
                     print("No m3u8 file was found skipping download")
@@ -218,13 +181,11 @@ class HianimeExtractor:
 
                 episode.update(media_requests)
                 self.captured_video_urls.append(media_requests["m3u8"])
-                if not self.args.no_subtitles:
-                    self.captured_subtitle_urls.append(media_requests.get("vtt"))
+                if not self.args.no_subtitles and media_requests.get("vtt"):
+                    self.captured_subtitle_urls.append(media_requests["vtt"])
             except KeyboardInterrupt:
                 print("\n\nCanceling media capture...")
-                if not get_conformation(
-                    "Would you like to download link capture up to now? (y/n): "
-                ):
+                if not get_conformation("Would you like to download link capture up to now? (y/n): "):
                     self.driver.quit()
                     return
 
@@ -241,15 +202,11 @@ class HianimeExtractor:
         )
         os.makedirs(folder, exist_ok=True)
 
-        # Write to JSON file
-        with open(
-            f"{folder}{anime.name} (Season {anime.season_number}).json", "w"
-        ) as json_file:
+        with open(f"{folder}{anime.name} (Season {anime.season_number}).json", "w") as json_file:
             json.dump({**asdict(anime), "episodes": episodes}, json_file, indent=4)
 
         for episode in episodes:
             name = f"{anime.name} - s{anime.season_number:02}e{episode['number']:02} - {episode['title']}"
-
             m3u8_url = episode.get("m3u8")
             headers = episode.get("headers") or {}
             if not m3u8_url:
@@ -269,25 +226,22 @@ class HianimeExtractor:
                 self.yt_dlp_download(vtt_url, headers, f"{folder}{name}.vtt")
             elif not self.args.no_subtitles:
                 print(f"Skipping {name}.vtt (No VTT Stream Found)")
-            # except Exception as e:
-            #     print(f"\n\nError while downloading {name}: \n\n{e}")
 
     @staticmethod
     def get_download_type():
         ans = (
             input(
-                f"\n{Fore.LIGHTCYAN_EX}Both sub and dub episodes are available. Do you want to download sub or dub? (Enter 'sub' or 'dub'):{Fore.LIGHTYELLOW_EX} "
+                f"\n{Fore.LIGHTCYAN_EX}Both sub and dub episodes are available. Do you want to download sub or dub? "
+                f"(Enter 'sub' or 'dub'):{Fore.LIGHTYELLOW_EX} "
             )
             .strip()
             .lower()
         )
-        if ans == "sub" or ans == "s":
+        if ans in ("sub", "s"):
             return "sub"
-        elif ans == "dub" or ans == "d":
+        if ans in ("dub", "d"):
             return "dub"
-        print(
-            f"{Fore.LIGHTRED_EX}Invalid response, please respond with either 'sub' or 'dub'."
-        )
+        print(f"{Fore.LIGHTRED_EX}Invalid response, please respond with either 'sub' or 'dub'.")
         return HianimeExtractor.get_download_type()
 
     def configure_driver(self) -> None:
@@ -300,9 +254,9 @@ class HianimeExtractor:
         options.add_experimental_option(
             "prefs",
             {
-                "profile.default_content_setting_values.notifications": 2,  # Block notifications
-                "profile.default_content_setting_values.popups": 2,          # Block pop-ups
-                "profile.managed_default_content_settings.ads": 2,           # Block ads
+                "profile.default_content_setting_values.notifications": 2,
+                "profile.default_content_setting_values.popups": 2,
+                "profile.managed_default_content_settings.ads": 2,
             },
         )
         options.add_argument("--disable-features=PopupBlocking")
@@ -312,31 +266,24 @@ class HianimeExtractor:
         options.add_argument("--disable-gpu")
         options.add_argument("--log-level=3")
         options.add_argument("--silent")
+        options.add_argument("--autoplay-policy=no-user-gesture-required")
+        options.add_argument("--disable-features=PreloadMediaEngagementData,MediaEngagementBypassAutoplayPolicies")
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-        # ---------- merge CHROME_EXTRA_ARGS + ensure unique user-data-dir ----------
+        # ---------- merge CHROME_EXTRA_ARGS + ensure unique/writable user-data-dir ----------
         extra = os.environ.get("CHROME_EXTRA_ARGS", "")
         for token in shlex.split(extra):
             options.add_argument(token)
 
-        # Ensure Chrome uses a writable, unique profile unless provided
-        has_ud = any(
-            str(a).startswith("--user-data-dir=")
-            for a in getattr(options, "arguments", [])
-        )
+        has_ud = any(str(a).startswith("--user-data-dir=") for a in getattr(options, "arguments", []))
         if not has_ud:
-            xdg = os.environ.get("XDG_CONFIG_HOME", "/tmp")
-            profile_dir = os.path.join(
-                xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}"
-            )
+            xdg = os.environ.get("XDG_CONFIG_HOME", "/config")
+            profile_dir = os.path.join(xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}")
             try:
                 os.makedirs(profile_dir, exist_ok=True)
             except PermissionError:
-                # fallback to /tmp if /config is not writable
                 xdg = "/tmp"
-                profile_dir = os.path.join(
-                    xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}"
-                )
+                profile_dir = os.path.join(xdg, f"chrome-profile-{int(time.time())}-{os.getpid()}")
                 os.makedirs(profile_dir, exist_ok=True)
             options.add_argument(f"--user-data-dir={profile_dir}")
 
@@ -350,7 +297,7 @@ class HianimeExtractor:
         ensure("--remote-debugging-port=0")
         if not any("--headless" in str(a) for a in getattr(options, "arguments", [])):
             options.add_argument("--headless=new")
-        # --------------------------------------------------------------------------
+        # ------------------------------------------------------------------------------------
 
         seleniumwire_options: dict[str, bool] = {
             "verify_ssl": False,
@@ -387,24 +334,14 @@ class HianimeExtractor:
         )
 
     def get_server_options(self, download_type: str) -> list[WebElement]:
-        WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.ID, "servers-content"))
-        )
-
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "servers-content")))
         options = [
-            _type.find_element(By.CLASS_NAME, "ps__-list").find_elements(
-                By.TAG_NAME, "a"
+            _type.find_element(By.CLASS_NAME, "ps__-list").find_elements(By.TAG_NAME, "a")
+            for _type in self.driver.find_element(By.ID, "servers-content").find_elements(
+                By.XPATH, "./div[contains(@class, 'ps_-block')]"
             )
-            for _type in self.driver.find_element(
-                By.ID, "servers-content"
-            ).find_elements(By.XPATH, "./div[contains(@class, 'ps_-block')]")
         ]
-
-        return (
-            options[0]
-            if len(options) == 1 or (download_type == "sub" or download_type == "s")
-            else options[1]
-        )
+        return options[0] if len(options) == 1 or (download_type in ("sub", "s")) else options[1]
 
     def find_server_button(self, anime: Anime) -> WebElement | None:
         options = self.get_server_options(anime.download_type)
@@ -417,12 +354,8 @@ class HianimeExtractor:
 
         if not selection:
             if self.args.server:
-                print(
-                    f"{Fore.LIGHTGREEN_EX}The server name you provided does not exist\n"
-                )
-            print(
-                f"\n{Fore.LIGHTGREEN_EX}Select the server you want to download from: \n"
-            )
+                print(f"{Fore.LIGHTGREEN_EX}The server name you provided does not exist\n")
+            print(f"\n{Fore.LIGHTGREEN_EX}Select the server you want to download from: \n")
 
             server_names = []
             for i, option in enumerate(options):
@@ -433,12 +366,7 @@ class HianimeExtractor:
             self.driver.quit()
 
             selection = server_names[
-                get_int_in_range(
-                    f"\n{Fore.LIGHTCYAN_EX}Server:{Fore.LIGHTYELLOW_EX} ",
-                    1,
-                    len(options),
-                )
-                - 1
+                get_int_in_range(f"\n{Fore.LIGHTCYAN_EX}Server:{Fore.LIGHTYELLOW_EX} ", 1, len(options)) - 1
             ]
         else:
             self.driver.requests.clear()
@@ -450,7 +378,6 @@ class HianimeExtractor:
         self.driver.get(anime.url)
 
         options = self.get_server_options(anime.download_type)
-
         for option in options:
             if option.text == selection:
                 return option
@@ -458,24 +385,17 @@ class HianimeExtractor:
         print(f"{Fore.LIGHTRED_EX}No matching server button could be found")
         return None
 
-    def get_episode_urls(
-        self, page: str, start_episode: int, end_episode: int
-    ) -> list[dict[str, Any]]:
+    def get_episode_urls(self, page: str, start_episode: int, end_episode: int) -> list[dict[str, Any]]:
         episodes: list[dict[str, Any]] = []
         soup = BeautifulSoup(page, "html.parser")
 
         links: list[Tag] = soup.find_all("a", attrs={"data-number": True})  # type: ignore
-
         for link in links:
             episode_number: int = int(str(link.get("data-number")))
             if start_episode <= episode_number <= end_episode:
                 url = urljoin(self.URL, str(link["href"]))
                 episode_title = link.get("title")
-                episode_info = {
-                    "url": url,
-                    "number": int(episode_number),
-                    "title": episode_title,
-                }
+                episode_info = {"url": url, "number": int(episode_number), "title": episode_title}
                 episodes.append(episode_info)
         return episodes
 
@@ -489,9 +409,7 @@ class HianimeExtractor:
         candidate_m3u8: tuple[str, dict[str, str]] | None = None
         all_urls: list[str] = []
 
-        while (
-            not found_m3u8 or not found_vtt
-        ) and self.DOWNLOAD_ATTEMPT_CAP >= attempt:
+        while (not found_m3u8 or not found_vtt) and self.DOWNLOAD_ATTEMPT_CAP >= attempt:
             sys.stdout.write(
                 f"\r{Fore.CYAN}Attempt #{attempt} - {self.DOWNLOAD_ATTEMPT_CAP - attempt} Attempts Remaining"
             )
@@ -505,17 +423,16 @@ class HianimeExtractor:
                 if uri not in all_urls:
                     all_urls.append(uri)
 
-                # m3u8 selection: prefer master, otherwise take first valid playlist
-                if uri.endswith(".m3u8") and "thumbnail" not in uri and "iframe" not in uri:
+                # --- HLS detection: accept any .m3u8 (prefer "master" if seen) ---
+                if ".m3u8" in uri and "thumbnail" not in uri and "iframe" not in uri:
                     if "master" in uri and uri not in self.captured_video_urls and not found_m3u8:
                         urls["m3u8"] = uri
                         urls["headers"] = dict(request.headers)
                         found_m3u8 = True
-                        continue
-                    if candidate_m3u8 is None and uri not in self.captured_video_urls:
+                    elif candidate_m3u8 is None and uri not in self.captured_video_urls:
                         candidate_m3u8 = (uri, dict(request.headers))
 
-                # vtt detection (language-filtered)
+                # --- subtitle detection (language-filtered) ---
                 if (
                     not found_vtt
                     and ".vtt" in uri
@@ -537,7 +454,7 @@ class HianimeExtractor:
                     except Exception:
                         pass
 
-            # if no master found yet, accept first candidate
+            # adopt first candidate if no master seen
             if not found_m3u8 and candidate_m3u8:
                 urls["m3u8"], urls["headers"] = candidate_m3u8
                 found_m3u8 = True
@@ -551,9 +468,11 @@ class HianimeExtractor:
         if not found_m3u8:
             print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
             return None
+
         if not found_vtt:
             print(
-                f"\n{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file, option '--no-subtitles' can be used to skip downloading subtitles."
+                f"\n{Fore.LIGHTRED_EX}No .vtt streams found. Check that the subtitles are not apart of the video file,"
+                f" option '--no-subtitles' can be used to skip downloading subtitles."
             )
             self.args.no_subtitles = get_conformation(
                 f"\n{Fore.LIGHTCYAN_EX}Would you like to skip the collection of subtiles on the following episodes (y/n): "
@@ -564,17 +483,12 @@ class HianimeExtractor:
                 urls["vtt"] = urls["all-vtt"][0]
                 return urls
 
-            print(
-                "\nMore than one subtitle file was found plesae select the on you would like to download:\n"
-            )
+            print("\nMore than one subtitle file was found, please select the one you would like to download:\n")
             for i, vtt in enumerate(urls["all-vtt"]):
                 print(f" {i + 1} - {vtt}")
 
-            selection = get_int_in_range(
-                "\nSelected Subtitle: ", 1, len(urls["all-vtt"]) + 1
-            )
+            selection = get_int_in_range("\nSelected Subtitle: ", 1, len(urls["all-vtt"]) + 1)
             print()
-
             urls["vtt"] = urls["all-vtt"][selection - 1]
 
         return urls
@@ -591,7 +505,6 @@ class HianimeExtractor:
                     return urljoin(m3u8_url, s)
         except Exception:
             pass
-        # fallback to original URL if no variant is listed or request fails
         return m3u8_url
 
     def yt_dlp_download(self, url: str, headers: dict[str, str], location: str) -> bool:
@@ -616,17 +529,14 @@ class HianimeExtractor:
                 ydl.download([url])
             except KeyboardInterrupt:
                 print(
-                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for {location[location.rfind(os.sep) + 1:-4]}"
+                    f"\n\n{Fore.LIGHTCYAN_EX}Canceling Downloads...\nRemoving Temp Files for "
+                    f"{location[location.rfind(os.sep) + 1:-4]}"
                 )
                 _return = False
                 ydl.close()
 
         if not _return:
-            for file in [
-                f
-                for f in glob(location[:-4] + ".*")
-                if not f.endswith((".mp4", ".vtt"))
-            ]:
+            for file in [f for f in glob(location[:-4] + ".*") if not f.endswith((".mp4", ".vtt"))]:
                 safe_remove(file)
 
         return _return
@@ -637,56 +547,38 @@ class HianimeExtractor:
 
         search_name: str = name if name else input("Enter Name of Anime: ")
 
-        # GET ANIME ELEMENTS FROM PAGE
         url: str = urljoin(self.URL, "/search?keyword=" + search_name)
-        search_page_response: requests.Response = requests.get(
-            url, headers=self.HEADERS
-        )
-        search_page_soup: BeautifulSoup = BeautifulSoup(
-            search_page_response.content, "html.parser"
-        )
+        search_page_response: requests.Response = requests.get(url, headers=self.HEADERS)
+        search_page_soup: BeautifulSoup = BeautifulSoup(search_page_response.content, "html.parser")
 
         main_content: Tag = search_page_soup.find("div", id="main-content")  # type: ignore
         anime_elements: list[Tag] = main_content.find_all("div", class_="flw-item")  # type: ignore
 
         if not anime_elements:
             print("No anime found")
-            return  # Exit if no anime is found
+            return
 
-        # MAKE DICT WITH ANIME TITLES
         anime_list: list[Anime] = []
-        for i, element in enumerate(anime_elements, 1):
+        for element in anime_elements:
             raw_name: str = element.find("h3", class_="film-name").text  # type: ignore
             name_of_anime: str = raw_name.translate(self.TITLE_TRANS)
             url_of_anime: str = urljoin(
-                self.URL,
-                str(element.find("a", class_="film-poster-ahref item-qtip")["href"]),  # type: ignore
+                self.URL, str(element.find("a", class_="film-poster-ahref item-qtip")["href"])  # type: ignore
             )
 
             try:
-                # Some anime has no subs
-                sub_episodes_available: int = element.find(
-                    "div", class_="tick-item tick-sub"
-                ).text  # type: ignore
+                sub_episodes_available: int = element.find("div", class_="tick-item tick-sub").text  # type: ignore
             except AttributeError:
-                sub_episodes_available: int = 0
+                sub_episodes_available = 0
             try:
-                dub_episodes_available: int = element.find(
-                    "div", class_="tick-item tick-dub"
-                ).text  # type: ignore
+                dub_episodes_available: int = element.find("div", class_="tick-item tick-dub").text  # type: ignore
             except AttributeError:
-                dub_episodes_available: int = 0
+                dub_episodes_available = 0
 
             anime_list.append(
-                Anime(
-                    name_of_anime,
-                    url_of_anime,
-                    int(sub_episodes_available),
-                    int(dub_episodes_available),
-                )
+                Anime(name_of_anime, url_of_anime, int(sub_episodes_available), int(dub_episodes_available))
             )
 
-        # PRINT ANIME TITLES TO THE CONSOLE
         for i, anime in enumerate(anime_list, start=1):
             print(
                 " "
@@ -696,8 +588,7 @@ class HianimeExtractor:
                 + Fore.LIGHTCYAN_EX
                 + anime.name
                 + Fore.WHITE
-                + " | "
-                + "Episodes: "
+                + " | Episodes: "
                 + Fore.LIGHTYELLOW_EX
                 + str(anime.sub_episodes)
                 + Fore.LIGHTWHITE_EX
@@ -710,7 +601,6 @@ class HianimeExtractor:
                 + " dub"
             )
 
-        # USER SELECTS ANIME
         return anime_list[
             get_int_in_range(
                 f"\n{Fore.LIGHTCYAN_EX}Select an anime you want to download:{Fore.LIGHTYELLOW_EX} ",
@@ -727,18 +617,17 @@ class HianimeExtractor:
         anime_stats: Tag = main_div.find("div", "film-stats")  # type: ignore
 
         try:
-            # Some anime has no subs
             sub_episodes_available: int = int(
                 anime_stats.find("div", class_="tick-item tick-sub").text  # type: ignore
             )
         except AttributeError:
-            sub_episodes_available: int = 0
+            sub_episodes_available = 0
         try:
             dub_episodes_available: int = int(
                 anime_stats.find("div", class_="tick-item tick-dub").text  # type: ignore
             )
         except AttributeError:
-            dub_episodes_available: int = 0
+            dub_episodes_available = 0
 
         a_tag: Tag = main_div.find("h2", "film-name").find("a")  # type: ignore
         return Anime(
