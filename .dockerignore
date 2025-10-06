@@ -1,0 +1,7 @@
+.git
+.gitignore
+*.log
+__pycache__/
+*.pyc
+downloads/
+config/
