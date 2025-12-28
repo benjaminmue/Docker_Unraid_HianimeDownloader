@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs - GDownloader{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="bi bi-list-task"></i> Download Jobs</h4>
+                <button class="btn btn-light btn-sm" onclick="location.reload()">
+                    <i class="bi bi-arrow-clockwise"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                {% if not jobs %}
+                <div class="text-center text-muted py-5">
+                    <i class="bi bi-inbox" style="font-size: 3rem;"></i>
+                    <p class="mt-3">No jobs yet. <a href="/">Create your first download</a></p>
+                </div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>URL</th>
+                                <th>Progress</th>
+                                <th>Created</th>
+                                <th>Started</th>
+                                <th>Finished</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for job in jobs %}
+                            <tr>
+                                <td><strong>#{{ job.id }}</strong></td>
+                                <td>
+                                    {% if job.status == 'queued' %}
+                                    <span class="badge bg-secondary status-badge">
+                                        <i class="bi bi-hourglass"></i> Queued
+                                    </span>
+                                    {% elif job.status == 'running' %}
+                                    <span class="badge bg-primary status-badge">
+                                        <i class="bi bi-arrow-repeat"></i> Running
+                                    </span>
+                                    {% elif job.status == 'success' %}
+                                    <span class="badge bg-success status-badge">
+                                        <i class="bi bi-check-circle"></i> Success
+                                    </span>
+                                    {% elif job.status == 'failed' %}
+                                    <span class="badge bg-danger status-badge">
+                                        <i class="bi bi-x-circle"></i> Failed
+                                    </span>
+                                    {% elif job.status == 'canceled' %}
+                                    <span class="badge bg-warning text-dark status-badge">
+                                        <i class="bi bi-dash-circle"></i> Canceled
+                                    </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div style="max-width: 300px; overflow: hidden; text-overflow: ellipsis;">
+                                        <small>{{ job.url }}</small>
+                                    </div>
+                                    {% if job.progress_text %}
+                                    <div class="text-muted" style="font-size: 0.8rem;">
+                                        {{ job.progress_text }}
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center" style="min-width: 120px;">
+                                        <div class="progress flex-grow-1 me-2" style="height: 20px;">
+                                            <div
+                                                class="progress-bar
+                                                {% if job.status == 'success' %}bg-success
+                                                {% elif job.status == 'failed' %}bg-danger
+                                                {% elif job.status == 'canceled' %}bg-warning
+                                                {% else %}progress-bar-striped progress-bar-animated
+                                                {% endif %}"
+                                                role="progressbar"
+                                                style="width: {{ job.progress_percent }}%"
+                                                aria-valuenow="{{ job.progress_percent }}"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                            >
+                                            </div>
+                                        </div>
+                                        <small class="text-muted">{{ job.progress_percent }}%</small>
+                                    </div>
+                                    {% if job.stage %}
+                                    <small class="text-muted">{{ job.stage }}</small>
+                                    {% endif %}
+                                </td>
+                                <td><small>{{ job.created_at[:19].replace('T', ' ') }}</small></td>
+                                <td>
+                                    {% if job.started_at %}
+                                    <small>{{ job.started_at[:19].replace('T', ' ') }}</small>
+                                    {% else %}
+                                    <small class="text-muted">-</small>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if job.finished_at %}
+                                    <small>{{ job.finished_at[:19].replace('T', ' ') }}</small>
+                                    {% else %}
+                                    <small class="text-muted">-</small>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="/jobs/{{ job.id }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> Details
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-refresh every 5 seconds if there are running jobs
+{% if jobs %}
+let hasRunningJobs = {{ 'true' if jobs | selectattr('status', 'in', ['queued', 'running']) | list else 'false' }};
+if (hasRunningJobs) {
+    setTimeout(() => location.reload(), 5000);
+}
+{% endif %}
+</script>
+{% endblock %}

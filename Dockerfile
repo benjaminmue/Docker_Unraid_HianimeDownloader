@@ -34,7 +34,8 @@ VOLUME ["/downloads", "/config"]
 ENV OUTPUT_DIR=/downloads CHROME_EXTRA_ARGS="" PYTHONPATH=/app
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh && chown -R app:app /app
+COPY docker/webgui-entrypoint.sh /app/docker/webgui-entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh /app/docker/webgui-entrypoint.sh && chown -R app:app /app
 
-USER app
+# Don't set USER here for webgui - entrypoint will handle it
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

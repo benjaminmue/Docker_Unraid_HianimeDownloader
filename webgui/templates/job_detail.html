@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block title %}Job #{{ job.id }} - GDownloader{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="bi bi-info-circle"></i> Job #{{ job.id }}</h4>
+                <div>
+                    <a href="/jobs" class="btn btn-light btn-sm">
+                        <i class="bi bi-arrow-left"></i> Back to Jobs
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Job Status -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h5>Status</h5>
+                        <div id="statusBadge">
+                            {% if job.status == 'queued' %}
+                            <span class="badge bg-secondary status-badge fs-5">
+                                <i class="bi bi-hourglass"></i> Queued
+                            </span>
+                            {% elif job.status == 'running' %}
+                            <span class="badge bg-primary status-badge fs-5">
+                                <i class="bi bi-arrow-repeat"></i> Running
+                            </span>
+                            {% elif job.status == 'success' %}
+                            <span class="badge bg-success status-badge fs-5">
+                                <i class="bi bi-check-circle"></i> Success
+                            </span>
+                            {% elif job.status == 'failed' %}
+                            <span class="badge bg-danger status-badge fs-5">
+                                <i class="bi bi-x-circle"></i> Failed
+                            </span>
+                            {% elif job.status == 'canceled' %}
+                            <span class="badge bg-warning text-dark status-badge fs-5">
+                                <i class="bi bi-dash-circle"></i> Canceled
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Progress</h5>
+                        <div class="progress" style="height: 30px;">
+                            <div
+                                id="progressBar"
+                                class="progress-bar
+                                {% if job.status == 'success' %}bg-success
+                                {% elif job.status == 'failed' %}bg-danger
+                                {% elif job.status == 'canceled' %}bg-warning
+                                {% else %}progress-bar-striped progress-bar-animated
+                                {% endif %}"
+                                role="progressbar"
+                                style="width: {{ job.progress_percent }}%"
+                                aria-valuenow="{{ job.progress_percent }}"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                <span id="progressText">{{ job.progress_percent }}%</span>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <small class="text-muted" id="stageText">
+                                {% if job.stage %}Stage: {{ job.stage }}{% endif %}
+                            </small>
+                            <br>
+                            <small class="text-muted" id="progressDetailText">
+                                {% if job.progress_text %}{{ job.progress_text }}{% endif %}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Details -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5>Details</h5>
+                        <table class="table table-sm">
+                            <tr>
+                                <th style="width: 150px;">URL:</th>
+                                <td><a href="{{ job.url }}" target="_blank">{{ job.url }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Profile:</th>
+                                <td>{{ job.profile or 'Default' }}</td>
+                            </tr>
+                            {% if job.extra_args %}
+                            <tr>
+                                <th>Extra Args:</th>
+                                <td><code>{{ job.extra_args }}</code></td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <th>Created:</th>
+                                <td>{{ job.created_at }}</td>
+                            </tr>
+                            <tr>
+                                <th>Started:</th>
+                                <td>{{ job.started_at or '-' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Finished:</th>
+                                <td>{{ job.finished_at or '-' }}</td>
+                            </tr>
+                            {% if job.error_message %}
+                            <tr>
+                                <th>Error:</th>
+                                <td class="text-danger">{{ job.error_message }}</td>
+                            </tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5>Actions</h5>
+                        <div class="btn-group" role="group">
+                            {% if job.status in ['queued', 'running'] %}
+                            <button class="btn btn-warning" onclick="cancelJob({{ job.id }})">
+                                <i class="bi bi-x-circle"></i> Cancel Job
+                            </button>
+                            {% endif %}
+                            {% if job.log_file %}
+                            <a href="/api/jobs/{{ job.id }}/log" class="btn btn-outline-primary" download>
+                                <i class="bi bi-download"></i> Download Log
+                            </a>
+                            <a href="/api/jobs/{{ job.id }}/diagnostics" class="btn btn-outline-secondary" download>
+                                <i class="bi bi-file-earmark-zip"></i> Download Diagnostics
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Log Viewer -->
+                <div class="row">
+                    <div class="col-12">
+                        <h5>Live Log</h5>
+                        <div class="log-viewer" id="logViewer">
+                            {% if job.log_file %}
+                            <div class="text-muted">Loading log...</div>
+                            {% else %}
+                            <div class="text-muted">No log available yet</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const jobId = {{ job.id }};
+let eventSource = null;
+
+// Connect to SSE endpoint for live updates
+function connectEventSource() {
+    if (eventSource) {
+        eventSource.close();
+    }
+
+    eventSource = new EventSource(`/api/jobs/${jobId}/events`);
+
+    eventSource.addEventListener('status', (e) => {
+        const data = JSON.parse(e.data);
+        updateStatus(data);
+    });
+
+    eventSource.addEventListener('log', (e) => {
+        const data = JSON.parse(e.data);
+        appendLog(data.lines);
+    });
+
+    eventSource.addEventListener('complete', (e) => {
+        const data = JSON.parse(e.data);
+        console.log('Job complete:', data.status);
+        eventSource.close();
+        // Reload page after a delay to show final state
+        setTimeout(() => location.reload(), 2000);
+    });
+
+    eventSource.addEventListener('error', (e) => {
+        console.error('EventSource error:', e);
+        eventSource.close();
+    });
+}
+
+function updateStatus(data) {
+    // Update progress bar
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+
+    progressBar.style.width = `${data.progress_percent}%`;
+    progressBar.setAttribute('aria-valuenow', data.progress_percent);
+    progressText.textContent = `${data.progress_percent}%`;
+
+    // Update stage
+    const stageText = document.getElementById('stageText');
+    if (data.stage) {
+        stageText.textContent = `Stage: ${data.stage}`;
+    }
+
+    // Update progress detail text
+    const progressDetailText = document.getElementById('progressDetailText');
+    if (data.progress_text) {
+        progressDetailText.textContent = data.progress_text;
+    }
+
+    // Update status badge
+    const statusBadge = document.getElementById('statusBadge');
+    let badgeClass = 'badge status-badge fs-5';
+    let badgeIcon = '';
+    let badgeText = data.status;
+
+    switch (data.status) {
+        case 'queued':
+            badgeClass += ' bg-secondary';
+            badgeIcon = 'hourglass';
+            badgeText = 'Queued';
+            break;
+        case 'running':
+            badgeClass += ' bg-primary';
+            badgeIcon = 'arrow-repeat';
+            badgeText = 'Running';
+            break;
+        case 'success':
+            badgeClass += ' bg-success';
+            badgeIcon = 'check-circle';
+            badgeText = 'Success';
+            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
+            progressBar.classList.add('bg-success');
+            break;
+        case 'failed':
+            badgeClass += ' bg-danger';
+            badgeIcon = 'x-circle';
+            badgeText = 'Failed';
+            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
+            progressBar.classList.add('bg-danger');
+            break;
+        case 'canceled':
+            badgeClass += ' bg-warning text-dark';
+            badgeIcon = 'dash-circle';
+            badgeText = 'Canceled';
+            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
+            progressBar.classList.add('bg-warning');
+            break;
+    }
+
+    statusBadge.innerHTML = `<span class="${badgeClass}"><i class="bi bi-${badgeIcon}"></i> ${badgeText}</span>`;
+}
+
+function appendLog(lines) {
+    const logViewer = document.getElementById('logViewer');
+
+    // Clear "loading" message on first log line
+    if (logViewer.querySelector('.text-muted')) {
+        logViewer.innerHTML = '';
+    }
+
+    lines.forEach(line => {
+        const lineDiv = document.createElement('div');
+        lineDiv.className = 'log-line';
+        lineDiv.textContent = line;
+        logViewer.appendChild(lineDiv);
+    });
+
+    // Auto-scroll to bottom
+    logViewer.scrollTop = logViewer.scrollHeight;
+}
+
+async function cancelJob(jobId) {
+    if (!confirm('Are you sure you want to cancel this job?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/jobs/${jobId}/cancel`, {
+            method: 'POST',
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to cancel job');
+        }
+
+        alert('Job canceled successfully');
+        location.reload();
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    }
+}
+
+// Start SSE connection if job is active
+{% if job.status in ['queued', 'running'] %}
+connectEventSource();
+{% endif %}
+</script>
+{% endblock %}

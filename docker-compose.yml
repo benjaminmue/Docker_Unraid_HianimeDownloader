@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  # CLI Mode - Traditional command-line downloader
+  hianime-downloader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PUID: 1000
+        PGID: 1000
+    container_name: hianime-downloader
+    environment:
+      # Output directory (mounted below)
+      OUTPUT_DIR: /downloads
+
+      # Anime download configuration
+      # LINK: https://hianime.to/watch/anime-name-12345
+      # NAME: "Anime Title"
+      # DOWNLOAD_TYPE: sub  # or 'dub'
+      # EP_FROM: 1
+      # EP_TO: 12
+      # SEASON: 1
+      # SERVER: HD-1
+
+      # Options
+      # NO_SUBTITLES: false
+      # ARIA: false
+
+      # Chrome settings
+      CHROME_EXTRA_ARGS: ""
+      # CHROME_PERSIST_PROFILE: false
+
+      # Python settings
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+
+    volumes:
+      # Video file storage - mapped to your temp directory
+      - /Users/benjamin/Documents/GitHub/temp:/downloads
+
+      # Optional: Persistent Chrome profile storage
+      - hianime-config:/config
+
+    # Uncomment for interactive mode (when not using env vars)
+    # stdin_open: true
+    # tty: true
+
+    restart: unless-stopped
+    profiles: ["cli"]  # Only start with --profile cli
+
+  # WebGUI Mode - Web interface with background job processing
+  hianime-webgui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PUID: 1000
+        PGID: 1000
+    container_name: hianime-webgui
+    entrypoint: ["/bin/bash", "/app/docker/webgui-entrypoint.sh"]
+    environment:
+      # Directories
+      CONFIG_DIR: /config
+      OUTPUT_DIR: /downloads
+
+      # Web server settings
+      WEB_PORT: 8080
+      LOG_LEVEL: INFO
+
+      # Security - URL allowlist (comma-separated domains)
+      # Empty = reject all URLs (recommended for security)
+      # Examples: "hianime.to,youtube.com,instagram.com"
+      URL_ALLOWLIST: "hianime.to,youtube.com,instagram.com,tiktok.com"
+
+      # Optional: Basic authentication
+      # WEB_USER: admin
+      # WEB_PASSWORD: changeme
+
+      # Chrome settings
+      CHROME_EXTRA_ARGS: ""
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+
+    volumes:
+      # Video file storage
+      - /Users/benjamin/Documents/GitHub/temp:/downloads
+
+      # Persistent config (database, logs)
+      - hianime-webgui-config:/config
+
+    ports:
+      - "8080:8080"
+
+    restart: unless-stopped
+
+    # Optional: Resource limits
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2.0'
+    #       memory: 2G
+    #     reservations:
+    #       memory: 512M
+
+volumes:
+  hianime-config:
+    driver: local
+  hianime-webgui-config:
+    driver: local

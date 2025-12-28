@@ -1,0 +1,1 @@
+# WebGUI package for GDownloader

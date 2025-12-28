@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %}New Download - GDownloader{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-download"></i> New Download</h4>
+            </div>
+            <div class="card-body">
+                {% if allowlist_enabled %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i> <strong>URL Allowlist Active:</strong>
+                    {% if allowlist %}
+                        Only URLs from the following domains are allowed:
+                        <code>{{ allowlist | join(', ') }}</code>
+                    {% else %}
+                        No domains are allowed. Please configure <code>URL_ALLOWLIST</code> environment variable.
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <form id="downloadForm">
+                    <div class="mb-3">
+                        <label for="url" class="form-label">Media URL <span class="text-danger">*</span></label>
+                        <input
+                            type="url"
+                            class="form-control"
+                            id="url"
+                            name="url"
+                            required
+                            placeholder="https://example.com/video"
+                            autocomplete="off"
+                        >
+                        <div class="form-text">
+                            Enter the URL of the media you want to download
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="profile" class="form-label">Output Profile (Optional)</label>
+                        <select class="form-select" id="profile" name="profile">
+                            <option value="">Default</option>
+                            <option value="sub">Subtitle</option>
+                            <option value="dub">Dubbed</option>
+                        </select>
+                        <div class="form-text">
+                            Select output profile if applicable
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="extra_args" class="form-label">Extra Arguments (Optional)</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="extra_args"
+                            name="extra_args"
+                            placeholder="--ep-from 1 --ep-to 12"
+                            autocomplete="off"
+                        >
+                        <div class="form-text">
+                            Additional command-line arguments (advanced users only)
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-play-circle"></i> Start Download
+                        </button>
+                    </div>
+                </form>
+
+                <div id="submitResult" class="mt-3" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="card shadow mt-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="bi bi-question-circle"></i> How to Use</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Enter the URL of the media you want to download</li>
+                    <li>Optionally select an output profile or add extra arguments</li>
+                    <li>Click "Start Download" to queue the job</li>
+                    <li>View progress on the <a href="/jobs">Jobs</a> page</li>
+                </ol>
+                <p class="mb-0 text-muted">
+                    <small>
+                        <i class="bi bi-info-circle"></i>
+                        Downloads run in the background. You can close your browser and they will continue.
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('downloadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const resultDiv = document.getElementById('submitResult');
+
+    // Disable button
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Starting...';
+
+    // Get form data
+    const formData = {
+        url: document.getElementById('url').value,
+        profile: document.getElementById('profile').value || null,
+        extra_args: document.getElementById('extra_args').value || null,
+    };
+
+    try {
+        const response = await fetch('/api/jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'Failed to create job');
+        }
+
+        const job = await response.json();
+
+        // Show success message
+        resultDiv.className = 'alert alert-success';
+        resultDiv.innerHTML = `
+            <i class="bi bi-check-circle"></i>
+            <strong>Job Created!</strong>
+            Job #${job.id} has been queued.
+            <a href="/jobs/${job.id}" class="alert-link">View Details</a> or
+            <a href="/jobs" class="alert-link">View All Jobs</a>
+        `;
+        resultDiv.style.display = 'block';
+
+        // Reset form
+        e.target.reset();
+
+    } catch (error) {
+        // Show error message
+        resultDiv.className = 'alert alert-danger';
+        resultDiv.innerHTML = `
+            <i class="bi bi-exclamation-triangle"></i>
+            <strong>Error:</strong> ${error.message}
+        `;
+        resultDiv.style.display = 'block';
+    } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="bi bi-play-circle"></i> Start Download';
+    }
+});
+</script>
+{% endblock %}

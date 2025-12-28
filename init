@@ -1,0 +1,119 @@
+# Docker_Unraid_HianimeDownloader - Project Overview
+
+## What is GDownloader?
+
+GDownloader is a Docker-optimized CLI tool for downloading anime from HiAnime.to and media from various social platforms (Instagram, YouTube, TikTok, etc.). It's specifically designed to run in containerized environments like Docker and Unraid with full automation support, while also supporting interactive local usage.
+
+## Core Purpose
+
+This project solves the challenge of downloading anime episodes and social media content in automated, headless environments. It combines browser automation with advanced video downloading to extract streaming content that typically requires JavaScript rendering and bypasses simple download methods.
+
+## Key Features
+
+- **Anime Downloading**: Automated anime episode downloads from hianime.to with:
+  - Interactive anime search or direct URL support
+  - Sub/Dub format selection
+  - Episode range selection (specific episodes or entire seasons)
+  - Multiple server options (HD-1, HD-2, etc.)
+  - Multi-language subtitle support (40+ languages)
+  - Metadata JSON generation for episode tracking
+
+- **Social Media Downloading**:
+  - Instagram posts, reels, and profile downloads
+  - YouTube video extraction
+  - TikTok content downloads
+  - General yt-dlp compatible sites
+
+- **Docker/Unraid Optimization**:
+  - Pre-installed Chrome and ffmpeg in container
+  - Full environment variable automation (no TTY required)
+  - Persistent Chrome profiles support
+  - Non-root user support (PUID/PGID)
+  - Volume mounts for downloads and config
+
+## Architecture
+
+The project uses a modular extractor pattern with three specialized components:
+
+1. **HianimeExtractor** - Selenium-based browser automation with network interception to capture HLS streams and subtitles from hianime.to
+
+2. **InstagramExtractor** - gallery_dl integration for Instagram content with yt-dlp fallback
+
+3. **GeneralExtractor** - yt-dlp based downloader for all other video platforms
+
+## Technology Stack
+
+- **Python 3.10+** - Core runtime
+- **Selenium + Selenium-Wire** - Browser automation with network request interception
+- **yt-dlp** - Video/audio extraction and HLS stream downloading
+- **gallery_dl** - Instagram specialized downloads
+- **ffmpeg** - Media processing and conversion
+- **BeautifulSoup4** - HTML parsing
+- **selenium-stealth** - Anti-bot detection
+
+## How It Works
+
+### HiAnime Download Flow:
+1. User provides anime name or hianime.to URL
+2. Selenium launches headless Chrome with network interception
+3. Browser navigates to anime page and triggers video playback
+4. Network requests are captured to extract .m3u8 master playlist URLs
+5. Subtitle (.vtt) files are detected and filtered by language
+6. yt-dlp downloads HLS streams with fragment retry logic
+7. ffmpeg converts streams to MP4 format
+8. Metadata JSON is created with episode information
+
+### Social Media Flow:
+1. URL is detected (Instagram, YouTube, etc.)
+2. Appropriate extractor is selected
+3. Content is downloaded via gallery_dl or yt-dlp
+4. Files are saved with structured naming
+
+## Environment Variable Support
+
+Full automation is achieved through environment variables:
+- `OUTPUT_DIR` - Download destination
+- `LINK` or `NAME` - Anime URL or search term
+- `DOWNLOAD_TYPE` - sub/dub selection
+- `EP_FROM`, `EP_TO` - Episode range
+- `SEASON` - Season number
+- `SERVER` - Streaming server choice
+- `NO_SUBTITLES` - Skip subtitle downloads
+- `ARIA` - Use aria2c as downloader
+
+## Docker Integration
+
+The Docker container includes:
+- Google Chrome (stable) with headless support
+- ffmpeg for media processing
+- aria2 for alternative downloads
+- Automatic Chrome process cleanup
+- Ephemeral or persistent Chrome profiles
+- Non-root user execution
+
+## Use Cases
+
+- **Home Media Servers**: Automated anime downloading for Plex/Jellyfin libraries
+- **Unraid Integration**: Containerized downloading with volume mounts
+- **Content Archival**: Batch downloading of episodes with metadata
+- **Social Media Backup**: Instagram/YouTube content preservation
+- **Local Development**: Interactive CLI for manual downloads
+
+## Output Structure
+
+Downloads are organized with structured directories and include:
+- MP4 video files (merged audio/video)
+- VTT subtitle files (language-filtered)
+- JSON metadata files (episode information)
+- Organized by anime/content title
+
+## Known Limitations
+
+- M3U8 stream detection may occasionally fail
+- Chrome sessions require adequate system resources
+- Some streaming servers may be unreliable
+- Best used with monitoring for production scenarios
+
+## Project Status
+
+Active development with open issues tracked on GitHub. Suitable for personal use and home lab environments. Docker/Unraid deployment is the recommended approach for stability and automation.

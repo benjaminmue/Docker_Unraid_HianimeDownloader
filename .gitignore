@@ -49,3 +49,6 @@ docker-compose.override.yml
 
 # Ignore cache and session data
 /**/__pycache__/
+
+# Documentation (exclude from commits)
+claude.md
