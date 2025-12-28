@@ -2,11 +2,16 @@
 
 Complete guide for Docker deployment of HiAni DL, including environment variables, volumes, and Unraid integration.
 
+> 🐳 **Docker is Required**
+>
+> HiAni DL **only runs in Docker** - no standalone Python installation is supported or documented. All dependencies (Chrome, ffmpeg, Python packages) are included in the Docker image. This ensures consistent behavior across all platforms and eliminates dependency management issues.
+
 ---
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
+- [Minimal Docker Compose Example](#minimal-docker-compose-example)
 - [Environment Variables](#environment-variables)
 - [Volume Mounts](#volume-mounts)
 - [Configuration Examples](#configuration-examples)
@@ -18,37 +23,98 @@ Complete guide for Docker deployment of HiAni DL, including environment variable
 
 ## <span style="color: #FF9BCF">Quick Start</span>
 
-### WebGUI Mode (Recommended)
+**The WebGUI starts automatically when you run the container - no additional steps needed!**
+
+### WebGUI Mode (Default)
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader.git
-cd Docker_Unraid_HianimeDownloader
+git clone https://github.com/benjaminmue/HiAni-DL.git
+cd HiAni-DL
 
-# 2. Start the web interface
-./webgui-start.sh
+# 2. Start the container (WebGUI launches automatically)
+docker-compose up -d
 
-# Or manually
-docker-compose up -d hianime-webgui
-
-# 3. Access at http://localhost:8080
+# 3. Access the WebGUI at http://localhost:8080
 ```
 
-### CLI Mode
+> 💡 **Important:** The WebGUI is the **default service** and starts automatically with `docker-compose up -d`. You don't need to specify service names, run scripts, or take any additional steps.
+
+### CLI Mode (Advanced Users Only)
+
+**CLI mode requires explicit profile activation and does NOT start by default.**
 
 ```bash
-# Option 1: Use environment variables
-cp .env.example .env
-# Edit .env with your settings
-docker-compose up -d hianime-cli
+# CLI mode must be started with the --profile flag
+docker-compose --profile cli up -d hianime-downloader
 
-# Option 2: One-off download
-docker-compose run --rm \
+# Or for one-off downloads:
+docker-compose --profile cli run --rm \
   -e LINK="https://hianime.to/watch/anime-name-12345" \
   -e EP_FROM=1 \
   -e EP_TO=12 \
-  hianime-cli
+  hianime-downloader
 ```
+
+> ⚠️ **Note:** CLI mode is for advanced users who prefer terminal-based downloads. Most users should use the WebGUI which starts automatically.
+
+---
+
+## <span style="color: #FF9BCF">Minimal Docker Compose Example</span>
+
+**Ready-to-use docker-compose.yml for quick deployment:**
+
+```yaml
+version: '3.8'
+
+services:
+  hianime-webgui:
+    image: ghcr.io/benjaminmue/hiani-dl:latest
+    container_name: hianime-webgui
+    environment:
+      # Timezone - adjust to your region
+      # Examples: America/New_York, Europe/London, Asia/Tokyo
+      TZ: Europe/Zurich
+
+      # Web server port
+      WEB_PORT: 8080
+
+      # Optional: Limit allowed domains (recommended for security)
+      # Leave empty "" to allow all domains (convenient for home use)
+      URL_ALLOWLIST: "hianime.to"
+
+      # Optional: Enable basic authentication (only if needed)
+      # Uncomment these lines to add password protection
+      # WEB_USER: admin
+      # WEB_PASSWORD: your-secure-password
+
+    volumes:
+      # Downloaded files location - CHANGE THIS PATH
+      # Windows example: C:/Users/YourName/Downloads/Anime:/downloads
+      # Linux/Mac example: /home/username/downloads/anime:/downloads
+      - /path/to/your/downloads:/downloads
+
+      # Persistent config and database (job history, logs)
+      - hianime-config:/config
+
+    ports:
+      # Host port : Container port
+      # Change 8080 to another port if needed (e.g., "8081:8080")
+      - "8080:8080"
+
+    restart: unless-stopped
+
+volumes:
+  hianime-config:
+    driver: local
+```
+
+**Usage:**
+
+1. Save the above as `docker-compose.yml`
+2. Edit the volumes path `/path/to/your/downloads` to your desired location
+3. Run: `docker-compose up -d`
+4. Access WebGUI at `http://localhost:8080`
 
 ---
 
@@ -391,12 +457,12 @@ Create a new template in `/boot/config/plugins/dockerMan/templates-user/`:
   <Registry>https://hub.docker.com/</Registry>
   <Network>bridge</Network>
   <Privileged>false</Privileged>
-  <Support>https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader</Support>
-  <Project>https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader</Project>
+  <Support>https://github.com/benjaminmue/HiAni-DL</Support>
+  <Project>https://github.com/benjaminmue/HiAni-DL</Project>
   <Overview>Anime downloader with modern web interface</Overview>
   <Category>Downloaders:</Category>
   <WebUI>http://[IP]:[PORT:8080]</WebUI>
-  <Icon>https://raw.githubusercontent.com/benjaminmue/Docker_Unraid_HianimeDownloader/main/logo.svg</Icon>
+  <Icon>https://raw.githubusercontent.com/benjaminmue/HiAni-DL/main/logo.svg</Icon>
 
   <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp" Description="Web interface port" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
 
@@ -673,6 +739,6 @@ services:
 
 <div align="center">
 
-**Questions?** [Open an issue](https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader/issues) or check the [main documentation](../README.md)
+**Questions?** [Open an issue](https://github.com/benjaminmue/HiAni-DL/issues) or check the [main documentation](../README.md)
 
 </div>

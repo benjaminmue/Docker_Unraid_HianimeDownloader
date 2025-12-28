@@ -18,10 +18,14 @@ Complete guide to using HiAni DL for downloading anime from HiAnime.to.
 
 ### Accessing the WebGUI
 
+**The WebGUI starts automatically when you run the container - no additional steps needed!**
+
 1. Start HiAni DL:
    ```bash
-   ./webgui-start.sh
+   docker-compose up -d
    ```
+
+   The WebGUI launches automatically and is immediately available.
 
 2. Open your browser and navigate to:
    - Local: `http://localhost:8080`
@@ -30,6 +34,8 @@ Complete guide to using HiAni DL for downloading anime from HiAnime.to.
 3. You should see the main download form with a dark theme inspired by HiAnime.to
 
 ![WebGUI Main Interface](img/startpage.png)
+
+> 💡 **Note:** No scripts or additional commands needed - `docker-compose up -d` automatically starts the WebGUI.
 
 ---
 
@@ -311,7 +317,7 @@ If you encounter issues:
    - Review error messages and logs
 
 3. **Report Issues:**
-   - [GitHub Issues](https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader/issues)
+   - [GitHub Issues](https://github.com/benjaminmue/HiAni-DL/issues)
    - Include logs and job details
    - Describe steps to reproduce
 
@@ -354,6 +360,6 @@ If you encounter issues:
 
 <div align="center">
 
-**Need more help?** [Open an issue](https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader/issues) or check the [documentation](../README.md)
+**Need more help?** [Open an issue](https://github.com/benjaminmue/HiAni-DL/issues) or check the [documentation](../README.md)
 
 </div>

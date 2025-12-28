@@ -1,3 +1,11 @@
+# =============================================================================
+# HiAni DL Python Dependencies
+# =============================================================================
+# This file is ONLY used during Docker image builds.
+# DO NOT attempt to install these manually - HiAni DL only runs in Docker.
+# All dependencies are automatically installed in the Docker image.
+# =============================================================================
+
 aria2p==0.12.1
 attrs==25.3.0
 autopep8==2.3.2

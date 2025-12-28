@@ -17,10 +17,13 @@
 
 ## 📖 What is HiAni DL?
 
-HiAni DL is a Docker-ready anime downloader designed for **local network (LAN) use**. It features a modern web interface with real-time progress tracking and background processing.
+HiAni DL is a **Docker-only** anime downloader designed for **local network (LAN) use**. It features a modern web interface with real-time progress tracking and background processing.
 
 > 🏠 **LAN-Only Deployment**
 > This application is designed for **private home networks only**. Never expose it directly to the internet without proper security measures.
+
+> 🐳 **Docker Required**
+> HiAni DL **only runs in Docker** - no standalone Python installation is supported. All dependencies, Chrome, and ffmpeg are included in the Docker image.
 
 **Key Features:**
 - 🌐 **Modern Web Interface** - Dark theme inspired by HiAnime.to
@@ -34,30 +37,36 @@ HiAni DL is a Docker-ready anime downloader designed for **local network (LAN) u
 
 ## 🚀 Quick Start
 
-### WebGUI (Recommended)
+**New to Docker or HiAni DL?** Follow our step-by-step guide:
+
+<div align="center">
+
+### **[📘 Complete Quick Start Guide](docs/QUICKSTART.md)**
+
+Walks you through:
+- ✅ Installing Docker (Windows/Mac/Linux)
+- ✅ Creating your docker-compose.yml
+- ✅ Starting the container
+- ✅ Your first download
+
+**Takes ~10 minutes to get up and running!**
+
+</div>
+
+---
+
+**Already have Docker?** Here's the express version:
 
 ```bash
-# Clone and start
-git clone https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader.git
-cd Docker_Unraid_HianimeDownloader
-./webgui-start.sh
+# Create docker-compose.yml with your paths and timezone
+docker-compose up -d
 
-# Access at http://localhost:8080
+# Access WebGUI at http://localhost:8080
 ```
 
-### Docker Compose
+See the [Quick Start Guide](docs/QUICKSTART.md) for the complete docker-compose.yml template.
 
-```bash
-docker-compose up -d hianime-webgui
-```
-
-### First Download
-
-1. Open http://localhost:8080
-2. Paste an anime URL (e.g., `https://hianime.to/watch/gachiakuta-19785`)
-3. Set episode range (optional)
-4. Click "Start Download"
-5. Watch progress in real-time!
+> 💡 **Pre-built Image:** The Docker image is automatically built and published to GitHub Container Registry as `ghcr.io/benjaminmue/hiani-dl:latest` on every commit to main.
 
 ---
 
@@ -67,6 +76,7 @@ docker-compose up -d hianime-webgui
 
 | Document | Description |
 |----------|-------------|
+| **[Quick Start Guide](docs/QUICKSTART.md)** | Complete installation guide from Docker setup to first download |
 | **[User Guide](docs/USER_GUIDE.md)** | How to use HiAni DL, select URLs, and manage downloads |
 | **[Docker Setup](docs/DOCKER.md)** | Environment variables, volumes, and configuration |
 | **[WebGUI Guide](docs/WEBGUI.md)** | Web interface features and usage |
@@ -120,11 +130,15 @@ docker-compose up -d hianime-webgui
 
 ## 🔧 Configuration
 
-### Basic (LAN Use)
+**The WebGUI is the default mode and starts automatically with `docker-compose up -d`.**
+
+### Basic Setup (LAN Use)
+
+The default `docker-compose.yml` is pre-configured for home/LAN use:
 
 ```yaml
 services:
-  hianime-webgui:
+  hianime-webgui:  # Starts automatically (no profile needed)
     image: hianime-downloader
     ports:
       - "8080:8080"
@@ -133,15 +147,23 @@ services:
       - hianime-config:/config
     environment:
       TZ: Europe/Zurich
+      URL_ALLOWLIST: "hianime.to"  # Optional for home use
 ```
 
-### With Security (Optional)
+### Optional Security
 
 ```yaml
 environment:
-  URL_ALLOWLIST: "hianime.to"
-  WEB_USER: admin
-  WEB_PASSWORD: your-secure-password
+  WEB_USER: admin              # Optional: Enable authentication
+  WEB_PASSWORD: your-password  # Optional: Set password
+```
+
+### CLI Mode (Advanced)
+
+CLI mode is available but **requires explicit activation**:
+
+```bash
+docker-compose --profile cli up -d hianime-downloader
 ```
 
 See **[Docker Setup](docs/DOCKER.md)** for complete configuration options.
@@ -178,6 +200,6 @@ MIT License - See [LICENSE](LICENSE) for details
 
 **Made with ❤️ for the anime community**
 
-[Report Bug](https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader/issues) · [Request Feature](https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader/issues) · [Documentation](docs/)
+[Report Bug](https://github.com/benjaminmue/HiAni-DL/issues) · [Request Feature](https://github.com/benjaminmue/HiAni-DL/issues) · [Documentation](docs/)
 
 </div>

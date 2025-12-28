@@ -205,7 +205,7 @@ pytest --cov=webgui tests/
 ## File Structure
 
 ```
-Docker_Unraid_HianimeDownloader/
+HiAni-DL/
 ├── webgui/
 │   ├── __init__.py
 │   ├── app.py                 # FastAPI application

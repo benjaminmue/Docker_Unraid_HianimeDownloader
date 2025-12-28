@@ -1,7 +1,12 @@
 version: '3.8'
 
 services:
-  # CLI Mode - Traditional command-line downloader
+  # ============================================================================
+  # CLI Mode - Traditional command-line downloader (OPTIONAL - Advanced users)
+  # ============================================================================
+  # This service does NOT start by default (requires --profile cli flag)
+  # Most users should use the WebGUI below which starts automatically
+  # ============================================================================
   hianime-downloader:
     build:
       context: .
@@ -49,7 +54,13 @@ services:
     restart: unless-stopped
     profiles: ["cli"]  # Only start with --profile cli
 
-  # WebGUI Mode - Web interface with background job processing
+  # ============================================================================
+  # WebGUI Mode - Web interface with background job processing (DEFAULT)
+  # ============================================================================
+  # This service STARTS AUTOMATICALLY when you run: docker-compose up -d
+  # No additional steps, scripts, or service names needed!
+  # Access the WebGUI at http://localhost:8080
+  # ============================================================================
   hianime-webgui:
     build:
       context: .
