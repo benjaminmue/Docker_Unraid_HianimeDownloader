@@ -23,9 +23,10 @@ class Main:
         # If neither link nor filename provided, ask only when TTY is available
         if not self.args.link and not self.args.filename:
             if self._has_tty():
-                os.system("cls" if os.name == "nt" else "clear")
+                # Clear screen (cross-platform, safer than os.system)
+                print("\033[H\033[J", end="")
                 ans = input(
-                    f"{Fore.LIGHTGREEN_EX}GDown {Fore.LIGHTCYAN_EX}Downloader\n\n"
+                    f"{Fore.LIGHTGREEN_EX}HiAni {Fore.LIGHTCYAN_EX}DL\n\n"
                     f"Provide a link or search for an anime:\n{Fore.LIGHTYELLOW_EX}"
                 )
                 if ans.strip().lower().startswith(("http://", "https://")):
@@ -84,8 +85,8 @@ class Main:
         parser.add_argument(
             "--aria",
             action="store_true",
-            default=(os.environ.get("ARIA", "false").lower() == "true"),
-            help="Use aria2c as external downloader",
+            default=(os.environ.get("ARIA", "true").lower() == "true"),
+            help="Use aria2c as external downloader (enabled by default)",
         )
 
         parser.add_argument(

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Job #{{ job.id }} - GDownloader{% endblock %}
+{% block title %}Job #{{ job.id }} - HiAni DL{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -91,20 +91,20 @@
                             {% if job.extra_args %}
                             <tr>
                                 <th>Extra Args:</th>
-                                <td><code>{{ job.extra_args }}</code></td>
+                                <td><code>{{ job.extra_args | format_episode_args }}</code></td>
                             </tr>
                             {% endif %}
                             <tr>
                                 <th>Created:</th>
-                                <td>{{ job.created_at }}</td>
+                                <td>{{ job.created_at | format_datetime }}</td>
                             </tr>
                             <tr>
                                 <th>Started:</th>
-                                <td>{{ job.started_at or '-' }}</td>
+                                <td>{{ job.started_at | format_datetime }}</td>
                             </tr>
                             <tr>
                                 <th>Finished:</th>
-                                <td>{{ job.finished_at or '-' }}</td>
+                                <td>{{ job.finished_at | format_datetime }}</td>
                             </tr>
                             {% if job.error_message %}
                             <tr>
@@ -127,13 +127,23 @@
                             </button>
                             {% endif %}
                             {% if job.log_file %}
-                            <a href="/api/jobs/{{ job.id }}/log" class="btn btn-outline-primary" download>
+                            <a href="/api/jobs/{{ job.id }}/log" class="btn btn-outline-accent" download>
                                 <i class="bi bi-download"></i> Download Log
                             </a>
                             <a href="/api/jobs/{{ job.id }}/diagnostics" class="btn btn-outline-secondary" download>
                                 <i class="bi bi-file-earmark-zip"></i> Download Diagnostics
                             </a>
                             {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episodes Progress -->
+                <div class="row mb-4" id="episodesSection" style="display: none;">
+                    <div class="col-12">
+                        <h5>Episodes</h5>
+                        <div id="episodesContainer">
+                            <div class="text-muted">Loading episodes...</div>
                         </div>
                     </div>
                 </div>
@@ -178,6 +188,11 @@ function connectEventSource() {
     eventSource.addEventListener('log', (e) => {
         const data = JSON.parse(e.data);
         appendLog(data.lines);
+    });
+
+    eventSource.addEventListener('episodes', (e) => {
+        const data = JSON.parse(e.data);
+        updateEpisodes(data.episodes);
     });
 
     eventSource.addEventListener('complete', (e) => {
@@ -258,6 +273,300 @@ function updateStatus(data) {
     statusBadge.innerHTML = `<span class="${badgeClass}"><i class="bi bi-${badgeIcon}"></i> ${badgeText}</span>`;
 }
 
+/**
+ * Progress Component Class
+ *
+ * Marker Position Math:
+ * For N stages, we position markers evenly from 0% to 100% of the bar width.
+ * Marker i is positioned at: (i / (N - 1)) × 100%
+ * We use CSS left + translateX(-50%) so the marker CENTER sits at that percentage,
+ * ensuring the first marker center is at 0% and last at 100%, perfectly aligned
+ * with bar edges. A ResizeObserver updates connector widths dynamically.
+ */
+class ProgressComponent {
+    constructor(container, options) {
+        this.container = container;
+        this.options = options;
+        this.stages = options.stages || [];
+        this.progressPercent = Math.max(0, Math.min(100, options.progressPercent || 0));
+        this.currentStageId = options.currentStageId;
+        this.completedStageIds = new Set(options.completedStageIds || []);
+        this.stageData = options.stageData || {};
+        this.isFailed = options.isFailed || false;
+
+        this.render();
+        this.setupResizeObserver();
+    }
+
+    getStageStatus(stage) {
+        if (this.completedStageIds.has(stage.id)) return 'completed';
+        if (this.currentStageId === stage.id) {
+            return this.isFailed ? 'failed' : 'active';
+        }
+        return 'pending';
+    }
+
+    getStageIcon(status) {
+        if (status === 'completed') {
+            return `<svg fill="white" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>`;
+        } else if (status === 'failed') {
+            return `<svg fill="white" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>`;
+        } else if (status === 'active') {
+            return `<svg fill="white" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4"/></svg>`;
+        } else {
+            return `<svg fill="currentColor" viewBox="0 0 20 20" style="opacity: 0.3;"><circle cx="10" cy="10" r="3"/></svg>`;
+        }
+    }
+
+    calculateMarkerPosition(index) {
+        const N = this.stages.length;
+        if (N === 1) return 50;
+        // Add 8% padding on each side to move markers inward from borders
+        const padding = 8;
+        const availableWidth = 100 - (padding * 2);
+        return padding + (index / (N - 1)) * availableWidth;
+    }
+
+    render() {
+        const component = document.createElement('div');
+        component.className = 'progress-component';
+        component.setAttribute('role', 'region');
+        component.setAttribute('aria-label', 'Progress indicator');
+
+        // Progress bar
+        const barContainer = document.createElement('div');
+        barContainer.className = 'progress-bar-container';
+        barContainer.setAttribute('role', 'progressbar');
+        barContainer.setAttribute('aria-valuemin', '0');
+        barContainer.setAttribute('aria-valuemax', '100');
+        barContainer.setAttribute('aria-valuenow', this.progressPercent);
+        barContainer.setAttribute('aria-label', `Progress: ${this.progressPercent}%`);
+
+        const barFill = document.createElement('div');
+        barFill.className = 'progress-bar-fill';
+        if (this.options.status === 'complete') barFill.classList.add('complete');
+        if (this.options.status === 'failed') barFill.classList.add('failed');
+        barFill.style.width = `${this.progressPercent}%`;
+
+        const percentText = document.createElement('span');
+        percentText.className = 'progress-percent-text';
+        percentText.textContent = `${this.progressPercent}%`;
+        percentText.style.opacity = this.progressPercent < 12 ? '0' : '1';
+
+        barFill.appendChild(percentText);
+        barContainer.appendChild(barFill);
+        component.appendChild(barContainer);
+
+        // Stage timeline
+        const timeline = document.createElement('div');
+        timeline.className = 'stage-timeline';
+        timeline.setAttribute('role', 'list');
+        timeline.setAttribute('aria-label', 'Stage progress');
+
+        // Render connectors
+        for (let i = 0; i < this.stages.length - 1; i++) {
+            const connector = document.createElement('div');
+            connector.className = 'stage-connector';
+            connector.dataset.connectorIndex = i;
+            timeline.appendChild(connector);
+        }
+
+        // Render stage markers
+        this.stages.forEach((stage, index) => {
+            const status = this.getStageStatus(stage);
+            const position = this.calculateMarkerPosition(index);
+
+            const marker = document.createElement('div');
+            marker.className = `stage-marker ${status}`;
+            marker.style.left = `${position}%`;
+            marker.setAttribute('role', 'listitem');
+            marker.dataset.markerIndex = index;
+
+            const icon = document.createElement('div');
+            icon.className = 'stage-icon';
+            icon.innerHTML = this.getStageIcon(status);
+            icon.setAttribute('aria-hidden', 'true');
+
+            const label = document.createElement('div');
+            label.className = 'stage-label';
+            label.textContent = stage.label;
+
+            // Add download details for active downloading stage
+            if (status === 'active' && stage.id === 'download_video' && this.stageData.percent) {
+                const details = document.createElement('div');
+                details.className = 'stage-details';
+                details.textContent = `${this.stageData.percent}% of ${this.stageData.size} at ${this.stageData.speed}`;
+                marker.appendChild(details);
+            }
+
+            const srText = document.createElement('span');
+            srText.className = 'sr-only';
+            srText.textContent = `${stage.label}: ${status}`;
+            marker.appendChild(srText);
+
+            marker.appendChild(icon);
+            marker.appendChild(label);
+            timeline.appendChild(marker);
+        });
+
+        component.appendChild(timeline);
+
+        this.container.innerHTML = '';
+        this.container.appendChild(component);
+
+        this.timelineElement = timeline;
+        this.updateConnectors();
+    }
+
+    updateConnectors() {
+        if (!this.timelineElement) return;
+
+        const markers = this.timelineElement.querySelectorAll('.stage-marker');
+        const connectors = this.timelineElement.querySelectorAll('.stage-connector');
+
+        markers.forEach((marker, index) => {
+            if (index < connectors.length) {
+                const nextMarker = markers[index + 1];
+                if (nextMarker) {
+                    const markerRect = marker.getBoundingClientRect();
+                    const nextMarkerRect = nextMarker.getBoundingClientRect();
+                    const timelineRect = this.timelineElement.getBoundingClientRect();
+
+                    const startX = markerRect.left - timelineRect.left + (markerRect.width / 2);
+                    const endX = nextMarkerRect.left - timelineRect.left + (nextMarkerRect.width / 2);
+
+                    const connector = connectors[index];
+                    connector.style.left = `${startX}px`;
+                    connector.style.width = `${endX - startX}px`;
+                }
+            }
+        });
+    }
+
+    setupResizeObserver() {
+        const observer = new ResizeObserver(() => {
+            this.updateConnectors();
+        });
+        observer.observe(this.container);
+        this.resizeObserver = observer;
+    }
+
+    update(newOptions) {
+        this.options = { ...this.options, ...newOptions };
+        this.progressPercent = Math.max(0, Math.min(100, newOptions.progressPercent ?? this.progressPercent));
+        this.currentStageId = newOptions.currentStageId ?? this.currentStageId;
+        this.completedStageIds = new Set(newOptions.completedStageIds ?? this.completedStageIds);
+        this.stageData = newOptions.stageData ?? this.stageData;
+        this.isFailed = newOptions.isFailed ?? this.isFailed;
+        this.render();
+    }
+
+    destroy() {
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+        }
+    }
+}
+
+// Store component instances
+const episodeComponents = new Map();
+
+// Helper function to get completed stages
+function getCompletedStages(currentStatus) {
+    const stageOrder = ['get_stream', 'download_video', 'merge_video', 'download_subtitles'];
+    const currentIndex = stageOrder.indexOf(currentStatus);
+    if (currentStatus === 'complete') return stageOrder;
+    return currentIndex > 0 ? stageOrder.slice(0, currentIndex) : [];
+}
+
+function updateEpisodes(episodes) {
+    if (!episodes || episodes.length === 0) {
+        return;
+    }
+
+    const episodesSection = document.getElementById('episodesSection');
+    episodesSection.style.display = 'block';
+
+    const container = document.getElementById('episodesContainer');
+
+    episodes.forEach(episode => {
+        let episodeDiv = document.getElementById(`episode-${episode.id}`);
+
+        // Create episode div if it doesn't exist
+        if (!episodeDiv) {
+            episodeDiv = document.createElement('div');
+            episodeDiv.className = 'episode-item mb-3 p-3 border rounded';
+            episodeDiv.id = `episode-${episode.id}`;
+
+            // Create header with title and error message
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'd-flex justify-content-between align-items-start mb-3';
+
+            const titleDiv = document.createElement('div');
+            titleDiv.innerHTML = `<strong>Episode ${episode.episode_number}</strong>: ${episode.title}`;
+            headerDiv.appendChild(titleDiv);
+
+            const errorDiv = document.createElement('div');
+            errorDiv.id = `error-${episode.id}`;
+            errorDiv.className = 'text-danger small fw-bold';
+            errorDiv.style.marginLeft = '10px';
+            headerDiv.appendChild(errorDiv);
+
+            episodeDiv.appendChild(headerDiv);
+
+            const progressContainer = document.createElement('div');
+            progressContainer.id = `progress-${episode.id}`;
+            episodeDiv.appendChild(progressContainer);
+
+            container.appendChild(episodeDiv);
+        }
+
+        // Parse stage data
+        let stageData = {};
+        if (episode.stage_data) {
+            try {
+                stageData = JSON.parse(episode.stage_data);
+            } catch(e) {}
+        }
+
+        // Update or create progress component
+        const progressContainer = document.getElementById(`progress-${episode.id}`);
+        const stages = [
+            { id: 'get_stream', label: 'Finding' },
+            { id: 'download_video', label: 'Downloading' },
+            { id: 'merge_video', label: 'Merging' },
+            { id: 'download_subtitles', label: 'Subtitles' }
+        ];
+
+        if (episodeComponents.has(episode.id)) {
+            episodeComponents.get(episode.id).update({
+                progressPercent: episode.progress_percent,
+                currentStageId: episode.status === 'complete' ? null : episode.status,
+                completedStageIds: getCompletedStages(episode.status),
+                stageData: stageData,
+                status: episode.status,
+                isFailed: episode.status === 'failed'
+            });
+        } else {
+            const component = new ProgressComponent(progressContainer, {
+                stages,
+                progressPercent: episode.progress_percent,
+                currentStageId: episode.status === 'complete' ? null : episode.status,
+                completedStageIds: getCompletedStages(episode.status),
+                stageData: stageData,
+                status: episode.status,
+                isFailed: episode.status === 'failed'
+            });
+            episodeComponents.set(episode.id, component);
+        }
+
+        // Update error message
+        const errorDiv = document.getElementById(`error-${episode.id}`);
+        errorDiv.textContent = episode.error_message || '';
+        errorDiv.style.display = episode.error_message ? 'block' : 'none';
+    });
+}
+
 function appendLog(lines) {
     const logViewer = document.getElementById('logViewer');
 
@@ -297,6 +606,24 @@ async function cancelJob(jobId) {
         alert(`Error: ${error.message}`);
     }
 }
+
+// Fetch episodes initially on page load
+async function fetchEpisodes() {
+    try {
+        const response = await fetch(`/api/jobs/${jobId}/episodes`);
+        if (response.ok) {
+            const episodes = await response.json();
+            if (episodes && episodes.length > 0) {
+                updateEpisodes(episodes);
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching episodes:', error);
+    }
+}
+
+// Initialize page
+fetchEpisodes();
 
 // Start SSE connection if job is active
 {% if job.status in ['queued', 'running'] %}

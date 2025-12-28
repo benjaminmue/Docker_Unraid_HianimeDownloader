@@ -103,22 +103,6 @@ docker-compose run --rm \
   hianime-downloader
 ```
 
-### Download Instagram Content
-
-```bash
-docker-compose run --rm \
-  -e LINK="https://www.instagram.com/p/ABC123/" \
-  hianime-downloader
-```
-
-### Download YouTube Video
-
-```bash
-docker-compose run --rm \
-  -e LINK="https://www.youtube.com/watch?v=VIDEO_ID" \
-  hianime-downloader
-```
-
 ### Download with Aria2 (Faster)
 
 ```bash

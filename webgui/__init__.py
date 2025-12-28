@@ -1,1 +1,1 @@
-# WebGUI package for GDownloader
+# WebGUI package for HiAni DL

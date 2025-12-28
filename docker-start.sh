@@ -1,5 +1,5 @@
 #!/bin/bash
-# Quick start script for GDownloader Docker stack
+# Quick start script for HiAni DL Docker stack
 
 set -e
 
@@ -14,7 +14,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}=====================================${NC}"
-echo -e "${BLUE}  GDownloader Docker Stack Setup${NC}"
+echo -e "${BLUE}  HiAni DL Docker Stack Setup${NC}"
 echo -e "${BLUE}=====================================${NC}"
 echo ""
 

@@ -68,11 +68,19 @@ services:
       WEB_PORT: 8080
       LOG_LEVEL: INFO
 
+      # Timezone - Set to your region (e.g., Europe/Zurich, America/New_York, Asia/Tokyo)
+      # This affects how dates/times are displayed in the WebGUI
+      TZ: Europe/Zurich
+
+      # Locale for date formatting (optional, defaults to timezone region)
+      # Examples: de_CH (Swiss German), en_US (US English), fr_FR (French)
+      LOCALE: de_CH.UTF-8
+
       # Security - URL allowlist (comma-separated domains)
       # For LAN/home use: List the domains you want to download from
       # For stricter control: Set specific domains only
       # Leave empty to allow all domains (less secure but convenient for home)
-      URL_ALLOWLIST: "hianime.to,youtube.com,instagram.com,tiktok.com"
+      URL_ALLOWLIST: "hianime.to"
 
       # Optional: Basic authentication (usually not needed on home LAN)
       # Only enable if multiple untrusted users share your network

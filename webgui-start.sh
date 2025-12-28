@@ -14,7 +14,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}  GDownloader WebGUI Launcher${NC}"
+echo -e "${BLUE}  HiAni DL WebGUI Launcher${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 
@@ -114,7 +114,7 @@ case $choice in
         echo "2. Find the hianime-webgui service"
         echo "3. Set URL_ALLOWLIST environment variable"
         echo ""
-        echo "Example: URL_ALLOWLIST: \"hianime.to,youtube.com,instagram.com\""
+        echo "Example: URL_ALLOWLIST: \"hianime.to\""
         echo ""
         echo "For authentication, also set:"
         echo "  WEB_USER: admin"

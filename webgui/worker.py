@@ -88,10 +88,38 @@ class JobWorker:
 
         return validated
 
+    async def cleanup_orphaned_jobs(self):
+        """Clean up jobs that were left in 'running' state from previous crashes."""
+        try:
+            # Get all jobs that are marked as running
+            jobs = await self.db.get_active_jobs()
+            orphaned_count = 0
+
+            for job in jobs:
+                if job["status"] == JobStatus.RUNNING.value:
+                    # Mark as failed since no process is actually running for it
+                    await self.db.finish_job(
+                        job["id"],
+                        False,
+                        "Job was interrupted by worker restart/crash"
+                    )
+                    orphaned_count += 1
+                    logger.warning(f"Cleaned up orphaned job {job['id']}")
+
+            if orphaned_count > 0:
+                logger.info(f"Cleaned up {orphaned_count} orphaned job(s)")
+
+        except Exception as e:
+            logger.error(f"Error cleaning up orphaned jobs: {e}", exc_info=True)
+
     async def start(self):
         """Start the worker loop."""
         self.running = True
         logger.info("Job worker started")
+
+        # Clean up any orphaned jobs from previous crashes
+        await self.cleanup_orphaned_jobs()
+
         while self.running:
             try:
                 await self.process_jobs()
@@ -142,9 +170,9 @@ class JobWorker:
             "--output-dir", str(self.download_dir),
         ]
 
-        # Add profile if specified
+        # Add profile if specified (map to --download-type for main.py)
         if profile:
-            cmd.extend(["--profile", profile])
+            cmd.extend(["--download-type", profile])
 
         # Add extra args (validate and parse safely)
         if extra_args:
@@ -191,8 +219,10 @@ class JobWorker:
                 f.write("-" * 80 + "\n")
                 f.flush()
 
-                # Read output line by line
-                for line in iter(process.stdout.readline, ""):
+                # Read output line by line (non-blocking)
+                while True:
+                    # Read line in thread to avoid blocking event loop
+                    line = await asyncio.to_thread(process.stdout.readline)
                     if not line:
                         break
 
@@ -203,8 +233,8 @@ class JobWorker:
                     # Parse progress if present
                     await self._parse_progress(job_id, line)
 
-            # Wait for process to complete
-            return_code = process.wait()
+            # Wait for process to complete (non-blocking)
+            return_code = await asyncio.to_thread(process.wait)
 
             # Clean up
             if job_id in self.active_processes:

@@ -1,10 +1,10 @@
 # Security Documentation
 
-This document outlines the security measures implemented in GDownloader WebGUI to protect against common web application vulnerabilities.
+This document outlines the security measures implemented in HiAni DL WebGUI to protect against common web application vulnerabilities.
 
 ## 🏠 Deployment Context: LAN/Home Use
 
-**GDownloader is designed for internal, trusted network (LAN) deployment only.**
+**HiAni DL is designed for internal, trusted network (LAN) deployment only.**
 
 > ⚠️ **Important:** This application is **NOT hardened for public internet exposure**. It should only be deployed on:
 > - Home networks (192.168.x.x, 10.x.x.x)
@@ -39,7 +39,7 @@ This document outlines the security measures implemented in GDownloader WebGUI t
 
 ## Overview
 
-GDownloader WebGUI implements multiple layers of security controls to protect against injection attacks, unauthorized access, and other security threats. This document describes each security measure and its implementation.
+HiAni DL WebGUI implements multiple layers of security controls to protect against injection attacks, unauthorized access, and other security threats. This document describes each security measure and its implementation.
 
 **Security Philosophy:** Defense in depth with sensible defaults for LAN deployment.
 
@@ -194,7 +194,7 @@ WHERE id = ? AND status = 'queued'
 
 **Configuration:**
 ```bash
-URL_ALLOWLIST="hianime.to,youtube.com,instagram.com"
+URL_ALLOWLIST="hianime.to"
 ```
 
 ---
@@ -219,6 +219,60 @@ WEB_PASSWORD=secretpassword
 
 ---
 
+### 9. Chrome Arguments Validation (CLI Mode)
+
+**Threat:** Malicious Chrome arguments injected through `CHROME_EXTRA_ARGS` environment variable could compromise browser security or enable attacks.
+
+**Mitigation:**
+- **Whitelist of Allowed Arguments:** Only specific Chrome flags are permitted
+- **Shell Metacharacter Detection:** Blocks dangerous characters (`;`, `|`, `&`, etc.)
+- **Format Validation:** Arguments must start with `--`
+- **Safe Parsing:** Uses `shlex.split()` for proper quote handling
+
+**Implementation:** `extractors/hianime.py:validate_chrome_args()`
+
+**Allowed Chrome Arguments:**
+```python
+ALLOWED_CHROME_ARGS = {
+    '--headless', '--disable-gpu', '--no-sandbox', '--window-size',
+    '--user-agent', '--disable-extensions', '--disable-notifications',
+    '--user-data-dir', '--proxy-server', # ... and more
+}
+```
+
+**Example Attack Blocked:**
+```bash
+# Attacker tries: CHROME_EXTRA_ARGS="--headless; rm -rf /"
+# Result: Warning printed, dangerous characters detected, arguments ignored
+```
+
+**Example Valid Usage:**
+```bash
+# Valid: CHROME_EXTRA_ARGS="--headless --window-size=1920,1080"
+# Result: Both arguments validated and applied to Chrome
+```
+
+---
+
+### 10. Screen Clear Security
+
+**Original Issue:** Used `os.system("cls")` or `os.system("clear")` which executes shell commands.
+
+**Mitigation:**
+- **ANSI Escape Codes:** Replaced with `print("\033[H\033[J", end="")`
+- **No Shell Execution:** Directly writes terminal control codes
+- **Cross-Platform:** Works on Windows, Linux, macOS
+
+**Implementation:** `main.py:27`, `extractors/hianime.py:612`
+
+**Why This Matters:**
+While the original `os.system()` calls only used hardcoded commands, using ANSI codes:
+- Eliminates shell invocation entirely
+- Reduces attack surface
+- Is faster and more portable
+
+---
+
 ## Security Best Practices
 
 ### For Home/LAN Deployment (Recommended Use Case)
@@ -234,7 +288,7 @@ docker-compose up -d hianime-webgui
 **Optional Hardening for Home Use:**
 ```bash
 # 1. Add URL filtering (optional, but recommended)
-docker run -e URL_ALLOWLIST="hianime.to,youtube.com,instagram.com,tiktok.com" ...
+docker run -e URL_ALLOWLIST="hianime.to" ...
 
 # 2. Add basic auth if multiple people use your network
 docker run -e WEB_USER=family -e WEB_PASSWORD=simplepass ...
@@ -320,6 +374,7 @@ If you discover a security vulnerability, please report it by:
 
 ## Security Audit Checklist
 
+**WebGUI Security:**
 - [x] Command injection prevention (extra_args validation)
 - [x] SQL injection prevention (column name whitelist)
 - [x] Path traversal prevention (log file validation)
@@ -328,8 +383,15 @@ If you discover a security vulnerability, please report it by:
 - [x] Input validation (length limits, character filtering)
 - [x] URL allowlist (domain filtering)
 - [x] Authentication (optional basic auth)
+
+**CLI Security:**
+- [x] Chrome arguments validation (CHROME_EXTRA_ARGS whitelist)
+- [x] Shell command elimination (replaced os.system with ANSI codes)
+- [x] Filename sanitization (path traversal prevention)
+
+**Infrastructure Security:**
 - [ ] HTTPS/TLS (requires reverse proxy - not built-in)
-- [ ] Rate limiting (not implemented - consider adding)
+- [ ] Rate limiting (not implemented - consider adding for WAN)
 - [ ] CSRF protection (not needed for API-only endpoints)
 
 ---
@@ -395,14 +457,22 @@ pytest tests/test_security.py --cov=webgui --cov-report=html
 
 ## Changelog
 
-### 2025-01-XX - Initial Security Hardening
-- Added command injection prevention
-- Added SQL injection prevention
-- Added path traversal prevention
-- Added SSRF protection
-- Added race condition prevention
-- Added comprehensive input validation
-- Documented all security measures
+### 2025-01-XX - Security Hardening Complete
+- **WebGUI Security:**
+  - Added command injection prevention for extra_args
+  - Added SQL injection prevention for database updates
+  - Added path traversal prevention for log downloads
+  - Added SSRF protection (private IP blocking)
+  - Added race condition prevention (atomic job claiming)
+  - Added comprehensive input validation
+- **CLI Security Improvements:**
+  - Added Chrome arguments validation with whitelist (CHROME_EXTRA_ARGS)
+  - Replaced os.system() calls with ANSI escape codes
+  - Shell metacharacter detection for all environment inputs
+- **Documentation:**
+  - Comprehensive security documentation
+  - LAN deployment guidance
+  - Attack examples and mitigations
 
 ---
 

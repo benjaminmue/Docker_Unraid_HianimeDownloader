@@ -19,10 +19,76 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium_stealth import stealth
 from seleniumwire import webdriver
+from selenium.webdriver.chrome.service import Service
 from yt_dlp import YoutubeDL
 
 from tools.functions import get_conformation, get_int_in_range, safe_remove
 from tools.YTDLogger import YTDLogger
+
+# Whitelist of allowed Chrome arguments for CHROME_EXTRA_ARGS
+ALLOWED_CHROME_ARGS = {
+    '--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage',
+    '--disable-blink-features', '--disable-features', '--enable-features',
+    '--window-size', '--user-agent', '--disable-extensions', '--disable-popup-blocking',
+    '--disable-infobars', '--disable-notifications', '--mute-audio',
+    '--autoplay-policy', '--disable-web-security', '--lang', '--proxy-server',
+    '--user-data-dir', '--profile-directory', '--disable-background-networking',
+    '--disable-background-timer-throttling', '--disable-backgrounding-occluded-windows',
+    '--disable-renderer-backgrounding', '--disable-hang-monitor', '--disable-sync',
+    '--metrics-recording-only', '--safebrowsing-disable-auto-update',
+    '--password-store', '--use-mock-keychain', '--force-device-scale-factor',
+    '--high-dpi-support', '--force-color-profile', '--enable-logging', '--log-level',
+    '--v', '--vmodule', '--enable-automation', '--remote-debugging-port'
+}
+
+
+def validate_chrome_args(args_string: str) -> list[str]:
+    """
+    Validate and parse Chrome arguments from environment variable.
+
+    Args:
+        args_string: Space-separated Chrome arguments
+
+    Returns:
+        List of validated arguments
+
+    Raises:
+        ValueError: If arguments contain invalid flags or shell metacharacters
+    """
+    if not args_string or not args_string.strip():
+        return []
+
+    # Check for dangerous shell metacharacters
+    dangerous_chars = [';', '|', '&', '`', '$', '(', ')', '<', '>', '\n', '\r']
+    if any(char in args_string for char in dangerous_chars):
+        print(f"{Fore.LIGHTRED_EX}Warning: CHROME_EXTRA_ARGS contains dangerous characters, ignoring.")
+        return []
+
+    # Parse safely using shlex
+    try:
+        parts = shlex.split(args_string)
+    except ValueError as e:
+        print(f"{Fore.LIGHTRED_EX}Warning: Invalid CHROME_EXTRA_ARGS format: {e}, ignoring.")
+        return []
+
+    validated = []
+    for arg in parts:
+        # Extract base argument (before = sign)
+        base_arg = arg.split('=')[0] if '=' in arg else arg
+
+        # Check if it's a Chrome argument (starts with --)
+        if not base_arg.startswith('--'):
+            print(f"{Fore.LIGHTRED_EX}Warning: Invalid Chrome arg '{base_arg}' (must start with --), skipping.")
+            continue
+
+        # Check against whitelist
+        if base_arg not in ALLOWED_CHROME_ARGS:
+            print(f"{Fore.LIGHTYELLOW_EX}Warning: Chrome arg '{base_arg}' not in whitelist, skipping.")
+            continue
+
+        validated.append(arg)
+
+    return validated
 
 
 @dataclass
@@ -98,7 +164,12 @@ class HianimeExtractor:
         )
 
         if anime.sub_episodes != 0 and anime.dub_episodes != 0:
-            anime.download_type = self.get_download_type()
+            # Check if download_type was already specified via command line
+            if hasattr(self.args, 'download_type') and self.args.download_type:
+                anime.download_type = self.args.download_type
+                print(f"Using download type from command line: {anime.download_type}")
+            else:
+                anime.download_type = self.get_download_type()
         elif anime.dub_episodes == 0:
             print("Dub episodes are not available. Defaulting to sub.")
             anime.download_type = "sub"
@@ -108,21 +179,46 @@ class HianimeExtractor:
 
         number_of_episodes = getattr(anime, f"{anime.download_type}_episodes")
         if number_of_episodes != 1:
-            start_ep = get_int_in_range(
-                f"{Fore.LIGHTCYAN_EX}Enter the starting episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
-                1, number_of_episodes,
-            )
-            end_ep = get_int_in_range(
-                f"{Fore.LIGHTCYAN_EX}Enter the ending episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
-                1, number_of_episodes,
-            )
+            # Check if episode range was provided via command line
+            if hasattr(self.args, 'ep_from') and self.args.ep_from is not None:
+                start_ep = self.args.ep_from
+                print(f"Using starting episode from command line: {start_ep}")
+            else:
+                # Default to episode 1 in non-interactive mode
+                if sys.stdin.isatty():
+                    start_ep = get_int_in_range(
+                        f"{Fore.LIGHTCYAN_EX}Enter the starting episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
+                        1, number_of_episodes,
+                    )
+                else:
+                    start_ep = 1
+                    print(f"Defaulting to starting episode: {start_ep}")
+
+            if hasattr(self.args, 'ep_to') and self.args.ep_to is not None:
+                end_ep = self.args.ep_to
+                print(f"Using ending episode from command line: {end_ep}")
+            else:
+                # Default to all episodes in non-interactive mode
+                if sys.stdin.isatty():
+                    end_ep = get_int_in_range(
+                        f"{Fore.LIGHTCYAN_EX}Enter the ending episode number (inclusive):{Fore.LIGHTYELLOW_EX} ",
+                        1, number_of_episodes,
+                    )
+                else:
+                    end_ep = number_of_episodes
+                    print(f"Defaulting to ending episode: {end_ep}")
         else:
             start_ep = 1
             end_ep = 1
 
-        anime.season_number = get_int_in_range(
-            f"{Fore.LIGHTCYAN_EX}Enter the season number for this anime:{Fore.LIGHTYELLOW_EX} "
-        )
+        # Check if season was provided via command line
+        if hasattr(self.args, 'season') and self.args.season is not None:
+            anime.season_number = self.args.season
+            print(f"Using season number from command line: {anime.season_number}")
+        else:
+            # Default to season 1 if not specified (most common case)
+            anime.season_number = 1
+            print(f"Defaulting to season number: {anime.season_number}")
 
         self.configure_driver()
         self.driver.get(anime.url)
@@ -157,20 +253,72 @@ class HianimeExtractor:
                 self.driver.get(url)
                 self.driver.execute_script("window.focus();")
 
-                # Try to kick playback so the HLS requests appear
-                time.sleep(1)
+                # Aggressive player initialization to trigger stream loading
+                time.sleep(2)  # Increased wait for page load
+
+                # Scroll to trigger lazy-loaded players
+                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight / 2);")
+                time.sleep(0.5)
+
                 try:
-                    iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
-                    if iframes:
-                        self.driver.switch_to.frame(iframes[0])
-                    for sel in ("button.jw-icon-play", ".vjs-big-play-button", "video"):
-                        els = self.driver.find_elements(By.CSS_SELECTOR, sel)
-                        if els:
-                            try:
-                                els[0].click()
-                            except Exception:
-                                self.driver.execute_script("document.querySelector('video')?.play?.();")
+                    # Try multiple times with delays to handle async player loading
+                    for attempt in range(3):
+                        iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
+                        if iframes:
+                            self.driver.switch_to.frame(iframes[0])
+                            # Scroll within iframe too
+                            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight / 2);")
+
+                        # Extended selector list for different player types
+                        selectors = [
+                            "button.jw-icon-play",
+                            ".vjs-big-play-button",
+                            ".plyr__control--overlaid",
+                            "button[aria-label*='play' i]",
+                            "button[aria-label*='Play' i]",
+                            ".play-button",
+                            "video"
+                        ]
+
+                        clicked = False
+                        for sel in selectors:
+                            els = self.driver.find_elements(By.CSS_SELECTOR, sel)
+                            if els:
+                                try:
+                                    # Scroll element into view
+                                    self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", els[0])
+                                    time.sleep(0.3)
+                                    els[0].click()
+                                    clicked = True
+                                    print(f"{Fore.LIGHTYELLOW_EX}Clicked play button: {sel}")
+                                    break
+                                except Exception as e:
+                                    # Try JavaScript click
+                                    try:
+                                        self.driver.execute_script("arguments[0].click();", els[0])
+                                        clicked = True
+                                        print(f"{Fore.LIGHTYELLOW_EX}JS clicked play button: {sel}")
+                                        break
+                                    except Exception:
+                                        pass
+
+                        # Always try to programmatically play video too
+                        self.driver.execute_script("""
+                            const videos = document.querySelectorAll('video');
+                            videos.forEach(v => {
+                                try {
+                                    v.muted = true;  // Mute to allow autoplay
+                                    v.play();
+                                } catch(e) {}
+                            });
+                        """)
+
+                        if clicked or attempt > 0:
                             break
+
+                        # Wait before retry
+                        time.sleep(1)
+
                 finally:
                     self.driver.switch_to.default_content()
 
@@ -270,10 +418,11 @@ class HianimeExtractor:
         options.add_argument("--disable-features=PreloadMediaEngagementData,MediaEngagementBypassAutoplayPolicies")
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-        # ---------- merge CHROME_EXTRA_ARGS + ensure unique/writable user-data-dir ----------
+        # ---------- merge CHROME_EXTRA_ARGS (validated) + ensure unique/writable user-data-dir ----------
         extra = os.environ.get("CHROME_EXTRA_ARGS", "")
-        for token in shlex.split(extra):
-            options.add_argument(token)
+        validated_args = validate_chrome_args(extra)
+        for arg in validated_args:
+            options.add_argument(arg)
 
         has_ud = any(str(a).startswith("--user-data-dir=") for a in getattr(options, "arguments", []))
         if not has_ud:
@@ -299,15 +448,35 @@ class HianimeExtractor:
             options.add_argument("--headless=new")
         # ------------------------------------------------------------------------------------
 
-        seleniumwire_options: dict[str, bool] = {
+        # Configure selenium-wire storage to use writable directory
+        # Use /tmp/seleniumwire-{pid} to ensure app user has write access
+        import tempfile
+        seleniumwire_storage = os.path.join(tempfile.gettempdir(), f"seleniumwire-{os.getpid()}")
+        os.makedirs(seleniumwire_storage, mode=0o755, exist_ok=True)
+
+        seleniumwire_options: dict[str, Any] = {
             "verify_ssl": False,
             "disable_encoding": True,
+            "request_storage_base_dir": seleniumwire_storage,
         }
 
-        self.driver: webdriver.Chrome = webdriver.Chrome(
-            options=options,
-            seleniumwire_options=seleniumwire_options,
-        )
+        # Try Chrome first, fall back to Chromium (for ARM64 systems)
+        try:
+            self.driver: webdriver.Chrome = webdriver.Chrome(
+                options=options,
+                seleniumwire_options=seleniumwire_options,
+            )
+        except Exception as e:
+            print(f"{Fore.LIGHTYELLOW_EX}Chrome not found, trying Chromium: {e}")
+            # For ARM64 systems using Chromium
+            options.binary_location = "/usr/bin/chromium"
+            # Explicitly specify chromedriver path (Selenium manager doesn't support ARM64)
+            service = Service(executable_path="/usr/bin/chromedriver")
+            self.driver: webdriver.Chrome = webdriver.Chrome(
+                service=service,
+                options=options,
+                seleniumwire_options=seleniumwire_options,
+            )
 
         stealth(
             self.driver,
@@ -353,10 +522,6 @@ class HianimeExtractor:
                     selection = option.text
 
         if not selection:
-            if self.args.server:
-                print(f"{Fore.LIGHTGREEN_EX}The server name you provided does not exist\n")
-            print(f"\n{Fore.LIGHTGREEN_EX}Select the server you want to download from: \n")
-
             server_names = []
             for i, option in enumerate(options):
                 server_names.append(option.text)
@@ -365,9 +530,18 @@ class HianimeExtractor:
             self.driver.requests.clear()
             self.driver.quit()
 
-            selection = server_names[
-                get_int_in_range(f"\n{Fore.LIGHTCYAN_EX}Server:{Fore.LIGHTYELLOW_EX} ", 1, len(options)) - 1
-            ]
+            # Check if running in interactive mode (terminal available)
+            if sys.stdin.isatty():
+                if self.args.server:
+                    print(f"{Fore.LIGHTGREEN_EX}The server name you provided does not exist\n")
+                print(f"\n{Fore.LIGHTGREEN_EX}Select the server you want to download from: \n")
+                selection = server_names[
+                    get_int_in_range(f"\n{Fore.LIGHTCYAN_EX}Server:{Fore.LIGHTYELLOW_EX} ", 1, len(options)) - 1
+                ]
+            else:
+                # Non-interactive mode (background job): default to first server
+                selection = server_names[0]
+                print(f"{Fore.LIGHTYELLOW_EX}No server specified, defaulting to first available: {selection}")
         else:
             self.driver.requests.clear()
             self.driver.quit()
@@ -415,6 +589,11 @@ class HianimeExtractor:
             )
             sys.stdout.flush()
 
+            # Debug: Log request count per attempt
+            total_requests = len(self.driver.requests)
+            requests_with_response = sum(1 for r in self.driver.requests if r.response)
+            print(f"\n{Fore.LIGHTYELLOW_EX}DEBUG Attempt #{attempt}: Total requests={total_requests}, with_response={requests_with_response}")
+
             for request in self.driver.requests:
                 if not request.response:
                     continue
@@ -422,15 +601,22 @@ class HianimeExtractor:
                 uri = request.url.lower()
                 if uri not in all_urls:
                     all_urls.append(uri)
+                    # Debug: Log new URLs as they're discovered
+                    if ".m3u8" in uri or "master" in uri or "playlist" in uri:
+                        print(f"{Fore.LIGHTMAGENTA_EX}DEBUG: New potential video URL: {uri[:150]}")
 
                 # --- HLS detection: accept any .m3u8 (prefer "master" if seen) ---
                 if ".m3u8" in uri and "thumbnail" not in uri and "iframe" not in uri:
                     if "master" in uri and uri not in self.captured_video_urls and not found_m3u8:
+                        print(f"{Fore.LIGHTGREEN_EX}DEBUG: Found MASTER m3u8: {uri[:150]}")
                         urls["m3u8"] = uri
                         urls["headers"] = dict(request.headers)
                         found_m3u8 = True
                     elif candidate_m3u8 is None and uri not in self.captured_video_urls:
+                        print(f"{Fore.LIGHTCYAN_EX}DEBUG: Found candidate m3u8: {uri[:150]}")
                         candidate_m3u8 = (uri, dict(request.headers))
+                    elif uri in self.captured_video_urls:
+                        print(f"{Fore.LIGHTRED_EX}DEBUG: Skipping already captured m3u8: {uri[:80]}...")
 
                 # --- subtitle detection (language-filtered) ---
                 if (
@@ -467,6 +653,16 @@ class HianimeExtractor:
         print()
         if not found_m3u8:
             print(f"{Fore.LIGHTRED_EX}No .m3u8 streams found.")
+            print(f"{Fore.LIGHTYELLOW_EX}Debug: Captured {len(all_urls)} total requests")
+            print(f"{Fore.LIGHTYELLOW_EX}Debug: Sample URLs (first 10):")
+            for i, url in enumerate(all_urls[:10]):
+                print(f"{Fore.LIGHTCYAN_EX}  {i+1}. {url[:150]}")
+            # Check for any video-related URLs
+            video_urls = [u for u in all_urls if any(ext in u for ext in ['.m3u8', '.mp4', '.ts', 'manifest', 'playlist'])]
+            if video_urls:
+                print(f"{Fore.LIGHTYELLOW_EX}Debug: Found {len(video_urls)} potential video URLs:")
+                for url in video_urls[:5]:
+                    print(f"{Fore.LIGHTMAGENTA_EX}  - {url[:150]}")
             return None
 
         if not found_vtt:
@@ -542,8 +738,9 @@ class HianimeExtractor:
         return _return
 
     def get_anime(self, name: str | None = None) -> Anime | None:
-        os.system("cls" if os.name == "nt" else "clear")
-        print(Fore.LIGHTGREEN_EX + "\nHiAnime " + Fore.LIGHTWHITE_EX + "GDown\n")
+        # Clear screen (cross-platform, safer than os.system)
+        print("\033[H\033[J", end="")
+        print(Fore.LIGHTGREEN_EX + "\nHiAni " + Fore.LIGHTWHITE_EX + "DL\n")
 
         search_name: str = name if name else input("Enter Name of Anime: ")
 
@@ -614,22 +811,41 @@ class HianimeExtractor:
         link_page: requests.Response = requests.get(link, headers=self.HEADERS)
         link_page_soup = BeautifulSoup(link_page.content, "html.parser")
         main_div: Tag = link_page_soup.find("div", "anisc-detail")  # type: ignore
+
+        if not main_div:
+            print(f"{Fore.LIGHTRED_EX}Error: Could not find anime details on page")
+            print(f"{Fore.LIGHTYELLOW_EX}Page title: {link_page_soup.title.text if link_page_soup.title else 'Unknown'}")
+            print(f"{Fore.LIGHTYELLOW_EX}This might mean:")
+            print(f"{Fore.LIGHTYELLOW_EX}  - The website structure has changed")
+            print(f"{Fore.LIGHTYELLOW_EX}  - The URL is incorrect or the anime doesn't exist")
+            print(f"{Fore.LIGHTYELLOW_EX}  - The page is blocked or requires JavaScript")
+            raise ValueError(f"Could not find anime details on page: {link}")
+
         anime_stats: Tag = main_div.find("div", "film-stats")  # type: ignore
 
         try:
             sub_episodes_available: int = int(
                 anime_stats.find("div", class_="tick-item tick-sub").text  # type: ignore
             )
-        except AttributeError:
+        except (AttributeError, TypeError):
             sub_episodes_available = 0
         try:
             dub_episodes_available: int = int(
                 anime_stats.find("div", class_="tick-item tick-dub").text  # type: ignore
             )
-        except AttributeError:
+        except (AttributeError, TypeError):
             dub_episodes_available = 0
 
-        a_tag: Tag = main_div.find("h2", "film-name").find("a")  # type: ignore
+        film_name_tag = main_div.find("h2", "film-name")
+        if not film_name_tag:
+            print(f"{Fore.LIGHTRED_EX}Error: Could not find anime title element")
+            raise ValueError(f"Could not find anime title on page: {link}")
+
+        a_tag: Tag = film_name_tag.find("a")  # type: ignore
+        if not a_tag:
+            print(f"{Fore.LIGHTRED_EX}Error: Could not find anime link element")
+            raise ValueError(f"Could not find anime link on page: {link}")
+
         return Anime(
             str(a_tag.text).translate(self.TITLE_TRANS),
             urljoin(self.URL, "/watch" + str(a_tag["href"])),

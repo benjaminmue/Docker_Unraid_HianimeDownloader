@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 ENV DEBIAN_FRONTEND=noninteractive PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 
-# --- system deps + Chrome + ffmpeg -------------------------------------------------
+# --- system deps + Chrome/Chromium + ffmpeg -------------------------------------------------
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       wget ca-certificates apt-transport-https \
@@ -9,9 +9,14 @@ RUN apt-get update \
       libasound2 libnspr4 libnss3 libx11-6 libxcomposite1 libxcursor1 \
       libxdamage1 libxext6 libxi6 libxrandr2 libxrender1 libxtst6 \
       libglib2.0-0 libdrm2 libgbm1 libu2f-udev xdg-utils \
- && wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
- && apt-get install -y /tmp/chrome.deb || apt-get -f install -y \
- && rm -f /tmp/chrome.deb \
+ && ARCH=$(dpkg --print-architecture) \
+ && if [ "$ARCH" = "arm64" ]; then \
+      apt-get install -y chromium chromium-driver; \
+    else \
+      wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+      && apt-get install -y /tmp/chrome.deb || apt-get -f install -y \
+      && rm -f /tmp/chrome.deb; \
+    fi \
  && rm -rf /var/lib/apt/lists/*
 
 # Non-root app user (PUID/PGID overridable at build)

@@ -3,43 +3,890 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}GDownloader{% endblock %}</title>
+    <meta name="description" content="HiAni DL - Anime downloader with web interface">
+    <meta name="theme-color" content="#FF9BCF">
+    <title>{% block title %}HiAni DL{% endblock %}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="alternate icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="apple-touch-icon" href="/logo.svg">
+    <link rel="manifest" href="/manifest.json">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
+        /* Color Scheme Variables - HiAnime.to Inspired */
+        :root {
+            --bg-primary: #28263D;        /* Dark purple-navy background (from hianime.to) */
+            --bg-secondary: #181A1B;      /* Very dark for cards/inputs (from search bar) */
+            --bg-tertiary: #3A3850;       /* Medium dark for hover states */
+            --text-primary: #E8E6E3;      /* Light cream text (from hianime.to) */
+            --text-secondary: #B3ACA2;    /* Muted grey for secondary text */
+            --accent-primary: #FF9BCF;    /* Bright pink accent (from hianime.to) */
+            --accent-hover: #E83E8C;      /* Darker pink for hover (from CSS var) */
+            --success: #10B981;           /* Emerald green */
+            --warning: #F59E0B;           /* Orange */
+            --danger: #EF4444;            /* Red */
+            --border-color: #4A4760;      /* Lighter purple-grey for borders */
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #F5F5F7;        /* Soft grey background */
+            --bg-secondary: #FFFFFF;      /* Pure white for cards */
+            --bg-tertiary: #E8E6E3;       /* Light cream for inputs */
+            --text-primary: #28263D;      /* Dark purple-navy text (inverted) */
+            --text-secondary: #6B6875;    /* Medium grey for secondary text */
+            --accent-primary: #E83E8C;    /* Pink accent (darker for light mode) */
+            --accent-hover: #C7317F;      /* Deeper pink for hover */
+            --success: #10B981;           /* Emerald green */
+            --warning: #F59E0B;           /* Orange */
+            --danger: #EF4444;            /* Red */
+            --border-color: #D3CFC9;      /* Light grey borders */
+        }
+
         body {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .main-content {
             flex: 1;
         }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar-brand img {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .navbar-brand span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Cards */
+        .card {
+            --card-bg: var(--bg-secondary);
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .card-header {
+            background-color: var(--bg-tertiary);
+            border-bottom-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* Override Bootstrap's bg-primary for dark theme with pink accent */
+        .bg-primary {
+            background-color: var(--bg-secondary) !important;
+            color: var(--accent-primary) !important;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            border-color: var(--success);
+        }
+
+        .btn-warning {
+            background-color: var(--warning);
+            border-color: var(--warning);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            border-color: var(--danger);
+        }
+
+        /* Forms */
+        .form-control,
+        .form-select {
+            background-color: var(--bg-tertiary);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.25rem rgba(255, 155, 207, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Status Badges */
         .status-badge {
             font-size: 0.85rem;
             padding: 0.35rem 0.65rem;
         }
+
+        .badge.bg-primary {
+            background-color: var(--accent-primary) !important;
+        }
+
+        .badge.bg-success {
+            background-color: var(--success) !important;
+        }
+
+        .badge.bg-warning {
+            background-color: var(--warning) !important;
+        }
+
+        .badge.bg-danger {
+            background-color: var(--danger) !important;
+        }
+
+        /* Log Viewer */
         .log-viewer {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 0.9rem;
             padding: 1rem;
             border-radius: 0.375rem;
+            border: 1px solid var(--border-color);
             max-height: 500px;
             overflow-y: auto;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
+
         .log-line {
             margin: 0;
             padding: 2px 0;
+        }
+
+        /* Progress Bar */
+        .progress {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar {
+            background-color: var(--accent-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .footer-link i {
+            font-size: 1.2rem;
+        }
+
+        /* Tables */
+        .table {
+            color: var(--text-primary);
+        }
+
+        .table tbody tr,
+        .table tbody tr td,
+        .table tbody tr th {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: var(--bg-tertiary);
+        }
+
+        /* Episode items and detail containers */
+        .episode-item {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        /* Make Details table container match episode boxes */
+        .row.mb-4 .table {
+            background-color: var(--bg-tertiary);
+            border-radius: 0.375rem;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .row.mb-4 .table tbody tr {
+            background-color: var(--bg-tertiary);
+            border-bottom: 2px solid rgba(74, 71, 96, 0.3);
+        }
+
+        .row.mb-4 .table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .row.mb-4 .table tbody tr td,
+        .row.mb-4 .table tbody tr th {
+            background-color: var(--bg-tertiary);
+            border: none;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-toggle i {
+            font-size: 1.1rem;
+        }
+
+        /* Custom accent outline button */
+        .btn-outline-accent {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            background-color: transparent;
+        }
+
+        .btn-outline-accent:hover {
+            color: var(--bg-primary);
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        /* Alert Styling */
+        .alert {
+            border-color: var(--border-color);
+        }
+
+        .alert-info {
+            background-color: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .alert-success {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-color: var(--success);
+            color: var(--text-primary);
+        }
+
+        .alert-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: var(--warning);
+            color: var(--text-primary);
+        }
+
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-color: var(--danger);
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        /* List Groups */
+        .list-group-item {
+            background-color: var(--bg-secondary);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .list-group-item:hover {
+            background-color: var(--bg-tertiary);
+        }
+
+        /* Modals */
+        .modal-content {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .modal-header {
+            border-bottom-color: var(--border-color);
+        }
+
+        .modal-footer {
+            border-top-color: var(--border-color);
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            background-color: var(--bg-secondary);
+            border-color: var(--border-color);
+        }
+
+        .dropdown-item {
+            color: var(--text-primary);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--accent-primary);
+        }
+
+        /* Text Colors - Fix Bootstrap defaults for dark mode */
+        .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        .form-text {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Alert Links - Better contrast */
+        .alert-link {
+            color: var(--accent-primary) !important;
+            font-weight: 600;
+        }
+
+        .alert-link:hover {
+            color: var(--accent-hover) !important;
+            text-decoration: underline;
+        }
+
+        /* Table Light Header - Override for dark mode */
+        .table-light {
+            background-color: var(--bg-tertiary) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .table-light th {
+            color: var(--text-primary) !important;
+        }
+
+        /* Episode Cards */
+        .episode-item {
+            background-color: var(--bg-tertiary);
+            border-color: var(--border-color) !important;
+            transition: all 0.2s ease;
+        }
+
+        .episode-item:hover {
+            box-shadow: 0 2px 8px rgba(255, 155, 207, 0.15);
+        }
+
+        /* Progress Component */
+        .progress-component {
+            width: 100%;
+            position: relative;
+        }
+
+        .progress-bar-container {
+            position: relative;
+            width: 100%;
+            height: 24px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(56, 189, 248, 0.3) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(56, 189, 248, 0.3) 50%,
+                rgba(56, 189, 248, 0.3) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 20px 20px;
+            background-color: var(--accent-primary);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            animation: progress-stripes 1s linear infinite;
+        }
+
+        @keyframes progress-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+
+        .progress-bar-fill.complete {
+            background: var(--success);
+            animation: none;
+        }
+
+        .progress-bar-fill.failed {
+            background: var(--danger);
+            animation: none;
+        }
+
+        .progress-percent-text {
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            padding: 0 8px;
+        }
+
+        /* Stage Timeline */
+        .stage-timeline {
+            position: absolute;
+            top: 32px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            pointer-events: none;
+        }
+
+        .stage-marker {
+            position: absolute;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            gap: 6px;
+            pointer-events: auto;
+        }
+
+        /*
+         * Stage bubble with halo effect:
+         * - Background matches card color to hide line
+         * - box-shadow creates a "halo" that extends beyond the border
+         * - This cleanly erases the connector line without transparency issues
+         */
+        .stage-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 2;
+            background: var(--card-bg);
+            box-shadow: 0 0 0 4px var(--card-bg);
+        }
+
+        /* Stage States */
+        .stage-marker.completed .stage-icon {
+            background-color: var(--success);
+            border: 2px solid var(--success);
+        }
+
+        .stage-marker.active .stage-icon {
+            background-color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+            animation: pulse-stage 2s infinite;
+        }
+
+        .stage-marker.pending .stage-icon {
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+        }
+
+        .stage-marker.failed .stage-icon {
+            background-color: var(--danger);
+            border: 2px solid var(--danger);
+        }
+
+        @keyframes pulse-stage {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.85; }
+        }
+
+        .stage-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .stage-label {
+            font-size: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .stage-marker.completed .stage-label {
+            color: var(--success);
+        }
+
+        .stage-marker.active .stage-label {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .stage-marker.pending .stage-label {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .stage-marker.failed .stage-label {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        /* Connectors */
+        .stage-connector {
+            position: absolute;
+            top: 14px; /* Center on the 28px stage icon circles */
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        /* Stage details (download progress) */
+        .stage-details {
+            font-size: 9px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Modal Accordion Styling */
+        .modal .accordion-item {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            margin-bottom: 0;
+        }
+
+        .modal .accordion-button {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: none;
+            padding: 1rem 1.25rem;
+        }
+
+        .modal .accordion-button:not(.collapsed) {
+            background-color: var(--bg-secondary);
+            color: var(--accent-primary);
+            box-shadow: none;
+        }
+
+        .modal .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--border-color);
+        }
+
+        .modal .accordion-button:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .modal .accordion-button::after {
+            filter: invert(1);
+        }
+
+        .modal .accordion-body {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .modal .accordion-collapse {
+            background-color: var(--bg-secondary);
+        }
+
+        /* Modal Table Styling */
+        .modal .table {
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .modal .table thead {
+            border-color: var(--border-color);
+        }
+
+        .modal .table th {
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .modal .table td {
+            background-color: var(--bg-secondary);
+            border-color: var(--border-color);
+            padding: 0.75rem;
+        }
+
+        .modal .table tbody tr {
+            border-color: var(--border-color);
+        }
+
+        .modal .table tbody tr:hover {
+            background-color: rgba(255, 155, 207, 0.05);
+        }
+
+        /* Modal Alert Boxes */
+        .modal .alert-info {
+            background-color: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: #ffffff !important;
+        }
+
+        .modal .alert-warning {
+            background-color: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: #ffffff !important;
+        }
+
+        .modal .alert-info strong,
+        .modal .alert-warning strong {
+            color: #ffffff !important;
+        }
+
+        /* Ensure all text in modal alerts is white */
+        .modal .alert-info *,
+        .modal .alert-warning * {
+            color: #ffffff !important;
+        }
+
+        /* Keep code snippets pink */
+        .modal .alert-info code,
+        .modal .alert-warning code {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Make all Bootstrap icons in modal alerts pink */
+        .modal .alert-info .bi,
+        .modal .alert-warning .bi,
+        .modal .alert-info i[class^="bi-"],
+        .modal .alert-warning i[class^="bi-"] {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Accordion header icons - white when closed, pink when opened */
+        .modal .accordion-button .bi,
+        .modal .accordion-button i[class*="bi-"] {
+            color: #ffffff !important;
+        }
+
+        .modal .accordion-button:not(.collapsed) .bi,
+        .modal .accordion-button:not(.collapsed) i[class*="bi-"] {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Override Bootstrap color utility classes in modal to use pink accent */
+        .modal .text-warning,
+        .modal .text-primary,
+        .modal .text-success,
+        .modal .text-info,
+        .modal .text-danger {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Modal header styling */
+        .modal .modal-header {
+            background-color: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal .modal-header .modal-title {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Modal footer styling */
+        .modal .modal-footer {
+            background-color: var(--bg-secondary) !important;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Override badge colors in modal */
+        .modal .badge.bg-success {
+            background-color: var(--accent-primary) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .modal .badge.bg-warning {
+            background-color: var(--accent-primary) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .modal .badge.bg-danger {
+            background-color: var(--accent-primary) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        .modal .badge.bg-info {
+            background-color: var(--accent-primary) !important;
+            color: var(--bg-primary) !important;
+        }
+
+        /* Override inline color styles in modal content */
+        .modal span[style*="color"],
+        .modal div[style*="color"],
+        .modal p[style*="color"] {
+            color: #ffffff !important;
+        }
+
+        /* Common Combinations code blocks - match Common Arguments style */
+        .modal #combinations code.bg-light {
+            border-color: var(--accent-primary) !important;
+            color: var(--accent-primary) !important;
+            background-color: rgba(74, 71, 96, 0.5) !important;
+        }
+
+        /* Full Documentation button styling */
+        .modal .btn-outline-primary {
+            border-color: var(--accent-primary) !important;
+            color: var(--accent-primary) !important;
+            background-color: transparent !important;
+        }
+
+        .modal .btn-outline-primary:hover {
+            background-color: var(--accent-primary) !important;
+            border-color: #ffffff !important;
+            color: #ffffff !important;
+        }
+
+        /* Lightbulb icon in modal body */
+        .modal .modal-body .text-muted .bi-lightbulb {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Modal Dialog */
+        .modal-dialog {
+            color: var(--text-primary);
+        }
+
+        /* Modal Close Button */
+        .btn-close,
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+            opacity: 0.8;
+        }
+
+        .btn-close:hover,
+        .btn-close-white:hover {
+            opacity: 1;
+        }
+
+        /* Modal Code Blocks */
+        .modal code {
+            background-color: rgba(74, 71, 96, 0.5);
+            color: var(--accent-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Modal Links */
+        .modal a {
+            color: var(--accent-primary);
+        }
+
+        .modal a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Modal List Items */
+        .modal ul li,
+        .modal ol li {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal Badges */
+        .modal .badge {
+            font-weight: 500;
+            padding: 0.35rem 0.65rem;
+        }
+
+        .modal .bg-success {
+            background-color: var(--success) !important;
+        }
+
+        /* Modal Background Code Blocks */
+        .modal .bg-light {
+            background-color: rgba(74, 71, 96, 0.3) !important;
+            color: var(--text-primary) !important;
         }
     </style>
 
@@ -47,16 +894,17 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <i class="bi bi-download"></i> GDownloader
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="/logo.svg" alt="HiAni DL Logo" height="32" class="me-2">
+                <span>HiAni DL</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link {% if request.url.path == '/' %}active{% endif %}" href="/">
                             <i class="bi bi-plus-circle"></i> New Download
@@ -68,6 +916,10 @@
                         </a>
                     </li>
                 </ul>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                    <i class="bi bi-moon-stars-fill" id="theme-icon"></i>
+                    <span id="theme-text">Dark</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -80,14 +932,72 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-light py-3 mt-auto">
-        <div class="container text-center text-muted">
-            <small>GDownloader WebGUI v1.0.0</small>
+    <footer class="py-3 mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <small>HiAni DL WebGUI v1.0.0</small>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="https://github.com/benjaminmue/Docker_Unraid_HianimeDownloader"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-link"
+                       title="View on GitHub">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        // Theme management
+        function getTheme() {
+            return localStorage.getItem('theme') || 'dark';
+        }
+
+        function setTheme(theme) {
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeUI(theme);
+        }
+
+        function updateThemeUI(theme) {
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (theme === 'light') {
+                icon.className = 'bi bi-sun-fill';
+                text.textContent = 'Light';
+            } else {
+                icon.className = 'bi bi-moon-stars-fill';
+                text.textContent = 'Dark';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = getTheme();
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const theme = getTheme();
+            setTheme(theme);
+        });
+
+        // Apply theme immediately to prevent flash
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
     {% block extra_js %}{% endblock %}
 </body>

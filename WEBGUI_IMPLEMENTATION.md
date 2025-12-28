@@ -1,10 +1,10 @@
 # WebGUI Implementation Summary
 
-This document summarizes the WebGUI implementation for GDownloader.
+This document summarizes the WebGUI implementation for HiAni DL.
 
 ## Implementation Overview
 
-A complete web interface has been implemented for GDownloader with the following components:
+A complete web interface has been implemented for HiAni DL with the following components:
 
 ### Architecture
 
@@ -145,7 +145,7 @@ open http://localhost:8080
 ```yaml
 environment:
   WEB_PORT: 8080
-  URL_ALLOWLIST: "hianime.to,youtube.com,instagram.com"
+  URL_ALLOWLIST: "hianime.to"
   WEB_USER: admin
   WEB_PASSWORD: secret123
   LOG_LEVEL: DEBUG

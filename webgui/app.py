@@ -1,5 +1,5 @@
 """
-FastAPI application for GDownloader WebGUI.
+FastAPI application for HiAni DL WebGUI.
 """
 
 import os
@@ -8,6 +8,7 @@ import logging
 from pathlib import Path
 from typing import Optional, List
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, Request, HTTPException, Depends, Form, status
 from fastapi.responses import HTMLResponse, StreamingResponse, FileResponse, JSONResponse
@@ -16,13 +17,13 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, HttpUrl, validator, Field
 from sse_starlette.sse import EventSourceResponse
 
-from .database import Database, JobStatus
+from .database import Database, JobStatus, EpisodeStatus, EPISODE_STATUS_LABELS
 from .worker import JobWorker
 from .security import URLValidator, BasicAuthManager
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger("webgui")
@@ -42,8 +43,109 @@ WEB_USER = os.getenv("WEB_USER")
 WEB_PASSWORD = os.getenv("WEB_PASSWORD")
 
 # Initialize components
-app = FastAPI(title="GDownloader WebGUI", version="1.0.0")
+app = FastAPI(title="HiAni DL WebGUI", version="1.0.0")
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
+
+# Add custom Jinja2 filter to reorder episode arguments
+def format_episode_args(args_str: str) -> str:
+    """Reorder --ep-from and --ep-to to show in logical order."""
+    if not args_str:
+        return args_str
+
+    import re
+    # Extract --ep-from and --ep-to values
+    from_match = re.search(r'--ep-from\s+(\S+)', args_str)
+    to_match = re.search(r'--ep-to\s+(\S+)', args_str)
+
+    if from_match and to_match:
+        # Remove both from original string
+        cleaned = re.sub(r'--ep-from\s+\S+', '', args_str)
+        cleaned = re.sub(r'--ep-to\s+\S+', '', cleaned)
+        # Remove extra whitespace
+        cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+
+        # Build new string with from/to at the beginning
+        result = f"--ep-from {from_match.group(1)} --ep-to {to_match.group(1)}"
+        if cleaned:
+            result += f" {cleaned}"
+        return result
+
+    return args_str
+
+
+# Add custom Jinja2 filter for datetime formatting with timezone support
+def format_datetime(dt_str: str, format_type: str = "full") -> str:
+    """
+    Format ISO datetime string to user's timezone and locale.
+
+    Args:
+        dt_str: ISO datetime string (e.g., "2025-12-28T17:17:37.935420")
+        format_type: "full" (date + time), "date" (date only), "time" (time only)
+
+    Returns:
+        Formatted datetime string according to timezone and locale
+    """
+    if not dt_str:
+        return "-"
+
+    try:
+        # Get timezone from environment (default to UTC)
+        tz_name = os.getenv("TZ", "UTC")
+        locale = os.getenv("LOCALE", "")
+
+        # Parse ISO datetime (assumes UTC from database)
+        if isinstance(dt_str, str):
+            # Handle both with and without microseconds
+            if '.' in dt_str:
+                dt = datetime.fromisoformat(dt_str.replace('Z', '+00:00'))
+            else:
+                dt = datetime.fromisoformat(dt_str)
+
+            # If datetime is naive (no timezone), assume UTC
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=ZoneInfo("UTC"))
+        else:
+            dt = dt_str
+
+        # Convert to user's timezone
+        user_tz = ZoneInfo(tz_name)
+        dt_local = dt.astimezone(user_tz)
+
+        # Determine format based on locale/timezone
+        # European format: DD.MM.YYYY HH:mm:ss (24-hour)
+        # US format: MM/DD/YYYY hh:mm:ss AM/PM (12-hour)
+        if locale.startswith("de_") or locale.startswith("fr_") or locale.startswith("it_") or tz_name.startswith("Europe/"):
+            # European format
+            if format_type == "date":
+                return dt_local.strftime("%d.%m.%Y")
+            elif format_type == "time":
+                return dt_local.strftime("%H:%M:%S")
+            else:  # full
+                return dt_local.strftime("%d.%m.%Y %H:%M:%S")
+        elif locale.startswith("en_US") or tz_name.startswith("America/"):
+            # US format
+            if format_type == "date":
+                return dt_local.strftime("%m/%d/%Y")
+            elif format_type == "time":
+                return dt_local.strftime("%I:%M:%S %p")
+            else:  # full
+                return dt_local.strftime("%m/%d/%Y %I:%M:%S %p")
+        else:
+            # Default ISO-like format
+            if format_type == "date":
+                return dt_local.strftime("%Y-%m-%d")
+            elif format_type == "time":
+                return dt_local.strftime("%H:%M:%S")
+            else:  # full
+                return dt_local.strftime("%Y-%m-%d %H:%M:%S")
+
+    except Exception as e:
+        logger.warning(f"Failed to format datetime '{dt_str}': {e}")
+        return str(dt_str)
+
+
+templates.env.filters['format_episode_args'] = format_episode_args
+templates.env.filters['format_datetime'] = format_datetime
 
 db = Database(DB_PATH)
 worker = JobWorker(db, CONFIG_DIR, DOWNLOAD_DIR)
@@ -183,6 +285,15 @@ async def get_logo():
     return FileResponse(logo_path, media_type="image/svg+xml")
 
 
+@app.get("/manifest.json")
+async def get_manifest():
+    """Serve the PWA manifest file."""
+    manifest_path = Path(__file__).parent / "manifest.json"
+    if not manifest_path.exists():
+        raise HTTPException(status_code=404, detail="Manifest not found")
+    return FileResponse(manifest_path, media_type="application/manifest+json")
+
+
 # HTML Pages
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request, user: str = Depends(get_current_user)):
@@ -227,6 +338,14 @@ async def create_job(job: JobCreate, user: str = Depends(get_current_user)):
     # Validate URL
     url_validator.validate(job.url)
 
+    # Check job limit (max 3 concurrent jobs)
+    active_jobs = await db.get_active_jobs()
+    if len(active_jobs) >= 3:
+        raise HTTPException(
+            status_code=429,
+            detail="Max concurrent jobs reached. Please wait until one finishes."
+        )
+
     # Create job
     job_id = await db.create_job(
         url=job.url,
@@ -268,6 +387,36 @@ async def cancel_job(job_id: int, user: str = Depends(get_current_user)):
     return {"status": "canceled"}
 
 
+@app.post("/api/jobs/delete-all")
+async def delete_all_jobs(user: str = Depends(get_current_user)):
+    """Delete all jobs except running ones."""
+    deleted_count, skipped_count = await db.delete_all_jobs_except_running()
+    return {
+        "deleted_count": deleted_count,
+        "skipped_count": skipped_count,
+        "message": f"Deleted {deleted_count} job(s), skipped {skipped_count} running job(s)"
+    }
+
+
+@app.get("/api/jobs/{job_id}/episodes")
+async def get_job_episodes(job_id: int, user: str = Depends(get_current_user)):
+    """Get all episodes for a job."""
+    job = await db.get_job(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    episodes = await db.get_job_episodes(job_id)
+
+    # Add status labels
+    for episode in episodes:
+        episode["status_label"] = EPISODE_STATUS_LABELS.get(
+            EpisodeStatus(episode["status"]),
+            episode["status"]
+        )
+
+    return episodes
+
+
 # Server-Sent Events for live updates
 @app.get("/api/jobs/{job_id}/events")
 async def job_events(job_id: int, user: str = Depends(get_current_user)):
@@ -275,9 +424,12 @@ async def job_events(job_id: int, user: str = Depends(get_current_user)):
 
     async def event_generator():
         """Generate SSE events for job updates."""
+        import json
+
         last_status = None
         last_progress = None
         last_log_pos = 0
+        last_episodes = None
 
         while True:
             try:
@@ -286,7 +438,7 @@ async def job_events(job_id: int, user: str = Depends(get_current_user)):
                 if not job:
                     yield {
                         "event": "error",
-                        "data": {"message": "Job not found"},
+                        "data": json.dumps({"message": "Job not found"}),
                     }
                     break
 
@@ -301,28 +453,56 @@ async def job_events(job_id: int, user: str = Depends(get_current_user)):
                 if current_status != last_status:
                     yield {
                         "event": "status",
-                        "data": current_status,
+                        "data": json.dumps(current_status),
                     }
                     last_status = current_status.copy()
 
-                # Send new log lines
+                # Send new log lines (async to avoid blocking)
                 if job["log_file"] and Path(job["log_file"]).exists():
-                    with open(job["log_file"], "r") as f:
-                        f.seek(last_log_pos)
-                        new_lines = f.readlines()
-                        last_log_pos = f.tell()
+                    def read_log():
+                        with open(job["log_file"], "r") as f:
+                            f.seek(last_log_pos)
+                            new_lines = f.readlines()
+                            return new_lines, f.tell()
 
-                        if new_lines:
-                            yield {
-                                "event": "log",
-                                "data": {"lines": new_lines},
-                            }
+                    new_lines, new_pos = await asyncio.to_thread(read_log)
+                    logger.debug(f"Job {job_id}: Read {len(new_lines)} new lines from position {last_log_pos} to {new_pos}")
+                    last_log_pos = new_pos
+
+                    if new_lines:
+                        logger.debug(f"Job {job_id}: Yielding {len(new_lines)} log lines")
+                        yield {
+                            "event": "log",
+                            "data": json.dumps({"lines": new_lines}),
+                        }
+                elif job["log_file"]:
+                    logger.debug(f"Job {job_id}: Log file {job['log_file']} does not exist yet")
+
+                # Send episode updates
+                episodes = await db.get_job_episodes(job_id)
+                if episodes:
+                    # Add status labels
+                    for episode in episodes:
+                        episode["status_label"] = EPISODE_STATUS_LABELS.get(
+                            EpisodeStatus(episode["status"]),
+                            episode["status"]
+                        )
+
+                    # Send if changed (convert to JSON string for comparison)
+                    current_episodes_json = json.dumps(episodes, sort_keys=True)
+                    if current_episodes_json != last_episodes:
+                        logger.debug(f"Job {job_id}: Sending {len(episodes)} episode updates")
+                        yield {
+                            "event": "episodes",
+                            "data": json.dumps({"episodes": episodes}),
+                        }
+                        last_episodes = current_episodes_json
 
                 # Stop streaming if job is finished
                 if job["status"] in (JobStatus.SUCCESS.value, JobStatus.FAILED.value, JobStatus.CANCELED.value):
                     yield {
                         "event": "complete",
-                        "data": {"status": job["status"]},
+                        "data": json.dumps({"status": job["status"]}),
                     }
                     break
 
@@ -332,7 +512,7 @@ async def job_events(job_id: int, user: str = Depends(get_current_user)):
                 logger.error(f"Error in event stream: {e}", exc_info=True)
                 yield {
                     "event": "error",
-                    "data": {"message": str(e)},
+                    "data": json.dumps({"message": str(e)}),
                 }
                 break
 

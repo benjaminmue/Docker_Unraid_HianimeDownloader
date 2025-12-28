@@ -22,7 +22,7 @@ mkdir -p "$CONFIG_DIR/logs"
 chown -R app:app "$CONFIG_DIR" "$OUTPUT_DIR"
 
 echo "======================================"
-echo "  GDownloader WebGUI Starting"
+echo "  HiAni DL WebGUI Starting"
 echo "======================================"
 echo "Config directory: $CONFIG_DIR"
 echo "Download directory: $OUTPUT_DIR"

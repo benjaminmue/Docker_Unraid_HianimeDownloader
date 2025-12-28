@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Jobs - GDownloader{% endblock %}
+{% block title %}Jobs - HiAni DL{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -8,9 +8,14 @@
         <div class="card shadow">
             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                 <h4 class="mb-0"><i class="bi bi-list-task"></i> Download Jobs</h4>
-                <button class="btn btn-light btn-sm" onclick="location.reload()">
-                    <i class="bi bi-arrow-clockwise"></i> Refresh
-                </button>
+                <div>
+                    <button class="btn btn-danger btn-sm me-2" onclick="deleteAllJobs()" {% if not jobs %}disabled{% endif %}>
+                        <i class="bi bi-trash"></i> Delete All
+                    </button>
+                    <button class="btn btn-light btn-sm" onclick="location.reload()">
+                        <i class="bi bi-arrow-clockwise"></i> Refresh
+                    </button>
+                </div>
             </div>
             <div class="card-body">
                 {% if not jobs %}
@@ -21,7 +26,7 @@
                 {% else %}
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
-                        <thead class="table-light">
+                        <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>Status</th>
@@ -94,20 +99,12 @@
                                     <small class="text-muted">{{ job.stage }}</small>
                                     {% endif %}
                                 </td>
-                                <td><small>{{ job.created_at[:19].replace('T', ' ') }}</small></td>
+                                <td><small>{{ job.created_at | format_datetime }}</small></td>
                                 <td>
-                                    {% if job.started_at %}
-                                    <small>{{ job.started_at[:19].replace('T', ' ') }}</small>
-                                    {% else %}
-                                    <small class="text-muted">-</small>
-                                    {% endif %}
+                                    <small{% if not job.started_at %} class="text-muted"{% endif %}>{{ job.started_at | format_datetime }}</small>
                                 </td>
                                 <td>
-                                    {% if job.finished_at %}
-                                    <small>{{ job.finished_at[:19].replace('T', ' ') }}</small>
-                                    {% else %}
-                                    <small class="text-muted">-</small>
-                                    {% endif %}
+                                    <small{% if not job.finished_at %} class="text-muted"{% endif %}>{{ job.finished_at | format_datetime }}</small>
                                 </td>
                                 <td>
                                     <a href="/jobs/{{ job.id }}" class="btn btn-sm btn-outline-primary">
@@ -135,5 +132,36 @@ if (hasRunningJobs) {
     setTimeout(() => location.reload(), 5000);
 }
 {% endif %}
+
+// Delete all jobs function
+async function deleteAllJobs() {
+    // Confirm with user
+    const confirmed = confirm('Are you sure you want to delete all jobs? Running jobs will not be deleted.');
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/jobs/delete-all', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            alert('Error deleting jobs: ' + (error.detail || 'Unknown error'));
+            return;
+        }
+
+        const result = await response.json();
+        alert(`Deleted ${result.deleted_count} job(s). ${result.skipped_count} running job(s) were skipped.`);
+        location.reload();
+    } catch (error) {
+        console.error('Error deleting jobs:', error);
+        alert('Failed to delete jobs. Please try again.');
+    }
+}
 </script>
 {% endblock %}

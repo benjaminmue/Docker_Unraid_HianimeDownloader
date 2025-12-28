@@ -1,6 +1,6 @@
 ## WebGUI
 
-GDownloader now includes a web interface for managing downloads through a browser. The WebGUI provides:
+HiAni DL now includes a web interface for managing downloads through a browser. The WebGUI provides:
 
 - **Web-based job submission** - Submit download URLs through a Bootstrap-styled interface
 - **Background processing** - Jobs continue running even after closing the browser
@@ -46,10 +46,7 @@ open http://localhost:8080
 
 ```yaml
 # Allow specific sites
-URL_ALLOWLIST: "hianime.to,youtube.com,instagram.com"
-
-# Allow all YouTube and Google domains
-URL_ALLOWLIST: "youtube.com,googlevideo.com,ytimg.com"
+URL_ALLOWLIST: "hianime.to"
 
 # Reject all URLs (most secure)
 URL_ALLOWLIST: ""
@@ -77,7 +74,7 @@ services:
       LOG_LEVEL: INFO
 
       # Security - Allow specific domains only
-      URL_ALLOWLIST: "hianime.to,youtube.com,instagram.com"
+      URL_ALLOWLIST: "hianime.to"
 
       # Optional: Enable authentication
       # WEB_USER: admin
@@ -102,7 +99,7 @@ volumes:
 docker run -d \
   --name hianime-webgui \
   -p 8080:8080 \
-  -e URL_ALLOWLIST="hianime.to,youtube.com,instagram.com" \
+  -e URL_ALLOWLIST="hianime.to" \
   -e WEB_PORT=8080 \
   -e LOG_LEVEL=INFO \
   -v /path/to/downloads:/downloads \
@@ -129,7 +126,7 @@ Create a new template in Unraid with these settings:
 - **Container Path:** `/config` → **Host Path:** `/mnt/user/appdata/hianime-webgui`
 
 **Environment Variables:**
-- **URL_ALLOWLIST:** `hianime.to,youtube.com,instagram.com` *(required)*
+- **URL_ALLOWLIST:** `hianime.to` *(recommended)*
 - **WEB_PORT:** `8080`
 - **LOG_LEVEL:** `INFO`
 - **WEB_USER:** *(optional - for authentication)*

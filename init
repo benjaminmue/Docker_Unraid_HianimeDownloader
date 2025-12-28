@@ -1,12 +1,12 @@
 # Docker_Unraid_HianimeDownloader - Project Overview
 
-## What is GDownloader?
+## What is HiAni DL?
 
-GDownloader is a Docker-optimized CLI tool for downloading anime from HiAnime.to and media from various social platforms (Instagram, YouTube, TikTok, etc.). It's specifically designed to run in containerized environments like Docker and Unraid with full automation support, while also supporting interactive local usage.
+HiAni DL is a Docker-optimized CLI tool for downloading anime from HiAnime.to. It's specifically designed to run in containerized environments like Docker and Unraid with full automation support, while also supporting interactive local usage.
 
 ## Core Purpose
 
-This project solves the challenge of downloading anime episodes and social media content in automated, headless environments. It combines browser automation with advanced video downloading to extract streaming content that typically requires JavaScript rendering and bypasses simple download methods.
+This project solves the challenge of downloading anime episodes in automated, headless environments. It combines browser automation with advanced video downloading to extract streaming content that typically requires JavaScript rendering and bypasses simple download methods.
 
 ## Key Features
 
@@ -18,12 +18,6 @@ This project solves the challenge of downloading anime episodes and social media
   - Multi-language subtitle support (40+ languages)
   - Metadata JSON generation for episode tracking
 
-- **Social Media Downloading**:
-  - Instagram posts, reels, and profile downloads
-  - YouTube video extraction
-  - TikTok content downloads
-  - General yt-dlp compatible sites
-
 - **Docker/Unraid Optimization**:
   - Pre-installed Chrome and ffmpeg in container
   - Full environment variable automation (no TTY required)
@@ -33,20 +27,17 @@ This project solves the challenge of downloading anime episodes and social media
 
 ## Architecture
 
-The project uses a modular extractor pattern with three specialized components:
+The project uses a modular extractor pattern with specialized components:
 
 1. **HianimeExtractor** - Selenium-based browser automation with network interception to capture HLS streams and subtitles from hianime.to
 
-2. **InstagramExtractor** - gallery_dl integration for Instagram content with yt-dlp fallback
-
-3. **GeneralExtractor** - yt-dlp based downloader for all other video platforms
+2. **GeneralExtractor** - yt-dlp based downloader for other video platforms
 
 ## Technology Stack
 
 - **Python 3.10+** - Core runtime
 - **Selenium + Selenium-Wire** - Browser automation with network request interception
 - **yt-dlp** - Video/audio extraction and HLS stream downloading
-- **gallery_dl** - Instagram specialized downloads
 - **ffmpeg** - Media processing and conversion
 - **BeautifulSoup4** - HTML parsing
 - **selenium-stealth** - Anti-bot detection
@@ -62,12 +53,6 @@ The project uses a modular extractor pattern with three specialized components:
 6. yt-dlp downloads HLS streams with fragment retry logic
 7. ffmpeg converts streams to MP4 format
 8. Metadata JSON is created with episode information
-
-### Social Media Flow:
-1. URL is detected (Instagram, YouTube, etc.)
-2. Appropriate extractor is selected
-3. Content is downloaded via gallery_dl or yt-dlp
-4. Files are saved with structured naming
 
 ## Environment Variable Support
 
@@ -96,7 +81,6 @@ The Docker container includes:
 - **Home Media Servers**: Automated anime downloading for Plex/Jellyfin libraries
 - **Unraid Integration**: Containerized downloading with volume mounts
 - **Content Archival**: Batch downloading of episodes with metadata
-- **Social Media Backup**: Instagram/YouTube content preservation
 - **Local Development**: Interactive CLI for manual downloads
 
 ## Output Structure
