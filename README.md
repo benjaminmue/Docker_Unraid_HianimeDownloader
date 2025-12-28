@@ -45,8 +45,11 @@ HiAni DL is a **Docker-only** anime downloader designed for **local network (LAN
 
 Walks you through:
 ✅ Installing Docker (Windows/Mac/Linux)
+
 ✅ Creating your docker-compose.yml
+
 ✅ Starting the container
+
 ✅ Your first download
 
 **Takes ~10 minutes to get up and running!**
