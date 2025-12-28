@@ -18,12 +18,16 @@
 
 ## 📖 Overview
 
-GDownloader is a powerful media downloader designed for Docker and Unraid environments. It provides both a command-line interface and a modern web-based GUI for downloading content from HiAnime.to and various social media platforms (YouTube, TikTok, Instagram, etc.).
+GDownloader is a powerful media downloader designed for **local network (LAN) use** on Docker and Unraid environments. It provides both a command-line interface and a modern web-based GUI for downloading content from HiAnime.to and various social media platforms (YouTube, TikTok, Instagram, etc.).
+
+> 🏠 **Designed for Home/LAN Use Only**
+>
+> This application is intended for **private, internal network deployment only**. It should **never be exposed directly to the internet (WAN)** without proper security measures like a reverse proxy with HTTPS, strong authentication, and rate limiting.
 
 **Key Features:**
 - 🌐 **Web Interface** - Modern Bootstrap UI for managing downloads
 - 🐳 **Docker-Ready** - Fully containerized with Chrome and ffmpeg included
-- 🔒 **Secure** - URL allowlist, optional authentication, SSRF protection
+- 🏠 **LAN-Optimized** - Designed for trusted home/internal networks
 - 📊 **Real-time Progress** - Live logs and progress tracking via Server-Sent Events
 - 🎯 **Background Processing** - Downloads continue after closing browser
 - 🎬 **Anime Downloads** - Full support for HiAnime.to (episodes, seasons, ranges)
@@ -62,6 +66,28 @@ docker-compose up -d hianime-cli
 ./docker-start.sh
 ```
 
+### 🏠 LAN/Home Network Configuration
+
+**For trusted home networks, you can use relaxed security settings:**
+
+```bash
+# Option 1: Allow all URLs (no allowlist)
+docker-compose up -d hianime-webgui
+# Access at http://localhost:8080 or http://<your-lan-ip>:8080
+
+# Option 2: Set specific allowed domains
+docker run -e URL_ALLOWLIST="hianime.to,youtube.com,instagram.com,tiktok.com" ...
+
+# Option 3: Add authentication (optional for home use)
+docker run -e WEB_USER=admin -e WEB_PASSWORD=yourpass ...
+```
+
+**Recommended for home/LAN:**
+- ✅ Leave `URL_ALLOWLIST` empty or set to domains you use
+- ⚠️ Skip `WEB_USER`/`WEB_PASSWORD` if only your family uses it
+- ✅ Access via `http://192.168.x.x:8080` (no HTTPS needed on LAN)
+- ⚠️ **Never expose port 8080 directly to the internet**
+
 ---
 
 ## 🌐 WebGUI (New!)
@@ -86,17 +112,21 @@ docker-compose up -d hianime-webgui
 - 📦 Download diagnostics bundles
 
 **Security Features:**
-- 🔒 URL allowlist (domain filtering)
-- 🛡️ SSRF protection (blocks private IPs)
-- 🔐 Optional basic authentication
-- ✅ Input validation and sanitization
-- 🚫 Command injection prevention
-- 🔍 SQL injection prevention
-- 🗂️ Path traversal protection
+
+*For LAN/home use, most security features can be relaxed:*
+- ✅ **Essential (always enabled):**
+  - Command injection prevention
+  - SQL injection prevention
+  - Path traversal protection
+  - Input validation
+- ⚙️ **Optional (configurable for LAN):**
+  - URL allowlist - Set to `*` or specific domains you trust
+  - Basic authentication - Skip if only trusted family members have access
+  - SSRF protection - Less critical on isolated home networks
 
 📖 **Documentation:**
 - **[Full WebGUI Guide](WEBGUI.md)** - Setup and usage
-- **[Security Documentation](SECURITY.md)** - Security features and best practices
+- **[Security Documentation](SECURITY.md)** - Security features and deployment guidance
 
 ---
 

@@ -2,9 +2,46 @@
 
 This document outlines the security measures implemented in GDownloader WebGUI to protect against common web application vulnerabilities.
 
+## 🏠 Deployment Context: LAN/Home Use
+
+**GDownloader is designed for internal, trusted network (LAN) deployment only.**
+
+> ⚠️ **Important:** This application is **NOT hardened for public internet exposure**. It should only be deployed on:
+> - Home networks (192.168.x.x, 10.x.x.x)
+> - Private corporate LANs
+> - Isolated Docker networks
+>
+> **Never expose port 8080 directly to the internet (WAN) without:**
+> - HTTPS reverse proxy (nginx, Traefik, Caddy)
+> - Strong authentication
+> - Rate limiting
+> - Firewall rules
+> - Regular security updates
+
+### Security Levels by Deployment
+
+| Deployment Type | Required Security | Optional Security |
+|----------------|-------------------|-------------------|
+| **Home LAN (single user)** | Input validation, injection prevention | URL allowlist, authentication |
+| **Home LAN (family)** | Input validation, injection prevention | URL allowlist, basic auth |
+| **Corporate LAN** | All security features | Consider additional firewall rules |
+| **Public Internet** | **NOT RECOMMENDED** | Use commercial services instead |
+
+### What This Means for You
+
+**If you're running on a home network:**
+- ✅ Core security features (injection prevention, path traversal) are **always enabled**
+- ⚙️ Optional features (URL allowlist, authentication) can be **disabled** if only trusted users have access
+- 🏠 Accessing via `http://192.168.x.x:8080` is **fine** (HTTPS not required on LAN)
+- ⚠️ If you need remote access, use a VPN to your home network instead of exposing the app
+
+---
+
 ## Overview
 
 GDownloader WebGUI implements multiple layers of security controls to protect against injection attacks, unauthorized access, and other security threats. This document describes each security measure and its implementation.
+
+**Security Philosophy:** Defense in depth with sensible defaults for LAN deployment.
 
 ## Security Measures
 
@@ -184,38 +221,75 @@ WEB_PASSWORD=secretpassword
 
 ## Security Best Practices
 
-### For Deployment
+### For Home/LAN Deployment (Recommended Use Case)
 
-1. **Enable Basic Authentication:**
+**Minimal Configuration (Trusted Home Network):**
+```bash
+# Just run it - core security features are always enabled
+docker-compose up -d hianime-webgui
+
+# Access at http://192.168.x.x:8080
+```
+
+**Optional Hardening for Home Use:**
+```bash
+# 1. Add URL filtering (optional, but recommended)
+docker run -e URL_ALLOWLIST="hianime.to,youtube.com,instagram.com,tiktok.com" ...
+
+# 2. Add basic auth if multiple people use your network
+docker run -e WEB_USER=family -e WEB_PASSWORD=simplepass ...
+
+# 3. Resource limits (prevents one download from hogging CPU)
+# Add to docker-compose.yml:
+deploy:
+  resources:
+    limits:
+      cpus: '2'
+      memory: 2G
+```
+
+**What You DON'T Need on LAN:**
+- ❌ HTTPS/TLS (plain HTTP is fine on local network)
+- ❌ Complex authentication (basic auth or none is sufficient)
+- ❌ Strict SSRF protection (you control the network)
+- ❌ Rate limiting (you trust the users)
+
+---
+
+### For Internet Exposure (NOT Recommended)
+
+**If you absolutely must expose to WAN** (we strongly advise against this):
+
+1. **HTTPS Reverse Proxy (REQUIRED):**
+   ```nginx
+   # nginx example
+   server {
+     listen 443 ssl;
+     ssl_certificate /path/to/cert.pem;
+     ssl_certificate_key /path/to/key.pem;
+
+     location / {
+       proxy_pass http://localhost:8080;
+     }
+   }
+   ```
+
+2. **Strong Authentication (REQUIRED):**
    ```bash
-   docker run -e WEB_USER=admin -e WEB_PASSWORD=strongpassword ...
+   docker run -e WEB_USER=admin -e WEB_PASSWORD="$(openssl rand -base64 32)" ...
    ```
 
-2. **Configure URL Allowlist:**
-   ```bash
-   docker run -e URL_ALLOWLIST="hianime.to,youtube.com" ...
-   ```
+3. **Firewall Rules (REQUIRED):**
+   - Whitelist specific IPs only
+   - Block all other traffic
 
-3. **Use HTTPS Reverse Proxy:**
-   - Put GDownloader behind nginx/Traefik with TLS
-   - This encrypts credentials and prevents MITM attacks
+4. **Rate Limiting (REQUIRED):**
+   - Use nginx `limit_req` or Cloudflare
+   - Prevent abuse
 
-4. **Network Isolation:**
-   - Run container on isolated Docker network
-   - Don't expose port 8080 to public internet directly
-
-5. **Regular Updates:**
-   - Keep Docker image and dependencies updated
-   - Monitor security advisories
-
-6. **Resource Limits:**
-   ```yaml
-   deploy:
-     resources:
-       limits:
-         cpus: '2'
-         memory: 2G
-   ```
+5. **Consider VPN Instead:**
+   - Use WireGuard/Tailscale to access your home network
+   - Much safer than exposing the application
 
 ### For Development
 

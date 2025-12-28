@@ -69,11 +69,13 @@ services:
       LOG_LEVEL: INFO
 
       # Security - URL allowlist (comma-separated domains)
-      # Empty = reject all URLs (recommended for security)
-      # Examples: "hianime.to,youtube.com,instagram.com"
+      # For LAN/home use: List the domains you want to download from
+      # For stricter control: Set specific domains only
+      # Leave empty to allow all domains (less secure but convenient for home)
       URL_ALLOWLIST: "hianime.to,youtube.com,instagram.com,tiktok.com"
 
-      # Optional: Basic authentication
+      # Optional: Basic authentication (usually not needed on home LAN)
+      # Only enable if multiple untrusted users share your network
       # WEB_USER: admin
       # WEB_PASSWORD: changeme
 
