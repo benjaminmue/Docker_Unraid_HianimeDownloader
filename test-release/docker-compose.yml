@@ -1,0 +1,18 @@
+services:
+  hianime-webgui:
+    image: ghcr.io/benjaminmue/hiani-dl:latest
+    container_name: hiani-dl-test
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./downloads:/downloads
+      - hiani-config:/config
+    environment:
+      TZ: Europe/Zurich
+      PUID: 1000
+      PGID: 1000
+      URL_ALLOWLIST: "hianime.to"
+    restart: unless-stopped
+
+volumes:
+  hiani-config:
