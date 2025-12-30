@@ -3,7 +3,10 @@ import os
 import sys
 import time
 import shlex
+import threading
+import tempfile
 from argparse import Namespace
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
 from glob import glob
 from typing import Any
@@ -24,6 +27,9 @@ from yt_dlp import YoutubeDL
 
 from tools.functions import get_conformation, get_int_in_range, safe_remove
 from tools.YTDLogger import YTDLogger
+
+# Thread-safe print lock for parallel processing
+print_lock = threading.Lock()
 
 # Whitelist of allowed Chrome arguments for CHROME_EXTRA_ARGS
 ALLOWED_CHROME_ARGS = {
@@ -137,6 +143,183 @@ class HianimeExtractor:
         self.captured_video_urls: list[str] = []
         self.captured_subtitle_urls: list[str] = []
 
+    def process_single_episode(self, episode: dict, anime: Anime, folder: str) -> dict:
+        """
+        Process a single episode: find stream, download video and subtitles.
+        Designed for parallel execution - each episode runs in its own thread with its own driver.
+
+        Args:
+            episode: Episode dict with url, number, title
+            anime: Anime metadata
+            folder: Output folder path
+
+        Returns:
+            Updated episode dict with media URLs and download status
+        """
+        url = episode["url"]
+        number = episode["number"]
+        title = episode["title"]
+
+        driver = None
+        try:
+            # Thread-safe output
+            with print_lock:
+                print(
+                    Fore.LIGHTGREEN_EX
+                    + "Getting"
+                    + Fore.LIGHTWHITE_EX
+                    + f" Episode {number} - {title} from {url}"
+                    + Fore.LIGHTWHITE_EX
+                )
+
+            # Create dedicated driver for this episode
+            driver = self.create_driver()
+
+            # Navigate and find stream
+            driver.requests.clear()
+            driver.get(url)
+            driver.execute_script("window.focus();")
+
+            # Aggressive player initialization to trigger stream loading
+            time.sleep(2)
+
+            # Scroll to trigger lazy-loaded players
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight / 2);")
+            time.sleep(0.5)
+
+            try:
+                # Try multiple times with delays to handle async player loading
+                for attempt in range(3):
+                    iframes = driver.find_elements(By.TAG_NAME, "iframe")
+                    if iframes:
+                        driver.switch_to.frame(iframes[0])
+                        driver.execute_script("window.scrollTo(0, document.body.scrollHeight / 2);")
+
+                    # Extended selector list for different player types
+                    selectors = [
+                        "button.jw-icon-play",
+                        ".vjs-big-play-button",
+                        ".plyr__control--overlaid",
+                        "button[aria-label*='play' i]",
+                        "button[aria-label*='Play' i]",
+                        ".play-button",
+                        "video"
+                    ]
+
+                    clicked = False
+                    for sel in selectors:
+                        els = driver.find_elements(By.CSS_SELECTOR, sel)
+                        if els:
+                            try:
+                                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", els[0])
+                                time.sleep(0.3)
+                                els[0].click()
+                                clicked = True
+                                with print_lock:
+                                    print(f"{Fore.LIGHTYELLOW_EX}Clicked play button: {sel}")
+                                break
+                            except Exception:
+                                try:
+                                    driver.execute_script("arguments[0].click();", els[0])
+                                    clicked = True
+                                    with print_lock:
+                                        print(f"{Fore.LIGHTYELLOW_EX}JS clicked play button: {sel}")
+                                    break
+                                except Exception:
+                                    pass
+
+                    # Always try to programmatically play video too
+                    driver.execute_script("""
+                        const videos = document.querySelectorAll('video');
+                        videos.forEach(v => {
+                            try {
+                                v.muted = true;
+                                v.play();
+                            } catch(e) {}
+                        });
+                    """)
+
+                    if clicked or attempt > 0:
+                        break
+
+                    time.sleep(1)
+
+            finally:
+                driver.switch_to.default_content()
+
+            # Capture media requests using driver-specific method
+            media_requests = self.capture_media_requests_from_driver(driver)
+
+            if not media_requests:
+                with print_lock:
+                    print(f"{Fore.LIGHTRED_EX}Episode {number}: No m3u8 file found, skipping download")
+                episode["status"] = "failed"
+                episode["error"] = "No stream found"
+                return episode
+
+            episode.update(media_requests)
+            episode["status"] = "stream_found"
+
+        except Exception as e:
+            with print_lock:
+                print(f"{Fore.LIGHTRED_EX}Episode {number}: Error finding stream: {e}")
+            episode["status"] = "failed"
+            episode["error"] = str(e)
+            return episode
+        finally:
+            # Clean up driver
+            if driver:
+                try:
+                    driver.quit()
+                except Exception:
+                    pass
+
+        # Download video immediately after finding stream
+        try:
+            name = f"{anime.name} - s{anime.season_number:02}e{number:02} - {title}"
+            m3u8_url = episode.get("m3u8")
+            headers = episode.get("headers") or {}
+
+            if not m3u8_url:
+                with print_lock:
+                    print(f"{Fore.LIGHTRED_EX}Episode {number}: No M3U8 URL found")
+                episode["status"] = "failed"
+                return episode
+
+            with print_lock:
+                print(f"{Fore.LIGHTCYAN_EX}Episode {number}: Starting download...")
+
+            result = self.yt_dlp_download(
+                self.look_for_variants(m3u8_url, headers),
+                headers,
+                f"{folder}{name}.mp4",
+            )
+
+            if not result:
+                episode["status"] = "failed"
+                episode["error"] = "Download failed"
+                return episode
+
+            # Download subtitles if available
+            vtt_url = episode.get("vtt")
+            if vtt_url:
+                self.yt_dlp_download(vtt_url, headers, f"{folder}{name}.vtt")
+            elif not self.args.no_subtitles:
+                with print_lock:
+                    print(f"{Fore.LIGHTYELLOW_EX}Episode {number}: No VTT stream found")
+
+            episode["status"] = "completed"
+            with print_lock:
+                print(f"{Fore.LIGHTGREEN_EX}Episode {number}: Download completed!")
+
+        except Exception as e:
+            with print_lock:
+                print(f"{Fore.LIGHTRED_EX}Episode {number}: Download error: {e}")
+            episode["status"] = "failed"
+            episode["error"] = str(e)
+
+        return episode
+
     def run(self):
         anime: Anime | None = (
             self.get_anime_from_link(self.link)
@@ -168,6 +351,10 @@ class HianimeExtractor:
             if hasattr(self.args, 'download_type') and self.args.download_type:
                 anime.download_type = self.args.download_type
                 print(f"Using download type from command line: {anime.download_type}")
+            # Default to 'sub' in non-interactive mode
+            elif not sys.stdin.isatty():
+                anime.download_type = "sub"
+                print(f"Defaulting to download type 'sub' (non-interactive mode)")
             else:
                 anime.download_type = self.get_download_type()
         elif anime.dub_episodes == 0:
@@ -220,6 +407,8 @@ class HianimeExtractor:
             anime.season_number = 1
             print(f"Defaulting to season number: {anime.season_number}")
 
+        # Create temporary driver to get episode URLs and server button
+        print(f"{Fore.LIGHTCYAN_EX}Initializing browser to fetch episode list...")
         self.configure_driver()
         self.driver.get(anime.url)
         button: WebElement = self.find_server_button(anime)  # type: ignore
@@ -230,116 +419,61 @@ class HianimeExtractor:
             print(f"{Fore.LIGHTRED_EX}Error clicking server button:\n\n{Fore.LIGHTWHITE_EX}{e}")
 
         episode_list: list[dict] = self.get_episode_urls(self.driver.page_source, start_ep, end_ep)
+        self.driver.quit()  # Close initial driver, parallel processing will create new ones
+
+        # Create output folder
+        folder = (
+            os.path.abspath(self.args.output_dir)
+            + os.sep
+            + anime.name
+            + f" ({anime.download_type[0].upper()}{anime.download_type[1:]}){os.sep}"
+        )
+        os.makedirs(folder, exist_ok=True)
+
+        print(f"\n{Fore.LIGHTGREEN_EX}Starting parallel processing of {len(episode_list)} episodes...")
+        print(f"{Fore.LIGHTCYAN_EX}Max concurrent operations: 3")
         print()
 
-        self.captured_video_urls.clear()
-        self.captured_subtitle_urls.clear()
+        # Process episodes in parallel with limit of 3 concurrent operations
+        max_workers = 3
+        completed_episodes = []
 
-        for episode in episode_list:
-            url = episode["url"]
-            number = episode["number"]
-            title = episode["title"]
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all episodes for processing
+            future_to_episode = {
+                executor.submit(self.process_single_episode, episode, anime, folder): episode
+                for episode in episode_list
+            }
 
-            print(
-                Fore.LIGHTGREEN_EX
-                + "Getting"
-                + Fore.LIGHTWHITE_EX
-                + f" Episode {number} - {title} from {url}"
-                + Fore.LIGHTWHITE_EX
-            )
-
-            try:
-                self.driver.requests.clear()
-                self.driver.get(url)
-                self.driver.execute_script("window.focus();")
-
-                # Aggressive player initialization to trigger stream loading
-                time.sleep(2)  # Increased wait for page load
-
-                # Scroll to trigger lazy-loaded players
-                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight / 2);")
-                time.sleep(0.5)
-
+            # Process results as they complete
+            for future in as_completed(future_to_episode):
+                episode = future_to_episode[future]
                 try:
-                    # Try multiple times with delays to handle async player loading
-                    for attempt in range(3):
-                        iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
-                        if iframes:
-                            self.driver.switch_to.frame(iframes[0])
-                            # Scroll within iframe too
-                            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight / 2);")
+                    result = future.result()
+                    completed_episodes.append(result)
+                except Exception as e:
+                    with print_lock:
+                        print(f"{Fore.LIGHTRED_EX}Episode {episode['number']} failed with exception: {e}")
+                    episode["status"] = "failed"
+                    episode["error"] = str(e)
+                    completed_episodes.append(episode)
 
-                        # Extended selector list for different player types
-                        selectors = [
-                            "button.jw-icon-play",
-                            ".vjs-big-play-button",
-                            ".plyr__control--overlaid",
-                            "button[aria-label*='play' i]",
-                            "button[aria-label*='Play' i]",
-                            ".play-button",
-                            "video"
-                        ]
+        # Save metadata JSON with results
+        with open(f"{folder}{anime.name} (Season {anime.season_number}).json", "w") as json_file:
+            json.dump({**asdict(anime), "episodes": completed_episodes}, json_file, indent=4)
 
-                        clicked = False
-                        for sel in selectors:
-                            els = self.driver.find_elements(By.CSS_SELECTOR, sel)
-                            if els:
-                                try:
-                                    # Scroll element into view
-                                    self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", els[0])
-                                    time.sleep(0.3)
-                                    els[0].click()
-                                    clicked = True
-                                    print(f"{Fore.LIGHTYELLOW_EX}Clicked play button: {sel}")
-                                    break
-                                except Exception as e:
-                                    # Try JavaScript click
-                                    try:
-                                        self.driver.execute_script("arguments[0].click();", els[0])
-                                        clicked = True
-                                        print(f"{Fore.LIGHTYELLOW_EX}JS clicked play button: {sel}")
-                                        break
-                                    except Exception:
-                                        pass
+        # Summary
+        success_count = sum(1 for ep in completed_episodes if ep.get("status") == "completed")
+        failed_count = len(completed_episodes) - success_count
 
-                        # Always try to programmatically play video too
-                        self.driver.execute_script("""
-                            const videos = document.querySelectorAll('video');
-                            videos.forEach(v => {
-                                try {
-                                    v.muted = true;  // Mute to allow autoplay
-                                    v.play();
-                                } catch(e) {}
-                            });
-                        """)
-
-                        if clicked or attempt > 0:
-                            break
-
-                        # Wait before retry
-                        time.sleep(1)
-
-                finally:
-                    self.driver.switch_to.default_content()
-
-                media_requests = self.capture_media_requests()
-                if not media_requests:
-                    print("No m3u8 file was found skipping download")
-                    continue
-
-                episode.update(media_requests)
-                self.captured_video_urls.append(media_requests["m3u8"])
-                if not self.args.no_subtitles and media_requests.get("vtt"):
-                    self.captured_subtitle_urls.append(media_requests["vtt"])
-            except KeyboardInterrupt:
-                print("\n\nCanceling media capture...")
-                if not get_conformation("Would you like to download link capture up to now? (y/n): "):
-                    self.driver.quit()
-                    return
-
-        self.driver.quit()
         print()
-        self.download_streams(anime, episode_list)
+        print(f"{Fore.LIGHTGREEN_EX}{'='*60}")
+        print(f"{Fore.LIGHTGREEN_EX}Download Summary:")
+        print(f"{Fore.LIGHTGREEN_EX}  Total episodes: {len(completed_episodes)}")
+        print(f"{Fore.LIGHTGREEN_EX}  Successful: {success_count}")
+        if failed_count > 0:
+            print(f"{Fore.LIGHTRED_EX}  Failed: {failed_count}")
+        print(f"{Fore.LIGHTGREEN_EX}{'='*60}")
 
     def download_streams(self, anime: Anime, episodes: list[dict[str, Any]]):
         folder = (
@@ -501,6 +635,134 @@ class HianimeExtractor:
                 };
             """
         )
+
+    def create_driver(self) -> webdriver.Chrome:
+        """Create and return a new configured Selenium driver instance for parallel processing."""
+        mobile_emulation: dict[str, str] = {"deviceName": "iPhone X"}
+
+        options: webdriver.ChromeOptions = webdriver.ChromeOptions()
+        options.add_experimental_option("mobileEmulation", mobile_emulation)
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("window-size=600,1000")
+        options.add_experimental_option(
+            "prefs",
+            {
+                "profile.default_content_setting_values.notifications": 2,
+                "profile.default_content_setting_values.popups": 2,
+                "profile.managed_default_content_settings.ads": 2,
+            },
+        )
+        options.add_argument("--disable-features=PopupBlocking")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-notifications")
+        options.add_argument("--disable-backgrounding-occluded-windows")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--log-level=3")
+        options.add_argument("--silent")
+        options.add_argument("--autoplay-policy=no-user-gesture-required")
+        options.add_argument("--disable-features=PreloadMediaEngagementData,MediaEngagementBypassAutoplayPolicies")
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+        # Merge CHROME_EXTRA_ARGS (validated) + ensure unique/writable user-data-dir
+        extra = os.environ.get("CHROME_EXTRA_ARGS", "")
+        validated_args = validate_chrome_args(extra)
+        for arg in validated_args:
+            options.add_argument(arg)
+
+        has_ud = any(str(a).startswith("--user-data-dir=") for a in getattr(options, "arguments", []))
+        if not has_ud:
+            # Use thread-safe unique profile directory for each driver
+            profile_dir = tempfile.mkdtemp(prefix=f"chrome-profile-{threading.current_thread().ident}-")
+            options.add_argument(f"--user-data-dir={profile_dir}")
+
+        def ensure(arg: str):
+            if not any(arg in str(a) for a in getattr(options, "arguments", [])):
+                options.add_argument(arg)
+
+        ensure("--no-first-run")
+        ensure("--no-default-browser-check")
+        ensure("--disable-dev-shm-usage")
+        ensure("--remote-debugging-port=0")
+        if not any("--headless" in str(a) for a in getattr(options, "arguments", [])):
+            options.add_argument("--headless=new")
+
+        # Configure selenium-wire storage with thread-safe unique directory
+        seleniumwire_storage = tempfile.mkdtemp(prefix=f"seleniumwire-{threading.current_thread().ident}-")
+        os.chmod(seleniumwire_storage, 0o755)
+
+        seleniumwire_options: dict[str, Any] = {
+            "verify_ssl": False,
+            "disable_encoding": True,
+            "request_storage_base_dir": seleniumwire_storage,
+        }
+
+        # Detect architecture and use appropriate browser
+        import platform
+        is_arm64 = platform.machine().lower() in ['aarch64', 'arm64']
+
+        driver = None
+        if is_arm64:
+            # ARM64: Use Chromium directly (Chrome not available)
+            try:
+                options.binary_location = "/usr/bin/chromium"
+                service = Service(executable_path="/usr/bin/chromedriver")
+                driver = webdriver.Chrome(
+                    service=service,
+                    options=options,
+                    seleniumwire_options=seleniumwire_options,
+                )
+            except Exception as e:
+                with print_lock:
+                    print(f"{Fore.LIGHTRED_EX}Failed to create Chromium driver: {e}")
+                raise
+        else:
+            # x64: Try Chrome first, fall back to Chromium
+            try:
+                driver = webdriver.Chrome(
+                    options=options,
+                    seleniumwire_options=seleniumwire_options,
+                )
+            except Exception as e:
+                with print_lock:
+                    print(f"{Fore.LIGHTYELLOW_EX}Chrome not found, trying Chromium: {e}")
+                try:
+                    options.binary_location = "/usr/bin/chromium"
+                    service = Service(executable_path="/usr/bin/chromedriver")
+                    driver = webdriver.Chrome(
+                        service=service,
+                        options=options,
+                        seleniumwire_options=seleniumwire_options,
+                    )
+                except Exception as e2:
+                    with print_lock:
+                        print(f"{Fore.LIGHTRED_EX}Failed to create Chromium driver: {e2}")
+                    raise
+
+        stealth(
+            driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+        )
+
+        driver.implicitly_wait(10)
+
+        driver.execute_script(
+            """
+                window.alert = function() {};
+                window.confirm = function() { return true; };
+                window.prompt = function() { return null; };
+                window.open = function() {
+                    console.log("Blocked a popup attempt.");
+                    return null;
+                };
+            """
+        )
+
+        return driver
 
     def get_server_options(self, download_type: str) -> list[WebElement]:
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "servers-content")))
@@ -686,6 +948,80 @@ class HianimeExtractor:
             selection = get_int_in_range("\nSelected Subtitle: ", 1, len(urls["all-vtt"]) + 1)
             print()
             urls["vtt"] = urls["all-vtt"][selection - 1]
+
+        return urls
+
+    def capture_media_requests_from_driver(self, driver: webdriver.Chrome) -> dict[str, str] | None:
+        """
+        Capture media requests from a specific driver instance (for parallel processing).
+        Simplified version without interactive prompts.
+        """
+        found_m3u8: bool = False
+        found_vtt: bool = self.args.no_subtitles
+        attempt: int = 0
+        urls: dict[str, Any] = {"all-vtt": []}
+        previously_found_vtt: int = 0
+
+        candidate_m3u8: tuple[str, dict[str, str]] | None = None
+        all_urls: list[str] = []
+
+        while (not found_m3u8 or not found_vtt) and self.DOWNLOAD_ATTEMPT_CAP >= attempt:
+            for request in driver.requests:
+                if not request.response:
+                    continue
+
+                uri = request.url.lower()
+                if uri not in all_urls:
+                    all_urls.append(uri)
+
+                # HLS detection: accept any .m3u8 (prefer "master" if seen)
+                if ".m3u8" in uri and "thumbnail" not in uri and "iframe" not in uri:
+                    if "master" in uri and not found_m3u8:
+                        with print_lock:
+                            print(f"{Fore.LIGHTGREEN_EX}Found MASTER m3u8: {uri[:150]}")
+                        urls["m3u8"] = uri
+                        urls["headers"] = dict(request.headers)
+                        found_m3u8 = True
+                    elif candidate_m3u8 is None:
+                        candidate_m3u8 = (uri, dict(request.headers))
+
+                # Subtitle detection (language-filtered)
+                if (
+                    not found_vtt
+                    and ".vtt" in uri
+                    and "thumbnail" not in uri
+                    and not any(lang in uri for lang in self.OTHER_LANGS)
+                ):
+                    try:
+                        text = requests.get(uri, headers=dict(request.headers), timeout=10).content.decode(
+                            self.ENCODING, errors="ignore"
+                        )
+                        if detect_lang(text) == self.SUBTITLE_LANG:
+                            if uri in urls["all-vtt"]:
+                                previously_found_vtt += 1
+                                if previously_found_vtt >= len(urls["all-vtt"]):
+                                    found_vtt = True
+                            else:
+                                urls["all-vtt"].append(uri)
+                    except Exception:
+                        pass
+
+            # Adopt first candidate if no master seen
+            if not found_m3u8 and candidate_m3u8:
+                urls["m3u8"], urls["headers"] = candidate_m3u8
+                found_m3u8 = True
+
+            attempt += 1
+            if attempt in self.DOWNLOAD_REFRESH:
+                driver.refresh()
+            time.sleep(1)
+
+        if not found_m3u8:
+            return None
+
+        # For parallel processing, just take the first subtitle if available
+        if not self.args.no_subtitles and urls["all-vtt"]:
+            urls["vtt"] = urls["all-vtt"][0]
 
         return urls
 

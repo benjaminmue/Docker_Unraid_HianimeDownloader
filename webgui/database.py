@@ -122,6 +122,12 @@ class Database:
             except aiosqlite.OperationalError:
                 pass  # Column already exists
 
+            # Add log_file column if it doesn't exist (migration)
+            try:
+                await db.execute("ALTER TABLE episodes ADD COLUMN log_file TEXT")
+            except aiosqlite.OperationalError:
+                pass  # Column already exists
+
             await db.commit()
 
     async def create_job(
@@ -339,6 +345,7 @@ class Database:
         progress_percent: Optional[int] = None,
         error_message: Optional[str] = None,
         stage_data: Optional[Dict[str, Any]] = None,
+        log_file: Optional[str] = None,
     ):
         """Update episode status and progress."""
         updates = {}
@@ -361,6 +368,9 @@ class Database:
 
         if stage_data is not None:
             updates["stage_data"] = json.dumps(stage_data)
+
+        if log_file is not None:
+            updates["log_file"] = log_file
 
         if not updates:
             return

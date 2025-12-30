@@ -575,6 +575,89 @@ async def download_diagnostics(job_id: int, user: str = Depends(get_current_user
     )
 
 
+@app.get("/api/episodes/{episode_id}/log")
+async def stream_episode_log(episode_id: int, user: str = Depends(get_current_user)):
+    """Stream per-episode log via SSE."""
+
+    async def event_generator():
+        """Generate SSE events for episode log updates."""
+        import json
+
+        last_log_pos = 0
+
+        # Get episode to find log file
+        episode = await db.get_episode(episode_id)
+        if not episode:
+            yield {
+                "event": "error",
+                "data": json.dumps({"message": "Episode not found"}),
+            }
+            return
+
+        log_file_path = episode.get("log_file")
+        if not log_file_path:
+            yield {
+                "event": "error",
+                "data": json.dumps({"message": "No log file for this episode"}),
+            }
+            return
+
+        # Validate log file path
+        try:
+            validated_path = validate_log_path(log_file_path)
+        except HTTPException as e:
+            yield {
+                "event": "error",
+                "data": json.dumps({"message": e.detail}),
+            }
+            return
+
+        # Stream log updates
+        while True:
+            try:
+                # Re-fetch episode to check status
+                episode = await db.get_episode(episode_id)
+                if not episode:
+                    break
+
+                # Read new log lines
+                if validated_path.exists():
+                    def read_log():
+                        with open(validated_path, "r") as f:
+                            f.seek(last_log_pos)
+                            new_lines = f.readlines()
+                            return new_lines, f.tell()
+
+                    new_lines, new_pos = await asyncio.to_thread(read_log)
+                    last_log_pos = new_pos
+
+                    if new_lines:
+                        yield {
+                            "event": "log",
+                            "data": json.dumps({"lines": new_lines}),
+                        }
+
+                # Stop streaming if episode is complete or failed
+                if episode["status"] in ("complete", "failed"):
+                    yield {
+                        "event": "complete",
+                        "data": json.dumps({"status": episode["status"]}),
+                    }
+                    break
+
+                await asyncio.sleep(0.5)  # Poll every 500ms for per-episode logs
+
+            except Exception as e:
+                logger.error(f"Error in episode log stream: {e}", exc_info=True)
+                yield {
+                    "event": "error",
+                    "data": json.dumps({"message": str(e)}),
+                }
+                break
+
+    return EventSourceResponse(event_generator())
+
+
 # Health check
 @app.get("/health")
 async def health():

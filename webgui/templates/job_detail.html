@@ -470,6 +470,71 @@ class ProgressComponent {
 
 // Store component instances
 const episodeComponents = new Map();
+const episodeLogConnections = new Map();
+
+// Toggle episode log visibility
+function toggleEpisodeLog(episodeId) {
+    const logViewer = document.getElementById(`episodeLog-${episodeId}`);
+    const toggleIcon = document.getElementById(`toggle-icon-${episodeId}`);
+
+    if (logViewer.style.display === 'none') {
+        logViewer.style.display = 'block';
+        toggleIcon.className = 'bi bi-chevron-up';
+    } else {
+        logViewer.style.display = 'none';
+        toggleIcon.className = 'bi bi-chevron-down';
+    }
+}
+
+// Connect to episode log SSE
+function connectEpisodeLog(episodeId) {
+    // Don't reconnect if already connected
+    if (episodeLogConnections.has(episodeId)) {
+        return;
+    }
+
+    const eventSource = new EventSource(`/api/episodes/${episodeId}/log`);
+
+    eventSource.addEventListener('log', (e) => {
+        const data = JSON.parse(e.data);
+        appendEpisodeLog(episodeId, data.lines);
+    });
+
+    eventSource.addEventListener('complete', (e) => {
+        console.log(`Episode ${episodeId} log complete`);
+        eventSource.close();
+        episodeLogConnections.delete(episodeId);
+    });
+
+    eventSource.addEventListener('error', (e) => {
+        console.error(`Episode ${episodeId} log error:`, e);
+        eventSource.close();
+        episodeLogConnections.delete(episodeId);
+    });
+
+    episodeLogConnections.set(episodeId, eventSource);
+}
+
+// Append log lines to episode log viewer
+function appendEpisodeLog(episodeId, lines) {
+    const logViewer = document.getElementById(`episodeLog-${episodeId}`);
+    if (!logViewer) return;
+
+    // Clear "loading" message on first log line
+    if (logViewer.querySelector('.text-muted')) {
+        logViewer.innerHTML = '';
+    }
+
+    lines.forEach(line => {
+        const lineDiv = document.createElement('div');
+        lineDiv.className = 'log-line';
+        lineDiv.textContent = line;
+        logViewer.appendChild(lineDiv);
+    });
+
+    // Auto-scroll to bottom
+    logViewer.scrollTop = logViewer.scrollHeight;
+}
 
 // Helper function to get completed stages
 function getCompletedStages(currentStatus) {
@@ -518,7 +583,28 @@ function updateEpisodes(episodes) {
             progressContainer.id = `progress-${episode.id}`;
             episodeDiv.appendChild(progressContainer);
 
+            // Add per-episode log viewer
+            const logSection = document.createElement('div');
+            logSection.className = 'mt-3';
+            logSection.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0">Episode Log</h6>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="toggleEpisodeLog(${episode.id})">
+                        <i class="bi bi-chevron-down" id="toggle-icon-${episode.id}"></i>
+                    </button>
+                </div>
+                <div class="log-viewer" id="episodeLog-${episode.id}" style="display: none; height: 200px; max-height: 200px;">
+                    <div class="text-muted">Loading log...</div>
+                </div>
+            `;
+            episodeDiv.appendChild(logSection);
+
             container.appendChild(episodeDiv);
+
+            // Connect to episode log SSE if episode has a log file
+            if (episode.log_file) {
+                connectEpisodeLog(episode.id);
+            }
         }
 
         // Parse stage data
@@ -564,6 +650,11 @@ function updateEpisodes(episodes) {
         const errorDiv = document.getElementById(`error-${episode.id}`);
         errorDiv.textContent = episode.error_message || '';
         errorDiv.style.display = episode.error_message ? 'block' : 'none';
+
+        // Connect to episode log SSE if episode has a log file and not already connected
+        if (episode.log_file && !episodeLogConnections.has(episode.id)) {
+            connectEpisodeLog(episode.id);
+        }
     });
 }
 
