@@ -50,7 +50,7 @@ HiAni DL is a **Docker-only** anime downloader designed for **local network (LAN
 
 <div align="center">
 
-### **[📘 Complete Quick Start Guide](docs/QUICKSTART.md)**
+### **[📘 Complete Quick Start Guide](https://github.com/benjaminmue/HiAni-DL/wiki/Quick-Start-Guide)**
 
 Walks you through:
 
@@ -77,7 +77,7 @@ docker-compose up -d
 # Access WebGUI at http://localhost:8080
 ```
 
-See the [Quick Start Guide](docs/QUICKSTART.md) for the complete docker-compose.yml template.
+See the [Quick Start Guide](https://github.com/benjaminmue/HiAni-DL/wiki/Quick-Start-Guide) for the complete docker-compose.yml template.
 
 > 💡 **Pre-built Image:** The Docker image is automatically built and published to GitHub Container Registry as `ghcr.io/benjaminmue/hiani-dl:latest` on every commit to main.
 
@@ -89,12 +89,12 @@ See the [Quick Start Guide](docs/QUICKSTART.md) for the complete docker-compose.
 
 | Document | Description |
 |----------|-------------|
-| **[Quick Start Guide](docs/QUICKSTART.md)** | Complete installation guide from Docker setup to first download |
-| **[User Guide](docs/USER_GUIDE.md)** | How to use HiAni DL, select URLs, and manage downloads |
-| **[Docker Setup](docs/DOCKER.md)** | Environment variables, volumes, and configuration |
-| **[WebGUI Guide](docs/WEBGUI.md)** | Web interface features and usage |
-| **[Arguments Reference](docs/ARGS.md)** | Command-line arguments and options |
-| **[Security](docs/SECURITY.md)** | Security features and deployment guidance |
+| **[Quick Start Guide](https://github.com/benjaminmue/HiAni-DL/wiki/Quick-Start-Guide)** | Complete installation guide from Docker setup to first download |
+| **[User Guide](https://github.com/benjaminmue/HiAni-DL/wiki/User-Guide)** | How to use HiAni DL, select URLs, and manage downloads |
+| **[Docker Setup](https://github.com/benjaminmue/HiAni-DL/wiki/Docker-Setup)** | Environment variables, volumes, and configuration |
+| **[WebGUI Guide](https://github.com/benjaminmue/HiAni-DL/wiki/WebGUI-Guide)** | Web interface features and usage |
+| **[Arguments Reference](https://github.com/benjaminmue/HiAni-DL/wiki/Arguments-Reference)** | Command-line arguments and options |
+| **[Security](https://github.com/benjaminmue/HiAni-DL/wiki/Security)** | Security features and deployment guidance |
 
 </div>
 
@@ -179,7 +179,7 @@ CLI mode is available but **requires explicit activation**:
 docker-compose --profile cli up -d hianime-downloader
 ```
 
-See **[Docker Setup](docs/DOCKER.md)** for complete configuration options.
+See **[Docker Setup](https://github.com/benjaminmue/HiAni-DL/wiki/Docker-Setup)** for complete configuration options.
 
 ---
 
@@ -213,6 +213,6 @@ MIT License - See [LICENSE](LICENSE) for details
 
 **Made with ❤️ for the anime community**
 
-[Report Bug](https://github.com/benjaminmue/HiAni-DL/issues/new?template=bug_report.yml) · [Request Feature](https://github.com/benjaminmue/HiAni-DL/issues/new?template=feature_request.yml) · [Documentation](docs/)
+[Report Bug](https://github.com/benjaminmue/HiAni-DL/issues/new?template=bug_report.yml) · [Request Feature](https://github.com/benjaminmue/HiAni-DL/issues/new?template=feature_request.yml) · [Documentation](https://github.com/benjaminmue/HiAni-DL/wiki)
 
 </div>
