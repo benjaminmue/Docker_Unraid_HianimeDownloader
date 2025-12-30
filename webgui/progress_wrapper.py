@@ -323,34 +323,58 @@ async def run_with_progress(job_id: int, db_path: str, command: list):
         # Wait for completion
         return_code = process.wait()
 
-        # Check actual episode completion status (don't auto-complete)
-        # Fix: Don't mark episodes as complete just because parent process exited
-        # Only count episodes that have actually finished (COMPLETE or FAILED)
+        # Handle remaining active episodes (combined approach: status checking + failure marking)
+        # Fix: Check actual status, mark stuck episodes as failed, provide accurate feedback
         if return_code == 0:
             incomplete_episodes = []
+            failed_episodes = []
+
             for ep_num, episode_data in list(active_episodes.items()):
                 # Query actual episode status from database
                 episode = await db.get_episode(episode_data["id"])
-                if episode and episode["status"] not in [EpisodeStatus.COMPLETE.value, EpisodeStatus.FAILED.value]:
-                    incomplete_episodes.append(ep_num)
-                elif episode and episode["status"] == EpisodeStatus.COMPLETE.value:
-                    # Episode already marked complete, clean up
-                    if ep_num in episode_log_files:
-                        episode_log_files[ep_num].close()
-                        del episode_log_files[ep_num]
 
-            if incomplete_episodes:
-                # Warn about episodes still in progress when process exited
-                warning_msg = f"Process exited but episodes still active: {incomplete_episodes}"
-                print(f"WARNING: {warning_msg}", flush=True)
+                if episode:
+                    current_status = episode["status"]
+
+                    if current_status == EpisodeStatus.COMPLETE.value:
+                        # Episode already completed, just clean up
+                        if ep_num in episode_log_files:
+                            episode_log_files[ep_num].close()
+                            del episode_log_files[ep_num]
+                    elif current_status == EpisodeStatus.FAILED.value:
+                        # Already marked as failed
+                        failed_episodes.append(ep_num)
+                        if ep_num in episode_log_files:
+                            episode_log_files[ep_num].close()
+                            del episode_log_files[ep_num]
+                    else:
+                        # Episode stuck in non-terminal state - mark as failed
+                        incomplete_episodes.append(ep_num)
+                        error_msg = "Episode did not complete before process exit"
+                        await db.update_episode(
+                            episode_data["id"],
+                            status=EpisodeStatus.FAILED.value,
+                            error_message=error_msg,
+                            stage_data={}
+                        )
+                        print(f"WARNING: Episode {ep_num} did not complete - marked as failed", flush=True)
+
+                        if ep_num in episode_log_files:
+                            episode_log_files[ep_num].close()
+                            del episode_log_files[ep_num]
+
+            # Provide accurate completion feedback
+            if incomplete_episodes or failed_episodes:
+                all_failed = incomplete_episodes + failed_episodes
                 await emit_progress(
                     db, job_id,
                     STAGE_PROGRESS[JobStage.DOWNLOAD],
                     JobStage.DOWNLOAD.value,
-                    f"Waiting for {len(incomplete_episodes)} episode(s) to complete..."
+                    f"{len(all_failed)} episode(s) failed"
                 )
+                print(f"WARNING: Process exited with {len(all_failed)} failed episode(s): {all_failed}", flush=True)
             else:
-                # All episodes finished successfully
+                # All episodes genuinely completed
                 await emit_progress(db, job_id, 100, JobStage.DONE.value, "All episodes downloaded")
         else:
             print(f"PROGRESS: {json.dumps({'percent': 0, 'stage': 'failed', 'text': f'Exit code {return_code}'})}", flush=True)
