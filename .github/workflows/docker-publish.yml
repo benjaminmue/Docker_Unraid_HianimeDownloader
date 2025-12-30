@@ -47,7 +47,7 @@ jobs:
             # Set 'latest' tag for main branch
             type=raw,value=latest,enable={{is_default_branch}}
             # Tag with git commit SHA
-            type=sha,prefix={{branch}}-,format=short
+            type=sha,format=short
             # Tag with version for releases
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
