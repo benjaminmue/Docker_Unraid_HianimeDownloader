@@ -213,6 +213,6 @@ MIT License - See [LICENSE](LICENSE) for details
 
 **Made with ❤️ for the anime community**
 
-[Report Bug](https://github.com/benjaminmue/HiAni-DL/issues/new?labels=bug&title=Issue:%20[Brief%20description]) · [Request Feature](https://github.com/benjaminmue/HiAni-DL/issues/new?labels=enhancement&title=Feature%20Request:%20[Brief%20description]) · [Documentation](docs/)
+[Report Bug](https://github.com/benjaminmue/HiAni-DL/issues/new?template=bug_report.yml) · [Request Feature](https://github.com/benjaminmue/HiAni-DL/issues/new?template=feature_request.yml) · [Documentation](docs/)
 
 </div>
