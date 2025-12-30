@@ -1,0 +1,130 @@
+# GitHub Issue Labels for HiAni DL
+# These labels should be created manually in the GitHub repository settings
+# or automatically via GitHub CLI: gh label create "label-name" --color "hex" --description "desc"
+
+# Issue Types
+- name: bug
+  color: d73a4a
+  description: Something isn't working correctly
+
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+
+- name: question
+  color: d876e3
+  description: Further information is requested
+
+# Priority Levels
+- name: priority-critical
+  color: b60205
+  description: Critical issue requiring immediate attention
+
+- name: priority-high
+  color: d93f0b
+  description: High priority issue
+
+- name: priority-medium
+  color: fbca04
+  description: Medium priority issue
+
+- name: priority-low
+  color: 0e8a16
+  description: Low priority issue
+
+# Status Labels
+- name: needs-triage
+  color: ededed
+  description: Issue needs initial review and categorization
+
+- name: needs-review
+  color: fbca04
+  description: Awaiting review from maintainer
+
+- name: needs-info
+  color: d4c5f9
+  description: More information needed from reporter
+
+- name: in-progress
+  color: 1d76db
+  description: Currently being worked on
+
+- name: blocked
+  color: d93f0b
+  description: Blocked by external dependency or other issue
+
+# Component Areas
+- name: area-webgui
+  color: bfdadc
+  description: Related to web interface and frontend
+
+- name: area-download-engine
+  color: bfdadc
+  description: Related to download logic and stream extraction
+
+- name: area-docker
+  color: bfdadc
+  description: Related to Docker configuration and deployment
+
+- name: area-selenium
+  color: bfdadc
+  description: Related to Selenium browser automation
+
+- name: area-logging
+  color: bfdadc
+  description: Related to logging and progress tracking
+
+- name: area-parallel-processing
+  color: bfdadc
+  description: Related to concurrent episode downloads
+
+# Issue Categories
+- name: stream-extraction
+  color: c5def5
+  description: Issues with finding or extracting video streams
+
+- name: download-failure
+  color: c5def5
+  description: Issues with downloading video files
+
+- name: performance
+  color: c5def5
+  description: Performance or speed issues
+
+- name: reliability
+  color: c5def5
+  description: Intermittent failures or stability issues
+
+- name: ux-ui
+  color: c5def5
+  description: User experience or interface improvements
+
+# Resolution Status
+- name: wontfix
+  color: ffffff
+  description: This will not be worked on
+
+- name: duplicate
+  color: cfd3d7
+  description: This issue already exists
+
+- name: invalid
+  color: e4e669
+  description: This issue is not valid or off-topic
+
+- name: help-wanted
+  color: 008672
+  description: Extra attention is needed - contributions welcome
+
+- name: good-first-issue
+  color: 7057ff
+  description: Good for newcomers to the project
+
+# Known Issues (Specific to this project)
+- name: known-issue-multi-episode
+  color: fbca04
+  description: Related to known multi-episode download reliability issues

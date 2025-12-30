@@ -1,0 +1,113 @@
+name: Bug Report
+description: Report a bug or issue with HiAni DL
+title: "Issue: [Brief description of the bug]"
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the information below to help us investigate.
+
+        **Note:** Known issues with multi-episode downloads are documented in the README. Check there first!
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before submitting
+      options:
+        - label: I have read the [README](https://github.com/benjaminmue/HiAni-DL/blob/main/README.md) and [documentation](https://github.com/benjaminmue/HiAni-DL/tree/main/docs)
+          required: true
+        - label: I have checked existing [issues](https://github.com/benjaminmue/HiAni-DL/issues) for duplicates
+          required: true
+        - label: I am using the latest version from `ghcr.io/benjaminmue/hiani-dl:latest`
+          required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: "Example: Episodes fail to download when selecting multiple episodes (1-5)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: "Example: All 5 episodes should download successfully"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: "Example: Only episode 3 completed, episodes 1,2,4,5 stuck at 'Finding stream...'"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Go to WebGUI at http://localhost:8080
+        2. Enter URL: https://hianime.to/watch/anime-name
+        3. Set episode range to 1-5
+        4. Click Start Download
+        5. See error after ~5 minutes
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Category
+      description: What type of issue is this?
+      options:
+        - Download failure
+        - Stream extraction failure
+        - WebGUI issue
+        - Docker/container issue
+        - Performance issue
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: |
+        Please include relevant logs from:
+        - Docker logs: `docker logs hianime-webgui`
+        - Job logs from WebGUI job detail page
+        - Episode logs (if available)
+      placeholder: Paste logs here...
+      render: shell
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please provide your environment details
+      value: |
+        - **OS**: (e.g., Ubuntu 22.04, macOS 14, Windows 11)
+        - **Docker Version**: (run `docker --version`)
+        - **HiAni DL Version**: (e.g., latest, commit hash)
+        - **Browser**: (for WebGUI issues)
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, screenshots, or information about the problem
+      placeholder: Add any other context or screenshots here...

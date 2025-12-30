@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Documentation
+    url: https://github.com/benjaminmue/HiAni-DL/tree/main/docs
+    about: Read the full documentation including Quick Start, User Guide, and Docker Setup
+  - name: 💬 Ask a Question
+    url: https://github.com/benjaminmue/HiAni-DL/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: ⚠️ Known Issues
+    url: https://github.com/benjaminmue/HiAni-DL/blob/main/README.md#-caution
+    about: Check the README for known issues with multi-episode downloads

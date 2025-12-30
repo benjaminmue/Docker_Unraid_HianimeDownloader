@@ -1,0 +1,105 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for HiAni DL
+title: "Feature Request: [Brief description of the feature]"
+labels: ["enhancement", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible to help us understand your idea.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before submitting
+      options:
+        - label: I have checked existing [issues](https://github.com/benjaminmue/HiAni-DL/issues) and [discussions](https://github.com/benjaminmue/HiAni-DL/discussions) for similar requests
+          required: true
+        - label: This feature request is specific to HiAni DL (not a general anime downloader request)
+          required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem? Describe the problem you're trying to solve
+      placeholder: "Example: I'm frustrated when I have to manually select each episode range instead of downloading entire seasons at once"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see
+      placeholder: |
+        Example: Add a "Download All" button that automatically:
+        - Detects total number of episodes
+        - Queues all episodes for download
+        - Shows progress for the entire season
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: "Example: Could use a script to submit multiple download jobs, but native support would be cleaner"
+
+  - type: dropdown
+    id: feature-area
+    attributes:
+      label: Feature Area
+      description: What part of HiAni DL does this feature relate to?
+      options:
+        - WebGUI / User Interface
+        - Download engine / Stream extraction
+        - Episode selection / Range handling
+        - Progress tracking / Logging
+        - Docker / Configuration
+        - Performance / Optimization
+        - Quality selection / Video options
+        - Subtitle handling
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (Your Opinion)
+      description: How important is this feature to you?
+      options:
+        - Nice to have
+        - Would be useful
+        - Important for my use case
+        - Critical for functionality
+    validations:
+      required: false
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe your specific use case for this feature
+      placeholder: |
+        Example: I download entire anime series (20+ episodes) regularly and need:
+        - Batch selection to avoid clicking through ranges
+        - Better handling of failed episodes without restarting entire job
+        - Notification when all episodes complete
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups / Examples
+      description: If applicable, add mockups, screenshots, or examples from other applications
+      placeholder: Drag and drop images here, or paste URLs to examples...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, technical details, or considerations
+      placeholder: Add any other context about the feature request here...
