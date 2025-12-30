@@ -323,21 +323,26 @@ async def run_with_progress(job_id: int, db_path: str, command: list):
         # Wait for completion
         return_code = process.wait()
 
-        # Mark any remaining active episodes as complete if process succeeded
-        if return_code == 0:
-            for ep_num, episode_data in list(active_episodes.items()):
-                await db.update_episode(
-                    episode_data["id"],
-                    status=EpisodeStatus.COMPLETE.value,
-                    progress_percent=100,
-                    stage_data={}
-                )
-                completed_episodes += 1
+                # Mark any remaining active episodes as failed if they didn't explicitly complete
+        # If episodes are still in active_episodes after process exit, something went wrong
+        if active_episodes: 
+            for ep_num, episode_data in list(active_episodes. items()):
+                # Check current status - only mark as failed if not already complete
+                current_episode = await db.find_episode_by_number(job_id, ep_num)
+                if current_episode and current_episode.get("status") != EpisodeStatus.COMPLETE.value:
+                    error_msg = "Episode did not complete before process exit"
+                    await db.update_episode(
+                        episode_data["id"],
+                        status=EpisodeStatus.FAILED.value,
+                        error_message=error_msg,
+                        stage_data={}
+                    )
+                    print(f"Warning: Episode {ep_num} did not complete - marked as failed", flush=True)
+                
                 # Close episode log file
-                if ep_num in episode_log_files:
+                if ep_num in episode_log_files: 
                     episode_log_files[ep_num].close()
                     del episode_log_files[ep_num]
-
         if return_code == 0:
             await emit_progress(db, job_id, 100, JobStage.DONE.value, "All episodes downloaded")
         else:
