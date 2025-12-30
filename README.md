@@ -13,6 +13,13 @@
 
 </div>
 
+> [!IMPORTANT]
+> 🎉 **Version 1.0 is Now Live!**
+>
+> HiAni DL v1.0.0 has been released and is ready for testing! Download the latest Docker image and help us improve the project.
+>
+> 📦 **[View Release Notes](https://github.com/benjaminmue/HiAni-DL/releases/tag/v1.0.0)** | 📢 **[Read Announcement](https://github.com/benjaminmue/HiAni-DL/discussions/1)** | 🤝 **[We Need Contributors!](https://github.com/benjaminmue/HiAni-DL/discussions/1#user-content-we-need-your-help)**
+
 > [!CAUTION]
 > **Known Issues with Multi-Episode Downloads**
 >
