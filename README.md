@@ -13,6 +13,15 @@
 
 </div>
 
+> [!CAUTION]
+> **Known Issues with Multi-Episode Downloads**
+>
+> This project currently has **reliability issues when downloading multiple episodes**. Downloads may work intermittently - sometimes succeeding, sometimes failing without clear patterns.
+>
+> **Root Cause:** The current Selenium-based stream capture implementation struggles with parallel episode processing and can hang or fail to extract streams. Initial testing with a Playwright migration did not resolve these issues.
+>
+> **Recommendation:** For production use, consider downloading episodes **one at a time** or be prepared for occasional failures requiring manual restarts. This project is best suited for **experimental/personal use** until the stream capture logic is stabilized.
+
 ---
 
 ## 📖 What is HiAni DL?
