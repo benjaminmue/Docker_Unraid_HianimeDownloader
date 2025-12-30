@@ -27,6 +27,8 @@ htmlcov/
 # Runtime output / downloads
 /output/
 downloads/
+test-downloads/
+test-release/
 *.mp4
 *.vtt
 *.json
@@ -44,6 +46,7 @@ temp/
 
 # Docker / Containers
 docker-compose.override.yml
+docker-compose.local.yml
 *.pid
 *.sock
 

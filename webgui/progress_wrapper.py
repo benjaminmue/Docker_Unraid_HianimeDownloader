@@ -323,23 +323,35 @@ async def run_with_progress(job_id: int, db_path: str, command: list):
         # Wait for completion
         return_code = process.wait()
 
-        # Mark any remaining active episodes as complete if process succeeded
+        # Check actual episode completion status (don't auto-complete)
+        # Fix: Don't mark episodes as complete just because parent process exited
+        # Only count episodes that have actually finished (COMPLETE or FAILED)
         if return_code == 0:
+            incomplete_episodes = []
             for ep_num, episode_data in list(active_episodes.items()):
-                await db.update_episode(
-                    episode_data["id"],
-                    status=EpisodeStatus.COMPLETE.value,
-                    progress_percent=100,
-                    stage_data={}
-                )
-                completed_episodes += 1
-                # Close episode log file
-                if ep_num in episode_log_files:
-                    episode_log_files[ep_num].close()
-                    del episode_log_files[ep_num]
+                # Query actual episode status from database
+                episode = await db.get_episode(episode_data["id"])
+                if episode and episode["status"] not in [EpisodeStatus.COMPLETE.value, EpisodeStatus.FAILED.value]:
+                    incomplete_episodes.append(ep_num)
+                elif episode and episode["status"] == EpisodeStatus.COMPLETE.value:
+                    # Episode already marked complete, clean up
+                    if ep_num in episode_log_files:
+                        episode_log_files[ep_num].close()
+                        del episode_log_files[ep_num]
 
-        if return_code == 0:
-            await emit_progress(db, job_id, 100, JobStage.DONE.value, "All episodes downloaded")
+            if incomplete_episodes:
+                # Warn about episodes still in progress when process exited
+                warning_msg = f"Process exited but episodes still active: {incomplete_episodes}"
+                print(f"WARNING: {warning_msg}", flush=True)
+                await emit_progress(
+                    db, job_id,
+                    STAGE_PROGRESS[JobStage.DOWNLOAD],
+                    JobStage.DOWNLOAD.value,
+                    f"Waiting for {len(incomplete_episodes)} episode(s) to complete..."
+                )
+            else:
+                # All episodes finished successfully
+                await emit_progress(db, job_id, 100, JobStage.DONE.value, "All episodes downloaded")
         else:
             print(f"PROGRESS: {json.dumps({'percent': 0, 'stage': 'failed', 'text': f'Exit code {return_code}'})}", flush=True)
 

@@ -62,12 +62,7 @@ services:
   # Access the WebGUI at http://localhost:8080
   # ============================================================================
   hianime-webgui:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        PUID: 1000
-        PGID: 1000
+    image: ghcr.io/benjaminmue/hiani-dl:latest
     container_name: hianime-webgui
     entrypoint: ["/bin/bash", "/app/docker/webgui-entrypoint.sh"]
     environment:
