@@ -21,19 +21,22 @@ from .database import Database, JobStatus, EpisodeStatus, EPISODE_STATUS_LABELS
 from .worker import JobWorker
 from .security import URLValidator, BasicAuthManager
 
-# Configure logging
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
-logger = logging.getLogger("webgui")
-
 # Configuration from environment
 CONFIG_DIR = os.getenv("CONFIG_DIR", "/config")
 DOWNLOAD_DIR = os.getenv("OUTPUT_DIR", "/downloads")
 DB_PATH = os.path.join(CONFIG_DIR, "jobs.db")
 WEB_PORT = int(os.getenv("WEB_PORT", "8080"))
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+
+# Configure logging
+logging.basicConfig(
+    level=getattr(logging, LOG_LEVEL.upper()),
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger("webgui")
+
+# Suppress noisy third-party loggers
+logging.getLogger("aiosqlite").setLevel(logging.WARNING)
 
 # Security configuration
 URL_ALLOWLIST_STR = os.getenv("URL_ALLOWLIST", "")
