@@ -51,6 +51,11 @@ HiAni DL is a **Docker-only** anime downloader designed for **local network (LAN
 
 ---
 
+> [!NOTE]
+> I built this project because I occasionally ran into episodes that weren't available as torrents for my Plex server. Since I've been using HiAnime for a while and like how it works, I focused on creating a downloader specifically for that site.
+
+---
+
 ## 🚀 Quick Start
 
 **New to Docker or HiAni DL?** Follow our step-by-step guide:
