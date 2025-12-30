@@ -7,7 +7,7 @@
 
   ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
   ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
-  ![License](https://img.shields.io/badge/License-MIT-green)
+  ![License](https://img.shields.io/badge/License-GPL--v3-blue)
 
   **Download anime from HiAnime.to with a beautiful dark-themed web interface**
 
@@ -190,14 +190,16 @@ See **[Docker Setup](https://github.com/benjaminmue/HiAni-DL/wiki/Docker-Setup)*
 
 ---
 
-## 📜 Origin
+## 📜 Origin & Attribution
 
-This project is a **disconnected fork** of [HianimeDownloader](https://github.com/gheatherington/HianimeDownloader) by gheatherington. It has diverged significantly with:
+This project is a fork of [HianimeDownloader](https://github.com/gheatherington/HianimeDownloader) by G Heatherington. It has been significantly extended with:
 - Docker and Unraid support
 - Modern web interface with dark theme
-- Real-time progress tracking
+- Real-time progress tracking via Server-Sent Events
 - Enhanced security features
 - Comprehensive documentation
+
+I am grateful to the original author for creating the foundation of this project.
 
 ---
 
@@ -212,7 +214,9 @@ This project is a **disconnected fork** of [HianimeDownloader](https://github.co
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) for details
+This project is licensed under the GNU General Public License v3.0 - See [LICENSE](LICENSE) for details.
+
+Based on [HianimeDownloader](https://github.com/gheatherington/HianimeDownloader) by G Heatherington.
 
 ---
 
