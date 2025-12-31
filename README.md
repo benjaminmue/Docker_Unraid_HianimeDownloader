@@ -215,6 +215,9 @@ I am grateful to the original author for creating the foundation of this project
 - **No warranty** - Use at your own risk
 - **Known issues** - Some downloads may fail (check Issues tab)
 
+> [!NOTE]
+> **AI Assistance Disclosure:** AI tools were used throughout this project to help understand code structures, assist with certain coding tasks, and improve documentation like the one you're reading.
+
 ---
 
 ## 📄 License
